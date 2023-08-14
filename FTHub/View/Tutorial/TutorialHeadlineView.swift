@@ -15,6 +15,7 @@ struct TutorialHeadlineView: View {
         Text(self.text)
             .multilineTextAlignment(.center)
             .foregroundStyle(Color.textGray)
+            .fontWeight(.semibold)
     }
 }
 
