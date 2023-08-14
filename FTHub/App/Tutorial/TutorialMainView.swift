@@ -14,9 +14,13 @@ struct TutorialMainView: View {
     var body: some View {
         if self.tutorialStarted {
             TabView {
-                
+                TutorialFirstPageView()
+                TutorialSecondPageView()
+                TutorialThirdPageView()
+                TutorialFourthPageView()
+                TutorialFifthPageView()
             }
-            .tabViewStyle(.page)
+            .tabViewStyle(.page(indexDisplayMode: .never))
             .padding(.horizontal)
         } else {
             TutorialStartPageView(tutorialStarted: $tutorialStarted)

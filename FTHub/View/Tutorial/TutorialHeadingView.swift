@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomHeadingView: View {
+struct TutorialHeadingView: View {
     
     let upperPart: String
     let bottomPart: String
@@ -19,12 +19,12 @@ struct CustomHeadingView: View {
                 .fontWeight(.regular)
             
             Text(self.bottomPart.uppercased())
-                .font(.largeTitle)
+                .font(.title)
                 .fontWeight(.bold)
         }
     }
 }
 
 #Preview {
-    CustomHeadingView(upperPart: "Welcome to FTHub", bottomPart: "Train smart")
+    TutorialHeadingView(upperPart: "Welcome to FTHub", bottomPart: "Train smart")
 }

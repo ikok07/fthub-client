@@ -18,14 +18,16 @@ struct TutorialStartPageView: View {
                     .padding(.bottom, 10)
                 
                 VStack(spacing: 20) {
-                    CustomHeadingView(upperPart: "Welcome to FTHub", bottomPart: "Train Smart")
+                    TutorialHeadingView(upperPart: "Welcome to FTHub", bottomPart: "Train Smart")
                     
                     TutorialHeadlineView(text: "Discover all your fitness apps in one place. Create workouts or enter one of our custom fitness programs")
                 }
                 .padding(.bottom, 30)
                 
                 Button(action: {
-                    tutorialStarted = true
+                    withAnimation(.easeOut) {
+                        tutorialStarted = true
+                    }
                 }, label: {
                     Text("Start")
                         .padding(.vertical, 10)

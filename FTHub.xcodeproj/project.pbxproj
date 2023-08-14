@@ -12,7 +12,7 @@
 		220266C62A8A4818009D299F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220266C52A8A4818009D299F /* Assets.xcassets */; };
 		220266C92A8A4818009D299F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220266C82A8A4818009D299F /* Preview Assets.xcassets */; };
 		220266D12A8A494A009D299F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D02A8A494A009D299F /* Constants.swift */; };
-		220266D62A8A5144009D299F /* CustomHeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D52A8A5144009D299F /* CustomHeadingView.swift */; };
+		220266D62A8A5144009D299F /* TutorialHeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D52A8A5144009D299F /* TutorialHeadingView.swift */; };
 		220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D72A8A51DD009D299F /* TutorialImageView.swift */; };
 		220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D92A8A5249009D299F /* TutorialHeadlineView.swift */; };
 		220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E02A8A538F009D299F /* CTAButtonStyle.swift */; };
@@ -20,6 +20,10 @@
 		220266E72A8A5787009D299F /* TutorialStartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E62A8A5787009D299F /* TutorialStartPageView.swift */; };
 		220266E92A8A5A28009D299F /* TutorialFirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E82A8A5A28009D299F /* TutorialFirstPageView.swift */; };
 		220266EB2A8A5B54009D299F /* TutorialPageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266EA2A8A5B54009D299F /* TutorialPageIndicatorView.swift */; };
+		220266ED2A8A5DE2009D299F /* TutorialSecondPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266EC2A8A5DE2009D299F /* TutorialSecondPageView.swift */; };
+		220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266F02A8A5F8D009D299F /* TutorialThirdPageView.swift */; };
+		220266F32A8A6014009D299F /* TutorialFourthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266F22A8A6014009D299F /* TutorialFourthPageView.swift */; };
+		220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266F42A8A60EB009D299F /* TutorialFifthPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +34,7 @@
 		220266C82A8A4818009D299F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		220266D02A8A494A009D299F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		220266D22A8A4B54009D299F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		220266D52A8A5144009D299F /* CustomHeadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeadingView.swift; sourceTree = "<group>"; };
+		220266D52A8A5144009D299F /* TutorialHeadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialHeadingView.swift; sourceTree = "<group>"; };
 		220266D72A8A51DD009D299F /* TutorialImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialImageView.swift; sourceTree = "<group>"; };
 		220266D92A8A5249009D299F /* TutorialHeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialHeadlineView.swift; sourceTree = "<group>"; };
 		220266E02A8A538F009D299F /* CTAButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButtonStyle.swift; sourceTree = "<group>"; };
@@ -38,6 +42,10 @@
 		220266E62A8A5787009D299F /* TutorialStartPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialStartPageView.swift; sourceTree = "<group>"; };
 		220266E82A8A5A28009D299F /* TutorialFirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFirstPageView.swift; sourceTree = "<group>"; };
 		220266EA2A8A5B54009D299F /* TutorialPageIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageIndicatorView.swift; sourceTree = "<group>"; };
+		220266EC2A8A5DE2009D299F /* TutorialSecondPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSecondPageView.swift; sourceTree = "<group>"; };
+		220266F02A8A5F8D009D299F /* TutorialThirdPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialThirdPageView.swift; sourceTree = "<group>"; };
+		220266F22A8A6014009D299F /* TutorialFourthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFourthPageView.swift; sourceTree = "<group>"; };
+		220266F42A8A60EB009D299F /* TutorialFifthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFifthPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +118,7 @@
 		220266D42A8A5124009D299F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				220266D52A8A5144009D299F /* CustomHeadingView.swift */,
+				220266D52A8A5144009D299F /* TutorialHeadingView.swift */,
 				220266D72A8A51DD009D299F /* TutorialImageView.swift */,
 				220266D92A8A5249009D299F /* TutorialHeadlineView.swift */,
 				220266EA2A8A5B54009D299F /* TutorialPageIndicatorView.swift */,
@@ -148,6 +156,10 @@
 				220266E42A8A5765009D299F /* TutorialMainView.swift */,
 				220266E62A8A5787009D299F /* TutorialStartPageView.swift */,
 				220266E82A8A5A28009D299F /* TutorialFirstPageView.swift */,
+				220266EC2A8A5DE2009D299F /* TutorialSecondPageView.swift */,
+				220266F02A8A5F8D009D299F /* TutorialThirdPageView.swift */,
+				220266F22A8A6014009D299F /* TutorialFourthPageView.swift */,
+				220266F42A8A60EB009D299F /* TutorialFifthPageView.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -223,16 +235,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				220266EB2A8A5B54009D299F /* TutorialPageIndicatorView.swift in Sources */,
-				220266D62A8A5144009D299F /* CustomHeadingView.swift in Sources */,
+				220266D62A8A5144009D299F /* TutorialHeadingView.swift in Sources */,
+				220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */,
 				220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */,
+				220266ED2A8A5DE2009D299F /* TutorialSecondPageView.swift in Sources */,
 				220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */,
 				220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */,
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
 				220266E52A8A5765009D299F /* TutorialMainView.swift in Sources */,
 				220266C22A8A4815009D299F /* FTHubApp.swift in Sources */,
+				220266F32A8A6014009D299F /* TutorialFourthPageView.swift in Sources */,
 				220266E72A8A5787009D299F /* TutorialStartPageView.swift in Sources */,
 				220266E92A8A5A28009D299F /* TutorialFirstPageView.swift in Sources */,
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,
+				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
