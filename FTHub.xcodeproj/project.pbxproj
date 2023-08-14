@@ -12,6 +12,10 @@
 		220266C62A8A4818009D299F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220266C52A8A4818009D299F /* Assets.xcassets */; };
 		220266C92A8A4818009D299F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220266C82A8A4818009D299F /* Preview Assets.xcassets */; };
 		220266D12A8A494A009D299F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D02A8A494A009D299F /* Constants.swift */; };
+		220266D62A8A5144009D299F /* CustomHeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D52A8A5144009D299F /* CustomHeadingView.swift */; };
+		220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D72A8A51DD009D299F /* TutorialImageView.swift */; };
+		220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D92A8A5249009D299F /* TutorialHeadlineView.swift */; };
+		220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E02A8A538F009D299F /* CTAButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		220266C82A8A4818009D299F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		220266D02A8A494A009D299F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		220266D22A8A4B54009D299F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		220266D52A8A5144009D299F /* CustomHeadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeadingView.swift; sourceTree = "<group>"; };
+		220266D72A8A51DD009D299F /* TutorialImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialImageView.swift; sourceTree = "<group>"; };
+		220266D92A8A5249009D299F /* TutorialHeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialHeadlineView.swift; sourceTree = "<group>"; };
+		220266E02A8A538F009D299F /* CTAButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,8 @@
 		220266C02A8A4815009D299F /* FTHub */ = {
 			isa = PBXGroup;
 			children = (
+				220266DE2A8A5371009D299F /* Style */,
+				220266D32A8A511D009D299F /* View */,
 				220266D22A8A4B54009D299F /* Info.plist */,
 				220266CF2A8A4935009D299F /* Utils */,
 				220266C12A8A4815009D299F /* FTHubApp.swift */,
@@ -78,6 +88,48 @@
 				220266D02A8A494A009D299F /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		220266D32A8A511D009D299F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				220266DB2A8A52E6009D299F /* Universal */,
+				220266D42A8A5124009D299F /* Tutorial */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		220266D42A8A5124009D299F /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				220266D52A8A5144009D299F /* CustomHeadingView.swift */,
+				220266D72A8A51DD009D299F /* TutorialImageView.swift */,
+				220266D92A8A5249009D299F /* TutorialHeadlineView.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		220266DB2A8A52E6009D299F /* Universal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Universal;
+			sourceTree = "<group>";
+		};
+		220266DE2A8A5371009D299F /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				220266DF2A8A5379009D299F /* Universal */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		220266DF2A8A5379009D299F /* Universal */ = {
+			isa = PBXGroup;
+			children = (
+				220266E02A8A538F009D299F /* CTAButtonStyle.swift */,
+			);
+			path = Universal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +202,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				220266D62A8A5144009D299F /* CustomHeadingView.swift in Sources */,
+				220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */,
+				220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */,
+				220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */,
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
 				220266C22A8A4815009D299F /* FTHubApp.swift in Sources */,
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,

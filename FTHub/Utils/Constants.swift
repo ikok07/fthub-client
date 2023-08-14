@@ -11,6 +11,6 @@ import SwiftUI
 struct K {
     
     // MARK: - Gradients
-    static let mainGradient: Gradient = Gradient(colors: [.accentColor, .mint])
+    static let mainGradient: LinearGradient = LinearGradient(gradient: Gradient(colors: [.accentColor, .mint]), startPoint: .topLeading, endPoint: .bottomTrailing)
     
 }
