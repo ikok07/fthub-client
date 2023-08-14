@@ -16,7 +16,11 @@ struct CTAButtonStyle: ButtonStyle {
             .foregroundStyle(.white)
             .fontWeight(.bold)
             .background {
-                K.mainGradient
+                if configuration.isPressed {
+                    K.mainGradient.opacity(0.8)
+                } else {
+                    K.mainGradient
+                }
             }
             .clipShape(RoundedRectangle(cornerRadius: 7))
     }

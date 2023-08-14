@@ -16,6 +16,8 @@
 		220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D72A8A51DD009D299F /* TutorialImageView.swift */; };
 		220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D92A8A5249009D299F /* TutorialHeadlineView.swift */; };
 		220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E02A8A538F009D299F /* CTAButtonStyle.swift */; };
+		220266E52A8A5765009D299F /* TutorialMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E42A8A5765009D299F /* TutorialMainView.swift */; };
+		220266E72A8A5787009D299F /* TutorialStartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E62A8A5787009D299F /* TutorialStartPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		220266D72A8A51DD009D299F /* TutorialImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialImageView.swift; sourceTree = "<group>"; };
 		220266D92A8A5249009D299F /* TutorialHeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialHeadlineView.swift; sourceTree = "<group>"; };
 		220266E02A8A538F009D299F /* CTAButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButtonStyle.swift; sourceTree = "<group>"; };
+		220266E42A8A5765009D299F /* TutorialMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialMainView.swift; sourceTree = "<group>"; };
+		220266E62A8A5787009D299F /* TutorialStartPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialStartPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +71,7 @@
 				220266D22A8A4B54009D299F /* Info.plist */,
 				220266CF2A8A4935009D299F /* Utils */,
 				220266C12A8A4815009D299F /* FTHubApp.swift */,
-				220266C32A8A4815009D299F /* ContentView.swift */,
+				220266E22A8A5734009D299F /* App */,
 				220266C52A8A4818009D299F /* Assets.xcassets */,
 				220266C72A8A4818009D299F /* Preview Content */,
 			);
@@ -119,17 +123,27 @@
 		220266DE2A8A5371009D299F /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				220266DF2A8A5379009D299F /* Universal */,
+				220266E02A8A538F009D299F /* CTAButtonStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
 		};
-		220266DF2A8A5379009D299F /* Universal */ = {
+		220266E22A8A5734009D299F /* App */ = {
 			isa = PBXGroup;
 			children = (
-				220266E02A8A538F009D299F /* CTAButtonStyle.swift */,
+				220266E32A8A5741009D299F /* Tutorial */,
+				220266C32A8A4815009D299F /* ContentView.swift */,
 			);
-			path = Universal;
+			path = App;
+			sourceTree = "<group>";
+		};
+		220266E32A8A5741009D299F /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				220266E42A8A5765009D299F /* TutorialMainView.swift */,
+				220266E62A8A5787009D299F /* TutorialStartPageView.swift */,
+			);
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,7 +221,9 @@
 				220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */,
 				220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */,
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
+				220266E52A8A5765009D299F /* TutorialMainView.swift in Sources */,
 				220266C22A8A4815009D299F /* FTHubApp.swift in Sources */,
+				220266E72A8A5787009D299F /* TutorialStartPageView.swift in Sources */,
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

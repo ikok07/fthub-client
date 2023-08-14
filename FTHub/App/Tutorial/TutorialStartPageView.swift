@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  TutorialFirstPageView.swift
 //  FTHub
 //
 //  Created by Kaloyan Petkov on 14.08.23.
@@ -7,7 +7,10 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TutorialStartPageView: View {
+    
+    @Binding var tutorialStarted: Bool
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -21,7 +24,9 @@ struct ContentView: View {
                 }
                 .padding(.bottom, 30)
                 
-                Button(action: {}, label: {
+                Button(action: {
+                    tutorialStarted = true
+                }, label: {
                     Text("Start")
                         .padding(.vertical, 10)
                 })
@@ -29,15 +34,16 @@ struct ContentView: View {
             }
             .padding()
             .toolbar {
-                Button(action: {}, label: {
+                Button(action: {
+                    
+                }, label: {
                     Text("Skip")
                         .fontWeight(.bold)
                 })
             }
-        }
-    }
+        }    }
 }
 
 #Preview {
-    ContentView()
+    TutorialStartPageView(tutorialStarted: .constant(false))
 }
