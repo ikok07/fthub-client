@@ -11,6 +11,7 @@
 		220266C42A8A4815009D299F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266C32A8A4815009D299F /* ContentView.swift */; };
 		220266C62A8A4818009D299F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220266C52A8A4818009D299F /* Assets.xcassets */; };
 		220266C92A8A4818009D299F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220266C82A8A4818009D299F /* Preview Assets.xcassets */; };
+		220266D12A8A494A009D299F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D02A8A494A009D299F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,8 @@
 		220266C32A8A4815009D299F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		220266C52A8A4818009D299F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		220266C82A8A4818009D299F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		220266D02A8A494A009D299F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		220266D22A8A4B54009D299F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,8 @@
 		220266C02A8A4815009D299F /* FTHub */ = {
 			isa = PBXGroup;
 			children = (
+				220266D22A8A4B54009D299F /* Info.plist */,
+				220266CF2A8A4935009D299F /* Utils */,
 				220266C12A8A4815009D299F /* FTHubApp.swift */,
 				220266C32A8A4815009D299F /* ContentView.swift */,
 				220266C52A8A4818009D299F /* Assets.xcassets */,
@@ -65,6 +70,14 @@
 				220266C82A8A4818009D299F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		220266CF2A8A4935009D299F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				220266D02A8A494A009D299F /* Constants.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +152,7 @@
 			files = (
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
 				220266C22A8A4815009D299F /* FTHubApp.swift in Sources */,
+				220266D12A8A494A009D299F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,9 +289,9 @@
 				DEVELOPMENT_TEAM = 38UA2XAHCC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FTHub/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -304,9 +318,9 @@
 				DEVELOPMENT_TEAM = 38UA2XAHCC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FTHub/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
