@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TutorialStartPageView: View {
     
+    @AppStorage("showTutorial") private var showTutorial: Bool = true
+    
     @Binding var tutorialStarted: Bool
     
     var body: some View {
@@ -38,7 +40,7 @@ struct TutorialStartPageView: View {
             }
             .toolbar {
                 Button(action: {
-                    
+                    showTutorial = false
                 }, label: {
                     Text("Skip")
                         .fontWeight(.bold)

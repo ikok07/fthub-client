@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TutorialFifthPageView: View {
+    
+    @AppStorage("showTutorial") private var showTutorial: Bool = true
+    
     var body: some View {
         VStack {
             Spacer()
@@ -23,7 +26,9 @@ struct TutorialFifthPageView: View {
             
             Spacer()
             Button {
-                
+                withAnimation {
+                    showTutorial = false
+                }
             } label: {
                 Text("Finish Tutorial")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
