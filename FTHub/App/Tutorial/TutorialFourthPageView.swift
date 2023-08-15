@@ -12,19 +12,20 @@ struct TutorialFourthPageView: View {
         VStack {
             Spacer()
             TutorialImageView(imageName: "tutorial5")
-                .padding(.bottom, 10)
+                .padding(.bottom, 30)
             
             VStack(spacing: 20) {
                 TutorialHeadingView(upperPart: "ease your progress", bottomPart: "with our coaches")
                 
                 TutorialHeadlineView(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd")
             }
+            .padding(.horizontal)
             
             Spacer()
             TutorialPageIndicatorView(pageNumber: 3)
                 .padding(.bottom)
+                .padding(.horizontal)
         }
-        .padding(.horizontal)
     }
 }
 

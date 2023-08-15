@@ -15,7 +15,7 @@ struct TutorialStartPageView: View {
         NavigationStack {
             VStack(spacing: 20) {
                 TutorialImageView(imageName: "tutorial1")
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 30)
                 
                 VStack(spacing: 20) {
                     TutorialHeadingView(upperPart: "Welcome to FTHub", bottomPart: "Train Smart")
@@ -23,6 +23,7 @@ struct TutorialStartPageView: View {
                     TutorialHeadlineView(text: "Discover all your fitness apps in one place. Create workouts or enter one of our custom fitness programs")
                 }
                 .padding(.bottom, 30)
+                .padding(.horizontal)
                 
                 Button(action: {
                     withAnimation(.easeOut) {
@@ -33,8 +34,8 @@ struct TutorialStartPageView: View {
                         .padding(.vertical, 10)
                 })
                 .buttonStyle(CTAButtonStyle())
+                .padding(.horizontal, 30)
             }
-            .padding()
             .toolbar {
                 Button(action: {
                     
