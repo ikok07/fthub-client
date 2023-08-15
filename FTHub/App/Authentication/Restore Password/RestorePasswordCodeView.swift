@@ -10,6 +10,7 @@ import SwiftUI
 struct RestorePasswordCodeView: View {
     
     @State private var inputValue: [String] = Array(repeating: "", count: 6)
+    @State private var fullFields: Bool = false
     
     var body: some View {
         VStack {
@@ -34,7 +35,7 @@ struct RestorePasswordCodeView: View {
                 } //: VStack
             } //: VStack
             
-            CodeInputView(enteredPin: $inputValue)
+            CodeInputView(enteredNumbers: $inputValue, fullFields: $fullFields)
                 .padding(.top, 30)
                 .padding(.horizontal, 30)
             
@@ -45,7 +46,8 @@ struct RestorePasswordCodeView: View {
                     Text("Confirm")
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 })
-                .buttonStyle(CTAButtonStyle())
+                .buttonStyle(CTAButtonStyle(gradient: fullFields ? K.mainGradient : K.grayGradient))
+                .animation(.easeOut(duration: 0.2), value: 10)
                 .padding()
                 
                 HStack(spacing: 5) {

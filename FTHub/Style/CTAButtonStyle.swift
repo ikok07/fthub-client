@@ -10,6 +10,8 @@ import SwiftUI
 
 struct CTAButtonStyle: ButtonStyle {
     
+    let gradient: LinearGradient
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(minWidth: 0, maxWidth: .infinity)
@@ -17,9 +19,9 @@ struct CTAButtonStyle: ButtonStyle {
             .fontWeight(.bold)
             .background {
                 if configuration.isPressed {
-                    K.mainGradient.opacity(0.8)
+                    gradient.opacity(0.8)
                 } else {
-                    K.mainGradient
+                    gradient
                 }
             }
             .clipShape(RoundedRectangle(cornerRadius: 7))

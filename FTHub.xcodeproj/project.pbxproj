@@ -25,7 +25,6 @@
 		220266F32A8A6014009D299F /* TutorialFourthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266F22A8A6014009D299F /* TutorialFourthPageView.swift */; };
 		220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266F42A8A60EB009D299F /* TutorialFifthPageView.swift */; };
 		220266F82A8A7066009D299F /* MainAccountAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266F72A8A7066009D299F /* MainAccountAuthView.swift */; };
-		2257C9332A8BEF7D000E3CD2 /* CodeInputTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9322A8BEF7D000E3CD2 /* CodeInputTextFieldView.swift */; };
 		2257C9382A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9372A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift */; };
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
 		22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */; };
@@ -59,7 +58,6 @@
 		220266F22A8A6014009D299F /* TutorialFourthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFourthPageView.swift; sourceTree = "<group>"; };
 		220266F42A8A60EB009D299F /* TutorialFifthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFifthPageView.swift; sourceTree = "<group>"; };
 		220266F72A8A7066009D299F /* MainAccountAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAccountAuthView.swift; sourceTree = "<group>"; };
-		2257C9322A8BEF7D000E3CD2 /* CodeInputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInputTextFieldView.swift; sourceTree = "<group>"; };
 		2257C9372A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordCodeView.swift; sourceTree = "<group>"; };
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
 		22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				22E824732A8BB26F00B51C60 /* CodeInputView.swift */,
-				2257C9322A8BEF7D000E3CD2 /* CodeInputTextFieldView.swift */,
 			);
 			path = "Code Input";
 			sourceTree = "<group>";
@@ -335,7 +332,6 @@
 				220266E92A8A5A28009D299F /* TutorialFirstPageView.swift in Sources */,
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,
 				22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */,
-				2257C9332A8BEF7D000E3CD2 /* CodeInputTextFieldView.swift in Sources */,
 				2257C9382A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,

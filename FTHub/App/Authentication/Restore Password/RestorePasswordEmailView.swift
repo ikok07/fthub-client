@@ -50,7 +50,7 @@ struct RestorePasswordEmailView: View {
                         Text("Send email")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                     })
-                    .buttonStyle(CTAButtonStyle())
+                    .buttonStyle(CTAButtonStyle(gradient: K.mainGradient))
                     
                     Text("A code will be sent to your email")
                         .font(.footnote)

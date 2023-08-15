@@ -35,7 +35,7 @@ struct TutorialStartPageView: View {
                     Text("Start")
                         .padding(.vertical, 10)
                 })
-                .buttonStyle(CTAButtonStyle())
+                .buttonStyle(CTAButtonStyle(gradient: K.mainGradient))
                 .padding(.horizontal, 30)
             }
             .toolbar {
