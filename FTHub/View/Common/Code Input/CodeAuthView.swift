@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct CodeInputView: View {
+struct CodeAuthView: View {
     
     @FocusState var fieldFocus: Int?
     
+    @Binding var code: Int
     @Binding var enteredNumbers: [String]
     @Binding var fullFields: Bool
     @State private var oldValue: String = ""
@@ -62,6 +63,7 @@ struct CodeInputView: View {
                                 }
                             }
                             
+                            code = Int(enteredNumbers.joined()) ?? 0
                         } //: onChange
                         .onAppear {
                             fieldFocus = 0
@@ -73,6 +75,6 @@ struct CodeInputView: View {
 }
 
 #Preview {
-    CodeInputView(enteredNumbers: .constant(Array(repeating: "", count: 6)), fullFields: .constant(false))
+    CodeAuthView(code: .constant(0), enteredNumbers: .constant(Array(repeating: "", count: 6)), fullFields: .constant(false))
         .padding(.horizontal, 20)
 }

@@ -18,8 +18,12 @@ struct AuthenticationFooterView: View {
     
     @State private var authenticatedDetails: Bool = false
     
-    func performLoginAuthorisation(response: SignInRequest) {
-        print(response)
+    func performLoginAuthorization(response: SignInRequest) {
+        if response.status == "success" {
+            authenticatedDetails = true
+        } else {
+            print("Details not valid")
+        }
     }
     
     var body: some View {
@@ -33,7 +37,7 @@ struct AuthenticationFooterView: View {
                     Task {
                         let response = await authController.signIn(email: email, password: password)
                         if let safeResponse = response {
-                            performLoginAuthorisation(response: safeResponse)
+                            performLoginAuthorization(response: safeResponse)
                         }
                     }
                 }
@@ -45,7 +49,7 @@ struct AuthenticationFooterView: View {
             .padding()
         } //: VStack
         .navigationDestination(isPresented: $authenticatedDetails) {
-            ConfirmEmailView()
+            ConfirmEmailView(email: email)
         }
     }
 }

@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct CoachesPageView: View {
+    
+    @AppStorage("userLoggedIn") private var userLoggedIn: Bool = true
+    
     var body: some View {
         VStack(spacing: 20) {
             Text("Logged into FTHub\npage: coaches")
                 .multilineTextAlignment(.center)
             
-            Button(action: {}, label: {
+            Button(action: {
+                userLoggedIn = false
+            }, label: {
                 Text("Sign Out")
             })
         }

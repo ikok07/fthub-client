@@ -26,8 +26,8 @@ struct MainAccountAuthView: View {
                 
                 if activeOption == .signIn {
                     VStack(spacing: 20) {
-                        CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", text: $signInEmailText)
-                        CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", text: $signInPasswordText)
+                        CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signInEmailText)
+                        CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true,  text: $signInPasswordText)
                             NavigationLink(destination: RestorePasswordEmailView()) {
                                 HStack {
                                     Text("Forgot password?")

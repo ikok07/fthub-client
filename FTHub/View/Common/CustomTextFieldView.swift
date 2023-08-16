@@ -11,6 +11,8 @@ struct CustomTextFieldView: View {
     
     let icon: String
     let placeholder: String
+    var autoCapitalize: Bool = true
+    var secureField: Bool = false
     @Binding var text: String
 
     
@@ -20,8 +22,14 @@ struct CustomTextFieldView: View {
                 .font(.title2)
                 .padding(.trailing, 5)
             
-            TextField(placeholder, text: $text)
-                .fontWeight(.bold)
+            if !secureField {
+                TextField(placeholder, text: $text)
+                    .fontWeight(.bold)
+                    .textInputAutocapitalization(autoCapitalize ? .sentences : .never)
+            } else {
+                SecureField(placeholder, text: $text)
+                    .textInputAutocapitalization(autoCapitalize ? .sentences : .never)
+            }
         }
         .padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 10))
         .padding(.horizontal)

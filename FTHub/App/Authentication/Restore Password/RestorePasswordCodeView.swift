@@ -9,26 +9,28 @@ import SwiftUI
 
 struct RestorePasswordCodeView: View {
     
+    let email: String
+    @State private var code: Int = 0
     @State private var inputValue: [String] = Array(repeating: "", count: 6)
     @State private var fullFields: Bool = false
     
     var body: some View {
         ScrollView {
-            CodeInputHeaderView(title: "Restore Password", email: "youremail@email.com")
+            CodeAuthHeaderView(title: "Restore Password", email: "youremail@email.com")
                 .padding(.top, 20)
             
-            CodeInputView(enteredNumbers: $inputValue, fullFields: $fullFields)
+            CodeAuthView(code: $code, enteredNumbers: $inputValue, fullFields: $fullFields)
                 .padding(.top, 30)
                 .padding(.horizontal, 30)
             
             Spacer()
             
-            CodeInputFooterView(fullFields: $fullFields)
+            CodeAuthFooterView(email: email, code: code, fullFields: $fullFields)
         }
         .padding(.top, 10)
     }
 }
 
 #Preview {
-    RestorePasswordCodeView()
+    RestorePasswordCodeView(email: "kokmarok@gmail.com")
 }

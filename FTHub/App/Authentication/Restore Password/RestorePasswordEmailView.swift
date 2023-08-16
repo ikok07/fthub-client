@@ -64,7 +64,7 @@ struct RestorePasswordEmailView: View {
             .padding()
             .padding(.top, 10)
             .navigationDestination(isPresented: $emailSent) {
-                RestorePasswordCodeView()
+                RestorePasswordCodeView(email: userEmail)
             }
         }
     }
