@@ -25,6 +25,11 @@
 		220266F32A8A6014009D299F /* TutorialFourthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266F22A8A6014009D299F /* TutorialFourthPageView.swift */; };
 		220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266F42A8A60EB009D299F /* TutorialFifthPageView.swift */; };
 		220266F82A8A7066009D299F /* MainAccountAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266F72A8A7066009D299F /* MainAccountAuthView.swift */; };
+		224A5D862A8CB82B00490614 /* CodeInputHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D852A8CB82B00490614 /* CodeInputHeaderView.swift */; };
+		224A5D892A8CB8EE00490614 /* ConfirmEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D882A8CB8EE00490614 /* ConfirmEmailView.swift */; };
+		224A5D8B2A8CB9BC00490614 /* CodeInputFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D8A2A8CB9BC00490614 /* CodeInputFooterView.swift */; };
+		224A5D8E2A8CC55100490614 /* CoachesPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D8D2A8CC55100490614 /* CoachesPageView.swift */; };
+		224A5D912A8CC9E000490614 /* fthub.i18n.json in Resources */ = {isa = PBXBuildFile; fileRef = 224A5D902A8CC9E000490614 /* fthub.i18n.json */; };
 		2257C9382A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9372A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift */; };
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
 		22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */; };
@@ -58,6 +63,11 @@
 		220266F22A8A6014009D299F /* TutorialFourthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFourthPageView.swift; sourceTree = "<group>"; };
 		220266F42A8A60EB009D299F /* TutorialFifthPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFifthPageView.swift; sourceTree = "<group>"; };
 		220266F72A8A7066009D299F /* MainAccountAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAccountAuthView.swift; sourceTree = "<group>"; };
+		224A5D852A8CB82B00490614 /* CodeInputHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInputHeaderView.swift; sourceTree = "<group>"; };
+		224A5D882A8CB8EE00490614 /* ConfirmEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailView.swift; sourceTree = "<group>"; };
+		224A5D8A2A8CB9BC00490614 /* CodeInputFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInputFooterView.swift; sourceTree = "<group>"; };
+		224A5D8D2A8CC55100490614 /* CoachesPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachesPageView.swift; sourceTree = "<group>"; };
+		224A5D902A8CC9E000490614 /* fthub.i18n.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fthub.i18n.json; sourceTree = "<group>"; };
 		2257C9372A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordCodeView.swift; sourceTree = "<group>"; };
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
 		22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
@@ -102,6 +112,7 @@
 			children = (
 				220266D22A8A4B54009D299F /* Info.plist */,
 				220266C12A8A4815009D299F /* FTHubApp.swift */,
+				224A5D8F2A8CC9D500490614 /* Data */,
 				220266CF2A8A4935009D299F /* Utils */,
 				220266DE2A8A5371009D299F /* Style */,
 				220266D32A8A511D009D299F /* View */,
@@ -169,6 +180,7 @@
 		220266E22A8A5734009D299F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				224A5D8C2A8CC53600490614 /* Coaches */,
 				220266F62A8A704C009D299F /* Authentication */,
 				220266E32A8A5741009D299F /* Tutorial */,
 				220266C32A8A4815009D299F /* ContentView.swift */,
@@ -194,15 +206,34 @@
 			isa = PBXGroup;
 			children = (
 				220266F72A8A7066009D299F /* MainAccountAuthView.swift */,
+				224A5D882A8CB8EE00490614 /* ConfirmEmailView.swift */,
 				2257C93B2A8BFD36000E3CD2 /* Restore Password */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		224A5D8C2A8CC53600490614 /* Coaches */ = {
+			isa = PBXGroup;
+			children = (
+				224A5D8D2A8CC55100490614 /* CoachesPageView.swift */,
+			);
+			path = Coaches;
+			sourceTree = "<group>";
+		};
+		224A5D8F2A8CC9D500490614 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				224A5D902A8CC9E000490614 /* fthub.i18n.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		2257C9342A8BF252000E3CD2 /* Code Input */ = {
 			isa = PBXGroup;
 			children = (
 				22E824732A8BB26F00B51C60 /* CodeInputView.swift */,
+				224A5D852A8CB82B00490614 /* CodeInputHeaderView.swift */,
+				224A5D8A2A8CB9BC00490614 /* CodeInputFooterView.swift */,
 			);
 			path = "Code Input";
 			sourceTree = "<group>";
@@ -301,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				220266C92A8A4818009D299F /* Preview Assets.xcassets in Resources */,
+				224A5D912A8CC9E000490614 /* fthub.i18n.json in Resources */,
 				220266C62A8A4818009D299F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,19 +355,23 @@
 				220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */,
 				220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */,
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
+				224A5D862A8CB82B00490614 /* CodeInputHeaderView.swift in Sources */,
 				2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */,
 				22E824692A8B9D3300B51C60 /* SignUpWithAppleView.swift in Sources */,
 				220266E52A8A5765009D299F /* TutorialMainView.swift in Sources */,
 				220266C22A8A4815009D299F /* FTHubApp.swift in Sources */,
 				220266F32A8A6014009D299F /* TutorialFourthPageView.swift in Sources */,
+				224A5D8E2A8CC55100490614 /* CoachesPageView.swift in Sources */,
 				220266E72A8A5787009D299F /* TutorialStartPageView.swift in Sources */,
 				220266E92A8A5A28009D299F /* TutorialFirstPageView.swift in Sources */,
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,
 				22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */,
+				224A5D8B2A8CB9BC00490614 /* CodeInputFooterView.swift in Sources */,
 				2257C9382A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,
+				224A5D892A8CB8EE00490614 /* ConfirmEmailView.swift in Sources */,
 				22E824742A8BB26F00B51C60 /* CodeInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

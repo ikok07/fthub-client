@@ -29,11 +29,14 @@ struct CodeInputView: View {
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(enteredNumbers[index].count > 0 ? K.mainGradient : K.grayGradient, lineWidth: 3)
-                        }
+                        .background(.ultraThinMaterial)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .overlay {
+                            if enteredNumbers[index].count > 0 {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .foregroundStyle(K.mainGradient.opacity(0.15))
+                            }
+                        }
                         .focused($fieldFocus, equals: index)
                         .onChange(of: enteredNumbers[index]) { oldValue, newValue in
                             if enteredNumbers[index].count > 1 {
@@ -60,6 +63,9 @@ struct CodeInputView: View {
                             }
                             
                         } //: onChange
+                        .onAppear {
+                            fieldFocus = 0
+                        }
                 } //: ForEach
             } //: HStack
 

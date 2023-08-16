@@ -12,20 +12,21 @@ struct AuthenticationHeaderView: View {
     @Binding var activeOption: AuthOption
     
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 20) {
             Image("logo")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 90)
-                .padding(.bottom)
             
-            Text("App Account")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            Text("Lorem Ipsum is simply dummy text of the printing and typesetting")
-                .multilineTextAlignment(.center)
-                .foregroundStyle(.textGray)
-                .fontWeight(.semibold)
+            VStack(spacing: 10) {
+                Text("App Account")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                Text("Lorem Ipsum is simply dummy text of the printing and typesetting")
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.textGray)
+                    .fontWeight(.semibold)
+            }
         } //: VStack
         
         LogRegButtonsView(activeOption: $activeOption)

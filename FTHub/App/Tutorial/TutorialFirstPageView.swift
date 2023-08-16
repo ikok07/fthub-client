@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TutorialFirstPageView: View {
+    
+    @Binding var selectedTab: Int
+    
     var body: some View {
         VStack {
             Spacer()
@@ -22,7 +25,7 @@ struct TutorialFirstPageView: View {
             .padding(.horizontal)
             
             Spacer()
-            TutorialPageIndicatorView(pageNumber: 0)
+            TutorialPageIndicatorView(pageNumber: 0, selectedTab: $selectedTab)
                 .padding(.bottom)
                 .padding(.horizontal)
         }
@@ -30,5 +33,5 @@ struct TutorialFirstPageView: View {
 }
 
 #Preview {
-    TutorialFirstPageView()
+    TutorialFirstPageView(selectedTab: .constant(0))
 }

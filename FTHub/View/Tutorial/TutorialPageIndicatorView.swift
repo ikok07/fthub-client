@@ -10,6 +10,7 @@ import SwiftUI
 struct TutorialPageIndicatorView: View {
     
     let pageNumber: Int
+    @Binding var selectedTab: Int
     
     var body: some View {
         ZStack {
@@ -22,9 +23,15 @@ struct TutorialPageIndicatorView: View {
             }
             HStack {
                 Spacer()
-                Image(systemName: "chevron.right")
-                    .font(.title2)
-                    .foregroundStyle(K.mainGradient)
+                Button(action: {
+                    withAnimation {
+                        selectedTab += 1
+                    }
+                }, label: {
+                    Image(systemName: "chevron.right")
+                        .font(.title2)
+                        .foregroundStyle(K.mainGradient)
+                })
             }
             .padding(.trailing, 10)
         }
@@ -32,6 +39,6 @@ struct TutorialPageIndicatorView: View {
 }
 
 #Preview {
-    TutorialPageIndicatorView(pageNumber: 0)
+    TutorialPageIndicatorView(pageNumber: 0, selectedTab: .constant(0))
         .padding(.horizontal)
 }

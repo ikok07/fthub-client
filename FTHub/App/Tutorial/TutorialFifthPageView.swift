@@ -11,6 +11,8 @@ struct TutorialFifthPageView: View {
     
     @AppStorage("showTutorial") private var showTutorial: Bool = true
     
+    @Binding var selectedTab: Int
+    
     var body: some View {
         VStack {
             Spacer()
@@ -35,11 +37,11 @@ struct TutorialFifthPageView: View {
             }
             .buttonStyle(CTAButtonStyle(gradient: K.mainGradient))
             .padding(.horizontal, 30)
-
+            .padding(.vertical)
         }
     }
 }
 
 #Preview {
-    TutorialFifthPageView()
+    TutorialFifthPageView(selectedTab: .constant(0))
 }

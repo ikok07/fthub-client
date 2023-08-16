@@ -57,6 +57,7 @@ struct RestorePasswordEmailView: View {
                         .fontWeight(.semibold)
                         .foregroundStyle(.textGray)
                 }
+                .padding(.top)
                 Spacer()
                 
             } //: VStack

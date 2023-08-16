@@ -1,0 +1,168 @@
+[{
+  "_id": {
+    "$oid": "64d4a5a68710e2d79029cb38"
+  },
+  "abbreviation": "bg",
+  "name": "Bulgarian"
+},
+{
+  "_id": {
+    "$oid": "64d4a5dd8710e2d79029cb39"
+  },
+  "abbreviation": "en",
+  "name": "English"
+},
+{
+  "_id": {
+    "$oid": "64d4a69b8710e2d79029cb3a"
+  },
+  "abbreviation": "de",
+  "name": "German"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04f1"
+  },
+  "abbreviation": "da",
+  "name": "Danish"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04f2"
+  },
+  "abbreviation": "nl",
+  "name": "Dutch"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04f0"
+  },
+  "abbreviation": "cs",
+  "name": "Czech"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04ef"
+  },
+  "abbreviation": "hr",
+  "name": "Croatian"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04ee"
+  },
+  "abbreviation": "zh",
+  "name": "Chinese"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04f5"
+  },
+  "abbreviation": "id",
+  "name": "Indonesian"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04f6"
+  },
+  "abbreviation": "it",
+  "name": "Italian"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04f7"
+  },
+  "abbreviation": "ja",
+  "name": "Japanese"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04f9"
+  },
+  "abbreviation": "la",
+  "name": "Latin"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04f8"
+  },
+  "abbreviation": "ko",
+  "name": "Korean"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04fa"
+  },
+  "abbreviation": "mk",
+  "name": "Macedonian"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04fb"
+  },
+  "abbreviation": "pl",
+  "name": "Polish"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04fc"
+  },
+  "abbreviation": "pt",
+  "name": "Portuguese"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04fe"
+  },
+  "abbreviation": "ru",
+  "name": "Russian"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04fd"
+  },
+  "abbreviation": "ro",
+  "name": "Romanian"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04ff"
+  },
+  "abbreviation": "sr",
+  "name": "Serbian"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf0500"
+  },
+  "abbreviation": "es",
+  "name": "Spanish"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04f3"
+  },
+  "abbreviation": "fr",
+  "name": "French"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf0502"
+  },
+  "abbreviation": "uk",
+  "name": "Ukrainian"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf04f4"
+  },
+  "abbreviation": "el",
+  "name": "Greek"
+},
+{
+  "_id": {
+    "$oid": "64d8d5d1f784abd525cf0501"
+  },
+  "abbreviation": "tr",
+  "name": "Turkish"
+}]
