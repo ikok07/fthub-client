@@ -15,4 +15,8 @@ struct K {
     static let grayGradient: LinearGradient = LinearGradient(colors: [.textGray], startPoint: .leading, endPoint: .trailing)
     static let clearGradient: LinearGradient = LinearGradient(colors: [.clear], startPoint: .leading, endPoint: .trailing)
     
+    
+    // MARK: - API
+    static let apiURL: String = "https://api.fthub.eu"
+    
 }

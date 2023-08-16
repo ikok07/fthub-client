@@ -47,7 +47,7 @@ struct MainAccountAuthView: View {
                     })
                 }
                 
-                AuthenticationFooterView(method: .signIn)
+                AuthenticationFooterView(method: .signIn, email: signInEmailText, password: signInPasswordText)
             } //: ScrollView
             .padding(.horizontal)
             .scrollIndicators(.hidden)

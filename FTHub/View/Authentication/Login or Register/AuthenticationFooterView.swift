@@ -9,8 +9,18 @@ import SwiftUI
 
 struct AuthenticationFooterView: View {
     
+    private let authController = AuthController()
+    
     let method: AuthOption
+    let email: String
+    let password: String
+    let confirmPassword: String? = nil
+    
     @State private var authenticatedDetails: Bool = false
+    
+    func performLoginAuthorisation(response: SignInRequest) {
+        print(response)
+    }
     
     var body: some View {
         VStack {
@@ -19,7 +29,14 @@ struct AuthenticationFooterView: View {
 
             
             Button(action: {
-                authenticatedDetails = true
+                if method == .signIn {
+                    Task {
+                        let response = await authController.signIn(email: email, password: password)
+                        if let safeResponse = response {
+                            performLoginAuthorisation(response: safeResponse)
+                        }
+                    }
+                }
             }, label: {
                 Text(method == .signIn ? "Sign In" : "Sign Up")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -34,5 +51,5 @@ struct AuthenticationFooterView: View {
 }
 
 #Preview {
-    AuthenticationFooterView(method: .signIn)
+    AuthenticationFooterView(method: .signIn, email: "kokmarok@gmail.com", password: "123Prudni@")
 }
