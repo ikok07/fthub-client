@@ -24,7 +24,6 @@ struct CustomTextFieldView: View {
             
             if !secureField {
                 TextField(placeholder, text: $text)
-                    .fontWeight(.bold)
                     .textInputAutocapitalization(autoCapitalize ? .sentences : .never)
             } else {
                 SecureField(placeholder, text: $text)

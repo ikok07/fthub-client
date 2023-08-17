@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SignInResponse: Codable {
+struct AccountAuthResponse: Codable {
     let status: String
     let message: String
 }

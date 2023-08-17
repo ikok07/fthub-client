@@ -21,19 +21,14 @@ struct AuthenticationFooterView: View {
     
     @State private var authenticatedDetails: Bool = false
     
-    func performLoginAuthorization(response: SignInResponse) {
-        print(response)
+    func performAccountAuthorization(response: AccountAuthResponse) {
         if response.status == "success" {
-            authenticatedDetails = true
-        }
-        messageController.sendLoginMessage(apiMessage: response.message)
-    }
-    
-    func performSignUp(response: SignUpResponse) {
-        if response.status == "success" {
-            authenticatedDetails = true
+            messageController.sendMessage(type: .success, apiMessage: response.message)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                authenticatedDetails = true
+            }
         } else {
-            print("Could not register account")
+            messageController.sendMessage(type: .error, apiMessage: response.message)
         }
     }
     
@@ -48,14 +43,14 @@ struct AuthenticationFooterView: View {
                     Task {
                         let response = await authController.signIn(email: email, password: password)
                         if let safeResponse = response {
-                            performLoginAuthorization(response: safeResponse)
+                            performAccountAuthorization(response: safeResponse)
                         }
                     }
                 } else if method == .signUp && name != nil && confirmPassword != nil {
                     Task {
                         let response = await authController.signUp(name: name!, email: email, password: password, passwordConfirm: confirmPassword!)
                         if let safeResponse = response {
-                            performSignUp(response: safeResponse)
+                            performAccountAuthorization(response: safeResponse)
                         }
                     }
                 }

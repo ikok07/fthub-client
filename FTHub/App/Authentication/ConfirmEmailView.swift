@@ -20,18 +20,18 @@ struct ConfirmEmailView: View {
     @State private var fullFields: Bool = false
     
     var body: some View {
-        VStack {
-            CodeAuthHeaderView(title: "Email Confirmation", email: "youremail@email.com")
-            
-            CodeAuthView(code: $code, enteredNumbers: $enteredNumbers, fullFields: $fullFields)
-                .padding(.top, 30)
-                .padding(.horizontal, 30)
-            
-            Spacer()
-            
-            CodeAuthFooterView(email: email, code: code, type: type, fullFields: $fullFields)
-        }
-        .padding(.top, 10)
+            VStack {
+                CodeAuthHeaderView(title: "Email Confirmation", email: "youremail@email.com")
+                
+                CodeAuthView(code: $code, enteredNumbers: $enteredNumbers, fullFields: $fullFields)
+                    .padding(.top, 30)
+                    .padding(.horizontal, 30)
+                
+                Spacer()
+                
+                CodeAuthFooterView(email: email, code: code, type: type, fullFields: $fullFields)
+            } //: HStack
+            .padding(.top, 10)
     }
 }
 

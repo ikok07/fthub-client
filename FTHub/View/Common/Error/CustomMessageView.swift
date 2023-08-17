@@ -32,7 +32,9 @@ struct CustomMessageView: View {
             
             Text(message)
                 .foregroundStyle(Color(UIColor.label).opacity(0.5))
+            Spacer()
         }
+        .frame(minWidth: 300)
         .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
         .background(color.opacity(0.15))
         .background(Color(UIColor.background))

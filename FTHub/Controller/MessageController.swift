@@ -24,15 +24,9 @@ class MessageController: ObservableObject {
         }
     }
     
-    func sendLoginMessage(apiMessage: String) {
-        if apiMessage == "Incorrect email or password" {
-            messageText = "Incorrect email or password" // по-късно ще го направя за езиците
-        } else if apiMessage == "Please provide email and password" {
-            messageText = "Please provide email and password"
-        } else {
-            messageText = "An unknown error occured. Please try again later."
-        }
-        messageType = .error
+    func sendMessage(type: CustomMessageType, apiMessage: String) {
+        messageText = apiMessage
+        messageType = type
         presentMessage()
     }
 

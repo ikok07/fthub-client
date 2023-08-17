@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainAccountAuthView: View, CustomMessagePresent {
     @EnvironmentObject internal var messageController: MessageController
-    @State internal var customMessage: String = ""
     
     @State private var activeOption: AuthOption = .signIn
     @State private var signInEmailText: String = ""
@@ -59,7 +58,7 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                 .padding(.horizontal)
                 .scrollIndicators(.hidden)
             } //: NavigationView
-            .withCustomMessage(type: messageController.messageType, isPresented: messageController.messagePresented, message: messageController.messageText)
+            .withCustomMessage(controller: messageController)
         } //: ZStack
     }
 }

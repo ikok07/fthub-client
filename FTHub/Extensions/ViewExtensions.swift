@@ -31,7 +31,7 @@ struct WithCustomMessage: ViewModifier {
 
 extension View {
     @ViewBuilder
-    func withCustomMessage(type: CustomMessageType, isPresented: Bool, message: String) -> some View {
-        self.modifier(WithCustomMessage(isPresented: isPresented, type: type, message: message))
+    func withCustomMessage(controller: MessageController) -> some View {
+        self.modifier(WithCustomMessage(isPresented: controller.messagePresented, type: controller.messageType, message: controller.messageText))
     }
 }

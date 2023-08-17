@@ -32,13 +32,12 @@
 		224A5D912A8CC9E000490614 /* fthub.i18n.json in Resources */ = {isa = PBXBuildFile; fileRef = 224A5D902A8CC9E000490614 /* fthub.i18n.json */; };
 		224A5D952A8CDB6100490614 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D942A8CDB6100490614 /* AuthController.swift */; };
 		224A5D972A8CDC4400490614 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D962A8CDC4400490614 /* Requests.swift */; };
-		224A5D9A2A8CDEAD00490614 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D992A8CDEAD00490614 /* SignInResponse.swift */; };
+		224A5D9A2A8CDEAD00490614 /* AccountAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D992A8CDEAD00490614 /* AccountAuthResponse.swift */; };
 		224A5D9D2A8CF47100490614 /* SignInPostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D9C2A8CF47100490614 /* SignInPostData.swift */; };
 		224A5D9F2A8CF92100490614 /* EmailAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D9E2A8CF92100490614 /* EmailAuthRequest.swift */; };
 		224A5DA12A8CF98D00490614 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5DA02A8CF98D00490614 /* User.swift */; };
 		224A5DA32A8CFA4800490614 /* EmailAuthPostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5DA22A8CFA4800490614 /* EmailAuthPostData.swift */; };
 		224C9FB02A8DFF9900AF5612 /* SignUpPostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C9FAF2A8DFF9900AF5612 /* SignUpPostData.swift */; };
-		224C9FB22A8E001300AF5612 /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C9FB12A8E001300AF5612 /* SignUpResponse.swift */; };
 		224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */; };
 		2257C9382A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9372A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift */; };
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
@@ -83,13 +82,12 @@
 		224A5D902A8CC9E000490614 /* fthub.i18n.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fthub.i18n.json; sourceTree = "<group>"; };
 		224A5D942A8CDB6100490614 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		224A5D962A8CDC4400490614 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
-		224A5D992A8CDEAD00490614 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
+		224A5D992A8CDEAD00490614 /* AccountAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthResponse.swift; sourceTree = "<group>"; };
 		224A5D9C2A8CF47100490614 /* SignInPostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPostData.swift; sourceTree = "<group>"; };
 		224A5D9E2A8CF92100490614 /* EmailAuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthRequest.swift; sourceTree = "<group>"; };
 		224A5DA02A8CF98D00490614 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		224A5DA22A8CFA4800490614 /* EmailAuthPostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthPostData.swift; sourceTree = "<group>"; };
 		224C9FAF2A8DFF9900AF5612 /* SignUpPostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPostData.swift; sourceTree = "<group>"; };
-		224C9FB12A8E001300AF5612 /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
 		224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageView.swift; sourceTree = "<group>"; };
 		2257C9372A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordCodeView.swift; sourceTree = "<group>"; };
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
@@ -281,12 +279,11 @@
 		224A5D9B2A8CF44E00490614 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				224A5D992A8CDEAD00490614 /* SignInResponse.swift */,
+				224A5D992A8CDEAD00490614 /* AccountAuthResponse.swift */,
 				224A5D9C2A8CF47100490614 /* SignInPostData.swift */,
 				224A5D9E2A8CF92100490614 /* EmailAuthRequest.swift */,
 				224A5DA22A8CFA4800490614 /* EmailAuthPostData.swift */,
 				224C9FAF2A8DFF9900AF5612 /* SignUpPostData.swift */,
-				224C9FB12A8E001300AF5612 /* SignUpResponse.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -449,7 +446,6 @@
 				228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */,
 				224A5D862A8CB82B00490614 /* CodeAuthHeaderView.swift in Sources */,
 				2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */,
-				224C9FB22A8E001300AF5612 /* SignUpResponse.swift in Sources */,
 				22E824692A8B9D3300B51C60 /* SignUpWithAppleView.swift in Sources */,
 				220266E52A8A5765009D299F /* TutorialMainView.swift in Sources */,
 				220266C22A8A4815009D299F /* FTHubApp.swift in Sources */,
@@ -467,7 +463,7 @@
 				2257C9382A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
-				224A5D9A2A8CDEAD00490614 /* SignInResponse.swift in Sources */,
+				224A5D9A2A8CDEAD00490614 /* AccountAuthResponse.swift in Sources */,
 				228744CE2A8E645500DB77DF /* MessageController.swift in Sources */,
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,
 				224A5D892A8CB8EE00490614 /* ConfirmEmailView.swift in Sources */,

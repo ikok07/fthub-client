@@ -9,16 +9,16 @@ import Foundation
 
 struct AuthController {
     
-    func signIn(email: String, password: String) async -> SignInResponse? {
+    func signIn(email: String, password: String) async -> AccountAuthResponse? {
         let url: URL = URL(string: "\(K.apiURL)/en/api/v1/user/login")!
         let signInData: SignInPostData = SignInPostData(email: email, password: password)
         
-        var response: SignInResponse? = nil
+        var response: AccountAuthResponse? = nil
         
         do {
             let jsonData = try JSONEncoder().encode(signInData)
 
-            let result: Result<SignInResponse, Error> = await Request.create(url: url, body: jsonData)
+            let result: Result<AccountAuthResponse, Error> = await Request.create(url: url, body: jsonData)
             switch result {
             case .success(let data):
                 response = data
@@ -31,17 +31,17 @@ struct AuthController {
         return response
     }
     
-    func signUp(name: String, email: String, password: String, passwordConfirm: String) async -> SignUpResponse? {
+    func signUp(name: String, email: String, password: String, passwordConfirm: String) async -> AccountAuthResponse? {
         let url: URL = URL(string: "\(K.apiURL)/en/api/v1/user/signup")!
         let data: SignUpPostData = SignUpPostData(name: name, email: email, password: password, passwordConfirm: passwordConfirm)
         
-        var response: SignUpResponse? = nil
+        var response: AccountAuthResponse? = nil
         
         do {
             print("DATA -> \(data)")
             let jsonData = try JSONEncoder().encode(data)
             
-            let result: Result<SignUpResponse, Error> = await Request.create(url: url, body: jsonData)
+            let result: Result<AccountAuthResponse, Error> = await Request.create(url: url, body: jsonData)
             switch result {
             case .success(let result):
                 response = result
