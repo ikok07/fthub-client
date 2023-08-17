@@ -41,13 +41,17 @@ struct MainAccountAuthView: View {
                 } else {
                     VStack(spacing: 20, content: {
                         CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", text: $signUpNameText)
-                        CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", text: $signUpEmailText)
-                        CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", text: $signUpPasswordText)
-                        CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", text: $signUpConfirmPasswordText)
+                        CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signUpEmailText)
+                        CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, text: $signUpPasswordText)
+                        CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, text: $signUpConfirmPasswordText)
                     })
                 }
                 
-                AuthenticationFooterView(method: .signIn, email: signInEmailText, password: signInPasswordText)
+                if activeOption == .signIn {
+                    AuthenticationFooterView(method: activeOption, name: nil, email: signInEmailText, password: signInPasswordText, confirmPassword: nil)
+                } else {
+                    AuthenticationFooterView(method: activeOption, name: signUpNameText, email: signUpEmailText, password: signUpPasswordText, confirmPassword: signUpConfirmPasswordText)
+                }
             } //: ScrollView
             .padding(.horizontal)
             .scrollIndicators(.hidden)

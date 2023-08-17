@@ -15,10 +15,11 @@ struct CodeAuthFooterView: View {
     private let authController = AuthController()
     let email: String
     let code: Int
+    let type: EmailAuthType
     
     @Binding var fullFields: Bool
     
-    func performTwoFaAuthorization(response: TwoFaRequest) {
+    func performEmailAuthentication(response: EmailAuthRequest) {
         print(response)
         if response.status == "success" {
             userToken = response.token
@@ -29,11 +30,18 @@ struct CodeAuthFooterView: View {
     var body: some View {
         VStack {
             Button(action: {
-                if fullFields {
+                if fullFields && type == .twofa {
                     Task {
-                        let response = await authController.performTwoFa(email: email, code: code)
+                        let response = await authController.authEmail(email: email, code: code, type: .twofa)
                         if let safeResponse = response {
-                            performTwoFaAuthorization(response: safeResponse)
+                            performEmailAuthentication(response: safeResponse)
+                        }
+                    }
+                } else if fullFields && type == .confirm {
+                    Task {
+                        let response = await authController.authEmail(email: email, code: code, type: .confirm)
+                        if let safeResponse = response {
+                            performEmailAuthentication(response: safeResponse)
                         }
                     }
                 }
@@ -58,5 +66,5 @@ struct CodeAuthFooterView: View {
 }
 
 #Preview {
-    CodeAuthFooterView(email: "kokmarok@gmail.com", code: 123, fullFields: .constant(false))
+    CodeAuthFooterView(email: "kokmarok@gmail.com", code: 123, type: .twofa, fullFields: .constant(false))
 }

@@ -7,8 +7,13 @@
 
 import SwiftUI
 
+enum EmailAuthType: CaseIterable {
+    case confirm, twofa
+}
+
 struct ConfirmEmailView: View {
     
+    let type: EmailAuthType
     let email: String
     @State private var code: Int = 0
     @State private var enteredNumbers: [String] = Array(repeating: "", count: 6)
@@ -24,12 +29,12 @@ struct ConfirmEmailView: View {
             
             Spacer()
             
-            CodeAuthFooterView(email: email, code: code, fullFields: $fullFields)
+            CodeAuthFooterView(email: email, code: code, type: type, fullFields: $fullFields)
         }
         .padding(.top, 10)
     }
 }
 
 #Preview {
-    ConfirmEmailView(email: "kokmarok@gmail.com")
+    ConfirmEmailView(type: .twofa, email: "kokmarok@gmail.com")
 }

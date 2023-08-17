@@ -25,7 +25,7 @@ struct RestorePasswordCodeView: View {
             
             Spacer()
             
-            CodeAuthFooterView(email: email, code: code, fullFields: $fullFields)
+            CodeAuthFooterView(email: email, code: code, type: .twofa, fullFields: $fullFields)
         }
         .padding(.top, 10)
     }

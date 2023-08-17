@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TwoFaRequest: Codable {
+struct EmailAuthRequest: Codable {
     let status: String
     let token: String
     let data: TwoFaData
