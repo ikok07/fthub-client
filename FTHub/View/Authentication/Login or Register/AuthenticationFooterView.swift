@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AuthenticationFooterView: View {
     
+    @EnvironmentObject private var messageController: MessageController
+    
     private let authController = AuthController()
     
     let method: AuthOption
@@ -20,15 +22,14 @@ struct AuthenticationFooterView: View {
     @State private var authenticatedDetails: Bool = false
     
     func performLoginAuthorization(response: SignInResponse) {
+        print(response)
         if response.status == "success" {
             authenticatedDetails = true
-        } else {
-            print("Details not valid: \(response.message)")
         }
+        messageController.sendLoginMessage(apiMessage: response.message)
     }
     
     func performSignUp(response: SignUpResponse) {
-        print(response)
         if response.status == "success" {
             authenticatedDetails = true
         } else {
@@ -74,4 +75,5 @@ struct AuthenticationFooterView: View {
 
 #Preview {
     AuthenticationFooterView(method: .signIn, name: "Tosho", email: "kokmarok@gmail.com", password: "123Prudni@", confirmPassword: "123Prudni@")
+        .environmentObject(MessageController())
 }

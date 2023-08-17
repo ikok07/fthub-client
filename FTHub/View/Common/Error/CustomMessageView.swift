@@ -11,7 +11,7 @@ enum CustomMessageType: CaseIterable {
     case error, alert, success, info
 }
 
-struct ErrorMessageView: View {
+struct CustomMessageView: View {
     
     let type: CustomMessageType
     
@@ -21,19 +21,21 @@ struct ErrorMessageView: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            Image(systemName: "xmark")
+            Image(systemName: icon ?? "xmark")
                 .font(.headline)
                 .fontWeight(.bold)
                 .foregroundStyle(Color(UIColor.background))
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                .background(Color.customRed)
+                .frame(width: 35)
+                .background(color)
                 .clipShape(Circle())
             
             Text(message)
                 .foregroundStyle(Color(UIColor.label).opacity(0.5))
         }
         .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-        .background(Color.customRed.opacity(0.15))
+        .background(color.opacity(0.15))
+        .background(Color(UIColor.background))
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .onAppear {
             switch type {
@@ -41,21 +43,21 @@ struct ErrorMessageView: View {
                 icon = "xmark"
                 color = .customRed
             case .alert:
-                icon = "xmark"
-                color = .customRed
+                icon = "exclamationmark"
+                color = .customYellow
             case .success:
-                icon = "xmark"
-                color = .customRed
+                icon = "checkmark"
+                color = .customGreen
             case .info:
-                icon = "xmark"
-                color = .customRed
+                icon = "exclamationmark"
+                color = .customBlue
             }
         }
     }
 }
 
 #Preview {
-    ErrorMessageView(type: .error, message: "This is an error message This is an error message")
+    CustomMessageView(type: .info, message: "This is an error message This is an error message")
         .previewLayout(.sizeThatFits)
         .padding()
 }

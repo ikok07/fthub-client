@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct FTHubApp: App {
+    
+    @StateObject var messageController: MessageController = MessageController()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(messageController)
         }
     }
 }

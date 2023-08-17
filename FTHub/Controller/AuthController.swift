@@ -10,7 +10,7 @@ import Foundation
 struct AuthController {
     
     func signIn(email: String, password: String) async -> SignInResponse? {
-        let url: URL = URL(string: "\(K.apiURL)/en/api/v1/users/login")!
+        let url: URL = URL(string: "\(K.apiURL)/en/api/v1/user/login")!
         let signInData: SignInPostData = SignInPostData(email: email, password: password)
         
         var response: SignInResponse? = nil
@@ -32,7 +32,7 @@ struct AuthController {
     }
     
     func signUp(name: String, email: String, password: String, passwordConfirm: String) async -> SignUpResponse? {
-        let url: URL = URL(string: "\(K.apiURL)/en/api/v1/users/signup")!
+        let url: URL = URL(string: "\(K.apiURL)/en/api/v1/user/signup")!
         let data: SignUpPostData = SignUpPostData(name: name, email: email, password: password, passwordConfirm: passwordConfirm)
         
         var response: SignUpResponse? = nil
@@ -55,7 +55,7 @@ struct AuthController {
     }
     
     func authEmail(email: String, code: Int, type: EmailAuthType) async -> EmailAuthRequest? {
-        let url: URL = URL(string: "\(K.apiURL)/en/api/v1/users/\(type == .twofa ? "login" : "email")/confirm")!
+        let url: URL = URL(string: "\(K.apiURL)/en/api/v1/user/\(type == .twofa ? "login" : "email")/confirm")!
         let data: EmailAuthPostData = EmailAuthPostData(email: email, token: code)
         
         var response: EmailAuthRequest? = nil
