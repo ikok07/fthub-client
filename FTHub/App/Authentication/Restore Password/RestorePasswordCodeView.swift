@@ -12,20 +12,19 @@ struct RestorePasswordCodeView: View {
     @EnvironmentObject var numpadController: NumpadController
     
     let email: String
-    @State private var fullFields: Bool = false
     
     var body: some View {
         ScrollView {
             CodeAuthHeaderView(title: "Restore Password", email: "youremail@email.com")
                 .padding(.top, 20)
             
-            CodeAuthView(fullFields: $fullFields)
+            CodeAuthView()
                 .padding(.top, 30)
                 .padding(.horizontal, 30)
             
             Spacer()
             
-            CodeAuthFooterView(email: email, code: Int(numpadController.enteredNumber.joined()) ?? 0, type: .twofa, fullFields: $fullFields)
+            CodeAuthFooterView(email: email, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: .twofa)
         }
         .padding(.top, 10)
     }

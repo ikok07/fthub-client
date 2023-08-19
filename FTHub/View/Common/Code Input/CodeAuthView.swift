@@ -10,12 +10,11 @@ import SwiftUI
 struct CodeAuthView: View {
     
     @EnvironmentObject var numpadController: NumpadController
-    @Binding var fullFields: Bool
     
     var body: some View {
             HStack(spacing: 20) {
-                ForEach(0..<numpadController.enteredNumber.count, id: \.self) { index in
-                    CustomCodeNumberField(isActive: numpadController.activeField == index ? true : false, number: Int(numpadController.enteredNumber[index]))
+                ForEach(0..<numpadController.enteredNumbers.count, id: \.self) { index in
+                    CustomCodeNumberField(isActive: numpadController.activeField == index ? true : false, number: Int(numpadController.enteredNumbers[index]))
                         .onTapGesture {
                             numpadController.setActiveField(on: index)
                         }
@@ -25,7 +24,7 @@ struct CodeAuthView: View {
 }
 
 #Preview {
-    CodeAuthView(fullFields: .constant(false))
+    CodeAuthView()
         .padding(.horizontal, 20)
         .environmentObject(NumpadController())
 }

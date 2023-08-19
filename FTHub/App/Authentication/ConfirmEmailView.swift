@@ -17,19 +17,18 @@ struct ConfirmEmailView: View {
     
     let type: EmailAuthType
     let email: String
-    @State private var fullFields: Bool = false
     
     var body: some View {
             VStack {
                 CodeAuthHeaderView(title: "Email Confirmation", email: "youremail@email.com")
                 
-                CodeAuthView(fullFields: $fullFields)
+                CodeAuthView()
                     .padding(.top, 60)
                     .padding(.horizontal, 30)
                 
                 Spacer()
                 
-                CodeAuthFooterView(email: email, code: Int(numpadController.enteredNumber.joined()) ?? 0, type: .twofa, fullFields: $fullFields)
+                CodeAuthFooterView(email: email, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: .twofa)
             } //: HStack
             .padding(.top, 10)
     }

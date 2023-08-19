@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CodeAuthFooterView: View, CustomMessagePresent {
     @EnvironmentObject var messageController: MessageController
+    @EnvironmentObject var numpadController: NumpadController
     
     @AppStorage("userToken") private var userToken: String = ""
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
@@ -17,8 +18,6 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
     let email: String
     let code: Int
     let type: EmailAuthType
-    
-    @Binding var fullFields: Bool
     
     func performEmailAuthentication(response: EmailAuthRequest) {
         if response.status == "success" {
@@ -35,18 +34,20 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
     var body: some View {
             VStack {
                 Button(action: {
-                    if fullFields && type == .twofa {
+                    if numpadController.fullFields && type == .twofa {
                         Task {
                             let response = await authController.authEmail(email: email, code: code, type: .twofa)
                             if let safeResponse = response {
                                 performEmailAuthentication(response: safeResponse)
+                                numpadController.reset()
                             }
                         }
-                    } else if fullFields && type == .confirm {
+                    } else if numpadController.fullFields && type == .confirm {
                         Task {
                             let response = await authController.authEmail(email: email, code: code, type: .confirm)
                             if let safeResponse = response {
                                 performEmailAuthentication(response: safeResponse)
+                                numpadController.reset()
                             }
                         }
                     }
@@ -54,7 +55,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                         Text("Confirm")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 })
-                .buttonStyle(CTAButtonStyle(gradient: fullFields ? K.Gradients.mainGradient : K.Gradients.grayGradient))
+                .buttonStyle(CTAButtonStyle(gradient: numpadController.fullFields ? K.Gradients.mainGradient : K.Gradients.grayGradient))
                 .animation(.easeOut(duration: 0.2), value: 10)
                 .padding()
                 
@@ -69,10 +70,14 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                 
                 CustomNumpadView()
             } //: VStack
+            .onDisappear {
+                numpadController.reset()
+            }
     }
 }
 
 #Preview {
-    CodeAuthFooterView(email: "kokmarok@gmail.com", code: 123, type: .twofa, fullFields: .constant(false))
+    CodeAuthFooterView(email: "kokmarok@gmail.com", code: 123, type: .twofa)
         .environmentObject(MessageController())
+        .environmentObject(NumpadController())
 }

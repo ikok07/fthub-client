@@ -70,7 +70,7 @@ struct AuthController {
             case .success(let data):
                 response = data
             case .failure(let error):
-                print("Could not get code approval from API: \(error)")
+                print("Could not decode jsonData for email authentication: \(error)")
             }
         } catch {
             print("Error converting auth data to json: \(error)")
