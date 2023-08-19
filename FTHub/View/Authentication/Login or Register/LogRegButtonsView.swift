@@ -26,7 +26,7 @@ struct LogRegButtonsView: View {
                         }
                     } label: {
                         Text("Sign In")
-                            .foregroundStyle(activeOption == .signIn ? K.mainGradient : K.grayGradient)
+                            .foregroundStyle(activeOption == .signIn ? K.Gradients.mainGradient : K.Gradients.grayGradient)
                             .fontWeight(.bold)
                             .opacity(0.75)
                             .multilineTextAlignment(.center)
@@ -39,7 +39,7 @@ struct LogRegButtonsView: View {
                         Spacer()
                         RoundedRectangle(cornerRadius: 12)
                             .frame(width: geometry.size.width / 2.3, height: 3)
-                            .foregroundStyle(activeOption == .signIn ? K.mainGradient : K.clearGradient)
+                            .foregroundStyle(activeOption == .signIn ? K.Gradients.mainGradient : K.Gradients.clearGradient)
                             .padding(.top, 30)
                     }
                 }
@@ -53,7 +53,7 @@ struct LogRegButtonsView: View {
                         }
                     } label: {
                         Text("Sign Up")
-                            .foregroundStyle(activeOption == .signUp ? K.mainGradient : K.grayGradient)
+                            .foregroundStyle(activeOption == .signUp ? K.Gradients.mainGradient : K.Gradients.grayGradient)
                             .fontWeight(.bold)
                             .opacity(0.75)
                             .multilineTextAlignment(.center)
@@ -66,7 +66,7 @@ struct LogRegButtonsView: View {
                         Spacer()
                         RoundedRectangle(cornerRadius: 12)
                             .frame(width: geometry.size.width / 2.3, height: 3)
-                            .foregroundStyle(activeOption == .signUp ? K.mainGradient : K.clearGradient)
+                            .foregroundStyle(activeOption == .signUp ? K.Gradients.mainGradient : K.Gradients.clearGradient)
                             .padding(.top, 30)
                     }
                 }

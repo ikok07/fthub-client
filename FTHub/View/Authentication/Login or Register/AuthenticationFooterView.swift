@@ -58,7 +58,7 @@ struct AuthenticationFooterView: View {
                 Text(method == .signIn ? "Sign In" : "Sign Up")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             }) //: Button
-            .buttonStyle(CTAButtonStyle(gradient: K.mainGradient))
+            .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
             .padding()
             
         } //: VStack

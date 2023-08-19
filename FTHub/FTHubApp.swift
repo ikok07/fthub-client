@@ -11,11 +11,13 @@ import SwiftUI
 struct FTHubApp: App {
     
     @StateObject var messageController: MessageController = MessageController()
+    @ObservedObject var numpadController: NumpadController = NumpadController()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(messageController)
+                .environmentObject(numpadController)
         }
     }
 }

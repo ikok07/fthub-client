@@ -54,7 +54,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                         Text("Confirm")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 })
-                .buttonStyle(CTAButtonStyle(gradient: fullFields ? K.mainGradient : K.grayGradient))
+                .buttonStyle(CTAButtonStyle(gradient: fullFields ? K.Gradients.mainGradient : K.Gradients.grayGradient))
                 .animation(.easeOut(duration: 0.2), value: 10)
                 .padding()
                 
@@ -62,10 +62,12 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                     Text("Didn't receive code?")
                         .foregroundStyle(.gray)
                     Text("Resend now")
-                        .foregroundStyle(K.mainGradient)
+                        .foregroundStyle(K.Gradients.mainGradient)
                         .fontWeight(.semibold)
                 }
-                .padding(.bottom)
+                .padding(.bottom, 30)
+                
+                CustomNumpadView()
             } //: VStack
     }
 }

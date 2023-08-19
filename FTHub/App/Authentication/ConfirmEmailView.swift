@@ -13,23 +13,23 @@ enum EmailAuthType: CaseIterable {
 
 struct ConfirmEmailView: View {
     
+    @EnvironmentObject var numpadController: NumpadController
+    
     let type: EmailAuthType
     let email: String
-    @State private var code: Int = 0
-    @State private var enteredNumbers: [String] = Array(repeating: "", count: 6)
     @State private var fullFields: Bool = false
     
     var body: some View {
             VStack {
                 CodeAuthHeaderView(title: "Email Confirmation", email: "youremail@email.com")
                 
-                CodeAuthView(code: $code, enteredNumbers: $enteredNumbers, fullFields: $fullFields)
-                    .padding(.top, 30)
+                CodeAuthView(fullFields: $fullFields)
+                    .padding(.top, 60)
                     .padding(.horizontal, 30)
                 
                 Spacer()
                 
-                CodeAuthFooterView(email: email, code: code, type: type, fullFields: $fullFields)
+                CodeAuthFooterView(email: email, code: Int(numpadController.enteredNumber.joined()) ?? 0, type: .twofa, fullFields: $fullFields)
             } //: HStack
             .padding(.top, 10)
     }
@@ -37,4 +37,5 @@ struct ConfirmEmailView: View {
 
 #Preview {
     ConfirmEmailView(type: .twofa, email: "kokmarok@gmail.com")
+        .environmentObject(NumpadController())
 }
