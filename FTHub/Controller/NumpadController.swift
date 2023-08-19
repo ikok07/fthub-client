@@ -38,10 +38,13 @@ class NumpadController: ObservableObject {
         print(activeField)
         if activeField == 6 {
             enteredNumbers[activeField - 1] = ""
+            activeField -= 1
         } else if activeField > 0 {
             enteredNumbers[activeField] = ""
+            activeField -= 1
+        } else if activeField == 0 {
+            enteredNumbers[activeField] = ""
         }
-        activeField -= 1
         checkFullFields()
     }
     
