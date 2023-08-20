@@ -37,7 +37,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                 Button(action: {
                     if numpadController.fullFields && type == .twofa {
                         Task {
-                            let response = await authController.authEmail(email: email, code: code, type: .twofa)
+                            let response = await Authentication.authEmail(email: email, code: code, type: .twofa)
                             if let safeResponse = response {
                                 performEmailAuthentication(response: safeResponse)
                                 numpadController.reset()
@@ -45,8 +45,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                         }
                     } else if numpadController.fullFields && type == .confirm {
                         Task {
-                            print(code)
-                            let response = await authController.authEmail(email: email, code: code, type: .confirm)
+                            let response = await Authentication.authEmail(email: email, code: code, type: .confirm)
                             if let safeResponse = response {
                                 performEmailAuthentication(response: safeResponse)
                                 numpadController.reset()
@@ -61,7 +60,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                 .animation(.easeOut(duration: 0.2), value: 10)
                 .padding()
                 
-                CodeAuthResendButton(email: email, password: password, type: type)
+                CodeAuthResendButton() 
                 .padding(.bottom, 30)
                 
                 CustomNumpadView()

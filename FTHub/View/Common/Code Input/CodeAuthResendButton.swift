@@ -11,17 +11,22 @@ struct CodeAuthResendButton: View {
     
     @EnvironmentObject var messageController: MessageController
     @EnvironmentObject var numpadController: NumpadController
+    @EnvironmentObject var authController: AuthController
+
     
-    private let authController = AuthController()
-    let email: String
-    let password: String?
-    let type: EmailAuthType
-    
-    func sendMessage(status: String, message: String) {
-        if status == "success" {
-            messageController.sendMessage(type: .success, apiMessage: message)
-        } else {
-            messageController.sendMessage(type: .error, apiMessage: message)
+    func sendMessage(confirmResponse: ResendAuthCodeResponse? = nil, twoFaResponse: AccountAuthResponse? = nil) {
+        if confirmResponse != nil {
+            if confirmResponse!.status == "success" {
+                messageController.sendMessage(type: .success, apiMessage: confirmResponse!.message)
+            } else {
+                messageController.sendMessage(type: .error, apiMessage: confirmResponse!.message)
+            }
+        } else if twoFaResponse != nil {
+            if twoFaResponse!.status == "success" {
+                messageController.sendMessage(type: .success, apiMessage: twoFaResponse!.message)
+            } else {
+                messageController.sendMessage(type: .error, apiMessage: twoFaResponse!.message)
+            }
         }
     }
     
@@ -31,16 +36,12 @@ struct CodeAuthResendButton: View {
                 .foregroundStyle(.gray)
             Button {
                 Task {
-                    if type == .confirm {
-                        let response = await authController.resendAuthCode(email: email)
-                        if let safeResponse = response {
-                            sendMessage(status: safeResponse.status, message: safeResponse.message)
-                        }
+                    if authController.type == .confirm {
+                        let response = await authController.resendConfirmCode()
+                        sendMessage(confirmResponse: response)
                     } else {
-                        let response = await authController.signIn(email: email, password: password!)
-                        if let safeResponse = response {
-                            sendMessage(status: safeResponse.status, message: safeResponse.message)
-                        }
+                        let response = await authController.resendTwoFaCode()
+                        sendMessage(twoFaResponse: response)
                     }
                 }
             } label: {
@@ -55,7 +56,8 @@ struct CodeAuthResendButton: View {
 }
 
 #Preview {
-    CodeAuthResendButton(email: "kokmarok@gmail.com", password: "123Prudni@", type: .confirm)
+    CodeAuthResendButton()
         .environmentObject(MessageController())
         .environmentObject(NumpadController())
+        .environmentObject(AuthController())
 }

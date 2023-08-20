@@ -11,8 +11,6 @@ struct AuthenticationFooterView: View {
     
     @EnvironmentObject private var messageController: MessageController
     
-    private let authController = AuthController()
-    
     let method: AuthOption
     let name: String?
     let email: String
@@ -41,14 +39,14 @@ struct AuthenticationFooterView: View {
             Button(action: {
                 if method == .signIn {
                     Task {
-                        let response = await authController.signIn(email: email, password: password)
+                        let response = await Authentication.signIn(email: email, password: password)
                         if let safeResponse = response {
                             performAccountAuthorization(response: safeResponse)
                         }
                     }
                 } else if method == .signUp && name != nil && confirmPassword != nil {
                     Task {
-                        let response = await authController.signUp(name: name!, email: email, password: password, passwordConfirm: confirmPassword!)
+                        let response = await Authentication.signUp(name: name!, email: email, password: password, passwordConfirm: confirmPassword!)
                         if let safeResponse = response {
                             performAccountAuthorization(response: safeResponse)
                         }

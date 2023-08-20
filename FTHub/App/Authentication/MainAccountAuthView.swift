@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainAccountAuthView: View, CustomMessagePresent {
     @EnvironmentObject internal var messageController: MessageController
+    @EnvironmentObject private var authController: AuthController
     
     @State private var activeOption: AuthOption = .signIn
     @State private var signInEmailText: String = ""
@@ -48,15 +49,22 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                             CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, text: $signUpConfirmPasswordText)
                         })
                     }
-                    
-                    if activeOption == .signIn {
-                        AuthenticationFooterView(method: activeOption, name: nil, email: signInEmailText, password: signInPasswordText, confirmPassword: nil)
-                    } else {
-                        AuthenticationFooterView(method: activeOption, name: signUpNameText, email: signUpEmailText, password: signUpPasswordText, confirmPassword: signUpConfirmPasswordText)
-                    }
+                    AuthenticationFooterView(method: activeOption, name: nil, email: signInEmailText, password: signInPasswordText, confirmPassword: nil)
+
                 } //: ScrollView
                 .padding(.horizontal)
                 .scrollIndicators(.hidden)
+                .onDisappear {
+                    if activeOption == .signIn {
+                        print(signInEmailText, signInPasswordText)
+                        authController.type = .twofa
+                        authController.email = signInEmailText
+                        authController.password = signInPasswordText
+                    } else {
+                        authController.type = .confirm
+                        authController.email = signUpEmailText
+                    }
+                }
             } //: NavigationView
             .withCustomMessage(controller: messageController)
         } //: ZStack
@@ -66,4 +74,5 @@ struct MainAccountAuthView: View, CustomMessagePresent {
 #Preview {
     MainAccountAuthView()
         .environmentObject(MessageController())
+        .environmentObject(AuthController())
 }

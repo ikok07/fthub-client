@@ -29,7 +29,7 @@ struct ConfirmEmailView: View {
                 
                 Spacer()
                 
-                CodeAuthFooterView(email: email, password: password, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: type)
+                CodeAuthFooterView(email: email, password: password, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: type) 
             } //: HStack
             .padding(.top, 10)
     }

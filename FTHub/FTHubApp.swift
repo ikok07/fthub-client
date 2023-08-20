@@ -10,14 +10,16 @@ import SwiftUI
 @main
 struct FTHubApp: App {
     
-    @StateObject var messageController: MessageController = MessageController()
+    @ObservedObject var messageController: MessageController = MessageController()
     @ObservedObject var numpadController: NumpadController = NumpadController()
+    @ObservedObject var authController: AuthController = AuthController()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(messageController)
                 .environmentObject(numpadController)
+                .environmentObject(authController)
         }
     }
 }
