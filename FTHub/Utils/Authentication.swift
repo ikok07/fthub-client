@@ -64,7 +64,6 @@ struct Authentication {
         
         let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/\(type == .twofa ? "login" : "email")/confirm")!
         let data: EmailAuthPostData = EmailAuthPostData(email: email, token: code)
-
         var response: EmailAuthRequest? = nil
         
         do {

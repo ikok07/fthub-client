@@ -21,7 +21,6 @@ struct MainAccountAuthView: View, CustomMessagePresent {
     @State private var signUpPasswordText: String = ""
     @State private var signUpConfirmPasswordText: String = ""
     
-    
     func saveBaseAuthDetails() {
         if activeOption == .signIn {
             baseAuthController.activeOption = .signIn
@@ -76,7 +75,7 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                             CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, text: $signUpConfirmPasswordText)
                         })
                     }
-                    AuthenticationFooterView(method: activeOption, name: nil, email: signInEmailText, password: signInPasswordText, confirmPassword: nil) 
+                    AuthenticationFooterView(method: activeOption, name: nil, email: activeOption == .signIn ? signInEmailText : signUpEmailText, password: signInPasswordText, confirmPassword: nil) 
                     {
                         saveBaseAuthDetails()
                     }
