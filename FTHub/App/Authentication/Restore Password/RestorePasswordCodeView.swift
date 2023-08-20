@@ -24,7 +24,7 @@ struct RestorePasswordCodeView: View {
             
             Spacer()
             
-            CodeAuthFooterView(email: email, password: nil, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: .twofa)
+            CodeAuthFooterView(email: email, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: .twofa)
         }
         .padding(.top, 10)
     }

@@ -14,6 +14,7 @@ struct FTHubApp: App {
     @StateObject var numpadController: NumpadController = NumpadController()
     @StateObject var authController: ResendCodeController = ResendCodeController()
     @StateObject var baseAuthController: BaseAuthController = BaseAuthController()
+    @StateObject var codeAuthController: CodeAuthController = CodeAuthController()
     
     var body: some Scene {
         WindowGroup {
@@ -22,6 +23,7 @@ struct FTHubApp: App {
                 .environmentObject(numpadController)
                 .environmentObject(authController)
                 .environmentObject(baseAuthController)
+                .environmentObject(codeAuthController)
         }
     }
 }

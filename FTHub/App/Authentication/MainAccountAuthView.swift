@@ -25,25 +25,25 @@ struct MainAccountAuthView: View, CustomMessagePresent {
     func saveBaseAuthDetails() {
         if activeOption == .signIn {
             baseAuthController.activeOption = .signIn
-            baseAuthController.email = signInEmailText
-            baseAuthController.password = signInPasswordText
+            baseAuthController.email = self.signInEmailText
+            baseAuthController.password = self.signInPasswordText
         } else {
             baseAuthController.activeOption = .signUp
-            baseAuthController.name = signUpNameText
-            baseAuthController.email = signUpEmailText
-            baseAuthController.password = signUpPasswordText
-            baseAuthController.confirmPassword = signUpConfirmPasswordText
+            baseAuthController.name = self.signUpNameText
+            baseAuthController.email = self.signUpEmailText
+            baseAuthController.password = self.signUpPasswordText
+            baseAuthController.confirmPassword = self.signUpConfirmPasswordText
         }
     }
     
     func saveResendCodeDetails() {
         if activeOption == .signIn {
             resendController.type = .twofa
-            resendController.email = signInEmailText
-            resendController.password = signInPasswordText
+            resendController.email = self.signInEmailText
+            resendController.password = self.signInPasswordText
         } else {
             resendController.type = .confirm
-            resendController.email = signUpEmailText
+            resendController.email = self.signUpEmailText
         }
     }
     

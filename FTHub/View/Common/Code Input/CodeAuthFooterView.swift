@@ -10,48 +10,40 @@ import SwiftUI
 struct CodeAuthFooterView: View, CustomMessagePresent {
     @EnvironmentObject var messageController: MessageController
     @EnvironmentObject var numpadController: NumpadController
+    @EnvironmentObject var codeAuthController: CodeAuthController
     
     @AppStorage("userToken") private var userToken: String = ""
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     
-    private let authController = ResendCodeController()
     let email: String
-    let password: String?
     let code: Int
     let type: EmailAuthType
     
-    func performEmailAuthentication(response: EmailAuthRequest) {
-        if response.status == "success" {
-            messageController.sendMessage(type: .success, apiMessage: String(localized: "Successful email authentication"))
-            userToken = response.token ?? ""
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                userLoggedIn = true
-            }
-        } else {
-            messageController.sendMessage(type: .error, apiMessage: String(localized: "The entered code is invalid or expired"))
-        }
+    private func saveData() {
+        codeAuthController.type = self.type
+        codeAuthController.email = self.email
+        codeAuthController.token = self.code
     }
     
     var body: some View {
             VStack {
                 Button(action: {
-                    if numpadController.fullFields && type == .twofa {
-                        Task {
-                            let response = await Authentication.authEmail(email: email, code: code, type: .twofa)
-                            if let safeResponse = response {
-                                performEmailAuthentication(response: safeResponse)
-                                numpadController.reset()
-                            }
-                        }
-                    } else if numpadController.fullFields && type == .confirm {
-                        Task {
-                            let response = await Authentication.authEmail(email: email, code: code, type: .confirm)
-                            if let safeResponse = response {
-                                performEmailAuthentication(response: safeResponse)
-                                numpadController.reset()
+                    saveData()
+                    codeAuthController.sendCodeAuthMsg = { response in
+                        if let safeResponse = response {
+                            if safeResponse.status == "success" {
+                                messageController.sendMessage(type: .success, apiMessage: String(localized: "Successful email authentication"))
+                                userToken = safeResponse.token ?? ""
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    userLoggedIn = true
+                                }
+                            } else {
+                                messageController.sendMessage(type: .error, apiMessage: String(localized: "The entered code is invalid or expired"))
                             }
                         }
                     }
+                    codeAuthController.authenticateCode()
+                    
                 }, label: {
                         Text("Confirm")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -72,7 +64,8 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
 }
 
 #Preview {
-    CodeAuthFooterView(email: "kokmarok@gmail.com", password: "123Prudni@", code: 123, type: .twofa)
+    CodeAuthFooterView(email: "kokmarok@gmail.com", code: 123, type: .twofa)
         .environmentObject(MessageController())
         .environmentObject(NumpadController())
+        .environmentObject(CodeAuthController())
 }
