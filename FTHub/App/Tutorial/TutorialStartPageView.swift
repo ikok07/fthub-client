@@ -35,7 +35,7 @@ struct TutorialStartPageView: View {
                     Text("Start")
                         .padding(.vertical, 10)
                 })
-                .buttonStyle(CTAButtonStyle(gradient: K.mainGradient))
+                .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
                 .padding(.horizontal, 30)
                 .padding(.vertical)
             }

@@ -9,8 +9,9 @@ import Foundation
 
 struct EmailAuthRequest: Codable {
     let status: String
-    let token: String
-    let data: TwoFaData
+//    let message: String
+    let token: String?
+    let data: TwoFaData?
 }
 
 struct TwoFaData: Codable {

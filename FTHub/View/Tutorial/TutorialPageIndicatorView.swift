@@ -30,7 +30,7 @@ struct TutorialPageIndicatorView: View {
                 }, label: {
                     Image(systemName: "chevron.right")
                         .font(.title2)
-                        .foregroundStyle(K.mainGradient)
+                        .foregroundStyle(K.Gradients.mainGradient)
                 })
             }
             .padding(.trailing, 10)

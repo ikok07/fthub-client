@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomTextFieldView: View {
     
     let icon: String
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     var autoCapitalize: Bool = true
     var secureField: Bool = false
     @Binding var text: String
@@ -24,7 +24,6 @@ struct CustomTextFieldView: View {
             
             if !secureField {
                 TextField(placeholder, text: $text)
-                    .fontWeight(.bold)
                     .textInputAutocapitalization(autoCapitalize ? .sentences : .never)
             } else {
                 SecureField(placeholder, text: $text)
@@ -33,10 +32,12 @@ struct CustomTextFieldView: View {
         }
         .padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 10))
         .padding(.horizontal)
+        .background(.textfieldBg)
         .overlay {
             RoundedRectangle(cornerRadius: 12)
-                .stroke(.customGray, lineWidth: 2)
+                .stroke(.textfieldBorder, lineWidth: 5)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
 

@@ -24,6 +24,7 @@ struct RestorePasswordEmailView: View {
                     Text("Restore Password")
                         .font(.largeTitle)
                         .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
                     
                     Text("Enter your account email to\nreset your password")
                         .multilineTextAlignment(.center)
@@ -50,7 +51,7 @@ struct RestorePasswordEmailView: View {
                         Text("Send email")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                     })
-                    .buttonStyle(CTAButtonStyle(gradient: K.mainGradient))
+                    .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
                     
                     Text("A code will be sent to your email")
                         .font(.footnote)
