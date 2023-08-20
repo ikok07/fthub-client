@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MainAccountAuthView: View, CustomMessagePresent {
     @EnvironmentObject internal var messageController: MessageController
-    @EnvironmentObject private var authController: AuthController
+    @EnvironmentObject private var resendController: ResendCodeController
+    @EnvironmentObject private var baseAuthController: BaseAuthController
     
     @State private var activeOption: AuthOption = .signIn
     @State private var signInEmailText: String = ""
@@ -19,6 +20,32 @@ struct MainAccountAuthView: View, CustomMessagePresent {
     @State private var signUpEmailText: String = ""
     @State private var signUpPasswordText: String = ""
     @State private var signUpConfirmPasswordText: String = ""
+    
+    
+    func saveBaseAuthDetails() {
+        if activeOption == .signIn {
+            baseAuthController.activeOption = .signIn
+            baseAuthController.email = signInEmailText
+            baseAuthController.password = signInPasswordText
+        } else {
+            baseAuthController.activeOption = .signUp
+            baseAuthController.name = signUpNameText
+            baseAuthController.email = signUpEmailText
+            baseAuthController.password = signUpPasswordText
+            baseAuthController.confirmPassword = signUpConfirmPasswordText
+        }
+    }
+    
+    func saveResendCodeDetails() {
+        if activeOption == .signIn {
+            resendController.type = .twofa
+            resendController.email = signInEmailText
+            resendController.password = signInPasswordText
+        } else {
+            resendController.type = .confirm
+            resendController.email = signUpEmailText
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -49,21 +76,16 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                             CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, text: $signUpConfirmPasswordText)
                         })
                     }
-                    AuthenticationFooterView(method: activeOption, name: nil, email: signInEmailText, password: signInPasswordText, confirmPassword: nil)
+                    AuthenticationFooterView(method: activeOption, name: nil, email: signInEmailText, password: signInPasswordText, confirmPassword: nil) 
+                    {
+                        saveBaseAuthDetails()
+                    }
 
                 } //: ScrollView
                 .padding(.horizontal)
                 .scrollIndicators(.hidden)
                 .onDisappear {
-                    if activeOption == .signIn {
-                        print(signInEmailText, signInPasswordText)
-                        authController.type = .twofa
-                        authController.email = signInEmailText
-                        authController.password = signInPasswordText
-                    } else {
-                        authController.type = .confirm
-                        authController.email = signUpEmailText
-                    }
+                    saveResendCodeDetails()
                 }
             } //: NavigationView
             .withCustomMessage(controller: messageController)
@@ -74,5 +96,5 @@ struct MainAccountAuthView: View, CustomMessagePresent {
 #Preview {
     MainAccountAuthView()
         .environmentObject(MessageController())
-        .environmentObject(AuthController())
+        .environmentObject(ResendCodeController())
 }

@@ -14,7 +14,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
     @AppStorage("userToken") private var userToken: String = ""
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     
-    private let authController = AuthController()
+    private let authController = ResendCodeController()
     let email: String
     let password: String?
     let code: Int

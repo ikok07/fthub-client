@@ -11,10 +11,10 @@ struct CodeAuthResendButton: View {
     
     @EnvironmentObject var messageController: MessageController
     @EnvironmentObject var numpadController: NumpadController
-    @EnvironmentObject var authController: AuthController
+    @EnvironmentObject var resendController: ResendCodeController
 
     
-    func sendMessage(confirmResponse: ResendAuthCodeResponse? = nil, twoFaResponse: AccountAuthResponse? = nil) {
+    private func sendMessage(confirmResponse: ResendAuthCodeResponse? = nil, twoFaResponse: AccountAuthResponse? = nil) {
         if confirmResponse != nil {
             if confirmResponse!.status == "success" {
                 messageController.sendMessage(type: .success, apiMessage: confirmResponse!.message)
@@ -36,11 +36,11 @@ struct CodeAuthResendButton: View {
                 .foregroundStyle(.gray)
             Button {
                 Task {
-                    if authController.type == .confirm {
-                        let response = await authController.resendConfirmCode()
+                    if resendController.type == .confirm {
+                        let response = await resendController.resendConfirmCode()
                         sendMessage(confirmResponse: response)
                     } else {
-                        let response = await authController.resendTwoFaCode()
+                        let response = await resendController.resendTwoFaCode()
                         sendMessage(twoFaResponse: response)
                     }
                 }
@@ -59,5 +59,5 @@ struct CodeAuthResendButton: View {
     CodeAuthResendButton()
         .environmentObject(MessageController())
         .environmentObject(NumpadController())
-        .environmentObject(AuthController())
+        .environmentObject(ResendCodeController())
 }

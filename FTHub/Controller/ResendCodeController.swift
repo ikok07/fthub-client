@@ -7,12 +7,11 @@
 
 import Foundation
 
-class AuthController: ObservableObject {
+class ResendCodeController: ObservableObject {
     @Published var code: Int?
     @Published var type: EmailAuthType?
     @Published var email: String?
     @Published var password: String?
-    
     
     func resendConfirmCode() async -> ResendAuthCodeResponse? {
         do {
@@ -25,7 +24,6 @@ class AuthController: ObservableObject {
     }
     
     func resendTwoFaCode() async ->  AccountAuthResponse? {
-        print(email, password)
         do {
             if let safeEmail = self.email {
                 let response = await Authentication.signIn(email: safeEmail, password: self.password!)

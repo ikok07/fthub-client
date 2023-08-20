@@ -15,7 +15,9 @@ class MessageController: ObservableObject {
     
     private func presentMessage() {
         withAnimation {
-            messagePresented = true
+            DispatchQueue.main.async {
+                self.messagePresented = true
+            }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             withAnimation {
