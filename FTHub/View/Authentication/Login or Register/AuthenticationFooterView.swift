@@ -63,7 +63,7 @@ struct AuthenticationFooterView: View {
             
         } //: VStack
         .navigationDestination(isPresented: $authenticatedDetails) {
-            ConfirmEmailView(type: method == .signIn ? .twofa : .confirm, email: email)
+            ConfirmEmailView(type: method == .signIn ? .twofa : .confirm, email: email, password: password)
         }
     }
 }

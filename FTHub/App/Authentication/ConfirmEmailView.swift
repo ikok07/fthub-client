@@ -17,6 +17,7 @@ struct ConfirmEmailView: View {
     
     let type: EmailAuthType
     let email: String
+    let password: String?
     
     var body: some View {
             VStack {
@@ -28,13 +29,13 @@ struct ConfirmEmailView: View {
                 
                 Spacer()
                 
-                CodeAuthFooterView(email: email, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: type)
+                CodeAuthFooterView(email: email, password: password, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: type)
             } //: HStack
             .padding(.top, 10)
     }
 }
 
 #Preview {
-    ConfirmEmailView(type: .twofa, email: "kokmarok@gmail.com")
+    ConfirmEmailView(type: .twofa, email: "kokmarok@gmail.com", password: nil)
         .environmentObject(NumpadController())
 }

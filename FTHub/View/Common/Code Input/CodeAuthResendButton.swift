@@ -11,8 +11,19 @@ struct CodeAuthResendButton: View {
     
     @EnvironmentObject var messageController: MessageController
     @EnvironmentObject var numpadController: NumpadController
+    
     private let authController = AuthController()
     let email: String
+    let password: String?
+    let type: EmailAuthType
+    
+    func sendMessage(status: String, message: String) {
+        if status == "success" {
+            messageController.sendMessage(type: .success, apiMessage: message)
+        } else {
+            messageController.sendMessage(type: .error, apiMessage: message)
+        }
+    }
     
     var body: some View {
         HStack(spacing: 5) {
@@ -20,12 +31,15 @@ struct CodeAuthResendButton: View {
                 .foregroundStyle(.gray)
             Button {
                 Task {
-                    let response = await authController.resendAuthCode(email: email)
-                    if let safeResponse = response {
-                        if safeResponse.status == "success" {
-                            messageController.sendMessage(type: .success, apiMessage: safeResponse.message)
-                        } else {
-                            messageController.sendMessage(type: .error, apiMessage: safeResponse.message)
+                    if type == .confirm {
+                        let response = await authController.resendAuthCode(email: email)
+                        if let safeResponse = response {
+                            sendMessage(status: safeResponse.status, message: safeResponse.message)
+                        }
+                    } else {
+                        let response = await authController.signIn(email: email, password: password!)
+                        if let safeResponse = response {
+                            sendMessage(status: safeResponse.status, message: safeResponse.message)
                         }
                     }
                 }
@@ -41,7 +55,7 @@ struct CodeAuthResendButton: View {
 }
 
 #Preview {
-    CodeAuthResendButton(email: "kokmarok@gmail.com")
+    CodeAuthResendButton(email: "kokmarok@gmail.com", password: "123Prudni@", type: .confirm)
         .environmentObject(MessageController())
         .environmentObject(NumpadController())
 }

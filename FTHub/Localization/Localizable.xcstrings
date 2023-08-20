@@ -336,6 +336,38 @@
         }
       }
     },
+    "Successful email authentication" : {
+      "localizations" : {
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Успешно потвърждение на имейл"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email erfolgreich authentifiziert"
+          }
+        }
+      }
+    },
+    "The entered code is invalid or expired" : {
+      "localizations" : {
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Въведеният код е невалиден или изтекъл"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der eingegebene Code ist ungültig"
+          }
+        }
+      }
+    },
     "We have sent a code to" : {
       "localizations" : {
         "bg" : {

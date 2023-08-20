@@ -16,18 +16,19 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
     
     private let authController = AuthController()
     let email: String
+    let password: String?
     let code: Int
     let type: EmailAuthType
     
     func performEmailAuthentication(response: EmailAuthRequest) {
         if response.status == "success" {
-            messageController.sendMessage(type: .success, apiMessage: "Successful email authentication")
+            messageController.sendMessage(type: .success, apiMessage: String(localized: "Successful email authentication"))
             userToken = response.token ?? ""
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 userLoggedIn = true
             }
         } else {
-            messageController.sendMessage(type: .error, apiMessage: "The entered code is invalid or expired")
+            messageController.sendMessage(type: .error, apiMessage: String(localized: "The entered code is invalid or expired"))
         }
     }
     
@@ -60,7 +61,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                 .animation(.easeOut(duration: 0.2), value: 10)
                 .padding()
                 
-                CodeAuthResendButton(email: email)
+                CodeAuthResendButton(email: email, password: password, type: type)
                 .padding(.bottom, 30)
                 
                 CustomNumpadView()
@@ -72,7 +73,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
 }
 
 #Preview {
-    CodeAuthFooterView(email: "kokmarok@gmail.com", code: 123, type: .twofa)
+    CodeAuthFooterView(email: "kokmarok@gmail.com", password: "123Prudni@", code: 123, type: .twofa)
         .environmentObject(MessageController())
         .environmentObject(NumpadController())
 }
