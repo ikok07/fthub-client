@@ -24,6 +24,7 @@ struct RestorePasswordEmailView: View {
                     Text("Restore Password")
                         .font(.largeTitle)
                         .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
                     
                     Text("Enter your account email to\nreset your password")
                         .multilineTextAlignment(.center)

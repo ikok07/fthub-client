@@ -24,7 +24,7 @@ struct CustomMessageView: View {
             Image(systemName: icon ?? "xmark")
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundStyle(Color(UIColor.background))
+                .foregroundStyle(Color.bg)
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                 .frame(width: 35)
                 .background(color)
@@ -37,7 +37,7 @@ struct CustomMessageView: View {
         .frame(minWidth: 300)
         .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
         .background(color.opacity(0.15))
-        .background(Color(UIColor.background))
+        .background(Color.bg)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .onAppear {
             switch type {

@@ -20,7 +20,7 @@ struct ConfirmEmailView: View {
     
     var body: some View {
             VStack {
-                CodeAuthHeaderView(title: "Email Confirmation", email: "youremail@email.com")
+                CodeAuthHeaderView(title: "Email Confirmation", email: email)
                 
                 CodeAuthView()
                     .padding(.top, 60)
@@ -28,7 +28,7 @@ struct ConfirmEmailView: View {
                 
                 Spacer()
                 
-                CodeAuthFooterView(email: email, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: .twofa)
+                CodeAuthFooterView(email: email, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: type)
             } //: HStack
             .padding(.top, 10)
     }

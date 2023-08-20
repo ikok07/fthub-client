@@ -30,15 +30,15 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                         VStack(spacing: 20) {
                             CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signInEmailText)
                             CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true,  text: $signInPasswordText)
+                            HStack {
                                 NavigationLink(destination: RestorePasswordEmailView()) {
-                                    HStack {
-                                        Text("Forgot password?")
-                                            .foregroundStyle(.textGray)
-                                            .fontWeight(.medium)
-                                            .padding(.leading)
-                                        Spacer()
-                                    }
+                                    Text("Forgot password?")
+                                        .foregroundStyle(.textGray)
+                                        .fontWeight(.medium)
+                                        .padding(.leading)
                                 }
+                                Spacer()
+                            }
                         } //: VStack
                     } else {
                         VStack(spacing: 20, content: {

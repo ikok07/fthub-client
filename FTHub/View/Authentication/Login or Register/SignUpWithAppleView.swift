@@ -9,6 +9,9 @@ import SwiftUI
 import AuthenticationServices
 
 struct SignUpWithAppleView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack(spacing: 30) {
             Text("or choose another option")
@@ -28,6 +31,7 @@ struct SignUpWithAppleView: View {
             }
             .padding(.horizontal, 50)
             .frame(height: 44)
+            .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
         }
     }
 }

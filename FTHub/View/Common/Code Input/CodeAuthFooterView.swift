@@ -22,7 +22,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
     func performEmailAuthentication(response: EmailAuthRequest) {
         if response.status == "success" {
             messageController.sendMessage(type: .success, apiMessage: "Successful email authentication")
-            userToken = response.token
+            userToken = response.token ?? ""
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 userLoggedIn = true
             }
@@ -44,6 +44,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                         }
                     } else if numpadController.fullFields && type == .confirm {
                         Task {
+                            print(code)
                             let response = await authController.authEmail(email: email, code: code, type: .confirm)
                             if let safeResponse = response {
                                 performEmailAuthentication(response: safeResponse)
@@ -59,13 +60,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                 .animation(.easeOut(duration: 0.2), value: 10)
                 .padding()
                 
-                HStack(spacing: 5) {
-                    Text("Didn't receive code?")
-                        .foregroundStyle(.gray)
-                    Text("Resend now")
-                        .foregroundStyle(K.Gradients.mainGradient)
-                        .fontWeight(.semibold)
-                }
+                CodeAuthResendButton(email: email)
                 .padding(.bottom, 30)
                 
                 CustomNumpadView()
