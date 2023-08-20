@@ -7,7 +7,10 @@
 
 import SwiftUI
 
-struct MainAccountAuthView: View {
+struct MainAccountAuthView: View, CustomMessagePresent {
+    @EnvironmentObject internal var messageController: MessageController
+    @EnvironmentObject private var resendController: ResendCodeController
+    @EnvironmentObject private var baseAuthController: BaseAuthController
     
     @State private var activeOption: AuthOption = .signIn
     @State private var signInEmailText: String = ""
@@ -18,47 +21,79 @@ struct MainAccountAuthView: View {
     @State private var signUpPasswordText: String = ""
     @State private var signUpConfirmPasswordText: String = ""
     
+    func saveBaseAuthDetails() {
+        if activeOption == .signIn {
+            baseAuthController.activeOption = .signIn
+            baseAuthController.email = self.signInEmailText
+            baseAuthController.password = self.signInPasswordText
+        } else {
+            baseAuthController.activeOption = .signUp
+            baseAuthController.name = self.signUpNameText
+            baseAuthController.email = self.signUpEmailText
+            baseAuthController.password = self.signUpPasswordText
+            baseAuthController.confirmPassword = self.signUpConfirmPasswordText
+        }
+    }
+    
+    func saveResendCodeDetails() {
+        if activeOption == .signIn {
+            resendController.type = .twofa
+            resendController.email = self.signInEmailText
+            resendController.password = self.signInPasswordText
+        } else {
+            resendController.type = .confirm
+            resendController.email = self.signUpEmailText
+        }
+    }
+    
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                AuthenticationHeaderView(activeOption: $activeOption)
-                    .padding(.top, 30)
-                
-                if activeOption == .signIn {
-                    VStack(spacing: 20) {
-                        CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signInEmailText)
-                        CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true,  text: $signInPasswordText)
-                            NavigationLink(destination: RestorePasswordEmailView()) {
-                                HStack {
+        ZStack {
+            NavigationStack {
+                ScrollView {
+                    AuthenticationHeaderView(activeOption: $activeOption)
+                        .padding(.top, 30)
+                    
+                    if activeOption == .signIn {
+                        VStack(spacing: 20) {
+                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signInEmailText)
+                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true,  text: $signInPasswordText)
+                            HStack {
+                                NavigationLink(destination: RestorePasswordEmailView()) {
                                     Text("Forgot password?")
                                         .foregroundStyle(.textGray)
                                         .fontWeight(.medium)
                                         .padding(.leading)
-                                    Spacer()
                                 }
+                                Spacer()
                             }
-                    } //: VStack
-                } else {
-                    VStack(spacing: 20, content: {
-                        CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", text: $signUpNameText)
-                        CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signUpEmailText)
-                        CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, text: $signUpPasswordText)
-                        CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, text: $signUpConfirmPasswordText)
-                    })
+                        } //: VStack
+                    } else {
+                        VStack(spacing: 20, content: {
+                            CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", text: $signUpNameText)
+                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signUpEmailText)
+                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, text: $signUpPasswordText)
+                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, text: $signUpConfirmPasswordText)
+                        })
+                    }
+                    AuthenticationFooterView(method: activeOption, name: nil, email: activeOption == .signIn ? signInEmailText : signUpEmailText, password: signInPasswordText, confirmPassword: nil) 
+                    {
+                        saveBaseAuthDetails()
+                    }
+
+                } //: ScrollView
+                .padding(.horizontal)
+                .scrollIndicators(.hidden)
+                .onDisappear {
+                    saveResendCodeDetails()
                 }
-                
-                if activeOption == .signIn {
-                    AuthenticationFooterView(method: activeOption, name: nil, email: signInEmailText, password: signInPasswordText, confirmPassword: nil)
-                } else {
-                    AuthenticationFooterView(method: activeOption, name: signUpNameText, email: signUpEmailText, password: signUpPasswordText, confirmPassword: signUpConfirmPasswordText)
-                }
-            } //: ScrollView
-            .padding(.horizontal)
-            .scrollIndicators(.hidden)
-        } //: NavigationView
+            } //: NavigationView
+            .withCustomMessage(controller: messageController)
+        } //: ZStack
     }
 }
 
 #Preview {
     MainAccountAuthView()
+        .environmentObject(MessageController())
+        .environmentObject(ResendCodeController())
 }
