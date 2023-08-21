@@ -45,7 +45,6 @@
 		224A5D972A8CDC4400490614 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D962A8CDC4400490614 /* Requests.swift */; };
 		224A5DA12A8CF98D00490614 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5DA02A8CF98D00490614 /* User.swift */; };
 		224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */; };
-		2257C9382A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9372A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift */; };
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
 		228006772A921C7000A299EC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 228006762A921C7000A299EC /* Localizable.xcstrings */; };
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
@@ -108,7 +107,6 @@
 		224A5D962A8CDC4400490614 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		224A5DA02A8CF98D00490614 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageView.swift; sourceTree = "<group>"; };
-		2257C9372A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordCodeView.swift; sourceTree = "<group>"; };
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
 		228006762A921C7000A299EC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
@@ -222,7 +220,7 @@
 			children = (
 				22ED2EBA2A912FEE00BB623E /* Numpad */,
 				224C9FB32A8E0DEE00AF5612 /* Error */,
-				22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */,
+				222F3C712A938600005BC46F /* TextField */,
 				2257C9342A8BF252000E3CD2 /* Code Input */,
 			);
 			path = Common;
@@ -307,6 +305,35 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		222F3C6F2A9385D7005BC46F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				224A5D942A8CDB6100490614 /* ResendCodeController.swift */,
+				22374B192A929C5C006BE6BB /* BaseAuthController.swift */,
+				22374B1B2A92A6EB006BE6BB /* CodeAuthController.swift */,
+				222F3C692A936F74005BC46F /* SignUpValidationController.swift */,
+				222F3C6B2A93702B005BC46F /* SignInValidationController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		222F3C702A9385E2005BC46F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				228744CD2A8E645500DB77DF /* MessageController.swift */,
+				22ED2EC12A91392300BB623E /* NumpadController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		222F3C712A938600005BC46F /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
 		224A5D8C2A8CC53600490614 /* Coaches */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,13 +353,8 @@
 		224A5D932A8CDB4E00490614 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				224A5D942A8CDB6100490614 /* ResendCodeController.swift */,
-				228744CD2A8E645500DB77DF /* MessageController.swift */,
-				22ED2EC12A91392300BB623E /* NumpadController.swift */,
-				22374B192A929C5C006BE6BB /* BaseAuthController.swift */,
-				22374B1B2A92A6EB006BE6BB /* CodeAuthController.swift */,
-				222F3C692A936F74005BC46F /* SignUpValidationController.swift */,
-				222F3C6B2A93702B005BC46F /* SignInValidationController.swift */,
+				222F3C6F2A9385D7005BC46F /* Authentication */,
+				222F3C702A9385E2005BC46F /* Common */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -391,7 +413,6 @@
 		2257C93B2A8BFD36000E3CD2 /* Restore Password */ = {
 			isa = PBXGroup;
 			children = (
-				2257C9372A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift */,
 				2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */,
 			);
 			path = "Restore Password";
@@ -562,7 +583,6 @@
 				224A5D8B2A8CB9BC00490614 /* CodeAuthFooterView.swift in Sources */,
 				222F3C662A935D81005BC46F /* EmailAuthRequestModel.swift in Sources */,
 				22374B1C2A92A6EB006BE6BB /* CodeAuthController.swift in Sources */,
-				2257C9382A8BF2D5000E3CD2 /* RestorePasswordCodeView.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
 				228744CE2A8E645500DB77DF /* MessageController.swift in Sources */,

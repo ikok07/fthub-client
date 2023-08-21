@@ -64,9 +64,6 @@ struct RestorePasswordEmailView: View {
             } //: VStack
             .padding()
             .padding(.top, 10)
-            .navigationDestination(isPresented: $emailSent) {
-                RestorePasswordCodeView(email: userEmail)
-            }
         }
     }
 }
