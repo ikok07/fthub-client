@@ -8,18 +8,16 @@
 import Foundation
 
 class CodeAuthController: ObservableObject {
+    let emailAuthModel: EmailAuthModel = EmailAuthModel()
     
     @Published var type: EmailAuthType?
     @Published var email: String?
     @Published var token: Int?
     
-    @Published var sendCodeAuthMsg: ((EmailAuthRequest?) -> Void)?
+    @Published var sendCodeAuthMsg: ((EmailAuthResponse?) -> Void)?
     
     func authenticateCode() {
-        Task {
-            let response = await Authentication.authEmail(email: email!, code: token!, type: type!)
-             sendCodeAuthMsg?(response)
-        }
+        emailAuthModel.authenticate(email: self.email, token: self.token, type: self.type, sendMsg: self.sendCodeAuthMsg)
     }
     
 }

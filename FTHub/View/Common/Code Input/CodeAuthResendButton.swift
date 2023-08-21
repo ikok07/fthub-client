@@ -17,9 +17,9 @@ struct CodeAuthResendButton: View {
     private func sendConfirmMessage(response: ResendAuthCodeResponse?) {
         if let safeResponse = response {
             if safeResponse.status == "success" {
-                messageController.sendMessage(type: .success, apiMessage: safeResponse.message)
+                messageController.sendMessage(type: .success, message: safeResponse.message)
             } else {
-                messageController.sendMessage(type: .error, apiMessage: safeResponse.message)
+                messageController.sendMessage(type: .error, message: safeResponse.message)
             }
         }
     }
@@ -27,9 +27,9 @@ struct CodeAuthResendButton: View {
     private func sendTwoFaMessage(response: AccountAuthResponse?) {
         if let safeResponse = response {
             if safeResponse.status == "success" {
-                messageController.sendMessage(type: .success, apiMessage: safeResponse.message)
+                messageController.sendMessage(type: .success, message: safeResponse.message)
             } else {
-                messageController.sendMessage(type: .error, apiMessage: safeResponse.message)
+                messageController.sendMessage(type: .error, message: safeResponse.message)
             }
         }
     }
@@ -49,12 +49,8 @@ struct CodeAuthResendButton: View {
         }
         .padding(.bottom, 30)
         .onAppear {
-            resendController.sendResendConfirmCodeMsg = { response in
-                sendConfirmMessage(response: response)
-            }
-            resendController.sendResendTwoFaCodeMsg = { response in
-                sendTwoFaMessage(response: response)
-            }
+            resendController.sendResendConfirmCodeMsg = sendConfirmMessage
+            resendController.sendResendTwoFaCodeMsg = sendTwoFaMessage
         }
     }
 }
