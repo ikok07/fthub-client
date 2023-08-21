@@ -22,8 +22,6 @@ struct AuthenticationFooterView: View {
     
     var saveDetails: () -> Void
     
-    
-    
     var body: some View {
         VStack {
             SignUpWithAppleView()
@@ -34,12 +32,12 @@ struct AuthenticationFooterView: View {
                 baseAuthController.sendBaseAuthMsg = { response in
                     if let safeResponse = response {
                         if safeResponse.status == "success" {
-                            messageController.sendMessage(type: .success, apiMessage: safeResponse.message)
+                            messageController.sendMessage(type: .success, message: safeResponse.message)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 authenticatedDetails = true
                             }
                         } else {
-                            messageController.sendMessage(type: .error, apiMessage: safeResponse.message)
+                            messageController.sendMessage(type: .error, message: safeResponse.message)
                         }
                     }
                 }

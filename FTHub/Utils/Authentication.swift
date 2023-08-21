@@ -59,17 +59,17 @@ struct Authentication {
         return response
     }
     
-    static func authEmail(email: String, code: Int, type: EmailAuthType) async -> EmailAuthRequest? {
+    static func authEmail(email: String, code: Int, type: EmailAuthType) async -> EmailAuthResponse? {
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
         
         let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/\(type == .twofa ? "login" : "email")/confirm")!
         let data: EmailAuthPostData = EmailAuthPostData(email: email, token: code)
-        var response: EmailAuthRequest? = nil
+        var response: EmailAuthResponse? = nil
         
         do {
             let jsonData = try JSONEncoder().encode(data)
             
-            let result: Result<EmailAuthRequest, Error> = await Request.create(url: url, body: jsonData)
+            let result: Result<EmailAuthResponse, Error> = await Request.create(url: url, body: jsonData)
             switch result {
             case .success(let data):
                 response = data

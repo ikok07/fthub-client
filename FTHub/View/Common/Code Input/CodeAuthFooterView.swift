@@ -30,7 +30,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
         codeAuthController.sendCodeAuthMsg = { response in
             if let safeResponse = response {
                 if safeResponse.status == "success" {
-                    messageController.sendMessage(type: .success, apiMessage: String(localized: "Successful email authentication"))
+                    messageController.sendMessage(type: .success, message: String(localized: "Successful email authentication"))
                     userToken = safeResponse.token ?? ""
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         withAnimation {
@@ -38,7 +38,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                         }
                     }
                 } else {
-                    messageController.sendMessage(type: .error, apiMessage: String(localized: "The entered code is invalid or expired"))
+                    messageController.sendMessage(type: .error, message: String(localized: "The entered code is invalid or expired"))
                 }
             }
         }

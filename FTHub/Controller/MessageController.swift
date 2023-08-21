@@ -26,9 +26,9 @@ class MessageController: ObservableObject {
         }
     }
     
-    func sendMessage(type: CustomMessageType, apiMessage: String) {
+    func sendMessage(type: CustomMessageType, message: String) {
         DispatchQueue.main.async {
-            self.messageText = apiMessage
+            self.messageText = message
             self.messageType = type
             self.presentMessage()
         }
