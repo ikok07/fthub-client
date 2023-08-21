@@ -1,11 +1,21 @@
 //
-//  SignUpPostData.swift
+//  AccountAuthRequestModel.swift
 //  FTHub
 //
-//  Created by Kaloyan Petkov on 17.08.23.
+//  Created by Kaloyan Petkov on 21.08.23.
 //
 
 import Foundation
+
+struct SignInPostData: Codable {
+    let email:String
+    let password: String
+    
+    init(email: String, password: String) {
+        self.email = email
+        self.password = password
+    }
+}
 
 struct SignUpPostData: Codable {
     let name: String
@@ -19,4 +29,9 @@ struct SignUpPostData: Codable {
         self.password = password
         self.passwordConfirm = passwordConfirm
     }
+}
+
+struct AccountAuthResponse: Codable {
+    let status: String
+    let message: String
 }

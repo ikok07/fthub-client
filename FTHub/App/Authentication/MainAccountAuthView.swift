@@ -21,31 +21,6 @@ struct MainAccountAuthView: View, CustomMessagePresent {
     @State private var signUpPasswordText: String = ""
     @State private var signUpConfirmPasswordText: String = ""
     
-    func saveBaseAuthDetails() {
-        if activeOption == .signIn {
-            baseAuthController.activeOption = .signIn
-            baseAuthController.email = self.signInEmailText
-            baseAuthController.password = self.signInPasswordText
-        } else {
-            baseAuthController.activeOption = .signUp
-            baseAuthController.name = self.signUpNameText
-            baseAuthController.email = self.signUpEmailText
-            baseAuthController.password = self.signUpPasswordText
-            baseAuthController.confirmPassword = self.signUpConfirmPasswordText
-        }
-    }
-    
-    func saveResendCodeDetails() {
-        if activeOption == .signIn {
-            resendController.type = .twofa
-            resendController.email = self.signInEmailText
-            resendController.password = self.signInPasswordText
-        } else {
-            resendController.type = .confirm
-            resendController.email = self.signUpEmailText
-        }
-    }
-    
     var body: some View {
         ZStack {
             NavigationStack {
@@ -77,8 +52,14 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                     }
                     AuthenticationFooterView(method: activeOption, name: nil, email: activeOption == .signIn ? signInEmailText : signUpEmailText, password: signInPasswordText, confirmPassword: nil) 
                     {
-                        saveResendCodeDetails()
-                        saveBaseAuthDetails()
+                        if let validationResult = activeOption == .signUp ? SignUpValidationController.validate(name: self.signUpNameText, email: self.signUpEmailText, password: self.signUpPasswordText, confirmPassword: self.signUpConfirmPasswordText) : SignInValidationController.validate(email: self.signInEmailText, password: self.signInPasswordText) {
+                            messageController.sendMessage(type: validationResult.type, message: validationResult.message)
+                        } else {
+                            resendController.saveData(type: self.activeOption, email: activeOption == .signIn ? self.signInEmailText : self.signUpEmailText, password: self.signInPasswordText)
+                            
+                            baseAuthController.saveData(activeOption: self.activeOption, name: self.signUpNameText, email: activeOption == .signIn ? self.signInEmailText : self.signUpEmailText, password: activeOption == .signIn ? self.signInPasswordText : self.signUpPasswordText, confirmPassword: signUpConfirmPasswordText)
+                        }
+                        
                     }
 
                 } //: ScrollView
