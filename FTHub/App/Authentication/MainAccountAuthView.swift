@@ -77,15 +77,13 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                     }
                     AuthenticationFooterView(method: activeOption, name: nil, email: activeOption == .signIn ? signInEmailText : signUpEmailText, password: signInPasswordText, confirmPassword: nil) 
                     {
+                        saveResendCodeDetails()
                         saveBaseAuthDetails()
                     }
 
                 } //: ScrollView
                 .padding(.horizontal)
                 .scrollIndicators(.hidden)
-                .onDisappear {
-                    saveResendCodeDetails()
-                }
             } //: NavigationView
             .withCustomMessage(controller: messageController)
         } //: ZStack
