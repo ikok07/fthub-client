@@ -14,18 +14,22 @@ struct CodeAuthResendButton: View {
     @EnvironmentObject var resendController: ResendCodeController
 
     
-    private func sendMessage(confirmResponse: ResendAuthCodeResponse? = nil, twoFaResponse: AccountAuthResponse? = nil) {
-        if confirmResponse != nil {
-            if confirmResponse!.status == "success" {
-                messageController.sendMessage(type: .success, apiMessage: confirmResponse!.message)
+    private func sendConfirmMessage(response: ResendAuthCodeResponse?) {
+        if let safeResponse = response {
+            if safeResponse.status == "success" {
+                messageController.sendMessage(type: .success, apiMessage: safeResponse.message)
             } else {
-                messageController.sendMessage(type: .error, apiMessage: confirmResponse!.message)
+                messageController.sendMessage(type: .error, apiMessage: safeResponse.message)
             }
-        } else if twoFaResponse != nil {
-            if twoFaResponse!.status == "success" {
-                messageController.sendMessage(type: .success, apiMessage: twoFaResponse!.message)
+        }
+    }
+    
+    private func sendTwoFaMessage(response: AccountAuthResponse?) {
+        if let safeResponse = response {
+            if safeResponse.status == "success" {
+                messageController.sendMessage(type: .success, apiMessage: safeResponse.message)
             } else {
-                messageController.sendMessage(type: .error, apiMessage: twoFaResponse!.message)
+                messageController.sendMessage(type: .error, apiMessage: safeResponse.message)
             }
         }
     }
@@ -35,15 +39,7 @@ struct CodeAuthResendButton: View {
             Text("Didn't receive code?")
                 .foregroundStyle(.gray)
             Button {
-                Task {
-                    if resendController.type == .confirm {
-                        let response = await resendController.resendConfirmCode()
-                        sendMessage(confirmResponse: response)
-                    } else {
-                        let response = await resendController.resendTwoFaCode()
-                        sendMessage(twoFaResponse: response)
-                    }
-                }
+                resendController.resendCode()
             } label: {
                 Text("Resend now")
                     .foregroundStyle(K.Gradients.mainGradient)
@@ -52,6 +48,14 @@ struct CodeAuthResendButton: View {
 
         }
         .padding(.bottom, 30)
+        .onAppear {
+            resendController.sendResendConfirmCodeMsg = { response in
+                sendConfirmMessage(response: response)
+            }
+            resendController.sendResendTwoFaCodeMsg = { response in
+                sendTwoFaMessage(response: response)
+            }
+        }
     }
 }
 

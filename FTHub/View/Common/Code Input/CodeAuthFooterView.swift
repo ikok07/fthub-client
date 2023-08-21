@@ -25,25 +25,30 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
         codeAuthController.token = self.code
     }
     
+    private func performAuthentication() {
+        saveData()
+        codeAuthController.sendCodeAuthMsg = { response in
+            if let safeResponse = response {
+                if safeResponse.status == "success" {
+                    messageController.sendMessage(type: .success, apiMessage: String(localized: "Successful email authentication"))
+                    userToken = safeResponse.token ?? ""
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        withAnimation {
+                            userLoggedIn = true
+                        }
+                    }
+                } else {
+                    messageController.sendMessage(type: .error, apiMessage: String(localized: "The entered code is invalid or expired"))
+                }
+            }
+        }
+        codeAuthController.authenticateCode()
+    }
+    
     var body: some View {
             VStack {
                 Button(action: {
-                    saveData()
-                    codeAuthController.sendCodeAuthMsg = { response in
-                        if let safeResponse = response {
-                            if safeResponse.status == "success" {
-                                messageController.sendMessage(type: .success, apiMessage: String(localized: "Successful email authentication"))
-                                userToken = safeResponse.token ?? ""
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    userLoggedIn = true
-                                }
-                            } else {
-                                messageController.sendMessage(type: .error, apiMessage: String(localized: "The entered code is invalid or expired"))
-                            }
-                        }
-                    }
-                    codeAuthController.authenticateCode()
-                    
+                    performAuthentication()
                 }, label: {
                         Text("Confirm")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
