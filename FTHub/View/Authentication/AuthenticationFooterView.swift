@@ -18,14 +18,18 @@ struct AuthenticationFooterView: View {
     let password: String
     let confirmPassword: String?
     
-    @State private var authenticatedDetails: Bool = false
+    @State private var showTwoFa: Bool = false
     @State private var emailNotVerified: Bool = false
     
     var saveDetails: () -> Bool
 
     func sendMsg(response: AccountAuthResponse?) {
+        print(response)
         if response != nil {
-            if response!.identifier == "EmailNotVerified" {
+            
+            if response!.status == "fail" {
+                messageController.sendMessage(type: .error, message: response!.message)
+            } else if response!.identifier == "EmailNotVerified"{
                 Task {
                     let emailSentResponse = await Authentication.resendConfirmEmail(email: email)
                     if emailSentResponse != nil && emailSentResponse?.status == "success" {
@@ -34,14 +38,17 @@ struct AuthenticationFooterView: View {
                         messageController.sendMessage(type: .error, message: "Error connecting to server")
                     }
                 }
-            } else if response!.status == "fail"{
-                messageController.sendMessage(type: .error, message: response!.message)
             } else {
                 messageController.sendMessage(type: .success, message: response!.message)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    authenticatedDetails = true
+                    if method == .signIn {
+                        showTwoFa = true
+                    } else {
+                        emailNotVerified = true
+                    }
                 }
             }
+            
         } else {
                 messageController.sendMessage(type: .error, message: "Error connecting to server")
         }
@@ -66,7 +73,7 @@ struct AuthenticationFooterView: View {
             .padding()
             
         } //: VStack
-        .navigationDestination(isPresented: $authenticatedDetails) {
+        .navigationDestination(isPresented: $showTwoFa) {
             TwoFaCodeView(email: email, password: password)
         }
         .navigationDestination(isPresented: $emailNotVerified) {

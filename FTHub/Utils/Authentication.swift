@@ -14,7 +14,7 @@ struct Authentication {
     static func signIn(email: String, password: String) async -> AccountAuthResponse? {
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
         
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/login")!
+        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/login")!
         let signInData: SignInPostData = SignInPostData(email: email, password: password)
         
         var response: AccountAuthResponse? = nil
@@ -38,7 +38,7 @@ struct Authentication {
     
     static func signUp(name: String, email: String, password: String, passwordConfirm: String) async -> AccountAuthResponse? {
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/signup")!
+        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/signup")!
         let data: SignUpPostData = SignUpPostData(name: name, email: email, password: password, passwordConfirm: passwordConfirm)
         
         var response: AccountAuthResponse? = nil
@@ -63,7 +63,7 @@ struct Authentication {
     static func authEmail(email: String, code: Int) async -> EmailAuthResponse? {
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
         
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/login/confirm")!
+        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/login/confirm")!
         let data: EmailAuthPostData = EmailAuthPostData(email: email, token: code)
         var response: EmailAuthResponse? = nil
         
