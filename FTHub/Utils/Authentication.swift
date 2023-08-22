@@ -26,6 +26,7 @@ struct Authentication {
             switch result {
             case .success(let data):
                 response = data
+                print("DATA:: \(data)")
             case .failure(let error):
                 print("Error getting userData: \(error)")
             }
@@ -80,6 +81,30 @@ struct Authentication {
             print("Error converting auth data to json: \(error)")
         }
         return response
+    }
+    
+    static func resendConfirmEmail(email: String) async -> ResendConfirmEmailResponse? {
+        
+        let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
+        
+        let url = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/email/resend")!
+        let data = ResendConfirmEmailPostData(email: email)
+        
+        do {
+            let jsonData = try JSONEncoder().encode(data)
+            
+            let result: Result<ResendConfirmEmailResponse, Error> = await Request.create(url: url, body: jsonData)
+            switch result {
+            case .success(let response):
+                return response
+            case .failure(let error):
+                print("Could not send new confirm email \(error)")
+                return nil
+            }
+        } catch {
+            print("Could not encode data to JSON: \(error)")
+            return nil
+        }
     }
     
 }

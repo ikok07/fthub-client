@@ -19,8 +19,34 @@ struct AuthenticationFooterView: View {
     let confirmPassword: String?
     
     @State private var authenticatedDetails: Bool = false
+    @State private var emailNotVerified: Bool = false
     
     var saveDetails: () -> Bool
+
+    func sendMsg(response: AccountAuthResponse?) {
+        if response != nil {
+            if response!.identifier == "EmailNotVerified" {
+                Task {
+                    let emailSentResponse = await Authentication.resendConfirmEmail(email: email)
+                    if emailSentResponse != nil && emailSentResponse?.status == "success" {
+                        emailNotVerified = true
+                    } else {
+                        messageController.sendMessage(type: .error, message: "Error connecting to server")
+                    }
+                }
+            } else if response!.status == "fail"{
+                messageController.sendMessage(type: .error, message: response!.message)
+            } else {
+                messageController.sendMessage(type: .success, message: response!.message)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    authenticatedDetails = true
+                }
+            }
+        } else {
+                messageController.sendMessage(type: .error, message: "Error connecting to server")
+        }
+    }
+    
     
     var body: some View {
         VStack {
@@ -29,18 +55,7 @@ struct AuthenticationFooterView: View {
             
             Button(action: {
                 if saveDetails() {
-                    baseAuthController.sendBaseAuthMsg = { response in
-                        if let safeResponse = response {
-                            if safeResponse.status == "success" {
-                                messageController.sendMessage(type: .success, message: safeResponse.message)
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    authenticatedDetails = true
-                                }
-                            } else {
-                                messageController.sendMessage(type: .error, message: safeResponse.message)
-                            }
-                        }
-                    }
+                    baseAuthController.sendBaseAuthMsg = sendMsg
                     baseAuthController.authenticateUser()
                 }
             }, label: {
@@ -53,6 +68,9 @@ struct AuthenticationFooterView: View {
         } //: VStack
         .navigationDestination(isPresented: $authenticatedDetails) {
             TwoFaCodeView(email: email, password: password)
+        }
+        .navigationDestination(isPresented: $emailNotVerified) {
+            EmailConfirmationLinkSentView()
         }
     }
 }

@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct RestorePasswordEmailView: View {
+    @EnvironmentObject private var restorePasswordController: RestorePasswordController
+    @EnvironmentObject private var messageController: MessageController
     
     @State private var emailSent: Bool = false
     @State private var userEmail: String = ""
+    
+    func sendMsg() {
+        
+    }
     
     var body: some View {
         NavigationStack {
@@ -28,9 +34,8 @@ struct RestorePasswordEmailView: View {
                 Spacer()
                 VStack(spacing: 15) {
                     Button(action: {
-                        withAnimation {
-                            emailSent = true
-                        }
+                        restorePasswordController.sendMsg = self.sendMsg
+                        restorePasswordController.sendEmail(email: userEmail)
                     }, label: {
                         Text("Send email")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -54,4 +59,6 @@ struct RestorePasswordEmailView: View {
 
 #Preview {
     RestorePasswordEmailView()
+        .environmentObject(RestorePasswordController())
+        .environmentObject(MessageController())
 }

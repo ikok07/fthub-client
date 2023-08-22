@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RestorePasswordEmailSentView: View {
+struct EmailConfirmationLinkSentView: View {
     var body: some View {
         VStack {
             VStack {
@@ -52,5 +52,5 @@ struct RestorePasswordEmailSentView: View {
 }
 
 #Preview {
-    RestorePasswordEmailSentView()
+    EmailConfirmationLinkSentView()
 }
