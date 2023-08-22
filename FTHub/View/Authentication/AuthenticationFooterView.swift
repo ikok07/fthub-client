@@ -36,8 +36,6 @@ struct AuthenticationFooterView: View {
                     let emailSentResponse = await Authentication.resendConfirmEmail(email: email)
                     if emailSentResponse != nil && emailSentResponse?.status == "success" {
                         userCurrentEmail = baseAuthController.email ?? "No email saved"
-                        print(userCurrentEmail)
-                        print("---------")
                         emailNotVerified = true
                     } else {
                         messageController.sendMessage(type: .error, message: "Error connecting to server")
@@ -48,6 +46,9 @@ struct AuthenticationFooterView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     if method == .signIn {
                         showTwoFa = true
+                    } else {
+                        userCurrentEmail = baseAuthController.email ?? "No email saved"
+                        emailNotVerified = true
                     }
                 }
             }
