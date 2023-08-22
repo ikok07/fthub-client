@@ -52,14 +52,16 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                     }
                     AuthenticationFooterView(method: activeOption, name: nil, email: activeOption == .signIn ? signInEmailText : signUpEmailText, password: signInPasswordText, confirmPassword: nil) 
                     {
-                        if let validationResult = activeOption == .signUp ? SignUpValidationController.validate(name: self.signUpNameText, email: self.signUpEmailText, password: self.signUpPasswordText, confirmPassword: self.signUpConfirmPasswordText) : SignInValidationController.validate(email: self.signInEmailText, password: self.signInPasswordText) {
+                        if let message = activeOption == .signUp ? SignUpValidationController.validate(name: self.signUpNameText, email: self.signUpEmailText, password: self.signUpPasswordText, confirmPassword: self.signUpConfirmPasswordText) : SignInValidationController.validate(email: self.signInEmailText, password: self.signInPasswordText) {
                             
-                            messageController.sendMessage(type: validationResult.type, message: validationResult.message)
+                            messageController.sendMessage(type: .error, message: message)
+                            
                             return false
                         } else {
                             resendController.saveData(type: self.activeOption, email: self.signInEmailText, password: self.signInPasswordText)
                             
                             baseAuthController.saveData(activeOption: self.activeOption, name: self.signUpNameText, email: activeOption == .signIn ? self.signInEmailText : self.signUpEmailText, password: activeOption == .signIn ? self.signInPasswordText : self.signUpPasswordText, confirmPassword: signUpConfirmPasswordText)
+                            
                             return true
                         }
                         
