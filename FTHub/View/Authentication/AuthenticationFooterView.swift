@@ -24,12 +24,13 @@ struct AuthenticationFooterView: View {
     var saveDetails: () -> Bool
 
     func sendMsg(response: AccountAuthResponse?) {
-        print(response)
+        print(response!.identifier)
         if response != nil {
             
-            if response!.status == "fail" {
+            if response!.status == "fail" && response!.identifier != "EmailNotVerified"{
                 messageController.sendMessage(type: .error, message: response!.message)
             } else if response!.identifier == "EmailNotVerified"{
+                print("test")
                 Task {
                     let emailSentResponse = await Authentication.resendConfirmEmail(email: email)
                     if emailSentResponse != nil && emailSentResponse?.status == "success" {

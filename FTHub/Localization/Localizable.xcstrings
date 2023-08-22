@@ -96,6 +96,9 @@
         }
       }
     },
+    "Email verified" : {
+
+    },
     "email@email.com" : {
 
     },
@@ -198,6 +201,9 @@
           }
         }
       }
+    },
+    "Go to Dashboard" : {
+
     },
     "Hello, World!" : {
 
@@ -404,6 +410,9 @@
       }
     },
     "We have sent a verification link to" : {
+
+    },
+    "You have successfuly verified\n your email" : {
 
     }
   },
