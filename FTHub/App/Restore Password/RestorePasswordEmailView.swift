@@ -15,23 +15,7 @@ struct RestorePasswordEmailView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Image("logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 90)
-                
-                VStack(spacing: 20) {
-                    Text("Restore Password")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                    
-                    Text("Enter your account email to\nreset your password")
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(.textGray)
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                }
+                RestorePasswordHeaderView(headline: "Enter your account email to\nreset your password")
                 
                 Image("restore1")
                     .resizable()
