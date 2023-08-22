@@ -54,6 +54,7 @@
 		22969D532A94B17B00935A3C /* EmailConfirmationLinkSentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D522A94B17B00935A3C /* EmailConfirmationLinkSentView.swift */; };
 		22969D562A94B91A00935A3C /* RestorePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D552A94B91A00935A3C /* RestorePasswordController.swift */; };
 		22969D592A94C28F00935A3C /* ResendConfirmEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D582A94C28F00935A3C /* ResendConfirmEmailController.swift */; };
+		22969D5B2A94D86600935A3C /* SuccessfullEmailConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D5A2A94D86600935A3C /* SuccessfullEmailConfirmationView.swift */; };
 		22DED6892A908C1400D1EBBB /* TwoFaCodeNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DED6882A908C1400D1EBBB /* TwoFaCodeNumberField.swift */; };
 		22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */; };
 		22E824692A8B9D3300B51C60 /* SignUpWithAppleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824682A8B9D3300B51C60 /* SignUpWithAppleView.swift */; };
@@ -120,6 +121,7 @@
 		22969D522A94B17B00935A3C /* EmailConfirmationLinkSentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailConfirmationLinkSentView.swift; sourceTree = "<group>"; };
 		22969D552A94B91A00935A3C /* RestorePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordController.swift; sourceTree = "<group>"; };
 		22969D582A94C28F00935A3C /* ResendConfirmEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendConfirmEmailController.swift; sourceTree = "<group>"; };
+		22969D5A2A94D86600935A3C /* SuccessfullEmailConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfullEmailConfirmationView.swift; sourceTree = "<group>"; };
 		22DED6882A908C1400D1EBBB /* TwoFaCodeNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeNumberField.swift; sourceTree = "<group>"; };
 		22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		22E824682A8B9D3300B51C60 /* SignUpWithAppleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWithAppleView.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 			children = (
 				220266F72A8A7066009D299F /* MainAccountAuthView.swift */,
 				224A5D882A8CB8EE00490614 /* TwoFaCodeView.swift */,
+				22969D5A2A94D86600935A3C /* SuccessfullEmailConfirmationView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				22EB51B12A8B70AC0079A3B1 /* LogRegButtonsView.swift in Sources */,
 				220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */,
 				222F3C5B2A935C6F005BC46F /* ResendTwoFaCodeModel.swift in Sources */,
+				22969D5B2A94D86600935A3C /* SuccessfullEmailConfirmationView.swift in Sources */,
 				220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */,
 				22969D562A94B91A00935A3C /* RestorePasswordController.swift in Sources */,
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
