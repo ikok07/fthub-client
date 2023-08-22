@@ -83,6 +83,31 @@ struct Authentication {
         return response
     }
     
+    static func confirmEmail(email: String, confirmToken: String) async -> ConfirmEmailResponse? {
+        let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
+        
+        let url = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/email/confirm/\(confirmToken)")!
+        let data: ConfirmEmailPostData = ConfirmEmailPostData(email: email)
+
+        do {
+            let jsonData = try JSONEncoder().encode(data)
+            
+            let result: Result<ConfirmEmailResponse, Error> = await Request.create(url: url, body: jsonData)
+            switch result {
+            case .success(let response):
+                return response
+            case .failure(let error):
+                print("Could not decode jsonData for email authentication: \(error)")
+                return nil
+            }
+            
+        } catch {
+            print("Could not encode JSON: \(error)")
+            return nil
+        }
+    }
+    
+    
     static func resendConfirmEmail(email: String) async -> ResendConfirmEmailResponse? {
         
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]

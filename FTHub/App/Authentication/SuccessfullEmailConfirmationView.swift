@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SuccessfullEmailConfirmationView: View {
+    
+    @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
+    
     var body: some View {
         VStack {
             Image(systemName: "checkmark.circle.fill")
@@ -25,7 +28,11 @@ struct SuccessfullEmailConfirmationView: View {
                     .fontWeight(.semibold)
             }
             
-            Button(action: {}, label: {
+            Button(action: {
+                withAnimation {
+                    userLoggedIn = true
+                }
+            }, label: {
                 Text("Go to Dashboard")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             })

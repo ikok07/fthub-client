@@ -18,6 +18,8 @@ struct AuthenticationFooterView: View {
     let password: String
     let confirmPassword: String?
     
+    @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
+    
     @State private var showTwoFa: Bool = false
     @State private var emailNotVerified: Bool = false
     
@@ -30,10 +32,12 @@ struct AuthenticationFooterView: View {
             if response!.status == "fail" && response!.identifier != "EmailNotVerified"{
                 messageController.sendMessage(type: .error, message: response!.message)
             } else if response!.identifier == "EmailNotVerified"{
-                print("test")
                 Task {
                     let emailSentResponse = await Authentication.resendConfirmEmail(email: email)
                     if emailSentResponse != nil && emailSentResponse?.status == "success" {
+                        userCurrentEmail = baseAuthController.email ?? "No email saved"
+                        print(userCurrentEmail)
+                        print("---------")
                         emailNotVerified = true
                     } else {
                         messageController.sendMessage(type: .error, message: "Error connecting to server")
@@ -44,8 +48,6 @@ struct AuthenticationFooterView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     if method == .signIn {
                         showTwoFa = true
-                    } else {
-                        emailNotVerified = true
                     }
                 }
             }
