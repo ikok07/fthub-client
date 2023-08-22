@@ -10,7 +10,7 @@ import SwiftUI
 struct TwoFaCodeFooter: View, CustomMessagePresent {
     @EnvironmentObject var messageController: MessageController
     @EnvironmentObject var numpadController: NumpadController
-    @EnvironmentObject var codeAuthController: CodeAuthController
+    @EnvironmentObject var codeAuthController: TwoFaAuthController
     
     @AppStorage("userToken") private var userToken: String = ""
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
@@ -70,5 +70,5 @@ struct TwoFaCodeFooter: View, CustomMessagePresent {
     TwoFaCodeFooter(email: "kokmarok@gmail.com", code: 123)
         .environmentObject(MessageController())
         .environmentObject(NumpadController())
-        .environmentObject(CodeAuthController())
+        .environmentObject(TwoFaAuthController())
 }

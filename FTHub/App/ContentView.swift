@@ -12,6 +12,8 @@ struct ContentView: View {
     @AppStorage("showTutorial") private var showTutorial: Bool = true
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     
+    @State private var confirmedEmail: Bool = false
+    
     var body: some View {
         ZStack {
             if self.showTutorial {
@@ -23,6 +25,12 @@ struct ContentView: View {
             }
         }
         .animation(.easeOut, value: showTutorial)
+        .onOpenURL { url in
+            
+            if url.absoluteString.contains("email/confirm/") {
+                
+            }
+        }
     }
 }
 

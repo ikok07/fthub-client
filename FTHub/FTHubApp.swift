@@ -14,7 +14,7 @@ struct FTHubApp: App {
     @StateObject var numpadController: NumpadController = NumpadController()
     @StateObject var authController: ResendCodeController = ResendCodeController()
     @StateObject var baseAuthController: BaseAuthController = BaseAuthController()
-    @StateObject var codeAuthController: CodeAuthController = CodeAuthController()
+    @StateObject var codeAuthController: TwoFaAuthController = TwoFaAuthController()
     @StateObject var restorePasswordController: RestorePasswordController = RestorePasswordController()
     
     var body: some Scene {
