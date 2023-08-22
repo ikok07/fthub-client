@@ -39,6 +39,9 @@
         }
       }
     },
+    "Back to sign in" : {
+
+    },
     "Confirm" : {
       "localizations" : {
         "bg" : {
@@ -54,6 +57,9 @@
           }
         }
       }
+    },
+    "Confirm new password" : {
+
     },
     "Confirm your password" : {
       "localizations" : {
@@ -71,6 +77,9 @@
         }
       }
     },
+    "Create new password" : {
+
+    },
     "Didn't receive code?" : {
       "localizations" : {
         "bg" : {
@@ -87,7 +96,14 @@
         }
       }
     },
+    "email@email.com" : {
+
+    },
+    "Enter new password" : {
+
+    },
     "Enter your account email to\nreset your password" : {
+      "extractionState" : "stale",
       "localizations" : {
         "bg" : {
           "stringUnit" : {
@@ -190,6 +206,9 @@
 
     },
     "Lorem Ipsum is simply dummy text of the printing and typesetting" : {
+
+    },
+    "Open Mail" : {
 
     },
     "or choose another option" : {
@@ -383,6 +402,9 @@
           }
         }
       }
+    },
+    "We have sent a verification link to" : {
+
     }
   },
   "version" : "1.0"

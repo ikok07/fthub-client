@@ -7,22 +7,12 @@
 
 import SwiftUI
 
-struct CodeAuthResendButton: View {
+struct TwoFaCodeResendButton: View {
     
     @EnvironmentObject var messageController: MessageController
     @EnvironmentObject var numpadController: NumpadController
     @EnvironmentObject var resendController: ResendCodeController
 
-    
-    private func sendConfirmMessage(response: ResendAuthCodeResponse?) {
-        if let safeResponse = response {
-            if safeResponse.status == "success" {
-                messageController.sendMessage(type: .success, message: safeResponse.message)
-            } else {
-                messageController.sendMessage(type: .error, message: safeResponse.message)
-            }
-        }
-    }
     
     private func sendTwoFaMessage(response: AccountAuthResponse?) {
         if let safeResponse = response {
@@ -49,14 +39,13 @@ struct CodeAuthResendButton: View {
         }
         .padding(.bottom, 30)
         .onAppear {
-            resendController.sendResendConfirmCodeMsg = sendConfirmMessage
             resendController.sendResendTwoFaCodeMsg = sendTwoFaMessage
         }
     }
 }
 
 #Preview {
-    CodeAuthResendButton()
+    TwoFaCodeResendButton()
         .environmentObject(MessageController())
         .environmentObject(NumpadController())
         .environmentObject(ResendCodeController())

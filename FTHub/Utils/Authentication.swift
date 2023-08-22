@@ -14,7 +14,7 @@ struct Authentication {
     static func signIn(email: String, password: String) async -> AccountAuthResponse? {
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
         
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/login")!
+        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/login")!
         let signInData: SignInPostData = SignInPostData(email: email, password: password)
         
         var response: AccountAuthResponse? = nil
@@ -26,6 +26,7 @@ struct Authentication {
             switch result {
             case .success(let data):
                 response = data
+                print("DATA:: \(data)")
             case .failure(let error):
                 print("Error getting userData: \(error)")
             }
@@ -37,7 +38,7 @@ struct Authentication {
     
     static func signUp(name: String, email: String, password: String, passwordConfirm: String) async -> AccountAuthResponse? {
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/signup")!
+        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/signup")!
         let data: SignUpPostData = SignUpPostData(name: name, email: email, password: password, passwordConfirm: passwordConfirm)
         
         var response: AccountAuthResponse? = nil
@@ -59,10 +60,10 @@ struct Authentication {
         return response
     }
     
-    static func authEmail(email: String, code: Int, type: EmailAuthType) async -> EmailAuthResponse? {
+    static func authEmail(email: String, code: Int) async -> EmailAuthResponse? {
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
         
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/\(type == .twofa ? "login" : "email")/confirm")!
+        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/login/confirm")!
         let data: EmailAuthPostData = EmailAuthPostData(email: email, token: code)
         var response: EmailAuthResponse? = nil
         
@@ -82,28 +83,28 @@ struct Authentication {
         return response
     }
     
-    static func resendAuthCode(email: String) async -> ResendAuthCodeResponse? {
+    static func resendConfirmEmail(email: String) async -> ResendConfirmEmailResponse? {
+        
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
         
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/email/resend")!
-        let data: ResendAuthCodePostData = ResendAuthCodePostData(email: email)
-        
-        var response: ResendAuthCodeResponse? = nil
+        let url = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/email/resend")!
+        let data = ResendConfirmEmailPostData(email: email)
         
         do {
             let jsonData = try JSONEncoder().encode(data)
             
-            let result: Result<ResendAuthCodeResponse, Error> = await Request.create(url: url, body: jsonData)
+            let result: Result<ResendConfirmEmailResponse, Error> = await Request.create(url: url, body: jsonData)
             switch result {
-            case .success(let data):
-                response = data
+            case .success(let response):
+                return response
             case .failure(let error):
-                print("Could not decode jsonData for resend code: \(error)")
+                print("Could not send new confirm email \(error)")
+                return nil
             }
         } catch {
-            print("Error converting resend data to json: \(error)")
+            print("Could not encode data to JSON: \(error)")
+            return nil
         }
-        return response
     }
     
 }

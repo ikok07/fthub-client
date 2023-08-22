@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Sign In / Sign Up
+
 struct SignInPostData: Codable {
     let email:String
     let password: String
@@ -32,6 +34,22 @@ struct SignUpPostData: Codable {
 }
 
 struct AccountAuthResponse: Codable {
+    let status: String
+    let message: String
+    let identifier: String?
+}
+
+// MARK: - Resend Confirm Email
+
+struct ResendConfirmEmailPostData: Codable {
+    let email: String
+    
+    init(email: String) {
+        self.email = email
+    }
+}
+
+struct ResendConfirmEmailResponse: Codable {
     let status: String
     let message: String
 }

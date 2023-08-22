@@ -7,35 +7,30 @@
 
 import SwiftUI
 
-enum EmailAuthType: CaseIterable {
-    case confirm, twofa
-}
-
-struct ConfirmEmailView: View {
+struct TwoFaCodeView: View {
     
     @EnvironmentObject var numpadController: NumpadController
     
-    let type: EmailAuthType
     let email: String
     let password: String?
     
     var body: some View {
             VStack {
-                CodeAuthHeaderView(title: "Email Confirmation", email: email)
+                TwoFaCodeHeaderView(title: "Email Confirmation", email: email)
                 
-                CodeAuthView()
+                TwoFaCodeMainView()
                     .padding(.top, 60)
                     .padding(.horizontal, 30)
                 
                 Spacer()
                 
-                CodeAuthFooterView(email: email, code: Int(numpadController.enteredNumbers.joined()) ?? 0, type: type) 
+                TwoFaCodeFooter(email: email, code: Int(numpadController.enteredNumbers.joined()) ?? 0)
             } //: HStack
             .padding(.top, 10)
     }
 }
 
 #Preview {
-    ConfirmEmailView(type: .twofa, email: "kokmarok@gmail.com", password: nil)
+    TwoFaCodeView(email: "kokmarok@gmail.com", password: nil)
         .environmentObject(NumpadController())
 }

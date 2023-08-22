@@ -8,30 +8,20 @@
 import SwiftUI
 
 struct RestorePasswordEmailView: View {
+    @EnvironmentObject private var restorePasswordController: RestorePasswordController
+    @EnvironmentObject private var messageController: MessageController
     
     @State private var emailSent: Bool = false
     @State private var userEmail: String = ""
     
+    func sendMsg() {
+        
+    }
+    
     var body: some View {
         NavigationStack {
             VStack {
-                Image("logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 90)
-                
-                VStack(spacing: 20) {
-                    Text("Restore Password")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                    
-                    Text("Enter your account email to\nreset your password")
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(.textGray)
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                }
+                RestorePasswordHeaderView(headline: "Enter your account email to\nreset your password")
                 
                 Image("restore1")
                     .resizable()
@@ -44,9 +34,8 @@ struct RestorePasswordEmailView: View {
                 Spacer()
                 VStack(spacing: 15) {
                     Button(action: {
-                        withAnimation {
-                            emailSent = true
-                        }
+                        restorePasswordController.sendMsg = self.sendMsg
+                        restorePasswordController.sendEmail(email: userEmail)
                     }, label: {
                         Text("Send email")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -64,13 +53,12 @@ struct RestorePasswordEmailView: View {
             } //: VStack
             .padding()
             .padding(.top, 10)
-            .navigationDestination(isPresented: $emailSent) {
-                RestorePasswordCodeView(email: userEmail)
-            }
         }
     }
 }
 
 #Preview {
     RestorePasswordEmailView()
+        .environmentObject(RestorePasswordController())
+        .environmentObject(MessageController())
 }

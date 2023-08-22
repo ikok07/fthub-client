@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomCodeNumberField: View {
+struct TwoFaCodeNumberField: View {
     
     let isActive: Bool
     let number: Int?
@@ -35,5 +35,5 @@ struct CustomCodeNumberField: View {
 }
 
 #Preview {
-    CustomCodeNumberField(isActive: false, number: 2)
+    TwoFaCodeNumberField(isActive: false, number: 2)
 }

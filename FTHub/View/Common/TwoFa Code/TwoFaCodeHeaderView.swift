@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CodeAuthHeaderView: View {
+struct TwoFaCodeHeaderView: View {
     
     let title: String
     let email: String
@@ -39,5 +39,5 @@ struct CodeAuthHeaderView: View {
 }
 
 #Preview {
-    CodeAuthHeaderView(title: "Restore Password", email: "youremail@email.com")
+    TwoFaCodeHeaderView(title: "Restore Password", email: "youremail@email.com")
 }

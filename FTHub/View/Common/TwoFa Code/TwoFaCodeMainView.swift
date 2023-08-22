@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct CodeAuthView: View {
+struct TwoFaCodeMainView: View {
     
     @EnvironmentObject var numpadController: NumpadController
     
     var body: some View {
             HStack(spacing: 20) {
                 ForEach(0..<numpadController.enteredNumbers.count, id: \.self) { index in
-                    CustomCodeNumberField(isActive: numpadController.activeField == index ? true : false, number: Int(numpadController.enteredNumbers[index]))
+                    TwoFaCodeNumberField(isActive: numpadController.activeField == index ? true : false, number: Int(numpadController.enteredNumbers[index]))
                         .onTapGesture {
                             numpadController.setActiveField(on: index)
                         }
@@ -24,7 +24,7 @@ struct CodeAuthView: View {
 }
 
 #Preview {
-    CodeAuthView()
+    TwoFaCodeMainView()
         .padding(.horizontal, 20)
         .environmentObject(NumpadController())
 }
