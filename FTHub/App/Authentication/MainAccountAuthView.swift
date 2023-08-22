@@ -69,7 +69,7 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                 .padding(.horizontal)
                 .scrollIndicators(.hidden)
             } //: NavigationView
-            .withCustomMessage(controller: messageController)
+            .withCustomMessage()
         } //: ZStack
     }
 }

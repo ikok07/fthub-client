@@ -46,7 +46,6 @@
 		228006772A921C7000A299EC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 228006762A921C7000A299EC /* Localizable.xcstrings */; };
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
 		228744CC2A8E634F00DB77DF /* CustomMessagePresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744CB2A8E634F00DB77DF /* CustomMessagePresent.swift */; };
-		228744CE2A8E645500DB77DF /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744CD2A8E645500DB77DF /* MessageController.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
 		22969D4E2A94AA4600935A3C /* RestorePasswordMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */; };
@@ -59,6 +58,7 @@
 		22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D602A94EA9F00935A3C /* ConfirmEmailRequestModel.swift */; };
 		22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D622A94EC3500935A3C /* ConfirmEmailModel.swift */; };
 		22DED6892A908C1400D1EBBB /* TwoFaCodeNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DED6882A908C1400D1EBBB /* TwoFaCodeNumberField.swift */; };
+		22E81F1A2A9525E10021DBE0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E81F192A9525E10021DBE0 /* Message.swift */; };
 		22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */; };
 		22E824692A8B9D3300B51C60 /* SignUpWithAppleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824682A8B9D3300B51C60 /* SignUpWithAppleView.swift */; };
 		22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8246A2A8BA5D800B51C60 /* AuthenticationHeaderView.swift */; };
@@ -116,7 +116,6 @@
 		228006762A921C7000A299EC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		228744CB2A8E634F00DB77DF /* CustomMessagePresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessagePresent.swift; sourceTree = "<group>"; };
-		228744CD2A8E645500DB77DF /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
 		22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordMainView.swift; sourceTree = "<group>"; };
@@ -129,6 +128,7 @@
 		22969D602A94EA9F00935A3C /* ConfirmEmailRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailRequestModel.swift; sourceTree = "<group>"; };
 		22969D622A94EC3500935A3C /* ConfirmEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailModel.swift; sourceTree = "<group>"; };
 		22DED6882A908C1400D1EBBB /* TwoFaCodeNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeNumberField.swift; sourceTree = "<group>"; };
+		22E81F192A9525E10021DBE0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		22E824682A8B9D3300B51C60 /* SignUpWithAppleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWithAppleView.swift; sourceTree = "<group>"; };
 		22E8246A2A8BA5D800B51C60 /* AuthenticationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHeaderView.swift; sourceTree = "<group>"; };
@@ -206,6 +206,7 @@
 				220266D02A8A494A009D299F /* Constants.swift */,
 				224A5D962A8CDC4400490614 /* Requests.swift */,
 				22374B172A9292D7006BE6BB /* Authentication.swift */,
+				22E81F192A9525E10021DBE0 /* Message.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -331,7 +332,6 @@
 		222F3C702A9385E2005BC46F /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				228744CD2A8E645500DB77DF /* MessageController.swift */,
 				22ED2EC12A91392300BB623E /* NumpadController.swift */,
 			);
 			path = Common;
@@ -588,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22ED2EBE2A9132AE00BB623E /* CustomNumpadView.swift in Sources */,
+				22E81F1A2A9525E10021DBE0 /* Message.swift in Sources */,
 				220266EB2A8A5B54009D299F /* TutorialPageIndicatorView.swift in Sources */,
 				22374B1A2A929C5C006BE6BB /* BaseAuthController.swift in Sources */,
 				220266D62A8A5144009D299F /* TutorialHeadingView.swift in Sources */,
@@ -642,7 +643,6 @@
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
-				228744CE2A8E645500DB77DF /* MessageController.swift in Sources */,
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,
 				224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */,
 				22E824742A8BB26F00B51C60 /* TwoFaCodeMainView.swift in Sources */,
