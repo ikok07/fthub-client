@@ -59,10 +59,10 @@ struct Authentication {
         return response
     }
     
-    static func authEmail(email: String, code: Int, type: EmailAuthType) async -> EmailAuthResponse? {
+    static func authEmail(email: String, code: Int) async -> EmailAuthResponse? {
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
         
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/\(type == .twofa ? "login" : "email")/confirm")!
+        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/login/confirm")!
         let data: EmailAuthPostData = EmailAuthPostData(email: email, token: code)
         var response: EmailAuthResponse? = nil
         
@@ -78,30 +78,6 @@ struct Authentication {
             }
         } catch {
             print("Error converting auth data to json: \(error)")
-        }
-        return response
-    }
-    
-    static func resendAuthCode(email: String) async -> ResendAuthCodeResponse? {
-        let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
-        
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/v1/user/email/resend")!
-        let data: ResendAuthCodePostData = ResendAuthCodePostData(email: email)
-        
-        var response: ResendAuthCodeResponse? = nil
-        
-        do {
-            let jsonData = try JSONEncoder().encode(data)
-            
-            let result: Result<ResendAuthCodeResponse, Error> = await Request.create(url: url, body: jsonData)
-            switch result {
-            case .success(let data):
-                response = data
-            case .failure(let error):
-                print("Could not decode jsonData for resend code: \(error)")
-            }
-        } catch {
-            print("Error converting resend data to json: \(error)")
         }
         return response
     }

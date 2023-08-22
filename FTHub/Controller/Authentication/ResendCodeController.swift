@@ -8,17 +8,14 @@
 import Foundation
 
 class ResendCodeController: ObservableObject {
-    let resendAuthCodeModel: ResendAuthCodeModel = ResendAuthCodeModel()
+    let resendAuthCodeModel: ResendTwoFaCodeModel = ResendTwoFaCodeModel()
     
-    @Published var type: EmailAuthType?
     @Published var email: String?
     @Published var password: String?
     
-    @Published var sendResendConfirmCodeMsg: ((ResendAuthCodeResponse?) -> Void)?
     @Published var sendResendTwoFaCodeMsg: ((AccountAuthResponse?) -> Void)?
     
     func saveData(type: AuthOption, email: String, password: String?) {
-        self.type = type == .signIn ? .twofa : .confirm
         self.email = email
         
         if password != "" {
@@ -29,7 +26,7 @@ class ResendCodeController: ObservableObject {
     
     func resendCode() {
         Task {
-            await resendAuthCodeModel.resendCode(type: self.type!, email: self.email, password: self.password, sendConfirmMsg: sendResendConfirmCodeMsg, sendTwoFaMsg: sendResendTwoFaCodeMsg)
+            await resendAuthCodeModel.resendCode(email: self.email, password: self.password, sendTwoFaMsg: sendResendTwoFaCodeMsg)
         }
     }
     

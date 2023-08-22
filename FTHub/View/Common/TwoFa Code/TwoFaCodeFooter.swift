@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CodeAuthFooterView: View, CustomMessagePresent {
+struct TwoFaCodeFooter: View, CustomMessagePresent {
     @EnvironmentObject var messageController: MessageController
     @EnvironmentObject var numpadController: NumpadController
     @EnvironmentObject var codeAuthController: CodeAuthController
@@ -17,10 +17,8 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
     
     let email: String
     let code: Int
-    let type: EmailAuthType
     
     private func saveData() {
-        codeAuthController.type = self.type
         codeAuthController.email = self.email
         codeAuthController.token = self.code
     }
@@ -57,7 +55,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
                 .animation(.easeOut(duration: 0.2), value: 10)
                 .padding()
                 
-                CodeAuthResendButton() 
+                TwoFaCodeResendButton() 
                 .padding(.bottom, 30)
                 
                 CustomNumpadView()
@@ -69,7 +67,7 @@ struct CodeAuthFooterView: View, CustomMessagePresent {
 }
 
 #Preview {
-    CodeAuthFooterView(email: "kokmarok@gmail.com", code: 123, type: .twofa)
+    TwoFaCodeFooter(email: "kokmarok@gmail.com", code: 123)
         .environmentObject(MessageController())
         .environmentObject(NumpadController())
         .environmentObject(CodeAuthController())

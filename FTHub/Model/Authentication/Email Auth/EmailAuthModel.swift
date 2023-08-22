@@ -9,9 +9,9 @@ import Foundation
 
 struct EmailAuthModel {
     
-    func authenticate(email: String?, token: Int?, type: EmailAuthType?, sendMsg: ((EmailAuthResponse?) -> Void)?) {
+    func authenticate(email: String?, token: Int?, sendMsg: ((EmailAuthResponse?) -> Void)?) {
         Task {
-            let response = await Authentication.authEmail(email: email ?? "", code: token ?? 0, type: type!)
+            let response = await Authentication.authEmail(email: email ?? "", code: token ?? 0)
              sendMsg?(response)
         }
     }
