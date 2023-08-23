@@ -34,6 +34,7 @@ struct Request {
         
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
+            print(String(data: data, encoding: .utf8))
             let decodedData = try JSONDecoder().decode(T.self, from: data)
             return .success(decodedData)
         } catch {

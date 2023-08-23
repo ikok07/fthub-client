@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct MainAccountAuthView: View, CustomMessagePresent {
-    @EnvironmentObject internal var messageController: MessageController
+struct MainAccountAuthView: View {
     @EnvironmentObject private var resendController: ResendCodeController
     @EnvironmentObject private var baseAuthController: BaseAuthController
     
@@ -54,7 +53,7 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                     {
                         if let validationResult = activeOption == .signUp ? SignUpValidationController.validate(name: self.signUpNameText, email: self.signUpEmailText, password: self.signUpPasswordText, confirmPassword: self.signUpConfirmPasswordText) : SignInValidationController.validate(email: self.signInEmailText, password: self.signInPasswordText) {
                             
-                            messageController.sendMessage(type: validationResult.type, message: validationResult.message)
+                            Message.sendMessage(type: validationResult.type, message: validationResult.message)
                             return false
                         } else {
                             resendController.saveData(type: self.activeOption, email: self.signInEmailText, password: self.signInPasswordText)
@@ -69,13 +68,12 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                 .padding(.horizontal)
                 .scrollIndicators(.hidden)
             } //: NavigationView
-            .withCustomMessage(controller: messageController)
+            .withCustomMessage()
         } //: ZStack
     }
 }
 
 #Preview {
     MainAccountAuthView()
-        .environmentObject(MessageController())
         .environmentObject(ResendCodeController())
 }

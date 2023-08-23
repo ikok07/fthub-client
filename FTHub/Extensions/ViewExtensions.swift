@@ -9,29 +9,30 @@ import Foundation
 import SwiftUI
 
 struct WithCustomMessage: ViewModifier {
-    let isPresented: Bool
-    let type: CustomMessageType
-    let message: String
+    
+    @AppStorage("messagePresented") private var messagePresented: Bool = false
+    @AppStorage("messageContent") private var messageContent: String = ""
+    @AppStorage("messageType") private var messageType: String = "success"
     
     func body(content: Content) -> some View {
         content
         ZStack {
-            if isPresented {
+            if messagePresented {
                 VStack {
-                    CustomMessageView(type: type, message: message)
+                    CustomMessageView(type: messageType, message: messageContent)
                     Spacer()
                 }
                 .padding(.top)
                 .padding(.horizontal)
             }
         }
-        .animation(.easeOut(duration: 0.2), value: isPresented)
+        .animation(.easeOut(duration: 0.2), value: messagePresented)
     }
 }
 
 extension View {
     @ViewBuilder
-    func withCustomMessage(controller: MessageController) -> some View {
-        self.modifier(WithCustomMessage(isPresented: controller.messagePresented, type: controller.messageType, message: controller.messageText))
+    func withCustomMessage() -> some View {
+        self.modifier(WithCustomMessage())
     }
 }
