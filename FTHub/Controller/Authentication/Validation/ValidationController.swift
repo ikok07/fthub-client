@@ -23,20 +23,16 @@ class ValidationController {
         
         let isEmail = Validator.isEmail(str: email)
         
-        return (isEmail, isEmail == true ? nil : "Not a valid email.")
+        return (isEmail, isEmail == true ? nil : "Not a valid email!")
     }
     
-    static func validatePassword(password: String, passwordConfirm: String) -> (valid: Bool, message: String?) {
+    static func validatePassword(password: String) -> (valid: Bool, message: String?) {
         if (password == "") {
             return (false, "Please provide a password!")
         }
         
-        if (passwordConfirm == "") {
-            return (false, "Please confirm your password!")
-        }
-        
-        if (password.count >= 8) {
-            return (false, "Your password must be at least 8 characters long!")
+        if (password.count < 8) {
+            return (false, "Password must be atleast 8 characters long!")
         }
         
         let containsLowercase = Validator.containsLowercaseCharacter(str: password)

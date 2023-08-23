@@ -29,9 +29,9 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                         .padding(.top, 30)
                     
                     if activeOption == .signIn {
-                        VStack(spacing: 20) {
-                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signInEmailText)
-                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true,  text: $signInPasswordText)
+                        VStack(spacing: 16) {
+                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, type: .email, text: $signInEmailText)
+                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: .password, text: $signInPasswordText)
                             HStack {
                                 NavigationLink(destination: RestorePasswordEmailView()) {
                                     Text("Forgot password?")
@@ -43,11 +43,11 @@ struct MainAccountAuthView: View, CustomMessagePresent {
                             }
                         } //: VStack
                     } else {
-                        VStack(spacing: 20, content: {
-                            CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", text: $signUpNameText)
-                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signUpEmailText)
-                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, text: $signUpPasswordText)
-                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, text: $signUpConfirmPasswordText)
+                        VStack(spacing: 16, content: {
+                            CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", type: .name, text: $signUpNameText)
+                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, type: .email, text: $signUpEmailText)
+                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: .password, text: $signUpPasswordText)
+                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, type: .confirmPassword, text: $signUpConfirmPasswordText)
                         })
                     }
                     AuthenticationFooterView(method: activeOption, name: nil, email: activeOption == .signIn ? signInEmailText : signUpEmailText, password: signInPasswordText, confirmPassword: nil) 
