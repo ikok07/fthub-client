@@ -11,6 +11,7 @@ struct MainAccountAuthView: View {
     @EnvironmentObject private var resendController: ResendCodeController
     @EnvironmentObject private var baseAuthController: BaseAuthController
     
+    
     @State private var activeOption: AuthOption = .signIn
     @State private var signInEmailText: String = ""
     @State private var signInPasswordText: String = ""
@@ -68,7 +69,6 @@ struct MainAccountAuthView: View {
                 .padding(.horizontal)
                 .scrollIndicators(.hidden)
             } //: NavigationView
-            .withCustomMessage()
         } //: ZStack
     }
 }

@@ -45,13 +45,15 @@ struct EmailConfirmationStatusView: View {
                         if status == .fail {
                             await Authentication.sendConfirmEmail(email: userCurrentEmail)
                             withAnimation {
-                                showEmailVerifyStatus = false
                                 emailNotVerified = true
+                                showEmailVerifyStatus = false
                             }
                         } else {
                             withAnimation {
-                                showEmailVerifyStatus = false
                                 userLoggedIn = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    showEmailVerifyStatus = false
+                                }
                             }
                         }
                     }

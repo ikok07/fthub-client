@@ -18,6 +18,7 @@ struct AuthenticationFooterView: View {
     let confirmPassword: String?
     
     @AppStorage("showTwoFa") private var showTwoFa: Bool = false
+    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     
     var saveDetails: () -> Bool
     
@@ -28,6 +29,7 @@ struct AuthenticationFooterView: View {
             
             Button(action: {
                 if saveDetails() {
+                    loadingPresented = true
                     baseAuthController.authenticateUser()
                 }
             }, label: {

@@ -11,6 +11,8 @@ struct TwoFaCodeFooter: View {
     @EnvironmentObject var numpadController: NumpadController
     @EnvironmentObject var codeAuthController: TwoFaAuthController
     
+    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
+    
     let email: String
     let code: Int
     
@@ -20,6 +22,7 @@ struct TwoFaCodeFooter: View {
     }
     
     private func performAuthentication() {
+        loadingPresented = true
         saveData()
         codeAuthController.authenticateCode()
     }
@@ -27,7 +30,9 @@ struct TwoFaCodeFooter: View {
     var body: some View {
             VStack {
                 Button(action: {
-                    performAuthentication()
+                    if numpadController.fullFields {
+                        performAuthentication()
+                    }
                 }, label: {
                         Text("Confirm")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))

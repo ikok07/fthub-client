@@ -15,12 +15,16 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            if userLoggedIn {
-                CoachesPageView()
-                    .animation(.easeOut, value: userLoggedIn)
-            } else {
-                BeforeAuthView()
+            ZStack {
+                if userLoggedIn {
+                    CoachesPageView()
+                        .animation(.easeOut, value: userLoggedIn)
+                } else {
+                    BeforeAuthView()
+                }
             }
+            .withCustomMessage()
+            .withLoadingAnimation()
         }
         .onAppear {
             print(userLoggedIn)

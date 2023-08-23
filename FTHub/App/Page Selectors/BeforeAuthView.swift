@@ -34,12 +34,17 @@ struct BeforeAuthView: View {
                 MainAccountAuthView()
             }
         }
+        .animation(.easeOut, value: showTutorial)
+        .animation(.easeOut, value: userCurrentEmail)
+        .animation(.easeOut, value: loadingPresented)
+        .animation(.easeOut, value: emailNotVerified)
+        .animation(.easeOut, value: showEmailVerifyStatus)
         .onOpenURL { url in
             loadingPresented = true
             if url.absoluteString.contains("email/confirm/") {
                 Task {
-                    loadingPresented = false
                     let emailConfirmed = await confirmEmailController.confirmEmail(url: url, email: userCurrentEmail)
+                    loadingPresented = false
                     if emailConfirmed {
                         emailConfirmationStatus = .success
                         print("success")
