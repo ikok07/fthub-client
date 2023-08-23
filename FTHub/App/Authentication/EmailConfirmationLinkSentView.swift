@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EmailConfirmationLinkSentView: View {
     
+    @Environment(\.scenePhase) var scenePhase
+    
     @AppStorage("emailNotVerified") private var emailNotVerified: Bool = false
     @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
     
@@ -55,6 +57,14 @@ struct EmailConfirmationLinkSentView: View {
             .padding(.vertical, 50)
         }
         .padding()
+        .onChange(of: scenePhase) { oldValue, newScene in
+            if newScene == .background {
+                withAnimation(.easeOut) {
+                    emailNotVerified = false
+                    showEmailVerifyStatus = false
+                }
+            }
+        }
     }
 }
 
