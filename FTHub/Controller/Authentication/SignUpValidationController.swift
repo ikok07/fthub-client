@@ -9,10 +9,10 @@ import Foundation
 
 final class SignUpValidationController {
     
-    static func validate(name: String, email: String, password: String, confirmPassword: String) -> (message: String, type: CustomMessageType)? {
+    static func validate(name: String, email: String, password: String, confirmPassword: String) -> (message: String, type: String)? {
         if name == "" {
             print("test")
-            return (message: "Please insert name", type: .error)
+            return (message: "Please insert name", type: "error")
         }
         return nil
     }

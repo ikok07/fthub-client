@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject private var messageController: MessageController
     var confirmEmailController: ConfirmEmailController = ConfirmEmailController()
     
     @AppStorage("showTutorial") private var showTutorial: Bool = true
@@ -40,7 +39,7 @@ struct ContentView: View {
                             confirmedEmail = true
                         }
                     } else {
-                        messageController.sendMessage(type: .error, message: "We couldn't confirm your email address. Please try again later.")
+                        Message.sendMessage(type: "error", message: "We couldn't confirm your email address. Please try again later.")
                     }
                 }
             }
@@ -50,5 +49,4 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(MessageController())
 }

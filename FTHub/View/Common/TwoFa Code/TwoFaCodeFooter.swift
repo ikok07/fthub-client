@@ -7,13 +7,9 @@
 
 import SwiftUI
 
-struct TwoFaCodeFooter: View, CustomMessagePresent {
-    @EnvironmentObject var messageController: MessageController
+struct TwoFaCodeFooter: View {
     @EnvironmentObject var numpadController: NumpadController
     @EnvironmentObject var codeAuthController: TwoFaAuthController
-    
-    @AppStorage("userToken") private var userToken: String = ""
-    @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     
     let email: String
     let code: Int
@@ -25,21 +21,6 @@ struct TwoFaCodeFooter: View, CustomMessagePresent {
     
     private func performAuthentication() {
         saveData()
-        codeAuthController.sendCodeAuthMsg = { response in
-            if let safeResponse = response {
-                if safeResponse.status == "success" {
-                    messageController.sendMessage(type: .success, message: String(localized: "Successful email authentication"))
-                    userToken = safeResponse.token ?? ""
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        withAnimation {
-                            userLoggedIn = true
-                        }
-                    }
-                } else {
-                    messageController.sendMessage(type: .error, message: String(localized: "The entered code is invalid or expired"))
-                }
-            }
-        }
         codeAuthController.authenticateCode()
     }
     
@@ -68,7 +49,6 @@ struct TwoFaCodeFooter: View, CustomMessagePresent {
 
 #Preview {
     TwoFaCodeFooter(email: "kokmarok@gmail.com", code: 123)
-        .environmentObject(MessageController())
         .environmentObject(NumpadController())
         .environmentObject(TwoFaAuthController())
 }

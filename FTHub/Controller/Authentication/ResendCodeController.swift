@@ -13,8 +13,6 @@ class ResendCodeController: ObservableObject {
     @Published var email: String?
     @Published var password: String?
     
-    @Published var sendResendTwoFaCodeMsg: ((AccountAuthResponse?) -> Void)?
-    
     func saveData(type: AuthOption, email: String, password: String?) {
         self.email = email
         
@@ -26,7 +24,7 @@ class ResendCodeController: ObservableObject {
     
     func resendCode() {
         Task {
-            await resendAuthCodeModel.resendCode(email: self.email, password: self.password, sendTwoFaMsg: sendResendTwoFaCodeMsg)
+            await resendAuthCodeModel.resendCode(email: self.email, password: self.password)
         }
     }
     

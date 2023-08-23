@@ -13,22 +13,18 @@ struct Message {
     static func sendMessage(type: String, message: String) {
         
         let defaults = UserDefaults.standard
-        var messagePresented = defaults.value(forKey: "messagePresented") as! Bool
-        var message = defaults.value(forKey: "messageType") as! String
-        var messageType = defaults.value(forKey: "messageType") as! String
-        
         
         DispatchQueue.main.async {
-            message = message
-            messageType = type
+            defaults.setValue(message, forKey: "messageContent")
+            defaults.setValue(type, forKey: "messageType")
             
             withAnimation {
-                messagePresented = true
+                defaults.setValue(true, forKey: "messagePresented")
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation {
-                    messagePresented = false
+                    defaults.setValue(false, forKey: "messagePresented")
                 }
             }
         }

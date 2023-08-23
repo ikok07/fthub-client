@@ -45,7 +45,6 @@
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
 		228006772A921C7000A299EC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 228006762A921C7000A299EC /* Localizable.xcstrings */; };
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
-		228744CC2A8E634F00DB77DF /* CustomMessagePresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744CB2A8E634F00DB77DF /* CustomMessagePresent.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
 		22969D4E2A94AA4600935A3C /* RestorePasswordMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */; };
@@ -117,7 +116,6 @@
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
 		228006762A921C7000A299EC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
-		228744CB2A8E634F00DB77DF /* CustomMessagePresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessagePresent.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
 		22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordMainView.swift; sourceTree = "<group>"; };
@@ -444,7 +442,6 @@
 		228744CA2A8E633800DB77DF /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				228744CB2A8E634F00DB77DF /* CustomMessagePresent.swift */,
 				22F2709B2A95DD8300AA8AC6 /* NetworkCapable.swift */,
 			);
 			path = Protocols;
@@ -611,7 +608,6 @@
 				224A5D952A8CDB6100490614 /* ResendCodeController.swift in Sources */,
 				22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */,
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
-				228744CC2A8E634F00DB77DF /* CustomMessagePresent.swift in Sources */,
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
 				22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */,
 				22ED2EBC2A912FFF00BB623E /* NumpadButtonView.swift in Sources */,
@@ -796,6 +792,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -825,6 +822,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
