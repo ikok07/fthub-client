@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EmailAuthPostData: Codable {
+struct TwoFaAuthPostData: NetworkCapable {
     let email: String
     let token: Int
     
@@ -17,7 +17,7 @@ struct EmailAuthPostData: Codable {
     }
 }
 
-struct EmailAuthResponse: Codable {
+struct TwoFaAuthResponse: NetworkCapable {
     let status: String
 //    let message: String
     let token: String?

@@ -33,7 +33,7 @@ struct SignUpPostData: Codable {
     }
 }
 
-struct AccountAuthResponse: Codable {
+struct AccountAuthResponse: NetworkCapable {
     let status: String
     let message: String
     let identifier: String?
@@ -41,7 +41,7 @@ struct AccountAuthResponse: Codable {
 
 // MARK: - Resend Confirm Email
 
-struct ResendConfirmEmailPostData: Codable {
+struct ResendConfirmEmailPostData: NetworkCapable {
     let email: String
     
     init(email: String) {
@@ -49,7 +49,7 @@ struct ResendConfirmEmailPostData: Codable {
     }
 }
 
-struct ResendConfirmEmailResponse: Codable {
+struct ResendConfirmEmailResponse: NetworkCapable {
     let status: String
     let message: String
 }

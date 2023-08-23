@@ -96,7 +96,7 @@
         }
       }
     },
-    "Email verified" : {
+    "Email %@verified" : {
 
     },
     "email@email.com" : {
@@ -202,6 +202,9 @@
         }
       }
     },
+    "Go to Dashboard" : {
+
+    },
     "Hello, World!" : {
 
     },
@@ -229,6 +232,9 @@
           }
         }
       }
+    },
+    "Resend Email" : {
+
     },
     "Resend now" : {
       "localizations" : {
@@ -261,6 +267,9 @@
           }
         }
       }
+    },
+    "Return to sign in" : {
+
     },
     "Send email" : {
       "localizations" : {
@@ -390,6 +399,9 @@
         }
       }
     },
+    "There was an error verifying your email address. Please try again." : {
+
+    },
     "We have sent a code to" : {
       "localizations" : {
         "bg" : {
@@ -407,6 +419,9 @@
       }
     },
     "We have sent a verification link to" : {
+
+    },
+    "You have successfuly verified\n your email" : {
 
     }
   },

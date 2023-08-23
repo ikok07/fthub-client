@@ -4,7 +4,16 @@
 <dict>
 	<key>CFBundleURLTypes</key>
 	<array>
-		<dict/>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>eu.fthub</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fthub</string>
+			</array>
+		</dict>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict>

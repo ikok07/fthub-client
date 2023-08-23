@@ -17,7 +17,9 @@ struct CoachesPageView: View {
                 .multilineTextAlignment(.center)
             
             Button(action: {
-                userLoggedIn = false
+                withAnimation {
+                    userLoggedIn = false
+                }
             }, label: {
                 Text("Sign Out")
             })
