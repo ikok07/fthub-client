@@ -32,16 +32,32 @@ class ValidationController {
         }
         
         if (password.count < 8) {
-            return (false, "Password must be atleast 8 characters long!")
+            return (false, "Password must be at least 8 characters long!")
         }
         
         let containsLowercase = Validator.containsLowercaseCharacter(str: password)
         
+        if !containsLowercase {
+            return (false, "Password must contain at least 1 lowercase letter!")
+        }
+        
         let containsUppercase = Validator.containsUppercaseCharacter(str: password)
+        
+        if !containsUppercase {
+            return (false, "Password must contain at least 1 uppercase letter!")
+        }
         
         let containsNumber = Validator.containsDigit(str: password)
         
+        if !containsNumber {
+            return (false, "Password must contain at least 1 number!")
+        }
+        
         let containsCustomSymbol = Validator.containsSymbol(str: password)
+        
+        if !containsCustomSymbol {
+            return (false, "Password must contain at least 1 special character.")
+        }
         
         return (true, nil)
     }

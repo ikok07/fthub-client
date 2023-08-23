@@ -103,8 +103,6 @@ struct CustomTextFieldView: View {
         }
         .padding(.horizontal, 5)
     }
-
-
 }
 
 #Preview {
