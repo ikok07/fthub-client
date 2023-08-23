@@ -96,7 +96,7 @@
         }
       }
     },
-    "Email verified" : {
+    "Email %@verified" : {
 
     },
     "email@email.com" : {
@@ -233,6 +233,9 @@
         }
       }
     },
+    "Resend Email" : {
+
+    },
     "Resend now" : {
       "localizations" : {
         "bg" : {
@@ -264,6 +267,9 @@
           }
         }
       }
+    },
+    "Return to sign in" : {
+
     },
     "Send email" : {
       "localizations" : {
@@ -392,6 +398,9 @@
           }
         }
       }
+    },
+    "There was an error verifying your email address. Please try again." : {
+
     },
     "We have sent a code to" : {
       "localizations" : {

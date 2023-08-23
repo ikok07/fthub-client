@@ -85,4 +85,15 @@ struct Authentication {
         }
     }
     
+    static func sendConfirmEmail(email: String) async {
+        let defaults = UserDefaults.standard
+        let emailSentResponse = await Authentication.resendConfirmEmail(email: email)
+        if emailSentResponse != nil && emailSentResponse?.status == "success" {
+            defaults.setValue(email, forKey: "userCurrentEmail")
+            defaults.setValue(true, forKey: "emailNotVerified")
+        } else {
+            Message.sendMessage(type: "error", message: "Error connecting to server")
+        }
+    }
+    
 }

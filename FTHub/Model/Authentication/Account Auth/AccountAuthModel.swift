@@ -25,19 +25,15 @@ struct AccountAuthModel {
         }
     }
     
+    
+    
     private func sendMsg(method: AuthOption, response: AccountAuthResponse?, email: String) {
         if response != nil {
             if response!.status == "fail" && response!.identifier != "EmailNotVerified"{
                 Message.sendMessage(type: "error", message: response!.message)
             } else if response!.identifier == "EmailNotVerified"{
                 Task {
-                    let emailSentResponse = await Authentication.resendConfirmEmail(email: email)
-                    if emailSentResponse != nil && emailSentResponse?.status == "success" {
-                        defaults.setValue(email, forKey: "userCurrentEmail")
-                        defaults.setValue(true, forKey: "emailNotVerified")
-                    } else {
-                        Message.sendMessage(type: "error", message: "Error connecting to server")
-                    }
+                    await Authentication.sendConfirmEmail(email: email)
                 }
             } else {
                 Message.sendMessage(type: "success", message: response!.message)

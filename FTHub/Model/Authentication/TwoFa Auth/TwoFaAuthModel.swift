@@ -14,8 +14,6 @@ struct TwoFaAuthModel {
     func authenticate(email: String?, token: Int?) {
         
         let defaults = UserDefaults.standard
-        var userToken = defaults.string(forKey: "userToken")
-        var userLoggedIn = defaults.bool(forKey: "userLoggedIn")
         
         Task {
             let response = await Authentication.authTwoFa(email: email ?? "", code: token ?? 0)

@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct EmailConfirmationLinkSentView: View {
+    
+    @AppStorage("emailNotVerified") private var emailNotVerified: Bool = false
+    @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
+    
     var body: some View {
         VStack {
             VStack {
@@ -35,7 +39,10 @@ struct EmailConfirmationLinkSentView: View {
                 .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
                 
                 Button {
-                    
+                    withAnimation {
+                        emailNotVerified = false
+                        showEmailVerifyStatus = false
+                    }
                 } label: {
                     HStack {
                         Image(systemName: "arrow.left")

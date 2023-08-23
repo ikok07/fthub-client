@@ -18,14 +18,8 @@ struct AuthenticationFooterView: View {
     let confirmPassword: String?
     
     @AppStorage("showTwoFa") private var showTwoFa: Bool = false
-    @AppStorage("emailNotVerified") private var emailNotVerified: Bool = false
     
     var saveDetails: () -> Bool
-
-    func sendMsg(response: AccountAuthResponse?) {
-        
-    }
-    
     
     var body: some View {
         VStack {
@@ -46,9 +40,6 @@ struct AuthenticationFooterView: View {
         } //: VStack
         .navigationDestination(isPresented: $showTwoFa) {
             TwoFaCodeView(email: email, password: password)
-        }
-        .navigationDestination(isPresented: $emailNotVerified) {
-            EmailConfirmationLinkSentView()
         }
     }
 }
