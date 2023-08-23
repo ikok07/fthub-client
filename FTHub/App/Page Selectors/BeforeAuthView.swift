@@ -1,13 +1,16 @@
 //
-//  ContentView.swift
+//  BeforeAuthView.swift
 //  FTHub
 //
-//  Created by Kaloyan Petkov on 14.08.23.
+//  Created by Kaloyan Petkov on 23.08.23.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+
+struct BeforeAuthView: View {
+    
+    @Environment(\.scenePhase) var scenePhase
     
     var confirmEmailController: ConfirmEmailController = ConfirmEmailController()
     
@@ -23,8 +26,6 @@ struct ContentView: View {
         ZStack {
             if self.showTutorial {
                 TutorialMainView()
-            } else if self.userLoggedIn {
-                CoachesPageView()
             } else if self.emailNotVerified {
                 EmailConfirmationLinkSentView()
             } else if self.showEmailVerifyStatus {
@@ -32,42 +33,36 @@ struct ContentView: View {
             } else {
                 MainAccountAuthView()
             }
-            
-            if loadingPresented {
-                
-            }
         }
-        .animation(.easeOut, value: showTutorial)
         .onOpenURL { url in
             loadingPresented = true
             if url.absoluteString.contains("email/confirm/") {
                 Task {
-                    withAnimation {
-                        loadingPresented = false
-                    }
+                    loadingPresented = false
                     let emailConfirmed = await confirmEmailController.confirmEmail(url: url, email: userCurrentEmail)
                     if emailConfirmed {
                         emailConfirmationStatus = .success
                         print("success")
-                        withAnimation {
                         emailNotVerified = false
                         showEmailVerifyStatus = true
-                        }
                     } else {
                         emailConfirmationStatus = .fail
                         print("error")
-                        withAnimation {
                         emailNotVerified = false
                         showEmailVerifyStatus = true
-                        }
                     }
-                    
                 }
+            }
+        }
+        .onChange(of: scenePhase) { oldValue, newScene in
+            if newScene == .background {
+                    emailNotVerified = false
+                    showEmailVerifyStatus = false
             }
         }
     }
 }
 
 #Preview {
-    ContentView()
+    BeforeAuthView()
 }

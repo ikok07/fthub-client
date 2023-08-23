@@ -13,6 +13,8 @@ enum EmailConfirmStatus: CaseIterable {
 
 struct EmailConfirmationStatusView: View {
     
+    @Environment(\.scenePhase) var scenePhase
+    
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     @AppStorage("emailNotVerified") private var emailNotVerified: Bool = false
@@ -75,10 +77,13 @@ struct EmailConfirmationStatusView: View {
         }
         .padding()
         .padding(.top, 40)
-        .onDisappear {
-            withAnimation {
-                emailNotVerified = false
-                showEmailVerifyStatus = false
+        .onChange(of: scenePhase) { oldValue, newScene in
+            if newScene == .background {
+                withAnimation(.easeOut) {
+                    if status == .success {
+                        userLoggedIn = true
+                    }
+                }
             }
         }
     }
