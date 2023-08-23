@@ -21,7 +21,7 @@ struct LogRegButtonsView: View {
             HStack {
                 VStack {
                     Button {
-                        withAnimation {
+                        withAnimation(.linear(duration: 0.2)) {
                             activeOption = .signIn
                         }
                     } label: {
@@ -48,7 +48,7 @@ struct LogRegButtonsView: View {
                 
                 VStack {
                     Button {
-                        withAnimation {
+                        withAnimation(.linear(duration: 0.2)) {
                             activeOption = .signUp
                         }
                     } label: {

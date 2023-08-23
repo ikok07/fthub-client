@@ -7,13 +7,9 @@
 
 import SwiftUI
 
-enum CustomMessageType: CaseIterable {
-    case error, alert, success, info
-}
-
 struct CustomMessageView: View {
     
-    let type: CustomMessageType
+    let type: String
     
     @State private var icon: String? = nil
     @State private var color: Color? = nil
@@ -41,25 +37,28 @@ struct CustomMessageView: View {
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .onAppear {
             switch type {
-            case .error:
+            case "error":
                 icon = "xmark"
                 color = .customRed
-            case .alert:
+            case "alert":
                 icon = "exclamationmark"
                 color = .customYellow
-            case .success:
+            case "success":
                 icon = "checkmark"
                 color = .customGreen
-            case .info:
+            case "info":
                 icon = "exclamationmark"
                 color = .customBlue
+            default:
+                icon = "xmark"
+                color = .customRed
             }
         }
     }
 }
 
 #Preview {
-    CustomMessageView(type: .info, message: "This is an error message This is an error message")
+    CustomMessageView(type: "info", message: "This is an error message This is an error message")
         .previewLayout(.sizeThatFits)
         .padding()
 }

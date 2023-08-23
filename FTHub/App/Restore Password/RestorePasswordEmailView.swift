@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RestorePasswordEmailView: View {
     @EnvironmentObject private var restorePasswordController: RestorePasswordController
-    @EnvironmentObject private var messageController: MessageController
     
     @State private var emailSent: Bool = false
     @State private var userEmail: String = ""
@@ -60,5 +59,4 @@ struct RestorePasswordEmailView: View {
 #Preview {
     RestorePasswordEmailView()
         .environmentObject(RestorePasswordController())
-        .environmentObject(MessageController())
 }

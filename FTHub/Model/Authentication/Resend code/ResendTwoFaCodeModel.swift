@@ -11,7 +11,13 @@ struct ResendTwoFaCodeModel {
     
     func resendCode(email: String?, password: String?, sendTwoFaMsg: ((AccountAuthResponse?) -> Void)? = nil) async {
             let response = await resendTwoFaCode(email: email, password: password)
-            sendTwoFaMsg?(response)
+            if let safeResponse = response {
+                if safeResponse.status == "success" {
+                    Message.sendMessage(type: "success", message: safeResponse.message)
+                } else {
+                    Message.sendMessage(type: "error", message: safeResponse.message)
+                }
+            }
     }
     
     private func resendTwoFaCode(email: String?, password: String?) async ->  AccountAuthResponse? {

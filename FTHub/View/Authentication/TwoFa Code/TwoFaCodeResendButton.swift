@@ -9,19 +9,12 @@ import SwiftUI
 
 struct TwoFaCodeResendButton: View {
     
-    @EnvironmentObject var messageController: MessageController
     @EnvironmentObject var numpadController: NumpadController
     @EnvironmentObject var resendController: ResendCodeController
 
     
     private func sendTwoFaMessage(response: AccountAuthResponse?) {
-        if let safeResponse = response {
-            if safeResponse.status == "success" {
-                messageController.sendMessage(type: .success, message: safeResponse.message)
-            } else {
-                messageController.sendMessage(type: .error, message: safeResponse.message)
-            }
-        }
+        
     }
     
     var body: some View {
@@ -38,15 +31,11 @@ struct TwoFaCodeResendButton: View {
 
         }
         .padding(.bottom, 30)
-        .onAppear {
-            resendController.sendResendTwoFaCodeMsg = sendTwoFaMessage
-        }
     }
 }
 
 #Preview {
     TwoFaCodeResendButton()
-        .environmentObject(MessageController())
         .environmentObject(NumpadController())
         .environmentObject(ResendCodeController())
 }

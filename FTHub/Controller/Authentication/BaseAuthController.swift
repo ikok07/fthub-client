@@ -16,7 +16,6 @@ class BaseAuthController: ObservableObject {
     @Published var email: String?
     @Published var password: String?
     @Published var confirmPassword: String?
-    @Published var sendBaseAuthMsg: ((AccountAuthResponse?) -> Void)?
     
     
     func saveData(activeOption: AuthOption, name: String, email: String, password: String, confirmPassword: String) {
@@ -33,7 +32,7 @@ class BaseAuthController: ObservableObject {
     }
     
     func authenticateUser() {
-        accountAuthModel.authenticate(activeOption: self.activeOption!, name: self.name, email: self.email!, password: self.password!, confirmPassword: self.confirmPassword, sendMsg: self.sendBaseAuthMsg!)
+        accountAuthModel.authenticate(activeOption: self.activeOption!, name: self.name, email: self.email!, password: self.password!, confirmPassword: self.confirmPassword)
     }
     
 }
