@@ -71,6 +71,8 @@
 		22ED2EBE2A9132AE00BB623E /* CustomNumpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2EBD2A9132AE00BB623E /* CustomNumpadView.swift */; };
 		22ED2EC02A9136E600BB623E /* CustomNumpadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2EBF2A9136E600BB623E /* CustomNumpadButtonStyle.swift */; };
 		22ED2EC22A91392300BB623E /* NumpadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2EC12A91392300BB623E /* NumpadController.swift */; };
+		22F2709C2A95DD8300AA8AC6 /* NetworkCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2709B2A95DD8300AA8AC6 /* NetworkCapable.swift */; };
+		22F2709E2A95E5FA00AA8AC6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2709D2A95E5FA00AA8AC6 /* Networking.swift */; };
 		22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +142,8 @@
 		22ED2EBD2A9132AE00BB623E /* CustomNumpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNumpadView.swift; sourceTree = "<group>"; };
 		22ED2EBF2A9136E600BB623E /* CustomNumpadButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNumpadButtonStyle.swift; sourceTree = "<group>"; };
 		22ED2EC12A91392300BB623E /* NumpadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumpadController.swift; sourceTree = "<group>"; };
+		22F2709B2A95DD8300AA8AC6 /* NetworkCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCapable.swift; sourceTree = "<group>"; };
+		22F2709D2A95E5FA00AA8AC6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeResendButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +211,7 @@
 				224A5D962A8CDC4400490614 /* Requests.swift */,
 				22374B172A9292D7006BE6BB /* Authentication.swift */,
 				22E81F192A9525E10021DBE0 /* Message.swift */,
+				22F2709D2A95E5FA00AA8AC6 /* Networking.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				228744CB2A8E634F00DB77DF /* CustomMessagePresent.swift */,
+				22F2709B2A95DD8300AA8AC6 /* NetworkCapable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -623,6 +629,7 @@
 				22E824692A8B9D3300B51C60 /* SignUpWithAppleView.swift in Sources */,
 				222F3C6A2A936F74005BC46F /* SignUpValidationController.swift in Sources */,
 				220266E52A8A5765009D299F /* TutorialMainView.swift in Sources */,
+				22F2709C2A95DD8300AA8AC6 /* NetworkCapable.swift in Sources */,
 				22969D532A94B17B00935A3C /* EmailConfirmationLinkSentView.swift in Sources */,
 				220266C22A8A4815009D299F /* FTHubApp.swift in Sources */,
 				220266F32A8A6014009D299F /* TutorialFourthPageView.swift in Sources */,
@@ -647,6 +654,7 @@
 				224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */,
 				22E824742A8BB26F00B51C60 /* TwoFaCodeMainView.swift in Sources */,
 				224A5D972A8CDC4400490614 /* Requests.swift in Sources */,
+				22F2709E2A95E5FA00AA8AC6 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

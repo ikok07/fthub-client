@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ConfirmEmailPostData: Codable {
+struct ConfirmEmailPostData: NetworkCapable {
     let email: String
     
     init(email: String) {
@@ -15,12 +15,12 @@ struct ConfirmEmailPostData: Codable {
     }
 }
 
-struct ConfirmEmailResponse: Codable {
+struct ConfirmEmailResponse: NetworkCapable {
     let status: String
     let token: String
     let data: ConfirmEmailResponseData
 }
 
-struct ConfirmEmailResponseData: Codable {
+struct ConfirmEmailResponseData: NetworkCapable {
     let user: User
 }
