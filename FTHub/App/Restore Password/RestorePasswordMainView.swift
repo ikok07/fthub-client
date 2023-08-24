@@ -17,9 +17,9 @@ struct RestorePasswordMainView: View {
             RestorePasswordHeaderView(headline: "Enter your email\n to reset your password")
             
             VStack(spacing: 20) {
-                CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter new password", text: $password)
+                CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter new password", type: .password, text: $password)
                 
-                CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm new password", text: $confirmPassword)
+                CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm new password", type: .confirmPassword, text: $confirmPassword)
             }
             .padding(.vertical, 50)
             

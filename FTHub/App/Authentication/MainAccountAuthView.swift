@@ -29,9 +29,9 @@ struct MainAccountAuthView: View {
                         .padding(.top, 30)
                     
                     if activeOption == .signIn {
-                        VStack(spacing: 20) {
-                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signInEmailText)
-                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true,  text: $signInPasswordText)
+                        VStack(spacing: 16) {
+                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, type: .email, text: $signInEmailText)
+                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: .password, text: $signInPasswordText)
                             HStack {
                                 NavigationLink(destination: RestorePasswordEmailView()) {
                                     Text("Forgot password?")
@@ -43,23 +43,25 @@ struct MainAccountAuthView: View {
                             }
                         } //: VStack
                     } else {
-                        VStack(spacing: 20, content: {
-                            CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", text: $signUpNameText)
-                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, text: $signUpEmailText)
-                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, text: $signUpPasswordText)
-                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, text: $signUpConfirmPasswordText)
+                        VStack(spacing: 16, content: {
+                            CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", type: .name, text: $signUpNameText)
+                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, type: .email, text: $signUpEmailText)
+                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: .password, text: $signUpPasswordText)
+                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, type: .confirmPassword, text: $signUpConfirmPasswordText)
                         })
                     }
                     AuthenticationFooterView(method: activeOption, name: nil, email: activeOption == .signIn ? signInEmailText : signUpEmailText, password: signInPasswordText, confirmPassword: nil) 
                     {
-                        if let validationResult = activeOption == .signUp ? SignUpValidationController.validate(name: self.signUpNameText, email: self.signUpEmailText, password: self.signUpPasswordText, confirmPassword: self.signUpConfirmPasswordText) : SignInValidationController.validate(email: self.signInEmailText, password: self.signInPasswordText) {
+                        if let message = activeOption == .signUp ? SignUpValidationController.validate(name: self.signUpNameText, email: self.signUpEmailText, password: self.signUpPasswordText, confirmPassword: self.signUpConfirmPasswordText) : SignInValidationController.validate(email: self.signInEmailText, password: self.signInPasswordText) {
                             
-                            Message.sendMessage(type: validationResult.type, message: validationResult.message)
+                            Message.sendMessage(type: "error", message: message)
+                            
                             return false
                         } else {
                             resendController.saveData(type: self.activeOption, email: self.signInEmailText, password: self.signInPasswordText)
                             
                             baseAuthController.saveData(activeOption: self.activeOption, name: self.signUpNameText, email: activeOption == .signIn ? self.signInEmailText : self.signUpEmailText, password: activeOption == .signIn ? self.signInPasswordText : self.signUpPasswordText, confirmPassword: signUpConfirmPasswordText)
+                            
                             return true
                         }
                         
