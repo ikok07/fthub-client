@@ -27,7 +27,7 @@ struct RestorePasswordEmailView: View {
                     .scaledToFit()
                     .scaleEffect(0.9)
                 
-                CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", text: $userEmail)
+                CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", type: .email, text: $userEmail)
                     .padding(.top)
                 
                 Spacer()
