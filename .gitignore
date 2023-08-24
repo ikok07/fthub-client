@@ -1,7 +1,7 @@
 # Xcode
 
 #custom
-*.xcuserstate
+FTHub.xcodeproj/project.xcworkspace/xcuserdata/macos.xcuserdatad/UserInterfaceState.xcuserstate/
 
 ## User settings
 xcuserdata/
