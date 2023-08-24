@@ -85,6 +85,7 @@ struct Authentication {
     static func sendConfirmEmail(email: String) async {
         let defaults = UserDefaults.standard
         let emailSentResponse = await Authentication.resendConfirmEmail(email: email)
+        defaults.setValue(false, forKey: "loadingPresented")
         if emailSentResponse != nil && emailSentResponse?.status == "success" {
             defaults.setValue(email, forKey: "userCurrentEmail")
             defaults.setValue(true, forKey: "emailWithLinkSent")

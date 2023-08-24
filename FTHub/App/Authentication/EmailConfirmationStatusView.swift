@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum EmailConfirmStatus: CaseIterable {
+enum EmailConfirmStatus: String, Codable, CaseIterable {
     case success, fail
 }
 
@@ -19,7 +19,8 @@ struct EmailConfirmationStatusView: View {
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     @AppStorage("emailWithLinkSent") private var emailNotVerified: Bool = false
     @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
-    let status: EmailConfirmStatus
+    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
+    @AppStorage("emailConfirmationStatus") private var status: EmailConfirmStatus = .success
     
     var body: some View {
         VStack {
@@ -43,6 +44,7 @@ struct EmailConfirmationStatusView: View {
                 Button(action: {
                     Task {
                         if status == .fail {
+                            loadingPresented = true
                             await Authentication.sendConfirmEmail(email: userCurrentEmail)
                             withAnimation {
                                 emailNotVerified = true
@@ -92,5 +94,5 @@ struct EmailConfirmationStatusView: View {
 }
 
 #Preview {
-    EmailConfirmationStatusView(status: .fail)
+    EmailConfirmationStatusView()
 }

@@ -19,6 +19,11 @@ struct RestorePasswordModel {
             if safeResponse.status == "success" {
                 defaults.setValue(email, forKey: "userCurrentEmail")
                 defaults.setValue(true, forKey: "emailWithLinkSent")
+            } else if safeResponse.status == "fail" && safeResponse.identifier == "EmailNotVerified" {
+                await Authentication.sendConfirmEmail(email: email)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    defaults.setValue(false, forKey: "loadingPresented")
+                }
             } else {
                 Message.sendMessage(type: "error", message: safeResponse.message)
             }

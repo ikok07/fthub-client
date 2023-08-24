@@ -79,6 +79,7 @@
 		22FC13BA2A9756690016E17C /* ValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13B92A9756690016E17C /* ValidationController.swift */; };
 		22FC13BD2A9757160016E17C /* RestorePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BC2A9757160016E17C /* RestorePasswordModel.swift */; };
 		22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */; };
+		22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13C02A97692D0016E17C /* CustomURLController.swift */; };
 		22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +157,7 @@
 		22FC13B92A9756690016E17C /* ValidationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationController.swift; sourceTree = "<group>"; };
 		22FC13BC2A9757160016E17C /* RestorePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordModel.swift; sourceTree = "<group>"; };
 		22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordRequestModel.swift; sourceTree = "<group>"; };
+		22FC13C02A97692D0016E17C /* CustomURLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomURLController.swift; sourceTree = "<group>"; };
 		22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeResendButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -341,6 +343,7 @@
 				22969D5E2A94E75300935A3C /* ConfirmEmailController.swift */,
 				22969D582A94C28F00935A3C /* ResendConfirmEmailController.swift */,
 				22374B1B2A92A6EB006BE6BB /* TwoFaAuthController.swift */,
+				22FC13C02A97692D0016E17C /* CustomURLController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				220266EB2A8A5B54009D299F /* TutorialPageIndicatorView.swift in Sources */,
 				22374B1A2A929C5C006BE6BB /* BaseAuthController.swift in Sources */,
 				220266D62A8A5144009D299F /* TutorialHeadingView.swift in Sources */,
+				22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */,
 				22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */,
 				220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */,
 				22DED6892A908C1400D1EBBB /* TwoFaCodeNumberField.swift in Sources */,

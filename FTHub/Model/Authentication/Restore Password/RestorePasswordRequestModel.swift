@@ -18,4 +18,5 @@ struct RestorePasswordRequest: NetworkCapable {
 struct RestorePasswordResponse: NetworkCapable {
     let status: String
     let message: String
+    let identifier: String?
 }

@@ -12,15 +12,14 @@ struct BeforeAuthView: View {
     
     @Environment(\.scenePhase) var scenePhase
     
-    var confirmEmailController: ConfirmEmailController = ConfirmEmailController()
-    
     @AppStorage("showTutorial") private var showTutorial: Bool = true
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     @AppStorage("emailWithLinkSent") private var emailWithLinkSent: Bool = false
     @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
-    @State private var emailConfirmationStatus: EmailConfirmStatus = .success
+    @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
+    @AppStorage("emailConfirmationStatus") private var emailConfirmationStatus: EmailConfirmStatus = .success
     
     var body: some View {
         ZStack {
@@ -29,7 +28,9 @@ struct BeforeAuthView: View {
             } else if self.emailWithLinkSent {
                 EmailConfirmationLinkSentView()
             } else if self.showEmailVerifyStatus {
-                EmailConfirmationStatusView(status: emailConfirmationStatus)
+                EmailConfirmationStatusView()
+            } else if self.showRestorePassword {
+                RestorePasswordMainView()
             } else {
                 MainAccountAuthView()
             }
@@ -39,23 +40,17 @@ struct BeforeAuthView: View {
         .animation(.easeOut, value: loadingPresented)
         .animation(.easeOut, value: emailWithLinkSent)
         .animation(.easeOut, value: showEmailVerifyStatus)
+        .animation(.easeOut, value: showRestorePassword)
         .onOpenURL { url in
             loadingPresented = true
-            if url.absoluteString.contains("email/confirm/") {
+            print(url.pathComponents)
+            if url.pathComponents[1] == "confirm" {
                 Task {
-                    let emailConfirmed = await confirmEmailController.confirmEmail(url: url, email: userCurrentEmail)
-                    loadingPresented = false
-                    if emailConfirmed {
-                        emailConfirmationStatus = .success
-                        print("success")
-                        emailWithLinkSent = false
-                        showEmailVerifyStatus = true
-                    } else {
-                        emailConfirmationStatus = .fail
-                        print("error")
-                        emailWithLinkSent = false
-                        showEmailVerifyStatus = true
-                    }
+                    await CustomURLController.confirmEmail(url: url)
+                }
+            } else if url.pathComponents[1] == "reset" {
+                Task {
+                    await CustomURLController.openResetPassword()
                 }
             }
         }
