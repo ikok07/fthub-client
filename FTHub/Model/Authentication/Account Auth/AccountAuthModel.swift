@@ -50,7 +50,7 @@ struct AccountAuthModel {
                         defaults.setValue(true, forKey: "showTwoFa")
                     } else {
                         defaults.setValue(email, forKey: "userCurrentEmail")
-                        defaults.setValue(true, forKey: "emailNotVerified")
+                        defaults.setValue(true, forKey: "emailWithLinkSent")
                     }
                 }
             }

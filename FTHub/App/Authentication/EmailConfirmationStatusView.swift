@@ -17,7 +17,7 @@ struct EmailConfirmationStatusView: View {
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
-    @AppStorage("emailNotVerified") private var emailNotVerified: Bool = false
+    @AppStorage("emailWithLinkSent") private var emailNotVerified: Bool = false
     @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
     let status: EmailConfirmStatus
     

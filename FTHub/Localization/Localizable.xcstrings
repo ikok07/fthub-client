@@ -96,7 +96,7 @@
         }
       }
     },
-    "Email verified" : {
+    "Email %@verified" : {
 
     },
     "email@email.com" : {
@@ -418,7 +418,7 @@
         }
       }
     },
-    "We have sent a verification link to" : {
+    "We have sent a link to" : {
 
     },
     "You have successfuly verified\n your email" : {

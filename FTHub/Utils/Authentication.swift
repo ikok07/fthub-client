@@ -9,10 +9,11 @@ import Foundation
 
 struct Authentication {
     
+    static let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
+    
     static func signIn(email: String, password: String) async -> AccountAuthResponse? {
-        let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
-        
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/login")!
+
+        let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/login")!
         let signInData: SignInPostData = SignInPostData(email: email, password: password)
         
         do {
@@ -25,8 +26,7 @@ struct Authentication {
     }
     
     static func signUp(name: String, email: String, password: String, passwordConfirm: String) async -> AccountAuthResponse? {
-        let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/signup")!
+        let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/signup")!
         let signUpData: SignUpPostData = SignUpPostData(name: name, email: email, password: password, passwordConfirm: passwordConfirm)
         
         do {
@@ -39,9 +39,8 @@ struct Authentication {
     }
     
     static func authTwoFa(email: String, code: Int) async -> TwoFaAuthResponse? {
-        let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
         
-        let url: URL = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/login/confirm")!
+        let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/login/confirm")!
         let data: TwoFaAuthPostData = TwoFaAuthPostData(email: email, token: code)
         
         do {
@@ -56,7 +55,7 @@ struct Authentication {
     static func confirmEmail(email: String, confirmToken: String) async -> ConfirmEmailResponse? {
         let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
         
-        let url = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/email/confirm/\(confirmToken)")!
+        let url = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/email/confirm/\(confirmToken)")!
         let data: ConfirmEmailPostData = ConfirmEmailPostData(email: email)
 
         do {
@@ -71,9 +70,7 @@ struct Authentication {
     
     static func resendConfirmEmail(email: String) async -> ResendConfirmEmailResponse? {
         
-        let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
-        
-        let url = URL(string: "\(K.API.apiURL)/\(language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/email/resend")!
+        let url = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/email/resend")!
         let data = ResendConfirmEmailPostData(email: email)
         
         do {
@@ -90,9 +87,22 @@ struct Authentication {
         let emailSentResponse = await Authentication.resendConfirmEmail(email: email)
         if emailSentResponse != nil && emailSentResponse?.status == "success" {
             defaults.setValue(email, forKey: "userCurrentEmail")
-            defaults.setValue(true, forKey: "emailNotVerified")
+            defaults.setValue(true, forKey: "emailWithLinkSent")
         } else {
             Message.sendMessage(type: "error", message: "Error connecting to server")
+        }
+    }
+    
+    static func sendRestorePasswordRequest(email: String) async -> RestorePasswordResponse? {
+        let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/password/reset")!
+        let data = RestorePasswordRequest(email: email)
+        
+        do {
+            let response: RestorePasswordResponse = try await Networking.startPostRequest(data: data, url: url)
+            return response
+        } catch {
+            print("Error making request to API: \(error)")
+            return nil
         }
     }
     

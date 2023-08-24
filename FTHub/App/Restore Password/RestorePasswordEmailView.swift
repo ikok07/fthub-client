@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct RestorePasswordEmailView: View {
-    @EnvironmentObject private var restorePasswordController: RestorePasswordController
+    
+    let restorePasswordController: RestorePasswordController = RestorePasswordController()
     
     @State private var emailSent: Bool = false
     @State private var userEmail: String = ""
-    
-    func sendMsg() {
-        
-    }
     
     var body: some View {
         NavigationStack {
@@ -27,14 +24,15 @@ struct RestorePasswordEmailView: View {
                     .scaledToFit()
                     .scaleEffect(0.9)
                 
-                CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", type: .email, text: $userEmail)
+                CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, type: .email, text: $userEmail)
                     .padding(.top)
                 
                 Spacer()
                 VStack(spacing: 15) {
                     Button(action: {
-                        restorePasswordController.sendMsg = self.sendMsg
-                        restorePasswordController.sendEmail(email: userEmail)
+                        Task {
+                            await restorePasswordController.sendEmail(email: userEmail)
+                        }
                     }, label: {
                         Text("Send email")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -58,5 +56,4 @@ struct RestorePasswordEmailView: View {
 
 #Preview {
     RestorePasswordEmailView()
-        .environmentObject(RestorePasswordController())
 }

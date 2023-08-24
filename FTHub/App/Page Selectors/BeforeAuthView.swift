@@ -18,7 +18,7 @@ struct BeforeAuthView: View {
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
-    @AppStorage("emailNotVerified") private var emailNotVerified: Bool = false
+    @AppStorage("emailWithLinkSent") private var emailWithLinkSent: Bool = false
     @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
     @State private var emailConfirmationStatus: EmailConfirmStatus = .success
     
@@ -26,7 +26,7 @@ struct BeforeAuthView: View {
         ZStack {
             if self.showTutorial {
                 TutorialMainView()
-            } else if self.emailNotVerified {
+            } else if self.emailWithLinkSent {
                 EmailConfirmationLinkSentView()
             } else if self.showEmailVerifyStatus {
                 EmailConfirmationStatusView(status: emailConfirmationStatus)
@@ -37,7 +37,7 @@ struct BeforeAuthView: View {
         .animation(.easeOut, value: showTutorial)
         .animation(.easeOut, value: userCurrentEmail)
         .animation(.easeOut, value: loadingPresented)
-        .animation(.easeOut, value: emailNotVerified)
+        .animation(.easeOut, value: emailWithLinkSent)
         .animation(.easeOut, value: showEmailVerifyStatus)
         .onOpenURL { url in
             loadingPresented = true
@@ -48,12 +48,12 @@ struct BeforeAuthView: View {
                     if emailConfirmed {
                         emailConfirmationStatus = .success
                         print("success")
-                        emailNotVerified = false
+                        emailWithLinkSent = false
                         showEmailVerifyStatus = true
                     } else {
                         emailConfirmationStatus = .fail
                         print("error")
-                        emailNotVerified = false
+                        emailWithLinkSent = false
                         showEmailVerifyStatus = true
                     }
                 }
@@ -61,7 +61,7 @@ struct BeforeAuthView: View {
         }
         .onChange(of: scenePhase) { oldValue, newScene in
             if newScene == .background {
-                    emailNotVerified = false
+                    emailWithLinkSent = false
                     showEmailVerifyStatus = false
             }
         }
