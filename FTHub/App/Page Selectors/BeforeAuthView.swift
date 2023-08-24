@@ -13,9 +13,9 @@ struct BeforeAuthView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @AppStorage("showTutorial") private var showTutorial: Bool = true
-    @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
+    @AppStorage("showRestorePasswordStatus") private var showRestorePasswordStatus: Bool = false
     @AppStorage("emailWithLinkSent") private var emailWithLinkSent: Bool = false
     @AppStorage("showTokenVerifyStatus") private var showTokenVerifyStatus: Bool = false
     @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
@@ -29,6 +29,8 @@ struct BeforeAuthView: View {
                 EmailConfirmationLinkSentView()
             } else if self.showTokenVerifyStatus {
                 TokenConfirmationStatusView()
+            } else if self.showRestorePasswordStatus {
+                RestorePasswordStatusView()
             } else if self.showRestorePassword {
                 RestorePasswordMainView()
             } else {
@@ -41,6 +43,7 @@ struct BeforeAuthView: View {
         .animation(.easeOut, value: emailWithLinkSent)
         .animation(.easeOut, value: showTokenVerifyStatus)
         .animation(.easeOut, value: showRestorePassword)
+        .animation(.easeOut, value: showRestorePasswordStatus)
         .onOpenURL { url in
             print(url.pathComponents)
             if url.pathComponents[1] == "confirm" {

@@ -80,6 +80,7 @@
 		22FC13BD2A9757160016E17C /* RestorePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BC2A9757160016E17C /* RestorePasswordModel.swift */; };
 		22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */; };
 		22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13C02A97692D0016E17C /* CustomURLController.swift */; };
+		22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13C42A978C5B0016E17C /* RestorePasswordStatusView.swift */; };
 		22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +159,7 @@
 		22FC13BC2A9757160016E17C /* RestorePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordModel.swift; sourceTree = "<group>"; };
 		22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordRequestModel.swift; sourceTree = "<group>"; };
 		22FC13C02A97692D0016E17C /* CustomURLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomURLController.swift; sourceTree = "<group>"; };
+		22FC13C42A978C5B0016E17C /* RestorePasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordStatusView.swift; sourceTree = "<group>"; };
 		22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeResendButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -435,6 +437,7 @@
 			children = (
 				2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */,
 				22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */,
+				22FC13C42A978C5B0016E17C /* RestorePasswordStatusView.swift */,
 			);
 			path = "Restore Password";
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */,
 				22374B1C2A92A6EB006BE6BB /* TwoFaAuthController.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
+				22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */,
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,

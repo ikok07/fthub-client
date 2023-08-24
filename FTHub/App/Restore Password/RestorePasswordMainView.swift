@@ -11,6 +11,7 @@ struct RestorePasswordMainView: View {
     @Environment(\.scenePhase) private var scenePhase
     
     @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
+    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
@@ -28,6 +29,7 @@ struct RestorePasswordMainView: View {
             
             Button(action: {
                 Task {
+                    loadingPresented = true
                     await RestorePasswordController.changePassword(password: self.password, confirmPassword: self.confirmPassword)
                 }
             }, label: {

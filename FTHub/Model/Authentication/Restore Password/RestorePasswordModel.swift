@@ -38,16 +38,15 @@ struct RestorePasswordModel {
         defaults.setValue(false, forKey: "loadingPresented")
         
         if let safeResponse = response {
-            if safeResponse.status == "success" {
-                Message.send(type: "success", message: "Succefully changed password")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    defaults.setValue(false, forKey: "showRestorePassword")
-                }
-            } else {
-                defaults.setValue(TokenVerifyStatus.fail.rawValue, forKey: "tokenConfirmationStatus")
-                defaults.setValue(true, forKey: "showTokenVerifyStatus")
-            }
+            defaults.setValue(safeResponse.token, forKey: "userToken")
+            defaults.setValue(true, forKey: "userLoggedIn")
+            defaults.setValue(RestorePasswordStatus.success.rawValue, forKey: "restorePasswordStatus")
+        } else {
+            defaults.setValue(RestorePasswordStatus.fail.rawValue, forKey: "restorePasswordStatus")
+            defaults.setValue(false, forKey: "userLoggedIn")
         }
+        defaults.setValue(true, forKey: "showRestorePasswordStatus")
+        defaults.setValue(false, forKey: "showRestorePassword")
     }
     
 }
