@@ -54,7 +54,7 @@ struct MainAccountAuthView: View {
                     {
                         if let message = activeOption == .signUp ? SignUpValidationController.validate(name: self.signUpNameText, email: self.signUpEmailText, password: self.signUpPasswordText, confirmPassword: self.signUpConfirmPasswordText) : SignInValidationController.validate(email: self.signInEmailText, password: self.signInPasswordText) {
                             
-                            Message.sendMessage(type: "error", message: message)
+                            Message.send(type: "error", message: message)
                             
                             return false
                         } else {

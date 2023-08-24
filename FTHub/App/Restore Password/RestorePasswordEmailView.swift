@@ -9,8 +9,6 @@ import SwiftUI
 
 struct RestorePasswordEmailView: View {
     
-    let restorePasswordController: RestorePasswordController = RestorePasswordController()
-    
     @State private var emailSent: Bool = false
     @State private var userEmail: String = ""
     
@@ -34,7 +32,7 @@ struct RestorePasswordEmailView: View {
                     Button(action: {
                         Task {
                             loadingPresented = true
-                            await restorePasswordController.sendEmail(email: userEmail)
+                            await RestorePasswordController.sendEmail(email: userEmail)
                         }
                     }, label: {
                         Text("Send email")

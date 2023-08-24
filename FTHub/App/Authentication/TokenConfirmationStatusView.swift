@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-enum EmailConfirmStatus: String, Codable, CaseIterable {
+enum TokenVerifyStatus: String, Codable, CaseIterable {
     case success, fail
 }
 
-struct EmailConfirmationStatusView: View {
+struct TokenConfirmationStatusView: View {
     
     @Environment(\.scenePhase) var scenePhase
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     @AppStorage("emailWithLinkSent") private var emailNotVerified: Bool = false
-    @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
+    @AppStorage("showTokenVerifyStatus") private var showTokenVerifyStatus: Bool = false
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
-    @AppStorage("emailConfirmationStatus") private var status: EmailConfirmStatus = .success
+    @AppStorage("tokenConfirmationStatus") private var status: TokenVerifyStatus = .success
     
     var body: some View {
         VStack {
@@ -48,13 +48,13 @@ struct EmailConfirmationStatusView: View {
                             await Authentication.sendConfirmEmail(email: userCurrentEmail)
                             withAnimation {
                                 emailNotVerified = true
-                                showEmailVerifyStatus = false
+                                showTokenVerifyStatus = false
                             }
                         } else {
                             withAnimation {
                                 userLoggedIn = true
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    showEmailVerifyStatus = false
+                                    showTokenVerifyStatus = false
                                 }
                             }
                         }
@@ -94,5 +94,5 @@ struct EmailConfirmationStatusView: View {
 }
 
 #Preview {
-    EmailConfirmationStatusView()
+    TokenConfirmationStatusView()
 }

@@ -34,7 +34,7 @@ struct AccountAuthModel {
         if response != nil {
             if response!.status == "fail" && response!.identifier != "EmailNotVerified"{
                 defaults.setValue(false, forKey: "loadingPresented")
-                Message.sendMessage(type: "error", message: response!.message)
+                Message.send(type: "error", message: response!.message)
             } else if response!.identifier == "EmailNotVerified"{
                 Task {
                     await Authentication.sendConfirmEmail(email: email)
@@ -44,7 +44,7 @@ struct AccountAuthModel {
                 }
             } else {
                 defaults.setValue(false, forKey: "loadingPresented")
-                Message.sendMessage(type: "success", message: response!.message)
+                Message.send(type: "success", message: response!.message)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     if method == .signIn {
                         defaults.setValue(true, forKey: "showTwoFa")
@@ -56,7 +56,7 @@ struct AccountAuthModel {
             }
         } else {
             defaults.setValue(false, forKey: "loadingPresented")
-                Message.sendMessage(type: "error", message: "Error connecting to server")
+                Message.send(type: "error", message: "Error connecting to server")
         }
     }
     

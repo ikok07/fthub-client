@@ -17,9 +17,9 @@ struct BeforeAuthView: View {
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     @AppStorage("emailWithLinkSent") private var emailWithLinkSent: Bool = false
-    @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
+    @AppStorage("showTokenVerifyStatus") private var showTokenVerifyStatus: Bool = false
     @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
-    @AppStorage("emailConfirmationStatus") private var emailConfirmationStatus: EmailConfirmStatus = .success
+    @AppStorage("tokenConfirmationStatus") private var tokenConfirmationStatus: TokenVerifyStatus = .success
     
     var body: some View {
         ZStack {
@@ -27,8 +27,8 @@ struct BeforeAuthView: View {
                 TutorialMainView()
             } else if self.emailWithLinkSent {
                 EmailConfirmationLinkSentView()
-            } else if self.showEmailVerifyStatus {
-                EmailConfirmationStatusView()
+            } else if self.showTokenVerifyStatus {
+                TokenConfirmationStatusView()
             } else if self.showRestorePassword {
                 RestorePasswordMainView()
             } else {
@@ -39,25 +39,26 @@ struct BeforeAuthView: View {
         .animation(.easeOut, value: userCurrentEmail)
         .animation(.easeOut, value: loadingPresented)
         .animation(.easeOut, value: emailWithLinkSent)
-        .animation(.easeOut, value: showEmailVerifyStatus)
+        .animation(.easeOut, value: showTokenVerifyStatus)
         .animation(.easeOut, value: showRestorePassword)
         .onOpenURL { url in
-            loadingPresented = true
             print(url.pathComponents)
             if url.pathComponents[1] == "confirm" {
+                loadingPresented = true
                 Task {
                     await CustomURLController.confirmEmail(url: url)
                 }
             } else if url.pathComponents[1] == "reset" {
+                loadingPresented = true
                 Task {
-                    await CustomURLController.openResetPassword()
+                    await CustomURLController.openResetPassword(url: url)
                 }
             }
         }
         .onChange(of: scenePhase) { oldValue, newScene in
             if newScene == .background {
                     emailWithLinkSent = false
-                    showEmailVerifyStatus = false
+                    showTokenVerifyStatus = false
             }
         }
     }

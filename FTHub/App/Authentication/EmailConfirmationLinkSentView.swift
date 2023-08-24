@@ -12,7 +12,7 @@ struct EmailConfirmationLinkSentView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @AppStorage("emailWithLinkSent") private var emailNotVerified: Bool = false
-    @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
+    @AppStorage("showTokenVerifyStatus") private var showEmailVerifyStatus: Bool = false
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     
     var body: some View {

@@ -15,15 +15,16 @@ struct CustomURLController {
         let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: defaults.string(forKey: "userCurrentEmail") ?? "No email")
         defaults.setValue(false, forKey: "loadingPresented")
         if emailConfirmed {
-            defaults.set(EmailConfirmStatus.success.rawValue, forKey: "emailConfirmationStatus")
+            defaults.set(TokenVerifyStatus.success.rawValue, forKey: "tokenConfirmationStatus")
         } else {
-            defaults.set(EmailConfirmStatus.fail.rawValue, forKey: "emailConfirmationStatus")
+            defaults.set(TokenVerifyStatus.fail.rawValue, forKey: "tokenConfirmationStatus")
         }
         defaults.setValue(false, forKey: "emailWithLinkSent")
-        defaults.setValue(true, forKey: "showEmailVerifyStatus")
+        defaults.setValue(true, forKey: "showTokenVerifyStatus")
     }
     
-    static func openResetPassword() async {
+    static func openResetPassword(url: URL) async {
+        defaults.setValue(url.pathComponents[2], forKey: "restorePasswordToken")
         defaults.setValue(true, forKey: "showRestorePassword")
         defaults.setValue(false, forKey: "loadingPresented")
     }

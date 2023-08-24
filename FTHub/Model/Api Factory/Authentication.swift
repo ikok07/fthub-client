@@ -17,7 +17,7 @@ struct Authentication {
         let signInData: SignInPostData = SignInPostData(email: email, password: password)
         
         do {
-            let response: AccountAuthResponse = try await Networking.startPostRequest(data: signInData, url: url)
+            let response: AccountAuthResponse = try await Networking.sendPostRequest(data: signInData, url: url)
             return response
         } catch {
             print("Error making request to API: \(error)")
@@ -30,7 +30,7 @@ struct Authentication {
         let signUpData: SignUpPostData = SignUpPostData(name: name, email: email, password: password, passwordConfirm: passwordConfirm)
         
         do {
-            let response: AccountAuthResponse = try await Networking.startPostRequest(data: signUpData, url: url)
+            let response: AccountAuthResponse = try await Networking.sendPostRequest(data: signUpData, url: url)
             return response
         } catch {
             print("Error making request to API: \(error)")
@@ -44,7 +44,7 @@ struct Authentication {
         let data: TwoFaAuthPostData = TwoFaAuthPostData(email: email, token: code)
         
         do {
-            let response: TwoFaAuthResponse = try await Networking.startPostRequest(data: data, url: url)
+            let response: TwoFaAuthResponse = try await Networking.sendPostRequest(data: data, url: url)
             return response
         } catch {
             print("Error making request to API: \(error)")
@@ -59,7 +59,7 @@ struct Authentication {
         let data: ConfirmEmailPostData = ConfirmEmailPostData(email: email)
 
         do {
-            let response: ConfirmEmailResponse = try await Networking.startPostRequest(data: data, url: url)
+            let response: ConfirmEmailResponse = try await Networking.sendPostRequest(data: data, url: url)
             return response
         } catch {
             print("Error making request to API: \(error)")
@@ -74,7 +74,7 @@ struct Authentication {
         let data = ResendConfirmEmailPostData(email: email)
         
         do {
-            let response: ResendConfirmEmailResponse = try await Networking.startPostRequest(data: data, url: url)
+            let response: ResendConfirmEmailResponse = try await Networking.sendPostRequest(data: data, url: url)
             return response
         } catch {
             print("Error making request to API: \(error)")
@@ -90,16 +90,29 @@ struct Authentication {
             defaults.setValue(email, forKey: "userCurrentEmail")
             defaults.setValue(true, forKey: "emailWithLinkSent")
         } else {
-            Message.sendMessage(type: "error", message: "Error connecting to server")
+            Message.send(type: "error", message: "Error connecting to server")
         }
     }
     
-    static func sendRestorePasswordRequest(email: String) async -> RestorePasswordResponse? {
+    static func sendRestorePasswordEmail(email: String) async -> RestorePasswordEmailResponse? {
         let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/password/reset")!
-        let data = RestorePasswordRequest(email: email)
+        let data = RestorePasswordEmailRequest(email: email)
         
         do {
-            let response: RestorePasswordResponse = try await Networking.startPostRequest(data: data, url: url)
+            let response: RestorePasswordEmailResponse = try await Networking.sendPostRequest(data: data, url: url)
+            return response
+        } catch {
+            print("Error making request to API: \(error)")
+            return nil
+        }
+    }
+    
+    static func changePassword(email: String, password: String, confirmPassword: String, token: String) async -> ChangePasswordResponse?{
+        let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/password/reset/\(token)")!
+        let data = ChangePasswordRequest(email: email, password: password, passwordConfirm: confirmPassword)
+        
+        do {
+            let response: ChangePasswordResponse = try await Networking.sendPatchRequest(data: data, url: url)
             return response
         } catch {
             print("Error making request to API: \(error)")

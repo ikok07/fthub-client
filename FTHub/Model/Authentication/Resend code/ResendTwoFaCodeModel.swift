@@ -13,9 +13,9 @@ struct ResendTwoFaCodeModel {
             let response = await resendTwoFaCode(email: email, password: password)
             if let safeResponse = response {
                 if safeResponse.status == "success" {
-                    Message.sendMessage(type: "success", message: safeResponse.message)
+                    Message.send(type: "success", message: safeResponse.message)
                 } else {
-                    Message.sendMessage(type: "error", message: safeResponse.message)
+                    Message.send(type: "error", message: safeResponse.message)
                 }
             }
     }

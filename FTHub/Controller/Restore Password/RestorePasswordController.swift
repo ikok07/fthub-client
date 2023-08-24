@@ -9,8 +9,12 @@ import Foundation
 
 class RestorePasswordController {
     
-    func sendEmail(email: String) async {
-        await RestorePasswordModel.sendRestoreRequest(email: email)
+    static func sendEmail(email: String) async {
+        await RestorePasswordModel.sendRestoreEmail(email: email)
+    }
+    
+    static func changePassword(password: String, confirmPassword: String) async {
+        await RestorePasswordModel.sendChangePasswordRequest(password: password, confirmPassword: confirmPassword)
     }
     
 }

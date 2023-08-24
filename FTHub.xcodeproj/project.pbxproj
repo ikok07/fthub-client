@@ -50,7 +50,7 @@
 		22969D532A94B17B00935A3C /* EmailConfirmationLinkSentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D522A94B17B00935A3C /* EmailConfirmationLinkSentView.swift */; };
 		22969D562A94B91A00935A3C /* RestorePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D552A94B91A00935A3C /* RestorePasswordController.swift */; };
 		22969D592A94C28F00935A3C /* ResendConfirmEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D582A94C28F00935A3C /* ResendConfirmEmailController.swift */; };
-		22969D5B2A94D86600935A3C /* EmailConfirmationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D5A2A94D86600935A3C /* EmailConfirmationStatusView.swift */; };
+		22969D5B2A94D86600935A3C /* TokenConfirmationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D5A2A94D86600935A3C /* TokenConfirmationStatusView.swift */; };
 		22969D5F2A94E75300935A3C /* ConfirmEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D5E2A94E75300935A3C /* ConfirmEmailController.swift */; };
 		22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D602A94EA9F00935A3C /* ConfirmEmailRequestModel.swift */; };
 		22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D622A94EC3500935A3C /* ConfirmEmailModel.swift */; };
@@ -129,7 +129,7 @@
 		22969D522A94B17B00935A3C /* EmailConfirmationLinkSentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailConfirmationLinkSentView.swift; sourceTree = "<group>"; };
 		22969D552A94B91A00935A3C /* RestorePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordController.swift; sourceTree = "<group>"; };
 		22969D582A94C28F00935A3C /* ResendConfirmEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendConfirmEmailController.swift; sourceTree = "<group>"; };
-		22969D5A2A94D86600935A3C /* EmailConfirmationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailConfirmationStatusView.swift; sourceTree = "<group>"; };
+		22969D5A2A94D86600935A3C /* TokenConfirmationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationStatusView.swift; sourceTree = "<group>"; };
 		22969D5E2A94E75300935A3C /* ConfirmEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailController.swift; sourceTree = "<group>"; };
 		22969D602A94EA9F00935A3C /* ConfirmEmailRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailRequestModel.swift; sourceTree = "<group>"; };
 		22969D622A94EC3500935A3C /* ConfirmEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailModel.swift; sourceTree = "<group>"; };
@@ -222,11 +222,9 @@
 		220266CF2A8A4935009D299F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				22FC13C22A9778490016E17C /* Network */,
 				220266D02A8A494A009D299F /* Constants.swift */,
-				224A5D962A8CDC4400490614 /* Requests.swift */,
-				22374B172A9292D7006BE6BB /* Authentication.swift */,
 				22E81F192A9525E10021DBE0 /* Message.swift */,
-				22F2709D2A95E5FA00AA8AC6 /* Networking.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -304,7 +302,7 @@
 				22969D522A94B17B00935A3C /* EmailConfirmationLinkSentView.swift */,
 				220266F72A8A7066009D299F /* MainAccountAuthView.swift */,
 				224A5D882A8CB8EE00490614 /* TwoFaCodeView.swift */,
-				22969D5A2A94D86600935A3C /* EmailConfirmationStatusView.swift */,
+				22969D5A2A94D86600935A3C /* TokenConfirmationStatusView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -393,6 +391,7 @@
 		224A5D982A8CDE8500490614 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				22FC13C32A9778730016E17C /* Api Factory */,
 				224A5D9B2A8CF44E00490614 /* Authentication */,
 				222F3C622A935D15005BC46F /* Account */,
 			);
@@ -558,6 +557,23 @@
 			path = "Restore Password";
 			sourceTree = "<group>";
 		};
+		22FC13C22A9778490016E17C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				224A5D962A8CDC4400490614 /* Requests.swift */,
+				22F2709D2A95E5FA00AA8AC6 /* Networking.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		22FC13C32A9778730016E17C /* Api Factory */ = {
+			isa = PBXGroup;
+			children = (
+				22374B172A9292D7006BE6BB /* Authentication.swift */,
+			);
+			path = "Api Factory";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -670,7 +686,7 @@
 				220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */,
 				22D56B472A962255009270FA /* BeforeAuthView.swift in Sources */,
 				222F3C5B2A935C6F005BC46F /* ResendTwoFaCodeModel.swift in Sources */,
-				22969D5B2A94D86600935A3C /* EmailConfirmationStatusView.swift in Sources */,
+				22969D5B2A94D86600935A3C /* TokenConfirmationStatusView.swift in Sources */,
 				220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */,
 				22969D562A94B91A00935A3C /* RestorePasswordController.swift in Sources */,
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
