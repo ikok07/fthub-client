@@ -59,7 +59,7 @@ struct CustomTextFieldView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8.5) {
+        VStack(alignment: .leading, spacing: 6) {
             HStack(alignment: .center, spacing: 10) {
                 Image(systemName: icon)
                     .font(.title2)
@@ -91,15 +91,14 @@ struct CustomTextFieldView: View {
             .cornerRadius(12)
             .shadow(color: Color.textfieldBg.opacity(0.3), radius: 5, x: 0, y: 2)
             
-            if let safeErrorMessage = errorMessage {
-                Text(safeErrorMessage)
-                    .font(.footnote)
-                    .fontWeight(.medium)
-                    .foregroundColor(.textfieldError)
-                    .transition(.move(edge: .bottom))
-                    .animation(.spring(), value: safeErrorMessage)
-                    .padding(.horizontal)
-            }
+
+            Text(errorMessage ?? "")
+                .font(.footnote)
+                .fontWeight(.medium)
+                .foregroundColor(.textfieldError)
+                .transition(.move(edge: .bottom))
+                .animation(.spring(), value: errorMessage)
+                .padding(.horizontal)
         }
         .padding(.horizontal, 5)
     }

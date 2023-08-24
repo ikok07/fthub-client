@@ -29,7 +29,7 @@ struct MainAccountAuthView: View {
                         .padding(.top, 30)
                     
                     if activeOption == .signIn {
-                        VStack(spacing: 16) {
+                        VStack(spacing: 7) {
                             CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, type: .email, text: $signInEmailText)
                             CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: .password, text: $signInPasswordText)
                             HStack {
