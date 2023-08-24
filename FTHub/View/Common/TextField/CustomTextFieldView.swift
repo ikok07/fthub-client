@@ -64,7 +64,7 @@ struct CustomTextFieldView: View {
                 Image(systemName: icon)
                     .font(.title2)
                 
-                if !secureField {
+                if type != .password && type != .confirmPassword {
                     TextField(placeholder, text: $text)
                         .font(.body)
                         .foregroundColor(.primary)

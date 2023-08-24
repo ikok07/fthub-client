@@ -7,19 +7,20 @@
 
 import SwiftUI
 
-enum EmailConfirmStatus: CaseIterable {
+enum TokenVerifyStatus: String, Codable, CaseIterable {
     case success, fail
 }
 
-struct EmailConfirmationStatusView: View {
+struct TokenConfirmationStatusView: View {
     
     @Environment(\.scenePhase) var scenePhase
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
-    @AppStorage("emailNotVerified") private var emailNotVerified: Bool = false
-    @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
-    let status: EmailConfirmStatus
+    @AppStorage("emailWithLinkSent") private var emailNotVerified: Bool = false
+    @AppStorage("showTokenVerifyStatus") private var showTokenVerifyStatus: Bool = false
+    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
+    @AppStorage("tokenConfirmationStatus") private var status: TokenVerifyStatus = .success
     
     var body: some View {
         VStack {
@@ -43,16 +44,17 @@ struct EmailConfirmationStatusView: View {
                 Button(action: {
                     Task {
                         if status == .fail {
+                            loadingPresented = true
                             await Authentication.sendConfirmEmail(email: userCurrentEmail)
                             withAnimation {
                                 emailNotVerified = true
-                                showEmailVerifyStatus = false
+                                showTokenVerifyStatus = false
                             }
                         } else {
                             withAnimation {
                                 userLoggedIn = true
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    showEmailVerifyStatus = false
+                                    showTokenVerifyStatus = false
                                 }
                             }
                         }
@@ -92,5 +94,5 @@ struct EmailConfirmationStatusView: View {
 }
 
 #Preview {
-    EmailConfirmationStatusView(status: .fail)
+    TokenConfirmationStatusView()
 }

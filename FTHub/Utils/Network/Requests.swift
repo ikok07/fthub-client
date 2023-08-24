@@ -42,4 +42,21 @@ struct Request {
         }
     }
     
+    static func update<T: Codable>(url: URL, body: Data) async -> Result<T, Error> {
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = body
+
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            print(String(data: data, encoding: .utf8))
+            let decodedData = try JSONDecoder().decode(T.self, from: data)
+            return .success(decodedData)
+        } catch {
+            return .failure(error)
+        }
+
+    }
+    
 }

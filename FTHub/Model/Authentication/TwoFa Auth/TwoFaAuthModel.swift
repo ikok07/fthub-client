@@ -20,7 +20,7 @@ struct TwoFaAuthModel {
             defaults.setValue(false, forKey: "loadingPresented")
             if let safeResponse = response {
                 if safeResponse.status == "success" {
-                    Message.sendMessage(type: "success", message: String(localized: "Successful email authentication"))
+                    Message.send(type: "success", message: String(localized: "Successful email authentication"))
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         withAnimation {
                             defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
@@ -29,7 +29,7 @@ struct TwoFaAuthModel {
                         }
                     }
                 } else {
-                    Message.sendMessage(type: "error", message: String(localized: "The entered code is invalid or expired"))
+                    Message.send(type: "error", message: String(localized: "The entered code is invalid or expired"))
                 }
             }
         }

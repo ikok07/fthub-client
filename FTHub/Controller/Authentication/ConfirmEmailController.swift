@@ -9,10 +9,8 @@ import Foundation
 
 class ConfirmEmailController {
     
-    let confirmEmailModel: ConfirmEmailModel = ConfirmEmailModel()
-    
-    func confirmEmail(url: URL, email: String) async -> Bool {
-        if let result = await confirmEmailModel.confirmEmail(url: url, email: email) {
+    static func confirmEmail(url: URL, email: String) async -> Bool {
+        if let result = await ConfirmEmailModel.confirmEmail(url: url, email: email) {
             return true
         }
         return false

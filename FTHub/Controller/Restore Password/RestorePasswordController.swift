@@ -7,15 +7,14 @@
 
 import Foundation
 
-class RestorePasswordController: ObservableObject {
+class RestorePasswordController {
     
-    @Published var emailSent: Bool = false
-    @Published var token: String = ""
+    static func sendEmail(email: String) async {
+        await RestorePasswordModel.sendRestoreEmail(email: email)
+    }
     
-    @Published var sendMsg: (() -> Void)?
-    
-    func sendEmail(email: String) {
-        
+    static func changePassword(password: String, confirmPassword: String) async {
+        await RestorePasswordModel.sendChangePasswordRequest(password: password, confirmPassword: confirmPassword)
     }
     
 }

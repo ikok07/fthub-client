@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Message {
     
-    static func sendMessage(type: String, message: String) {
+    static func send(type: String, message: String) {
         
         let defaults = UserDefaults.standard
         

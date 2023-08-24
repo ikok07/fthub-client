@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct RestorePasswordMainView: View {
+    @Environment(\.scenePhase) private var scenePhase
+    
+    @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
+    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
@@ -23,7 +27,12 @@ struct RestorePasswordMainView: View {
             }
             .padding(.vertical, 50)
             
-            Button(action: {}, label: {
+            Button(action: {
+                Task {
+                    loadingPresented = true
+                    await RestorePasswordController.changePassword(password: self.password, confirmPassword: self.confirmPassword)
+                }
+            }, label: {
                 Text("Create new password")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             })
@@ -32,6 +41,11 @@ struct RestorePasswordMainView: View {
         }
         .padding()
         .padding(.top, 10)
+        .onChange(of: scenePhase) { oldValue, newValue in
+            if scenePhase == .background {
+                showRestorePassword = false
+            }
+        }
     }
 }
 

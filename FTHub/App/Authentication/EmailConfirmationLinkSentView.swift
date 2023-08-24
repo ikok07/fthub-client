@@ -11,8 +11,9 @@ struct EmailConfirmationLinkSentView: View {
     
     @Environment(\.scenePhase) var scenePhase
     
-    @AppStorage("emailNotVerified") private var emailNotVerified: Bool = false
-    @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
+    @AppStorage("emailWithLinkSent") private var emailNotVerified: Bool = false
+    @AppStorage("showTokenVerifyStatus") private var showEmailVerifyStatus: Bool = false
+    @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     
     var body: some View {
         VStack {
@@ -23,8 +24,8 @@ struct EmailConfirmationLinkSentView: View {
                     .frame(width: 300)
                 
                 VStack {
-                    Text("We have sent a verification link to")
-                    Text("email@email.com")
+                    Text("We have sent a link to")
+                    Text(userCurrentEmail)
                         .tint(.text)
                         .font(.headline)
                         .fontWeight(.semibold)

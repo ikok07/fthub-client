@@ -96,10 +96,10 @@
         }
       }
     },
-    "Email verified" : {
+    "Done" : {
 
     },
-    "email@email.com" : {
+    "Email %@verified" : {
 
     },
     "Enter new password" : {
@@ -232,6 +232,12 @@
           }
         }
       }
+    },
+    "Password changed" : {
+
+    },
+    "Password was\nnot changed" : {
+
     },
     "Resend Email" : {
 
@@ -399,7 +405,13 @@
         }
       }
     },
+    "There was an error changing your password. Please try again." : {
+
+    },
     "There was an error verifying your email address. Please try again." : {
+
+    },
+    "Try Again" : {
 
     },
     "We have sent a code to" : {
@@ -418,7 +430,10 @@
         }
       }
     },
-    "We have sent a verification link to" : {
+    "We have sent a link to" : {
+
+    },
+    "You have successfuly changed your password" : {
 
     },
     "You have successfuly verified\n your email" : {
