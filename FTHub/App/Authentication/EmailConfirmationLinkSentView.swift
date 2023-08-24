@@ -13,6 +13,7 @@ struct EmailConfirmationLinkSentView: View {
     
     @AppStorage("emailWithLinkSent") private var emailNotVerified: Bool = false
     @AppStorage("showEmailVerifyStatus") private var showEmailVerifyStatus: Bool = false
+    @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     
     var body: some View {
         VStack {
@@ -24,7 +25,7 @@ struct EmailConfirmationLinkSentView: View {
                 
                 VStack {
                     Text("We have sent a link to")
-                    Text("email@email.com")
+                    Text(userCurrentEmail)
                         .tint(.text)
                         .font(.headline)
                         .fontWeight(.semibold)

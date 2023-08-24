@@ -13,13 +13,12 @@ struct RestorePasswordModel {
     
     static func sendRestoreRequest(email: String) async {
         let response = await Authentication.sendRestorePasswordRequest(email: email)
+        defaults.setValue(false, forKey: "loadingPresented")
         
         if let safeResponse = response {
             if safeResponse.status == "success" {
-                Message.sendMessage(type: "success", message: safeResponse.message)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    defaults.setValue(true, forKey: "emailWithLinkSent")
-                }
+                defaults.setValue(email, forKey: "userCurrentEmail")
+                defaults.setValue(true, forKey: "emailWithLinkSent")
             } else {
                 Message.sendMessage(type: "error", message: safeResponse.message)
             }
