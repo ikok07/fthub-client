@@ -38,7 +38,6 @@ struct NumpadButtonView: View {
                 Spacer()
             })
         }
-        .background (.keyboardKey)
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
