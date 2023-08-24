@@ -42,9 +42,8 @@ struct RestorePasswordStatusView: View {
                             showRestorePasswordStatus = false
                         }
                     } else {
-                        withAnimation {                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                showRestorePasswordStatus = false
-                            }
+                        withAnimation {
+                            showRestorePasswordStatus = false
                         }
                     }
                 }
