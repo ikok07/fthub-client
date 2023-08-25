@@ -9,7 +9,9 @@ import Foundation
 
 final class SignInValidationController: ValidationController {
     static func validate(email: String, password: String) -> String? {
-        
+        if let message = super.validateEmail(email: email).message {
+            return message
+        }
         
         return nil
     }
