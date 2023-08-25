@@ -38,10 +38,8 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                withAnimation {
-                    loadContentView = true
-                }
+            withAnimation {
+                loadContentView = true
             }
         }
     }
