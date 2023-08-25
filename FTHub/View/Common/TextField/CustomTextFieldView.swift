@@ -48,13 +48,7 @@ struct CustomTextFieldView: View {
             
             return
         case .confirmPassword:
-            if currentPassword != newValue {
-                errorMessage = "Password doesn't match!"
-            } else {
-                errorMessage = nil
-            }
-            
-            return
+            return 
         }
     }
     
@@ -69,13 +63,11 @@ struct CustomTextFieldView: View {
                         .font(.body)
                         .foregroundColor(.primary)
                         .textInputAutocapitalization(autoCapitalize ? .sentences : .never)
-                        .onChange(of: text, validate)
                 } else {
                     SecureField(placeholder, text: $text)
                         .font(.body)
                         .foregroundColor(.primary)
                         .textInputAutocapitalization(autoCapitalize ? .sentences : .never)
-                        .onChange(of: text, validate)
                 }
                 
                 if errorMessage != nil {
@@ -92,15 +84,17 @@ struct CustomTextFieldView: View {
             .shadow(color: Color.textfieldBg.opacity(0.3), radius: 5, x: 0, y: 2)
             
 
-            Text(errorMessage ?? "")
-                .font(.footnote)
-                .fontWeight(.medium)
-                .foregroundColor(.textfieldError)
-                .transition(.move(edge: .bottom))
-                .animation(.spring(), value: errorMessage)
-                .padding(.horizontal)
+            if errorMessage != nil {
+                Text(errorMessage!)
+                    .font(.footnote)
+                    .fontWeight(.medium)
+                    .foregroundColor(.textfieldError)
+                    .animation(.spring(), value: errorMessage)
+                    .padding(.horizontal)
+            }
         }
         .padding(.horizontal, 5)
+        .onChange(of: text, validate)
     }
 }
 
