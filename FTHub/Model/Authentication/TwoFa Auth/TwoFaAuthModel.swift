@@ -24,6 +24,7 @@ struct TwoFaAuthModel {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         withAnimation {
                             defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
+                            Database.saveUserData(safeResponse.data!.user)
                             defaults.setValue(true, forKey: "userLoggedIn")
                             print("loggedin: \(defaults.bool(forKey: "userLoggedIn"))")
                             defaults.setValue(false, forKey: "showTwoFa")

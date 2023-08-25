@@ -13,9 +13,8 @@ class RestorePasswordController {
         await RestorePasswordModel.sendRestoreEmail(email: email)
     }
     
-    static func changePassword(password: String, confirmPassword: String) async -> Bool {
-        let isSuccessful = await RestorePasswordModel.sendChangePasswordRequest(password: password, confirmPassword: confirmPassword)
-        return isSuccessful
+    static func changePassword(password: String, confirmPassword: String) async {
+        await RestorePasswordModel.sendChangePasswordRequest(password: password, confirmPassword: confirmPassword)
     }
     
 }

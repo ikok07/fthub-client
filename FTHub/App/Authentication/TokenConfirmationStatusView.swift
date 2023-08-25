@@ -14,7 +14,6 @@ enum TokenVerifyStatus: String, Codable, CaseIterable {
 struct TokenConfirmationStatusView: View {
     
     @Environment(\.scenePhase) var scenePhase
-    @EnvironmentObject private var accountController: AccountController
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     @AppStorage("userToken") private var userToken: String = ""
@@ -54,9 +53,7 @@ struct TokenConfirmationStatusView: View {
                             }
                         } else {
                             withAnimation {
-                                Task {
-                                    await accountController.checkToken(userToken)
-                                }
+                                userLoggedIn = true
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                     showTokenVerifyStatus = false
                                 }
@@ -99,5 +96,4 @@ struct TokenConfirmationStatusView: View {
 
 #Preview {
     TokenConfirmationStatusView()
-        .environmentObject(AccountController())
 }

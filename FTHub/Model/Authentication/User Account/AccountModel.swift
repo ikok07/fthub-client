@@ -12,22 +12,20 @@ struct AccountModel {
     
     static let defaults = UserDefaults.standard
     
-    static func authToken(_ token: String) async -> User? {
+    static func authToken(_ token: String) async {
        let response =  await Authentication.authToken(token)
         defaults.setValue(false, forKey: "loadingPresented")
         
         if let safeResponse = response {
             if safeResponse.status == "success" {
                 defaults.setValue(true, forKey: "userLoggedIn")
-                return safeResponse.data
+                if safeResponse.data != nil { Database.saveUserData(safeResponse.data!) }
             } else {
                 defaults.setValue(false, forKey: "userLoggedIn")
-                return nil
             }
         } else {
             defaults.setValue(false, forKey: "userLoggedIn")
             Message.send(type: "error", message: "There was an error connecting to our servers. Please try again later.")
-            return nil
         }
     }
     

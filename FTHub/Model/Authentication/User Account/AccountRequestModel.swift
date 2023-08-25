@@ -9,5 +9,5 @@ import Foundation
 
 struct AccountTokenAuthResponse: NetworkCapable {
     let status: String
-    let data: User
+    let data: User?
 }

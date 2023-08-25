@@ -32,24 +32,23 @@ struct RestorePasswordModel {
         }
     }
     
-    static func sendChangePasswordRequest(password: String, confirmPassword: String) async -> Bool {
+    static func sendChangePasswordRequest(password: String, confirmPassword: String) async {
         
         let response = await Authentication.changePassword(email: self.defaults.string(forKey: "userCurrentEmail") ?? "No email", password: password, confirmPassword: confirmPassword, token: self.defaults.string(forKey: "restorePasswordToken") ?? "No token")
         defaults.setValue(false, forKey: "loadingPresented")
         
         if let safeResponse = response {
             defaults.setValue(safeResponse.token, forKey: "userToken")
+            Database.saveUserData(safeResponse.data.user)
             defaults.setValue(true, forKey: "userLoggedIn")
             defaults.setValue(RestorePasswordStatus.success.rawValue, forKey: "restorePasswordStatus")
             defaults.setValue(true, forKey: "showRestorePasswordStatus")
             defaults.setValue(false, forKey: "showRestorePassword")
-            return true
         } else {
             defaults.setValue(RestorePasswordStatus.fail.rawValue, forKey: "restorePasswordStatus")
             defaults.setValue(false, forKey: "userLoggedIn")
             defaults.setValue(true, forKey: "showRestorePasswordStatus")
             defaults.setValue(false, forKey: "showRestorePassword")
-            return false
         }
     }
     

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RestorePasswordMainView: View {
     @Environment(\.scenePhase) private var scenePhase
-    @EnvironmentObject private var accountController: AccountController
     
     @AppStorage("userToken") private var userToken: String = ""
     @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
@@ -32,10 +31,7 @@ struct RestorePasswordMainView: View {
             Button(action: {
                 Task {
                     loadingPresented = true
-                    let isSuccessful = await RestorePasswordController.changePassword(password: self.password, confirmPassword: self.confirmPassword)
-                    if isSuccessful {
-                        await accountController.checkToken(userToken)
-                    }
+                    await RestorePasswordController.changePassword(password: self.password, confirmPassword: self.confirmPassword)
                 }
             }, label: {
                 Text("Create new password")
@@ -56,5 +52,4 @@ struct RestorePasswordMainView: View {
 
 #Preview {
     RestorePasswordMainView()
-        .environmentObject(AccountController())
 }

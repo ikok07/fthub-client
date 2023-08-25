@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct FTHubApp: App {
     
-    @StateObject var accountController: AccountController = AccountController()
     @StateObject var numpadController: NumpadController = NumpadController()
     @StateObject var authController: ResendCodeController = ResendCodeController()
     @StateObject var baseAuthController: BaseAuthController = BaseAuthController()
@@ -19,7 +18,7 @@ struct FTHubApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(accountController)
+                .modelContainer(for: User.self)
                 .environmentObject(numpadController)
                 .environmentObject(authController)
                 .environmentObject(baseAuthController)

@@ -9,29 +9,39 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject private var accountController: AccountController
-    
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
     @AppStorage("userToken") private var userToken: String = ""
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
+    @State private var loadContentView: Bool = false
+    
+    init() {
+        Task {
+            await AccountController.checkToken()
+        }
+    }
     
     var body: some View {
         ZStack {
-            ZStack {
-                if userLoggedIn == true {
-                    CoachesPageView()
-                        .animation(.easeOut, value: userLoggedIn)
-                } else {
-                    BeforeAuthView()
+            if loadContentView {
+                ZStack {
+                    if userLoggedIn == true {
+                        CoachesPageView()
+                            .animation(.easeOut, value: userLoggedIn)
+                    } else {
+                        BeforeAuthView()
+                    }
                 }
+                .withCustomMessage()
+                .withLoadingAnimation()
+            } else {
+                FakeLaunchScreenView()
             }
-            .withCustomMessage()
-            .withLoadingAnimation()
         }
         .onAppear {
-            Task {
-                loadingPresented = true
-                await accountController.checkToken(userToken)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                withAnimation {
+                    loadContentView = true
+                }
             }
         }
     }
@@ -39,5 +49,4 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(AccountController())
 }
