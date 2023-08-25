@@ -48,7 +48,18 @@ struct CustomTextFieldView: View {
             
             return
         case .confirmPassword:
-            return 
+            
+            if currentPassword != newValue {
+                withAnimation {
+                    errorMessage = "Password doesn't match!"
+                }
+            } else {
+                withAnimation {
+                    errorMessage = nil
+                }
+            }
+            
+            return
         }
     }
     

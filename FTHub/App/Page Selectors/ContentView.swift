@@ -9,14 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var confirmEmailController: ConfirmEmailController = ConfirmEmailController()
+    @EnvironmentObject private var accountController: AccountController
     
-    @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
+    @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
+    @AppStorage("userToken") private var userToken: String = ""
+    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     
     var body: some View {
         ZStack {
             ZStack {
-                if userLoggedIn {
+                if userLoggedIn == true {
                     CoachesPageView()
                         .animation(.easeOut, value: userLoggedIn)
                 } else {
@@ -27,11 +29,15 @@ struct ContentView: View {
             .withLoadingAnimation()
         }
         .onAppear {
-            print(userLoggedIn)
+            Task {
+                loadingPresented = true
+                await accountController.checkToken(userToken)
+            }
         }
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(AccountController())
 }

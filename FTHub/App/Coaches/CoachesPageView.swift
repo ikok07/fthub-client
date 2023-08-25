@@ -10,6 +10,7 @@ import SwiftUI
 struct CoachesPageView: View {
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = true
+    @AppStorage("userToken") private var userToken: String = ""
     
     var body: some View {
         VStack(spacing: 20) {
@@ -19,6 +20,7 @@ struct CoachesPageView: View {
             Button(action: {
                 withAnimation {
                     userLoggedIn = false
+                    userToken = ""
                 }
             }, label: {
                 Text("Sign Out")

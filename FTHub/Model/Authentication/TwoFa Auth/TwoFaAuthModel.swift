@@ -25,6 +25,7 @@ struct TwoFaAuthModel {
                         withAnimation {
                             defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
                             defaults.setValue(true, forKey: "userLoggedIn")
+                            print("loggedin: \(defaults.bool(forKey: "userLoggedIn"))")
                             defaults.setValue(false, forKey: "showTwoFa")
                         }
                     }

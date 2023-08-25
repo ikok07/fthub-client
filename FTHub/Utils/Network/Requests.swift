@@ -11,17 +11,23 @@ struct Request {
     
     // MARK: - API Requests
     
-    static func fetch<T: Codable>(url: URL) async -> T? {
-        var response: T? = nil
+    static func get<T: Codable>(url: URL, token: String) async -> Result<T, Error> {
+        
+        var request = URLRequest(url: url)
+        print(token)
+        request.httpMethod = "GET"
+        request.setValue("keep-alive", forHTTPHeaderField: "Connection")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
+            let (data, _) = try await URLSession.shared.data(for: request)
+            print(String(data: data, encoding: .utf8))
             let decodedData = try JSONDecoder().decode(T.self, from: data)
-            response = decodedData
+            return .success(decodedData)
         } catch {
             print("Error getting data from API: \(error)")
+            return .failure(error)
         }
-        return response
     }
     
     static func create<T:Codable>(url: URL, body: Data) async -> Result<T, Error> {

@@ -109,7 +109,7 @@ struct Authentication {
     
     static func changePassword(email: String, password: String, confirmPassword: String, token: String) async -> ChangePasswordResponse?{
         let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/password/reset/\(token)")!
-        let data = ChangePasswordRequest(email: email, password: password, passwordConfirm: confirmPassword)
+        let data: ChangePasswordRequest = ChangePasswordRequest(email: email, password: password, passwordConfirm: confirmPassword)
         
         do {
             let response: ChangePasswordResponse = try await Networking.sendPatchRequest(data: data, url: url)
@@ -118,6 +118,20 @@ struct Authentication {
             print("Error making request to API: \(error)")
             return nil
         }
+    }
+    
+    static func authToken(_ token: String) async -> AccountTokenAuthResponse? {
+        let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/me")!
+        print("URL: \(url)")
+        
+        do {
+            let response: AccountTokenAuthResponse = try await Networking.sendGetRequest(url: url, token: token)
+            return response
+        } catch {
+            print("Error making request to API: \(error)")
+            return nil
+        }
+        
     }
     
 }
