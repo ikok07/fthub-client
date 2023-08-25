@@ -21,8 +21,13 @@ struct AccountAuthModel {
             Task {
                 let response = await Authentication.signUp(name: name ?? "", email: email, password: password, passwordConfirm: confirmPassword ?? "")
                 if response != nil {
-                    await Authentication.sendConfirmEmail(email: email)
-                    defaults.setValue(false, forKey: "loadingPresented")
+                    if response!.status == "fail" {
+                        defaults.setValue(false, forKey: "loadingPresented")
+                        Message.send(type: "error", message: response!.message)
+                    } else {
+                        await Authentication.sendConfirmEmail(email: email)
+                        defaults.setValue(false, forKey: "loadingPresented")
+                    }
                 }
             }
         }
