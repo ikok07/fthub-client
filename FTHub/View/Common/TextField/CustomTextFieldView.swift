@@ -48,18 +48,12 @@ struct CustomTextFieldView: View {
             
             return
         case .confirmPassword:
-            if currentPassword != newValue {
-                errorMessage = "Password doesn't match!"
-            } else {
-                errorMessage = nil
-            }
-            
-            return
+            return 
         }
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8.5) {
+        VStack(alignment: .leading, spacing: 6) {
             HStack(alignment: .center, spacing: 10) {
                 Image(systemName: icon)
                     .font(.title2)
@@ -69,13 +63,11 @@ struct CustomTextFieldView: View {
                         .font(.body)
                         .foregroundColor(.primary)
                         .textInputAutocapitalization(autoCapitalize ? .sentences : .never)
-                        .onChange(of: text, validate)
                 } else {
                     SecureField(placeholder, text: $text)
                         .font(.body)
                         .foregroundColor(.primary)
                         .textInputAutocapitalization(autoCapitalize ? .sentences : .never)
-                        .onChange(of: text, validate)
                 }
                 
                 if errorMessage != nil {
@@ -91,17 +83,18 @@ struct CustomTextFieldView: View {
             .cornerRadius(12)
             .shadow(color: Color.textfieldBg.opacity(0.3), radius: 5, x: 0, y: 2)
             
-            if let safeErrorMessage = errorMessage {
-                Text(safeErrorMessage)
+
+            if errorMessage != nil {
+                Text(errorMessage!)
                     .font(.footnote)
                     .fontWeight(.medium)
                     .foregroundColor(.textfieldError)
-                    .transition(.move(edge: .bottom))
-                    .animation(.spring(), value: safeErrorMessage)
+                    .animation(.spring(), value: errorMessage)
                     .padding(.horizontal)
             }
         }
         .padding(.horizontal, 5)
+        .onChange(of: text, validate)
     }
 }
 
