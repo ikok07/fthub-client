@@ -30,7 +30,7 @@ struct MainAccountAuthView: View {
                     
                     if activeOption == .signIn {
                         VStack(spacing: 16) {
-                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, type: .email, text: $signInEmailText)
+                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, disableAutoCorrect: true, type: .email, text: $signInEmailText)
                             CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: nil, text: $signInPasswordText)
                             HStack {
                                 NavigationLink(destination: RestorePasswordEmailView()) {
@@ -44,8 +44,8 @@ struct MainAccountAuthView: View {
                         } //: VStack
                     } else {
                         VStack(spacing: 16, content: {
-                            CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", type: .name, text: $signUpNameText)
-                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, type: .email, text: $signUpEmailText)
+                            CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", disableAutoCorrect: true, type: .name, text: $signUpNameText)
+                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, disableAutoCorrect: true, type: .email, text: $signUpEmailText)
                             CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: .password, text: $signUpPasswordText)
                             CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, type: .confirmPassword, text: $signUpConfirmPasswordText)
                         })

@@ -88,7 +88,7 @@ struct Authentication {
         if emailSentResponse != nil && emailSentResponse?.status == "success" {
             defaults.setValue(email, forKey: "userCurrentEmail")
             defaults.setValue(true, forKey: "emailWithLinkSent")
-//            defaults.setValue(false, forKey: "loadingPresented")
+            defaults.setValue(false, forKey: "loadingPresented")
         } else {
             Message.send(type: "error", message: "Error connecting to server")
         }

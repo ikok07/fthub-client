@@ -19,6 +19,7 @@ struct CustomTextFieldView: View {
     let placeholder: LocalizedStringKey
     var autoCapitalize: Bool = true
     var secureField: Bool = false
+    var disableAutoCorrect: Bool = false
     let type: TextFieldType?
     
     @Binding var text: String
@@ -51,7 +52,7 @@ struct CustomTextFieldView: View {
             
             if currentPassword != newValue {
                 withAnimation {
-                    errorMessage = "Password doesn't match!"
+                    errorMessage = "Passwords doesn't match!"
                 }
             } else {
                 withAnimation {
@@ -71,11 +72,12 @@ struct CustomTextFieldView: View {
                 Image(systemName: icon)
                     .font(.title2)
                 
-                if type != .password && type != .confirmPassword {
+                if !secureField {
                     TextField(placeholder, text: $text)
                         .font(.body)
                         .foregroundColor(.primary)
                         .textInputAutocapitalization(autoCapitalize ? .sentences : .never)
+                        .autocorrectionDisabled(disableAutoCorrect)
                 } else {
                     SecureField(placeholder, text: $text)
                         .font(.body)
