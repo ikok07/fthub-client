@@ -33,6 +33,7 @@ struct ContentView: View {
                 }
                 .withCustomMessage()
                 .withLoadingAnimation()
+                .sensoryFeedback(.success, trigger: userLoggedIn)
             } else {
                 FakeLaunchScreenView()
             }

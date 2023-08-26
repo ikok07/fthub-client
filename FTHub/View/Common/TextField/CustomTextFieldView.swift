@@ -19,7 +19,7 @@ struct CustomTextFieldView: View {
     let placeholder: LocalizedStringKey
     var autoCapitalize: Bool = true
     var secureField: Bool = false
-    let type: TextFieldType
+    let type: TextFieldType?
     
     @Binding var text: String
     
@@ -59,6 +59,8 @@ struct CustomTextFieldView: View {
                 }
             }
             
+            return
+        case .none:
             return
         }
     }

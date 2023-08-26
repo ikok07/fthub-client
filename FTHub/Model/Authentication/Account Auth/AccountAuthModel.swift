@@ -22,11 +22,12 @@ struct AccountAuthModel {
                 let response = await Authentication.signUp(name: name ?? "", email: email, password: password, passwordConfirm: confirmPassword ?? "")
                 if response != nil {
                     if response!.status == "fail" {
-                        defaults.setValue(false, forKey: "loadingPresented")
+//                        defaults.setValue(false, forKey: "loadingPresented")
                         Message.send(type: "error", message: response!.message)
                     } else {
+                        print(defaults.bool(forKey: "loadingPresented"))
                         await Authentication.sendConfirmEmail(email: email)
-                        defaults.setValue(false, forKey: "loadingPresented")
+                        print(defaults.bool(forKey: "loadingPresented"))
                     }
                 }
             }
