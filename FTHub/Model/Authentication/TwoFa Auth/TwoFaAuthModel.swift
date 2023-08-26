@@ -23,6 +23,7 @@ struct TwoFaAuthModel {
                     Message.send(type: "success", message: String(localized: "Successful email authentication"))
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         withAnimation {
+                            defaults.setValue(false, forKey: "buttonLoading")
                             defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
                             Database.saveUserData(safeResponse.data!.user)
                             defaults.setValue(true, forKey: "userLoggedIn")
@@ -32,6 +33,7 @@ struct TwoFaAuthModel {
                     }
                 } else {
                     Message.send(type: "error", message: String(localized: "The entered code is invalid or expired"))
+                    defaults.setValue(false, forKey: "buttonLoading")
                 }
             }
         }

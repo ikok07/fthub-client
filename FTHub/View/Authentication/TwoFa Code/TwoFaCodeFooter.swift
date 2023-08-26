@@ -12,6 +12,7 @@ struct TwoFaCodeFooter: View {
     @EnvironmentObject var codeAuthController: TwoFaAuthController
     
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
+    @AppStorage("buttonLoading") private var buttonLoading: Bool = false
     
     let email: String
     let code: Int
@@ -22,6 +23,7 @@ struct TwoFaCodeFooter: View {
     }
     
     private func performAuthentication() {
+        buttonLoading = true
         loadingPresented = true
         saveData()
         codeAuthController.authenticateCode()
@@ -34,10 +36,26 @@ struct TwoFaCodeFooter: View {
                         performAuthentication()
                     }
                 }, label: {
+                    
+                    if buttonLoading {
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                    } else {
                         Text("Confirm")
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                    }
+                      
                 })
-                .buttonStyle(CTAButtonStyle(gradient: numpadController.fullFields ? K.Gradients.mainGradient : K.Gradients.grayGradient))
+                .buttonStyle(CTAButtonStyle(gradient: {
+                    if buttonLoading {
+                        return K.Gradients.grayGradient
+                    } else if numpadController.fullFields {
+                        return K.Gradients.mainGradient
+                    } else {
+                        return K.Gradients.grayGradient
+                    }
+                }()))
                 .animation(.easeOut(duration: 0.2), value: 10)
                 .padding()
                 
