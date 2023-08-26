@@ -7,6 +7,8 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string>logo</string>
 			<key>CFBundleURLName</key>
 			<string>eu.fthub</string>
 			<key>CFBundleURLSchemes</key>

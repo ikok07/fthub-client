@@ -81,6 +81,14 @@ struct MainAccountAuthView: View {
                     } //: ScrollView
                     .padding(.horizontal)
                     .scrollIndicators(.hidden)
+                    .onAppear {
+                        self.signInEmailText = ""
+                        self.signInPasswordText = ""
+                        self.signUpNameText = ""
+                        self.signUpEmailText = ""
+                        self.signUpPasswordText = ""
+                        self.signUpConfirmPasswordText = ""
+                    }
                 } //: ScrollViewReader
             } //: NavigationView
         } //: ZStack

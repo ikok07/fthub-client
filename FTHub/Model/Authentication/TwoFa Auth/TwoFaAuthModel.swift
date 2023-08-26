@@ -20,16 +20,13 @@ struct TwoFaAuthModel {
             defaults.setValue(false, forKey: "loadingPresented")
             if let safeResponse = response {
                 if safeResponse.status == "success" {
-                    Message.send(type: "success", message: String(localized: "Successful email authentication"))
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        withAnimation {
-                            defaults.setValue(false, forKey: "buttonLoading")
-                            defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
-                            Database.saveUserData(safeResponse.data!.user)
-                            defaults.setValue(true, forKey: "userLoggedIn")
-                            print("loggedin: \(defaults.bool(forKey: "userLoggedIn"))")
-                            defaults.setValue(false, forKey: "showTwoFa")
-                        }
+                    withAnimation {
+                        defaults.setValue(false, forKey: "buttonLoading")
+                        defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
+                        Database.saveUserData(safeResponse.data!.user)
+                        defaults.setValue(true, forKey: "userLoggedIn")
+                        print("loggedin: \(defaults.bool(forKey: "userLoggedIn"))")
+                        defaults.setValue(false, forKey: "showTwoFa")
                     }
                 } else {
                     Message.send(type: "error", message: String(localized: "The entered code is invalid or expired"))

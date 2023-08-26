@@ -374,6 +374,7 @@
       }
     },
     "Successful email authentication" : {
+      "extractionState" : "stale",
       "localizations" : {
         "bg" : {
           "stringUnit" : {
