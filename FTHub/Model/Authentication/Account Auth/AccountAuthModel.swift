@@ -25,7 +25,9 @@ struct AccountAuthModel {
                         defaults.setValue(false, forKey: "loadingPresented")
                         Message.send(type: "error", message: response!.message)
                     } else {
-                        await Authentication.sendConfirmEmail(email: email)
+                        defaults.setValue(email, forKey: "userCurrentEmail")
+                        defaults.setValue(true, forKey: "emailWithLinkSent")
+                        defaults.setValue(false, forKey: "loadingPresented")
                     }
                 }
             }
@@ -57,8 +59,9 @@ struct AccountAuthModel {
             }
         } else {
             defaults.setValue(false, forKey: "loadingPresented")
-                Message.send(type: "error", message: "Error connecting to server")
+            Message.send(type: "error", message: "Error connecting to server")
         }
+        defaults.setValue(false, forKey: "buttonLoading")
     }
     
 }

@@ -19,6 +19,7 @@ struct AuthenticationFooterView: View {
     
     @AppStorage("showTwoFa") private var showTwoFa: Bool = false
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
+    @AppStorage("buttonLoading") private var buttonLoading: Bool = false
     
     var saveDetails: () -> Bool
     
@@ -29,19 +30,32 @@ struct AuthenticationFooterView: View {
             
             Button(action: {
                 if saveDetails() {
-                    loadingPresented = true
-                    baseAuthController.authenticateUser()
+                    withAnimation {
+                        buttonLoading = true
+                        loadingPresented = true
+                        baseAuthController.authenticateUser()
+                    }
                 }
             }, label: {
-                Text(method == .signIn ? "Sign In" : "Sign Up")
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                if buttonLoading {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                } else {
+                    Text(method == .signIn ? "Sign In" : "Sign Up")
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                }
             }) //: Button
-            .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
+            .buttonStyle(CTAButtonStyle(gradient: buttonLoading ? K.Gradients.grayGradient : K.Gradients.mainGradient))
+            .disabled(buttonLoading)
             .padding()
             
         } //: VStack
         .navigationDestination(isPresented: $showTwoFa) {
             TwoFaCodeView(email: email, password: password)
+        }
+        .onAppear {
+            buttonLoading = false
         }
     }
 }

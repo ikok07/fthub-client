@@ -28,7 +28,6 @@ struct Authentication {
     static func signUp(name: String, email: String, password: String, passwordConfirm: String) async -> AccountAuthResponse? {
         let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/signup")!
         let signUpData: SignUpPostData = SignUpPostData(name: name, email: email, password: password, passwordConfirm: passwordConfirm)
-        
         do {
             let response: AccountAuthResponse = try await Networking.sendPostRequest(data: signUpData, url: url)
             return response

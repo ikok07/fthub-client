@@ -22,6 +22,7 @@ struct Networking {
     static func sendPostRequest<T: NetworkCapable, V: Codable>(data: V, url: URL) async throws -> T {
             let jsonData = try JSONEncoder().encode(data)
             print(String(data: jsonData, encoding: .utf8))
+        
             let result: Result<T, Error> = await Request.create(url: url, body: jsonData)
             switch result {
             case .success(let response):
