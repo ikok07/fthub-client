@@ -14,12 +14,6 @@ struct ContentView: View {
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     @State private var loadContentView: Bool = false
     
-    init() {
-        Task {
-//            await AccountController.checkToken()
-        }
-    }
-    
     var body: some View {
         ZStack {
             if loadContentView {
@@ -39,8 +33,11 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            withAnimation {
-                loadContentView = true
+            Task {
+                await AccountController.checkToken()
+                withAnimation {
+                    loadContentView = true
+                }
             }
         }
     }
