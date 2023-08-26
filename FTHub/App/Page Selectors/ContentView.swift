@@ -16,7 +16,7 @@ struct ContentView: View {
     
     init() {
         Task {
-            await AccountController.checkToken()
+//            await AccountController.checkToken()
         }
     }
     

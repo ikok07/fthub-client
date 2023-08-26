@@ -15,19 +15,17 @@ struct AccountAuthModel {
         if activeOption == .signIn {
             Task {
                 let response = await Authentication.signIn(email: email, password: password)
-                sendMsg(method: activeOption, response: response, email: email)
+                advanceSignIn(method: activeOption, response: response, email: email)
             }
         } else if activeOption == .signUp {
             Task {
                 let response = await Authentication.signUp(name: name ?? "", email: email, password: password, passwordConfirm: confirmPassword ?? "")
                 if response != nil {
                     if response!.status == "fail" {
-//                        defaults.setValue(false, forKey: "loadingPresented")
+                        defaults.setValue(false, forKey: "loadingPresented")
                         Message.send(type: "error", message: response!.message)
                     } else {
-                        print(defaults.bool(forKey: "loadingPresented"))
                         await Authentication.sendConfirmEmail(email: email)
-                        print(defaults.bool(forKey: "loadingPresented"))
                     }
                 }
             }
@@ -36,7 +34,7 @@ struct AccountAuthModel {
     
     
     
-    private func sendMsg(method: AuthOption, response: AccountAuthResponse?, email: String) {
+    private func advanceSignIn(method: AuthOption, response: AccountAuthResponse?, email: String) {
         if response != nil {
             if response!.status == "fail" && response!.identifier != "EmailNotVerified"{
                 defaults.setValue(false, forKey: "loadingPresented")
@@ -49,16 +47,13 @@ struct AccountAuthModel {
                     }
                 }
             } else {
-                defaults.setValue(false, forKey: "loadingPresented")
-                Message.send(type: "success", message: response!.message)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     if method == .signIn {
                         defaults.setValue(true, forKey: "showTwoFa")
                     } else {
                         defaults.setValue(email, forKey: "userCurrentEmail")
                         defaults.setValue(true, forKey: "emailWithLinkSent")
                     }
-                }
+                defaults.setValue(false, forKey: "loadingPresented")
             }
         } else {
             defaults.setValue(false, forKey: "loadingPresented")

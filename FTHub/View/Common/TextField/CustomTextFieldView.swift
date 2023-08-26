@@ -12,7 +12,7 @@ enum TextFieldType: CaseIterable {
 }
 
 struct CustomTextFieldView: View {
-    
+    @FocusState private var isFocused: Bool
     @AppStorage("currentPassword") var currentPassword: String = ""
     
     let icon: String

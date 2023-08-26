@@ -24,52 +24,64 @@ struct MainAccountAuthView: View {
     var body: some View {
         ZStack {
             NavigationStack {
-                ScrollView {
-                    AuthenticationHeaderView(activeOption: $activeOption)
-                        .padding(.top, 30)
-                    
-                    if activeOption == .signIn {
-                        VStack(spacing: 16) {
-                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, disableAutoCorrect: true, type: .email, text: $signInEmailText)
-                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: nil, text: $signInPasswordText)
-                            HStack {
-                                NavigationLink(destination: RestorePasswordEmailView()) {
-                                    Text("Forgot password?")
-                                        .foregroundStyle(.textGray)
-                                        .fontWeight(.medium)
-                                        .padding(.leading)
-                                }
-                                Spacer()
-                            }
-                        } //: VStack
-                    } else {
-                        VStack(spacing: 16, content: {
-                            CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", disableAutoCorrect: true, type: .name, text: $signUpNameText)
-                            CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, disableAutoCorrect: true, type: .email, text: $signUpEmailText)
-                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: .password, text: $signUpPasswordText)
-                            CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, type: .confirmPassword, text: $signUpConfirmPasswordText)
-                        })
-                    }
-                    AuthenticationFooterView(method: activeOption, name: nil, email: activeOption == .signIn ? signInEmailText : signUpEmailText, password: signInPasswordText, confirmPassword: nil) 
-                    {
-                        if let message = activeOption == .signUp ? SignUpValidationController.validate(name: self.signUpNameText, email: self.signUpEmailText, password: self.signUpPasswordText, confirmPassword: self.signUpConfirmPasswordText) : SignInValidationController.validate(email: self.signInEmailText, password: self.signInPasswordText) {
-                            
-                            Message.send(type: "error", message: message)
-                            
-                            return false
-                        } else {
-                            resendController.saveData(type: self.activeOption, email: self.signInEmailText, password: self.signInPasswordText)
-                            
-                            baseAuthController.saveData(activeOption: self.activeOption, name: self.signUpNameText, email: activeOption == .signIn ? self.signInEmailText : self.signUpEmailText, password: activeOption == .signIn ? self.signInPasswordText : self.signUpPasswordText, confirmPassword: signUpConfirmPasswordText)
-                            
-                            return true
-                        }
+                ScrollViewReader { scrollValue in
+                    ScrollView {
+                        AuthenticationHeaderView(activeOption: $activeOption)
+                            .padding(.top, 30)
                         
-                    }
+                        if activeOption == .signIn {
+                            VStack(spacing: 16) {
+                                CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, disableAutoCorrect: true, type: .email, text: $signInEmailText)
+                                
+                                CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: nil, text: $signInPasswordText)
+                                    .id(0)
+                                    .onTapGesture {
+                                        scrollValue.scrollTo(0, anchor: .top)
+                                    }
+                                HStack {
+                                    NavigationLink(destination: RestorePasswordEmailView()) {
+                                        Text("Forgot password?")
+                                            .foregroundStyle(.textGray)
+                                            .fontWeight(.medium)
+                                            .padding(.leading)
+                                    }
+                                    Spacer()
+                                }
+                            } //: VStack
+                        } else {
+                            VStack(spacing: 16, content: {
+                                CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", disableAutoCorrect: true, type: .name, text: $signUpNameText)
+                                    .id(1)
+                                    .onTapGesture {
+                                        withAnimation(.easeOut) {
+                                            scrollValue.scrollTo(1, anchor: .top)
+                                        }
+                                    }
+                                CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, disableAutoCorrect: true, type: .email, text: $signUpEmailText)
+                                CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: .password, text: $signUpPasswordText)
+                                CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, type: .confirmPassword, text: $signUpConfirmPasswordText)
+                            })
+                        }
+                        AuthenticationFooterView(method: activeOption, name: nil, email: activeOption == .signIn ? signInEmailText : signUpEmailText, password: signInPasswordText, confirmPassword: nil) 
+                        {
+                            if let message = activeOption == .signUp ? SignUpValidationController.validate(name: self.signUpNameText, email: self.signUpEmailText, password: self.signUpPasswordText, confirmPassword: self.signUpConfirmPasswordText) : SignInValidationController.validate(email: self.signInEmailText, password: self.signInPasswordText) {
+                                
+                                Message.send(type: "error", message: message)
+                                
+                                return false
+                            } else {
+                                resendController.saveData(type: self.activeOption, email: self.signInEmailText, password: self.signInPasswordText)
 
-                } //: ScrollView
-                .padding(.horizontal)
-                .scrollIndicators(.hidden)
+                                baseAuthController.saveData(activeOption: self.activeOption, name: self.signUpNameText, email: activeOption == .signIn ? self.signInEmailText : self.signUpEmailText, password: activeOption == .signIn ? self.signInPasswordText : self.signUpPasswordText, confirmPassword: signUpConfirmPasswordText)
+                                
+                                return true
+                            }
+                        }
+
+                    } //: ScrollView
+                    .padding(.horizontal)
+                    .scrollIndicators(.hidden)
+                } //: ScrollViewReader
             } //: NavigationView
         } //: ZStack
     }

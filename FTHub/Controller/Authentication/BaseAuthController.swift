@@ -20,7 +20,6 @@ class BaseAuthController: ObservableObject {
     
     func saveData(activeOption: AuthOption, name: String, email: String, password: String, confirmPassword: String) {
         self.activeOption = activeOption
-        print(activeOption)
         self.email = email
         self.password = password
         
