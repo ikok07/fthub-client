@@ -20,9 +20,9 @@ struct TutorialStartPageView: View {
                     .padding(.bottom, 30)
                 
                 VStack(spacing: 20) {
-                    TutorialHeadingView(upperPart: "Welcome to FTHub", bottomPart: "Train Smart")
+                    TwoLineHeadingView(upperPart: "Welcome to FTHub", bottomPart: "Train Smart")
                     
-                    TutorialHeadlineView(text: "Discover all your fitness apps in one place. Create workouts or enter one of our custom fitness programs")
+                    HeadlineView(text: "Discover all your fitness apps in one place. Create workouts or enter one of our custom fitness programs")
                 }
                 .padding(.bottom, 30)
                 .padding(.horizontal)

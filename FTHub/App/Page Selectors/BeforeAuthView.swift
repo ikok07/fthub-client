@@ -24,7 +24,7 @@ struct BeforeAuthView: View {
     var body: some View {
         ZStack {
             if self.showTutorial {
-                TutorialMainView()
+                TutorialPageViewManager()
             } else if self.emailWithLinkSent {
                 EmailConfirmationLinkSentView()
             } else if self.showTokenVerifyStatus {

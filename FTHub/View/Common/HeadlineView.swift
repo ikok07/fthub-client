@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TutorialHeadlineView: View {
+struct HeadlineView: View {
     
     let text: String
     
@@ -20,5 +20,5 @@ struct TutorialHeadlineView: View {
 }
 
 #Preview {
-    TutorialHeadlineView(text: "Discover all your fitness apps in one place. Create workouts or enter one of our custom fitness programs")
+    HeadlineView(text: "Discover all your fitness apps in one place. Create workouts or enter one of our custom fitness programs")
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TutorialMainView: View {
+struct TutorialPageViewManager: View {
     
     @State private var tutorialStarted: Bool = false
     @State private var selectedTab: Int = 0
@@ -35,5 +35,5 @@ struct TutorialMainView: View {
 }
 
 #Preview {
-    TutorialMainView()
+    TutorialPageViewManager()
 }

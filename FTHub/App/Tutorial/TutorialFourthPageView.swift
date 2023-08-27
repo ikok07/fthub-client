@@ -18,9 +18,9 @@ struct TutorialFourthPageView: View {
                 .padding(.bottom, 30)
             
             VStack(spacing: 20) {
-                TutorialHeadingView(upperPart: "ease your progress", bottomPart: "with our coaches")
+                TwoLineHeadingView(upperPart: "ease your progress", bottomPart: "with our coaches")
                 
-                TutorialHeadlineView(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd")
+                HeadlineView(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd")
             }
             .padding(.horizontal)
             

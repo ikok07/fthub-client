@@ -12,11 +12,11 @@
 		220266C62A8A4818009D299F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220266C52A8A4818009D299F /* Assets.xcassets */; };
 		220266C92A8A4818009D299F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220266C82A8A4818009D299F /* Preview Assets.xcassets */; };
 		220266D12A8A494A009D299F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D02A8A494A009D299F /* Constants.swift */; };
-		220266D62A8A5144009D299F /* TutorialHeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D52A8A5144009D299F /* TutorialHeadingView.swift */; };
+		220266D62A8A5144009D299F /* TwoLineHeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D52A8A5144009D299F /* TwoLineHeadingView.swift */; };
 		220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D72A8A51DD009D299F /* TutorialImageView.swift */; };
-		220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D92A8A5249009D299F /* TutorialHeadlineView.swift */; };
+		220266DA2A8A5249009D299F /* HeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266D92A8A5249009D299F /* HeadlineView.swift */; };
 		220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E02A8A538F009D299F /* CTAButtonStyle.swift */; };
-		220266E52A8A5765009D299F /* TutorialMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E42A8A5765009D299F /* TutorialMainView.swift */; };
+		220266E52A8A5765009D299F /* TutorialPageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E42A8A5765009D299F /* TutorialPageViewManager.swift */; };
 		220266E72A8A5787009D299F /* TutorialStartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E62A8A5787009D299F /* TutorialStartPageView.swift */; };
 		220266E92A8A5A28009D299F /* TutorialFirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266E82A8A5A28009D299F /* TutorialFirstPageView.swift */; };
 		220266EB2A8A5B54009D299F /* TutorialPageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220266EA2A8A5B54009D299F /* TutorialPageIndicatorView.swift */; };
@@ -86,6 +86,10 @@
 		22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */; };
 		22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13C02A97692D0016E17C /* CustomURLController.swift */; };
 		22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13C42A978C5B0016E17C /* RestorePasswordStatusView.swift */; };
+		22FD03352A9B8372005A6A13 /* SetupPageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03342A9B8372005A6A13 /* SetupPageOneView.swift */; };
+		22FD03372A9B83C4005A6A13 /* SetupPageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */; };
+		22FD03392A9B87C6005A6A13 /* SetupPageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */; };
+		22FD033C2A9B88A0005A6A13 /* GenderSelectRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */; };
 		22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,11 +101,11 @@
 		220266C82A8A4818009D299F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		220266D02A8A494A009D299F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		220266D22A8A4B54009D299F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		220266D52A8A5144009D299F /* TutorialHeadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialHeadingView.swift; sourceTree = "<group>"; };
+		220266D52A8A5144009D299F /* TwoLineHeadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLineHeadingView.swift; sourceTree = "<group>"; };
 		220266D72A8A51DD009D299F /* TutorialImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialImageView.swift; sourceTree = "<group>"; };
-		220266D92A8A5249009D299F /* TutorialHeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialHeadlineView.swift; sourceTree = "<group>"; };
+		220266D92A8A5249009D299F /* HeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineView.swift; sourceTree = "<group>"; };
 		220266E02A8A538F009D299F /* CTAButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButtonStyle.swift; sourceTree = "<group>"; };
-		220266E42A8A5765009D299F /* TutorialMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialMainView.swift; sourceTree = "<group>"; };
+		220266E42A8A5765009D299F /* TutorialPageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewManager.swift; sourceTree = "<group>"; };
 		220266E62A8A5787009D299F /* TutorialStartPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialStartPageView.swift; sourceTree = "<group>"; };
 		220266E82A8A5A28009D299F /* TutorialFirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialFirstPageView.swift; sourceTree = "<group>"; };
 		220266EA2A8A5B54009D299F /* TutorialPageIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageIndicatorView.swift; sourceTree = "<group>"; };
@@ -170,6 +174,10 @@
 		22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordRequestModel.swift; sourceTree = "<group>"; };
 		22FC13C02A97692D0016E17C /* CustomURLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomURLController.swift; sourceTree = "<group>"; };
 		22FC13C42A978C5B0016E17C /* RestorePasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordStatusView.swift; sourceTree = "<group>"; };
+		22FD03342A9B8372005A6A13 /* SetupPageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageOneView.swift; sourceTree = "<group>"; };
+		22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageViewManager.swift; sourceTree = "<group>"; };
+		22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageTwoView.swift; sourceTree = "<group>"; };
+		22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectRowView.swift; sourceTree = "<group>"; };
 		22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeResendButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,6 +253,7 @@
 		220266D32A8A511D009D299F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				22FD033A2A9B888D005A6A13 /* Setup */,
 				22969D4F2A94AA9500935A3C /* Restore Password */,
 				220266DB2A8A52E6009D299F /* Common */,
 				22EB51AF2A8B708E0079A3B1 /* Authentication */,
@@ -256,9 +265,7 @@
 		220266D42A8A5124009D299F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				220266D52A8A5144009D299F /* TutorialHeadingView.swift */,
 				220266D72A8A51DD009D299F /* TutorialImageView.swift */,
-				220266D92A8A5249009D299F /* TutorialHeadlineView.swift */,
 				220266EA2A8A5B54009D299F /* TutorialPageIndicatorView.swift */,
 			);
 			path = Tutorial;
@@ -267,6 +274,8 @@
 		220266DB2A8A52E6009D299F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				220266D52A8A5144009D299F /* TwoLineHeadingView.swift */,
+				220266D92A8A5249009D299F /* HeadlineView.swift */,
 				22ED2EBA2A912FEE00BB623E /* Numpad */,
 				224C9FB32A8E0DEE00AF5612 /* Error */,
 				222F3C712A938600005BC46F /* TextField */,
@@ -286,6 +295,7 @@
 		220266E22A8A5734009D299F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				22FD03332A9B834A005A6A13 /* Setup */,
 				22D56B452A962223009270FA /* Page Selectors */,
 				224A5D8C2A8CC53600490614 /* Coaches */,
 				2257C93B2A8BFD36000E3CD2 /* Restore Password */,
@@ -299,7 +309,7 @@
 		220266E32A8A5741009D299F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				220266E42A8A5765009D299F /* TutorialMainView.swift */,
+				220266E42A8A5765009D299F /* TutorialPageViewManager.swift */,
 				220266E62A8A5787009D299F /* TutorialStartPageView.swift */,
 				220266E82A8A5A28009D299F /* TutorialFirstPageView.swift */,
 				220266EC2A8A5DE2009D299F /* TutorialSecondPageView.swift */,
@@ -616,6 +626,24 @@
 			path = "Api Factory";
 			sourceTree = "<group>";
 		};
+		22FD03332A9B834A005A6A13 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				22FD03342A9B8372005A6A13 /* SetupPageOneView.swift */,
+				22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */,
+				22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+		22FD033A2A9B888D005A6A13 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -700,7 +728,7 @@
 				22E81F1A2A9525E10021DBE0 /* Message.swift in Sources */,
 				220266EB2A8A5B54009D299F /* TutorialPageIndicatorView.swift in Sources */,
 				22374B1A2A929C5C006BE6BB /* BaseAuthController.swift in Sources */,
-				220266D62A8A5144009D299F /* TutorialHeadingView.swift in Sources */,
+				220266D62A8A5144009D299F /* TwoLineHeadingView.swift in Sources */,
 				22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */,
 				22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */,
 				220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */,
@@ -722,12 +750,14 @@
 				22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */,
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
+				22FD03352A9B8372005A6A13 /* SetupPageOneView.swift in Sources */,
 				22DA77B62A98D83300550A6B /* FakeLaunchScreenView.swift in Sources */,
 				22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */,
 				22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */,
 				22ED2EBC2A912FFF00BB623E /* NumpadButtonView.swift in Sources */,
+				22FD03372A9B83C4005A6A13 /* SetupPageViewManager.swift in Sources */,
 				22EB51B12A8B70AC0079A3B1 /* LogRegButtonsView.swift in Sources */,
-				220266DA2A8A5249009D299F /* TutorialHeadlineView.swift in Sources */,
+				220266DA2A8A5249009D299F /* HeadlineView.swift in Sources */,
 				22D56B472A962255009270FA /* BeforeAuthView.swift in Sources */,
 				222F3C5B2A935C6F005BC46F /* ResendTwoFaCodeModel.swift in Sources */,
 				22969D5B2A94D86600935A3C /* TokenConfirmationStatusView.swift in Sources */,
@@ -739,8 +769,9 @@
 				224A5D862A8CB82B00490614 /* TwoFaCodeHeaderView.swift in Sources */,
 				22DA77AF2A98A45900550A6B /* AccountModel.swift in Sources */,
 				2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */,
+				22FD033C2A9B88A0005A6A13 /* GenderSelectRowView.swift in Sources */,
 				22E824692A8B9D3300B51C60 /* SignUpWithAppleView.swift in Sources */,
-				220266E52A8A5765009D299F /* TutorialMainView.swift in Sources */,
+				220266E52A8A5765009D299F /* TutorialPageViewManager.swift in Sources */,
 				22F2709C2A95DD8300AA8AC6 /* NetworkCapable.swift in Sources */,
 				22CDFF942A94E36B009DB029 /* SignInValidationController.swift in Sources */,
 				22969D532A94B17B00935A3C /* EmailConfirmationLinkSentView.swift in Sources */,
@@ -767,6 +798,7 @@
 				22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */,
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
+				22FD03392A9B87C6005A6A13 /* SetupPageTwoView.swift in Sources */,
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,
 				224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */,
 				22E824742A8BB26F00B51C60 /* TwoFaCodeMainView.swift in Sources */,

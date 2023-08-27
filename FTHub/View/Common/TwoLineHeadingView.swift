@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TutorialHeadingView: View {
+struct TwoLineHeadingView: View {
     
     let upperPart: String
     let bottomPart: String
@@ -26,5 +26,5 @@ struct TutorialHeadingView: View {
 }
 
 #Preview {
-    TutorialHeadingView(upperPart: "Welcome to FTHub", bottomPart: "Train smart")
+    TwoLineHeadingView(upperPart: "Welcome to FTHub", bottomPart: "Train smart")
 }
