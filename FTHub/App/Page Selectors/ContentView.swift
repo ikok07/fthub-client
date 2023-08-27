@@ -20,7 +20,6 @@ struct ContentView: View {
                 ZStack {
                     if userLoggedIn == true {
                         CoachesPageView()
-                            .animation(.easeOut, value: userLoggedIn)
                     } else {
                         BeforeAuthView()
                     }
@@ -28,6 +27,7 @@ struct ContentView: View {
                 .withCustomMessage()
                 .withLoadingAnimation()
                 .sensoryFeedback(.success, trigger: userLoggedIn)
+                .animation(.easeOut, value: userLoggedIn)
             } else {
                 FakeLaunchScreenView()
             }

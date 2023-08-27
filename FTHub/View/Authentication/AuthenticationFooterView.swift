@@ -32,7 +32,6 @@ struct AuthenticationFooterView: View {
                 if saveDetails() {
                     withAnimation {
                         buttonLoading = true
-                        loadingPresented = true
                         baseAuthController.authenticateUser()
                     }
                 }
@@ -48,6 +47,7 @@ struct AuthenticationFooterView: View {
             }) //: Button
             .buttonStyle(CTAButtonStyle(gradient: buttonLoading ? K.Gradients.grayGradient : K.Gradients.mainGradient))
             .disabled(buttonLoading)
+            .animation(.easeOut, value: buttonLoading)
             .padding()
             
         } //: VStack

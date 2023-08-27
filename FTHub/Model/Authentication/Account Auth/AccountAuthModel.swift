@@ -22,13 +22,12 @@ struct AccountAuthModel {
                 let response = await Authentication.signUp(name: name ?? "", email: email, password: password, passwordConfirm: confirmPassword ?? "")
                 if response != nil {
                     if response!.status == "fail" {
-                        defaults.setValue(false, forKey: "loadingPresented")
                         Message.send(type: "error", message: response!.message)
                     } else {
                         defaults.setValue(email, forKey: "userCurrentEmail")
                         defaults.setValue(true, forKey: "emailWithLinkSent")
-                        defaults.setValue(false, forKey: "loadingPresented")
                     }
+                    defaults.setValue(false, forKey: "buttonLoading")
                 }
             }
         }
@@ -44,9 +43,6 @@ struct AccountAuthModel {
             } else if response!.identifier == "EmailNotVerified"{
                 Task {
                     await Authentication.sendConfirmEmail(email: email)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        defaults.setValue(false, forKey: "loadingPresented")
-                    }
                 }
             } else {
                     if method == .signIn {
@@ -55,10 +51,8 @@ struct AccountAuthModel {
                         defaults.setValue(email, forKey: "userCurrentEmail")
                         defaults.setValue(true, forKey: "emailWithLinkSent")
                     }
-                defaults.setValue(false, forKey: "loadingPresented")
             }
         } else {
-            defaults.setValue(false, forKey: "loadingPresented")
             Message.send(type: "error", message: "Error connecting to server")
         }
         defaults.setValue(false, forKey: "buttonLoading")

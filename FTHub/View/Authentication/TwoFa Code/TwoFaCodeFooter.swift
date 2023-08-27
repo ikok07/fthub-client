@@ -24,7 +24,6 @@ struct TwoFaCodeFooter: View {
     
     private func performAuthentication() {
         buttonLoading = true
-        loadingPresented = true
         saveData()
         codeAuthController.authenticateCode()
     }

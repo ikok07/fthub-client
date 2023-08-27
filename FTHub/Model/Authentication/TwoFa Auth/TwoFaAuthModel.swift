@@ -17,7 +17,6 @@ struct TwoFaAuthModel {
         
         Task {
             let response = await Authentication.authTwoFa(email: email ?? "", code: token ?? 0)
-            defaults.setValue(false, forKey: "loadingPresented")
             if let safeResponse = response {
                 if safeResponse.status == "success" {
                     withAnimation {
