@@ -10,6 +10,11 @@ import SwiftUI
 struct SetupPageThreeView: View {
     
     @State private var age: Int = 18
+    let pickerCount: Int = 10
+    
+    func getRect() -> CGRect {
+        return UIScreen.main.bounds
+    }
     
     var body: some View {
         VStack(spacing: 40) {
@@ -21,12 +26,33 @@ struct SetupPageThreeView: View {
             
             VStack {
                 VStack {
-                    Text("\(age)")
-                        .font(.system(size: 60))
-                        .fontWeight(.bold)
                     Text("years")
                         .font(.title2)
                         .fontWeight(.bold)
+                    Text("\(age)")
+                        .font(.system(size: 60))
+                        .fontWeight(.bold)
+                }
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 0) {
+                        
+                        ForEach(1...pickerCount, id: \.self) { index in
+                        Rectangle()
+                                .fill(.gray)
+                                .frame(width: 1, height: 30)
+                                .frame(width: 20)
+                            
+                            ForEach(1...4, id: \.self) { subIndex in
+                                Rectangle()
+                                        .fill(.gray)
+                                        .frame(width: 1, height: 15)
+                                        .frame(width: 20)
+                            }
+                        }
+                    }
+                    .offset(x: (getRect().width - 30) / 2)
+                    .padding(.trailing, getRect().width - 30)
                 }
                 
             }

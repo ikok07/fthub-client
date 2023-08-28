@@ -8,41 +8,39 @@
 import Foundation
 import SwiftUI
 
-struct HorizontalPickerView: View {
+struct HorizontalPickerView<Content: View>: UIViewRepresentable {
     
-    @State private var horizontalOffset: CGFloat = 0.0
-    @Binding var value: Int
+    var content: Content
+    @Binding var offset: CGFloat
+    var pickerCount: Int
     
-    let linesPerValueChange: CGFloat = 10
-    let maxValue: CGFloat = 100
+    init(pickerCount: Int, offset: Binding<CGFloat>, @ViewBuilder content: @escaping () -> Content) {
+        self.pickerCount = pickerCount
+        self.content = content()
+        self._offset = offset
+    }
     
-    var body: some View {
+    func makeUIView(context: Context) -> some UIScrollView {
         
-        OffsettableScrollView(axes: .horizontal, showsIndicator: false) { point in
-            horizontalOffset = point.x
-        } content: {
-            LazyHStack {
-                ForEach(0..<300, id: \.self) { i in
-                    if i % 10 == 0 {
-                        RoundedRectangle(cornerRadius: 0)
-                        .frame(width: 1, height: 35)
-                        .foregroundStyle(.textGray)
-                    } else {
-                        RoundedRectangle(cornerRadius: 0)
-                        .frame(width: 1, height: 15)
-                        .foregroundStyle(.textGray)
-                    }
-                }
-            }
-        }
-        .onChange(of: horizontalOffset) { oldValue, newValue in
-            let mappedValue = max(0, min(Int(round(newValue / linesPerValueChange)), Int(maxValue)))
-          value = mappedValue
-        }
-        Text("\(value)")
+        let scrollView = UIScrollView()
+        
+        let swiftUIView = UIHostingController(rootView: content).view!
+        
+        let width = CGFloat(pickerCount * 20) + (UIScreen.main.bounds.width - 30)
+        
+        swiftUIView.frame = CGRect(x: 0, y: 0, width: width, height: 50)
+        
+        scrollView.contentSize = swiftUIView.frame.size
+        scrollView.addSubview(swiftUIView)
+        return scrollView
+        
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        
     }
 }
 
-#Preview {
-    HorizontalPickerView(value: .constant(0))
-}
+//#Preview {
+//    HorizontalPickerView()
+//}

@@ -45,7 +45,6 @@
 		22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A172A9C8E97004EF9B3 /* SetupController.swift */; };
 		22803A1A2A9C913B004EF9B3 /* SetupPageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */; };
 		22803A1C2A9C9291004EF9B3 /* HorizontalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A1B2A9C9291004EF9B3 /* HorizontalPickerView.swift */; };
-		22803A1E2A9C9C3A004EF9B3 /* OffsettableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A1D2A9C9C3A004EF9B3 /* OffsettableScrollView.swift */; };
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
@@ -138,7 +137,6 @@
 		22803A172A9C8E97004EF9B3 /* SetupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupController.swift; sourceTree = "<group>"; };
 		22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageThreeView.swift; sourceTree = "<group>"; };
 		22803A1B2A9C9291004EF9B3 /* HorizontalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerView.swift; sourceTree = "<group>"; };
-		22803A1D2A9C9C3A004EF9B3 /* OffsettableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsettableScrollView.swift; sourceTree = "<group>"; };
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
@@ -538,7 +536,6 @@
 			children = (
 				22C89D0C2A964299001055F0 /* WithCustomMessageModifier.swift */,
 				22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */,
-				22803A1D2A9C9C3A004EF9B3 /* OffsettableScrollView.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -812,7 +809,6 @@
 				220266E92A8A5A28009D299F /* TutorialFirstPageView.swift in Sources */,
 				22969D4E2A94AA4600935A3C /* RestorePasswordMainView.swift in Sources */,
 				22969D5F2A94E75300935A3C /* ConfirmEmailController.swift in Sources */,
-				22803A1E2A9C9C3A004EF9B3 /* OffsettableScrollView.swift in Sources */,
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,
 				22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */,
 				224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */,
