@@ -6,21 +6,14 @@
 //
 
 import SwiftUI
+import HorizontalNumberPicker
 
 struct SetupPageThreeView: View {
     
-    @State private var offset: CGFloat = 0
-    let pickerCount: Int = 10
-    let startAge = 15
-    
-    func getAge() -> String {
-        let startAge = startAge
-        
-        let progress = offset / 20
-        
-        return "\(startAge + (Int(progress)))"
-    }
-    
+    @State private var activeAge: Int = 0
+    let startAge = 23
+    let endAge = 75
+
     var body: some View {
         VStack(spacing: 40) {
             VStack(spacing: 20) {
@@ -34,13 +27,11 @@ struct SetupPageThreeView: View {
                     Text("years")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text(getAge())
+                    Text("\(activeAge)")
                         .font(.system(size: 60))
                         .fontWeight(.bold)
                 }
-                
-                HorizontalPickerView(offset: $offset, minValue: startAge, maxValue: 65)
-                
+                HorizontalPickerView(value: $activeAge, minValue: startAge, maxValue: endAge)
             }
             
             Button(action: {}, label: {

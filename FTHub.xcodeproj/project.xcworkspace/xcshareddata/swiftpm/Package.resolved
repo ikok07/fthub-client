@@ -17,6 +17,15 @@
         "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
         "version" : "1.0.2"
       }
+    },
+    {
+      "identity" : "swiftuihorizontalnumberpicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ikok07/SwiftUIHorizontalNumberPicker.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f30485a305dd71994f9087978e9c0516f5461899"
+      }
     }
   ],
   "version" : 2

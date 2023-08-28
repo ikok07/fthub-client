@@ -44,8 +44,7 @@
 		228006772A921C7000A299EC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 228006762A921C7000A299EC /* Localizable.xcstrings */; };
 		22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A172A9C8E97004EF9B3 /* SetupController.swift */; };
 		22803A1A2A9C913B004EF9B3 /* SetupPageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */; };
-		22803A1C2A9C9291004EF9B3 /* HorizontalPickerUIKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A1B2A9C9291004EF9B3 /* HorizontalPickerUIKitView.swift */; };
-		22803A222A9CC12F004EF9B3 /* HorizontalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A212A9CC12F004EF9B3 /* HorizontalPickerView.swift */; };
+		22803A282A9CC8E0004EF9B3 /* HorizontalNumberPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */; };
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
@@ -137,8 +136,6 @@
 		228006762A921C7000A299EC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		22803A172A9C8E97004EF9B3 /* SetupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupController.swift; sourceTree = "<group>"; };
 		22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageThreeView.swift; sourceTree = "<group>"; };
-		22803A1B2A9C9291004EF9B3 /* HorizontalPickerUIKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerUIKitView.swift; sourceTree = "<group>"; };
-		22803A212A9CC12F004EF9B3 /* HorizontalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerView.swift; sourceTree = "<group>"; };
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
@@ -195,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22EB51AE2A8B62F80079A3B1 /* Algorithms in Frameworks */,
+				22803A282A9CC8E0004EF9B3 /* HorizontalNumberPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +218,6 @@
 		220266C02A8A4815009D299F /* FTHub */ = {
 			isa = PBXGroup;
 			children = (
-				22803A202A9CC112004EF9B3 /* UIKit */,
 				22C89D0B2A964289001055F0 /* ViewModifier */,
 				228006752A921C4600A299EC /* Localization */,
 				228744CA2A8E633800DB77DF /* Protocols */,
@@ -288,7 +285,6 @@
 				22ED2EBA2A912FEE00BB623E /* Numpad */,
 				224C9FB32A8E0DEE00AF5612 /* Error */,
 				222F3C712A938600005BC46F /* TextField */,
-				22803A212A9CC12F004EF9B3 /* HorizontalPickerView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -482,14 +478,6 @@
 				22803A172A9C8E97004EF9B3 /* SetupController.swift */,
 			);
 			path = Setup;
-			sourceTree = "<group>";
-		};
-		22803A202A9CC112004EF9B3 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				22803A1B2A9C9291004EF9B3 /* HorizontalPickerUIKitView.swift */,
-			);
-			path = UIKit;
 			sourceTree = "<group>";
 		};
 		228744C72A8E5BA300DB77DF /* Extensions */ = {
@@ -690,6 +678,7 @@
 			name = FTHub;
 			packageProductDependencies = (
 				22EB51AD2A8B62F80079A3B1 /* Algorithms */,
+				22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */,
 			);
 			productName = FTHub;
 			productReference = 220266BE2A8A4815009D299F /* FTHub.app */;
@@ -723,6 +712,7 @@
 			mainGroup = 220266B52A8A4815009D299F;
 			packageReferences = (
 				22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */,
 			);
 			productRefGroup = 220266BF2A8A4815009D299F /* Products */;
 			projectDirPath = "";
@@ -752,7 +742,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22803A1C2A9C9291004EF9B3 /* HorizontalPickerUIKitView.swift in Sources */,
 				22ED2EBE2A9132AE00BB623E /* CustomNumpadView.swift in Sources */,
 				22E81F1A2A9525E10021DBE0 /* Message.swift in Sources */,
 				220266EB2A8A5B54009D299F /* TutorialPageIndicatorView.swift in Sources */,
@@ -797,7 +786,6 @@
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
 				224A5DA12A8CF98D00490614 /* User.swift in Sources */,
 				228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */,
-				22803A222A9CC12F004EF9B3 /* HorizontalPickerView.swift in Sources */,
 				224A5D862A8CB82B00490614 /* TwoFaCodeHeaderView.swift in Sources */,
 				22DA77AF2A98A45900550A6B /* AccountModel.swift in Sources */,
 				2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */,
@@ -1050,6 +1038,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ikok07/SwiftUIHorizontalNumberPicker.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -1061,6 +1057,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */;
+			productName = HorizontalNumberPicker;
+		};
 		22EB51AD2A8B62F80079A3B1 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
