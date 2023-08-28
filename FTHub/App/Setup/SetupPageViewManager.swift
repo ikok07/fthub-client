@@ -9,15 +9,19 @@ import SwiftUI
 
 struct SetupPageViewManager: View {
     
-    @AppStorage("activeSetupPage") private var activeSetupPage: Int = 0
+    @State private var activeSetupPage: Int = 0
     
     var body: some View {
         ZStack {
             switch activeSetupPage {
             case 0:
-                SetupPageOneView()
+                SetupPageOneView(activeSetupPage: $activeSetupPage)
+            case 1:
+                SetupPageTwoView(activeSetupPage: $activeSetupPage)
+            case 2:
+                SetupPageThreeView()
             default:
-                SetupPageOneView()
+                SetupPageOneView(activeSetupPage: $activeSetupPage)
             }
         }
         .animation(.easeOut, value: activeSetupPage)

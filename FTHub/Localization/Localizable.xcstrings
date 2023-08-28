@@ -7,6 +7,9 @@
     "%lld" : {
 
     },
+    "16" : {
+
+    },
     "A code will be sent to your email" : {
       "localizations" : {
         "bg" : {
@@ -76,6 +79,9 @@
           }
         }
       }
+    },
+    "Continue" : {
+
     },
     "Create new password" : {
 
@@ -170,6 +176,9 @@
         }
       }
     },
+    "Female" : {
+
+    },
     "Finish" : {
       "localizations" : {
         "bg" : {
@@ -212,6 +221,9 @@
 
     },
     "Lorem Ipsum is simply dummy text of the printing and typesetting" : {
+
+    },
+    "Male" : {
 
     },
     "Open Mail" : {
@@ -432,6 +444,9 @@
       }
     },
     "We have sent a link to" : {
+
+    },
+    "years" : {
 
     },
     "You have successfuly changed your password" : {

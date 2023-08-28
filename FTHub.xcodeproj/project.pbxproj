@@ -42,6 +42,10 @@
 		224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */; };
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
 		228006772A921C7000A299EC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 228006762A921C7000A299EC /* Localizable.xcstrings */; };
+		22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A172A9C8E97004EF9B3 /* SetupController.swift */; };
+		22803A1A2A9C913B004EF9B3 /* SetupPageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */; };
+		22803A1C2A9C9291004EF9B3 /* HorizontalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A1B2A9C9291004EF9B3 /* HorizontalPickerView.swift */; };
+		22803A1E2A9C9C3A004EF9B3 /* OffsettableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A1D2A9C9C3A004EF9B3 /* OffsettableScrollView.swift */; };
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
@@ -131,6 +135,10 @@
 		224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageView.swift; sourceTree = "<group>"; };
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
 		228006762A921C7000A299EC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		22803A172A9C8E97004EF9B3 /* SetupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupController.swift; sourceTree = "<group>"; };
+		22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageThreeView.swift; sourceTree = "<group>"; };
+		22803A1B2A9C9291004EF9B3 /* HorizontalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPickerView.swift; sourceTree = "<group>"; };
+		22803A1D2A9C9C3A004EF9B3 /* OffsettableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsettableScrollView.swift; sourceTree = "<group>"; };
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
@@ -279,6 +287,7 @@
 				22ED2EBA2A912FEE00BB623E /* Numpad */,
 				224C9FB32A8E0DEE00AF5612 /* Error */,
 				222F3C712A938600005BC46F /* TextField */,
+				22803A1B2A9C9291004EF9B3 /* HorizontalPickerView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -398,6 +407,7 @@
 		224A5D932A8CDB4E00490614 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				22803A162A9C8E8C004EF9B3 /* Setup */,
 				22969D542A94B90800935A3C /* Restore Password */,
 				222F3C6F2A9385D7005BC46F /* Authentication */,
 				222F3C702A9385E2005BC46F /* Common */,
@@ -465,6 +475,14 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		22803A162A9C8E8C004EF9B3 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				22803A172A9C8E97004EF9B3 /* SetupController.swift */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
 		228744C72A8E5BA300DB77DF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +538,7 @@
 			children = (
 				22C89D0C2A964299001055F0 /* WithCustomMessageModifier.swift */,
 				22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */,
+				22803A1D2A9C9C3A004EF9B3 /* OffsettableScrollView.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -632,6 +651,7 @@
 				22FD03342A9B8372005A6A13 /* SetupPageOneView.swift */,
 				22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */,
 				22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */,
+				22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -724,6 +744,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22803A1C2A9C9291004EF9B3 /* HorizontalPickerView.swift in Sources */,
 				22ED2EBE2A9132AE00BB623E /* CustomNumpadView.swift in Sources */,
 				22E81F1A2A9525E10021DBE0 /* Message.swift in Sources */,
 				220266EB2A8A5B54009D299F /* TutorialPageIndicatorView.swift in Sources */,
@@ -731,6 +752,7 @@
 				220266D62A8A5144009D299F /* TwoLineHeadingView.swift in Sources */,
 				22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */,
 				22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */,
+				22803A1A2A9C913B004EF9B3 /* SetupPageThreeView.swift in Sources */,
 				220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */,
 				22DED6892A908C1400D1EBBB /* TwoFaCodeNumberField.swift in Sources */,
 				220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */,
@@ -747,6 +769,7 @@
 				22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */,
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				22C34A542A94ECC500313D89 /* Validator.swift in Sources */,
+				22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */,
 				22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */,
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
@@ -789,6 +812,7 @@
 				220266E92A8A5A28009D299F /* TutorialFirstPageView.swift in Sources */,
 				22969D4E2A94AA4600935A3C /* RestorePasswordMainView.swift in Sources */,
 				22969D5F2A94E75300935A3C /* ConfirmEmailController.swift in Sources */,
+				22803A1E2A9C9C3A004EF9B3 /* OffsettableScrollView.swift in Sources */,
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,
 				22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */,
 				224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */,

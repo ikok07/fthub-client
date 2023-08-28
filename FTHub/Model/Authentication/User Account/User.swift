@@ -15,6 +15,7 @@ class User: Codable {
     let email: String
     let photo: String
     let role: String
+    let details: UserDetails?
     
     enum CodingKeys: String, CodingKey {
         case _id
@@ -36,6 +37,20 @@ class User: Codable {
     func encode(to encoder: Encoder) throws {
         
     }
-    
 }
 
+@Model
+class UserDetails {
+    
+    var gender: String
+    var age: Int
+    var height: Double
+    var weight: Double
+    var goal: String
+    var activeAppleHealth: Bool
+    var activeNotifications: Bool
+    
+    init() {
+
+    }
+}
