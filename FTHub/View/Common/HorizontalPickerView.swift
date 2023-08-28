@@ -5,42 +5,57 @@
 //  Created by Kaloyan Petkov on 28.08.23.
 //
 
-import Foundation
 import SwiftUI
 
-struct HorizontalPickerView<Content: View>: UIViewRepresentable {
+struct HorizontalPickerView: View {
     
-    var content: Content
     @Binding var offset: CGFloat
-    var pickerCount: Int
     
-    init(pickerCount: Int, offset: Binding<CGFloat>, @ViewBuilder content: @escaping () -> Content) {
-        self.pickerCount = pickerCount
-        self.content = content()
-        self._offset = offset
+    let minValue: Int
+    let maxValue: Int
+    var pickerCount: Int {
+        let doubleValue: Double = ceil((Double(maxValue) - Double(minValue) - 1.0) / 5.0)
+        return Int(doubleValue)
     }
     
-    func makeUIView(context: Context) -> some UIScrollView {
-        
-        let scrollView = UIScrollView()
-        
-        let swiftUIView = UIHostingController(rootView: content).view!
-        
-        let width = CGFloat(pickerCount * 20) + (UIScreen.main.bounds.width - 30)
-        
-        swiftUIView.frame = CGRect(x: 0, y: 0, width: width, height: 50)
-        
-        scrollView.contentSize = swiftUIView.frame.size
-        scrollView.addSubview(swiftUIView)
-        return scrollView
-        
-    }
-    
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        
+    var body: some View {
+        HorizontalPickerUIKitView(pickerCount: pickerCount, offset: $offset) {
+            HStack(spacing: 0) {
+                
+                ForEach(1...pickerCount, id: \.self) { index in
+                    Rectangle()
+                        .fill(.gray)
+                        .frame(width: 1, height: 30)
+                        .frame(width: 20)
+                    
+                    ForEach(1...4, id: \.self) { subIndex in
+                        Rectangle()
+                            .fill(.gray)
+                            .frame(width: 1, height: 15)
+                            .frame(width: 20)
+                    }
+                }
+                
+                Rectangle()
+                    .fill(.gray)
+                    .frame(width: 1, height: 30)
+                    .frame(width: 20)
+                
+            }
+            .offset(x: (UIScreen.main.bounds.width - 30) / 2)
+            .padding(.trailing, UIScreen.main.bounds.width - 30)
+        }
+        .frame(height: 50)
+        .overlay {
+            
+            Rectangle()
+                .fill(.gray)
+                .frame(width: 1, height: 50)
+                .offset(x: 1, y: -30)
+        }
     }
 }
 
-//#Preview {
-//    HorizontalPickerView()
-//}
+#Preview {
+    HorizontalPickerView(offset: .constant(0), minValue: 15, maxValue: 75)
+}

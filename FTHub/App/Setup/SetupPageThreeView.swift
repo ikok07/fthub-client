@@ -9,11 +9,16 @@ import SwiftUI
 
 struct SetupPageThreeView: View {
     
-    @State private var age: Int = 18
+    @State private var offset: CGFloat = 0
     let pickerCount: Int = 10
+    let startAge = 15
     
-    func getRect() -> CGRect {
-        return UIScreen.main.bounds
+    func getAge() -> String {
+        let startAge = startAge
+        
+        let progress = offset / 20
+        
+        return "\(startAge + (Int(progress)))"
     }
     
     var body: some View {
@@ -29,31 +34,12 @@ struct SetupPageThreeView: View {
                     Text("years")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("\(age)")
+                    Text(getAge())
                         .font(.system(size: 60))
                         .fontWeight(.bold)
                 }
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 0) {
-                        
-                        ForEach(1...pickerCount, id: \.self) { index in
-                        Rectangle()
-                                .fill(.gray)
-                                .frame(width: 1, height: 30)
-                                .frame(width: 20)
-                            
-                            ForEach(1...4, id: \.self) { subIndex in
-                                Rectangle()
-                                        .fill(.gray)
-                                        .frame(width: 1, height: 15)
-                                        .frame(width: 20)
-                            }
-                        }
-                    }
-                    .offset(x: (getRect().width - 30) / 2)
-                    .padding(.trailing, getRect().width - 30)
-                }
+                HorizontalPickerView(offset: $offset, minValue: startAge, maxValue: 65)
                 
             }
             
