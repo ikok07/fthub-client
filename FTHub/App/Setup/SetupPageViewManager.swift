@@ -10,6 +10,8 @@ import SwiftUI
 struct SetupPageViewManager: View {
     
     @EnvironmentObject private var setupController: SetupController
+    @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
+    @AppStorage("userToken") private var userToken: String?
     
     var body: some View {
         ZStack {
@@ -20,8 +22,15 @@ struct SetupPageViewManager: View {
                 SetupPageTwoView()
             case 2:
                 SetupPageThreeView()
+            case 3:
+                SetupPageFourView()
             default:
-                SetupPageOneView()
+                Button(action: {
+                    userLoggedIn = false
+                    userToken = ""
+                }, label: {
+                    Text("Log Out")
+                })
             }
         }
         .animation(.easeOut, value: setupController.activePage)

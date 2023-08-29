@@ -7,6 +7,36 @@
     "%lld" : {
 
     },
+    "%lld cm" : {
+
+    },
+    "%lld inch" : {
+
+    },
+    "47 inch" : {
+
+    },
+    "63 inch" : {
+
+    },
+    "75 inch" : {
+
+    },
+    "90 inch" : {
+
+    },
+    "120 cm" : {
+
+    },
+    "160 cm" : {
+
+    },
+    "190 cm" : {
+
+    },
+    "230 cm" : {
+
+    },
     "A code will be sent to your email" : {
       "localizations" : {
         "bg" : {
@@ -214,6 +244,12 @@
     "Hello, World!" : {
 
     },
+    "Imperial" : {
+
+    },
+    "Log Out" : {
+
+    },
     "Logged into FTHub\npage: coaches" : {
 
     },
@@ -221,6 +257,9 @@
 
     },
     "Male" : {
+
+    },
+    "Metric" : {
 
     },
     "Open Mail" : {

@@ -41,6 +41,9 @@
 		224A5DA12A8CF98D00490614 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5DA02A8CF98D00490614 /* User.swift */; };
 		224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */; };
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
+		2277FC242A9E13420082AA12 /* SetupPageFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC232A9E13420082AA12 /* SetupPageFourView.swift */; };
+		2277FC262A9E13850082AA12 /* UnitSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC252A9E13850082AA12 /* UnitSelectView.swift */; };
+		2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */; };
 		228006772A921C7000A299EC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 228006762A921C7000A299EC /* Localizable.xcstrings */; };
 		22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A172A9C8E97004EF9B3 /* SetupController.swift */; };
 		22803A1A2A9C913B004EF9B3 /* SetupPageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */; };
@@ -133,6 +136,9 @@
 		224A5DA02A8CF98D00490614 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageView.swift; sourceTree = "<group>"; };
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
+		2277FC232A9E13420082AA12 /* SetupPageFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageFourView.swift; sourceTree = "<group>"; };
+		2277FC252A9E13850082AA12 /* UnitSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSelectView.swift; sourceTree = "<group>"; };
+		2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorView.swift; sourceTree = "<group>"; };
 		228006762A921C7000A299EC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		22803A172A9C8E97004EF9B3 /* SetupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupController.swift; sourceTree = "<group>"; };
 		22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageThreeView.swift; sourceTree = "<group>"; };
@@ -464,6 +470,14 @@
 			path = "Restore Password";
 			sourceTree = "<group>";
 		};
+		2277FC292A9E1C7E0082AA12 /* Vertical Number Selector */ = {
+			isa = PBXGroup;
+			children = (
+				2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */,
+			);
+			path = "Vertical Number Selector";
+			sourceTree = "<group>";
+		};
 		228006752A921C4600A299EC /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +662,7 @@
 				22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */,
 				22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */,
 				22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */,
+				2277FC232A9E13420082AA12 /* SetupPageFourView.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -655,7 +670,9 @@
 		22FD033A2A9B888D005A6A13 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
+				2277FC292A9E1C7E0082AA12 /* Vertical Number Selector */,
 				22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */,
+				2277FC252A9E13850082AA12 /* UnitSelectView.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -800,6 +817,7 @@
 				22FC13BA2A9756690016E17C /* ValidationController.swift in Sources */,
 				224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */,
 				224A5D8E2A8CC55100490614 /* CoachesPageView.swift in Sources */,
+				2277FC262A9E13850082AA12 /* UnitSelectView.swift in Sources */,
 				22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */,
 				22969D512A94AAAD00935A3C /* RestorePasswordHeaderView.swift in Sources */,
 				22FC13BD2A9757160016E17C /* RestorePasswordModel.swift in Sources */,
@@ -813,7 +831,9 @@
 				22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */,
 				224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */,
 				22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */,
+				2277FC242A9E13420082AA12 /* SetupPageFourView.swift in Sources */,
 				22374B1C2A92A6EB006BE6BB /* TwoFaAuthController.swift in Sources */,
+				2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */,
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,
