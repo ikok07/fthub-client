@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SetupPageOneView: View {
     
-    @Binding var activeSetupPage: Int
+    @EnvironmentObject private var setupController: SetupController
     
     var body: some View {
         ScrollView {
@@ -26,7 +26,7 @@ struct SetupPageOneView: View {
             .padding(.horizontal)
             
             Button(action: {
-                activeSetupPage += 1
+                setupController.activePage += 1
             }, label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -38,5 +38,5 @@ struct SetupPageOneView: View {
 }
 
 #Preview {
-    SetupPageOneView(activeSetupPage: .constant(0))
+    SetupPageOneView()
 }

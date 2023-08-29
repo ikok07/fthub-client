@@ -10,8 +10,10 @@ import HorizontalNumberPicker
 
 struct SetupPageThreeView: View {
     
-    @State private var activeAge: Int = 0
-    let startAge = 23
+    @EnvironmentObject private var setupController: SetupController
+    
+    @State private var activeAge: Int = 15
+    let startAge = 15
     let endAge = 75
 
     var body: some View {
@@ -34,11 +36,16 @@ struct SetupPageThreeView: View {
                 HorizontalPickerView(value: $activeAge, minValue: startAge, maxValue: endAge)
             }
             
-            Button(action: {}, label: {
+            Button(action: {
+                setupController.age = self.activeAge
+                setupController.activePage += 1
+            }, label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             })
             .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
+            
+            Spacer()
         }
         .padding()
     }
@@ -46,4 +53,5 @@ struct SetupPageThreeView: View {
 
 #Preview {
     SetupPageThreeView()
+        .environmentObject(SetupController())
 }

@@ -9,25 +9,26 @@ import SwiftUI
 
 struct SetupPageViewManager: View {
     
-    @State private var activeSetupPage: Int = 0
+    @EnvironmentObject private var setupController: SetupController
     
     var body: some View {
         ZStack {
-            switch activeSetupPage {
+            switch setupController.activePage {
             case 0:
-                SetupPageOneView(activeSetupPage: $activeSetupPage)
+                SetupPageOneView()
             case 1:
-                SetupPageTwoView(activeSetupPage: $activeSetupPage)
+                SetupPageTwoView()
             case 2:
                 SetupPageThreeView()
             default:
-                SetupPageOneView(activeSetupPage: $activeSetupPage)
+                SetupPageOneView()
             }
         }
-        .animation(.easeOut, value: activeSetupPage)
+        .animation(.easeOut, value: setupController.activePage)
     }
 }
 
 #Preview {
     SetupPageViewManager()
+        .environmentObject(SetupController())
 }

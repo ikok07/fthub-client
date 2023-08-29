@@ -10,7 +10,8 @@ import SwiftData
 
 struct SetupPageTwoView: View {
     
-    @Binding var activeSetupPage: Int
+    @EnvironmentObject private var setupController: SetupController
+    
     @State private var activeOption: Int = 0
     
     var body: some View {
@@ -31,7 +32,7 @@ struct SetupPageTwoView: View {
             .padding(.vertical)
             
             Button {
-                activeSetupPage += 1
+                setupController.activePage += 1
             } label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -45,5 +46,5 @@ struct SetupPageTwoView: View {
 }
 
 #Preview {
-    SetupPageTwoView(activeSetupPage: .constant(1))
+    SetupPageTwoView()
 }

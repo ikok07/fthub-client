@@ -9,6 +9,8 @@ import Foundation
 
 class SetupController: ObservableObject {
     
+    @Published var activePage: Int = 0
+    
     @Published var gender: Gender?
     @Published var age: Int?
     @Published var height: Double?
