@@ -18,24 +18,7 @@ struct GaugeView: View {
     
     var body: some View {
         ZStack() {
-            Circle()
-                .trim(from: 0.2, to: 0.8)
-                .stroke(K.Gradients.grayGradient, style: StrokeStyle(lineWidth: 30, lineCap: .round))
-                .frame(width: 300)
-                .rotationEffect(.degrees(90))
-            
-            Circle()
-                .trim(from: 0.2, to: calcPercentage())
-                .stroke(K.Gradients.mainGradient, style: StrokeStyle(lineWidth: 30, lineCap: .round))
-                .frame(width: 300)
-                .rotationEffect(.degrees(90))
-
-                Text(text)
-                    .font(.system(size: 50))
-                    .fontWeight(.bold)
-                    .offset(y: -20)
-                    .contentTransition(.numericText())
-
+            UIKitGaugeView()
         }
     }
 }

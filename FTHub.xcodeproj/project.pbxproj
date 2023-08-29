@@ -53,6 +53,7 @@
 		228F26502A9E68D000AD46D9 /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F264F2A9E68D000AD46D9 /* GaugeView.swift */; };
 		228F26532A9E73A600AD46D9 /* GaugeArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26522A9E73A600AD46D9 /* GaugeArrowView.swift */; };
 		228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */; };
+		228F26582A9E8B0D00AD46D9 /* UIKitGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26572A9E8B0D00AD46D9 /* UIKitGaugeView.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
 		22969D4E2A94AA4600935A3C /* RestorePasswordMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */; };
@@ -151,6 +152,7 @@
 		228F264F2A9E68D000AD46D9 /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
 		228F26522A9E73A600AD46D9 /* GaugeArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeArrowView.swift; sourceTree = "<group>"; };
 		228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingTextView.swift; sourceTree = "<group>"; };
+		228F26572A9E8B0D00AD46D9 /* UIKitGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitGaugeView.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
 		22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordMainView.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 		220266C02A8A4815009D299F /* FTHub */ = {
 			isa = PBXGroup;
 			children = (
+				228F26562A9E8AF500AD46D9 /* UIKit */,
 				22C89D0B2A964289001055F0 /* ViewModifier */,
 				228006752A921C4600A299EC /* Localization */,
 				228744CA2A8E633800DB77DF /* Protocols */,
@@ -525,6 +528,14 @@
 				228F26522A9E73A600AD46D9 /* GaugeArrowView.swift */,
 			);
 			path = Gauge;
+			sourceTree = "<group>";
+		};
+		228F26562A9E8AF500AD46D9 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				228F26572A9E8B0D00AD46D9 /* UIKitGaugeView.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		22969D462A94A7EE00935A3C /* TwoFa Auth */ = {
@@ -854,6 +865,7 @@
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,
 				22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */,
 				224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */,
+				228F26582A9E8B0D00AD46D9 /* UIKitGaugeView.swift in Sources */,
 				22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */,
 				2277FC242A9E13420082AA12 /* SetupHeightPageView.swift in Sources */,
 				22374B1C2A92A6EB006BE6BB /* TwoFaAuthController.swift in Sources */,
