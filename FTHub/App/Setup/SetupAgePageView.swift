@@ -8,7 +8,7 @@
 import SwiftUI
 import HorizontalNumberPicker
 
-struct SetupPageThreeView: View {
+struct SetupAgePageView: View {
     
     @EnvironmentObject private var setupController: SetupController
     
@@ -52,6 +52,6 @@ struct SetupPageThreeView: View {
 }
 
 #Preview {
-    SetupPageThreeView()
+    SetupAgePageView()
         .environmentObject(SetupController())
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SetupPageFourView: View {
+struct SetupHeightPageView: View {
     
     @EnvironmentObject private var setupController: SetupController
     
@@ -34,5 +34,5 @@ struct SetupPageFourView: View {
 }
 
 #Preview {
-    SetupPageFourView()
+    SetupHeightPageView()
 }

@@ -41,14 +41,18 @@
 		224A5DA12A8CF98D00490614 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5DA02A8CF98D00490614 /* User.swift */; };
 		224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */; };
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
-		2277FC242A9E13420082AA12 /* SetupPageFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC232A9E13420082AA12 /* SetupPageFourView.swift */; };
+		2277FC242A9E13420082AA12 /* SetupHeightPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */; };
 		2277FC262A9E13850082AA12 /* UnitSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC252A9E13850082AA12 /* UnitSelectView.swift */; };
 		2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */; };
 		228006772A921C7000A299EC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 228006762A921C7000A299EC /* Localizable.xcstrings */; };
 		22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A172A9C8E97004EF9B3 /* SetupController.swift */; };
-		22803A1A2A9C913B004EF9B3 /* SetupPageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */; };
+		22803A1A2A9C913B004EF9B3 /* SetupAgePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A192A9C913B004EF9B3 /* SetupAgePageView.swift */; };
 		22803A282A9CC8E0004EF9B3 /* HorizontalNumberPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */; };
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
+		228F264E2A9E685800AD46D9 /* SetupWeightPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */; };
+		228F26502A9E68D000AD46D9 /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F264F2A9E68D000AD46D9 /* GaugeView.swift */; };
+		228F26532A9E73A600AD46D9 /* GaugeArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26522A9E73A600AD46D9 /* GaugeArrowView.swift */; };
+		228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
 		22969D4E2A94AA4600935A3C /* RestorePasswordMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */; };
@@ -94,7 +98,7 @@
 		22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13C42A978C5B0016E17C /* RestorePasswordStatusView.swift */; };
 		22FD03352A9B8372005A6A13 /* SetupPageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03342A9B8372005A6A13 /* SetupPageOneView.swift */; };
 		22FD03372A9B83C4005A6A13 /* SetupPageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */; };
-		22FD03392A9B87C6005A6A13 /* SetupPageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */; };
+		22FD03392A9B87C6005A6A13 /* SetupPageGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03382A9B87C6005A6A13 /* SetupPageGenderView.swift */; };
 		22FD033C2A9B88A0005A6A13 /* GenderSelectRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */; };
 		22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */; };
 /* End PBXBuildFile section */
@@ -136,13 +140,17 @@
 		224A5DA02A8CF98D00490614 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageView.swift; sourceTree = "<group>"; };
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
-		2277FC232A9E13420082AA12 /* SetupPageFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageFourView.swift; sourceTree = "<group>"; };
+		2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupHeightPageView.swift; sourceTree = "<group>"; };
 		2277FC252A9E13850082AA12 /* UnitSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSelectView.swift; sourceTree = "<group>"; };
 		2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorView.swift; sourceTree = "<group>"; };
 		228006762A921C7000A299EC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		22803A172A9C8E97004EF9B3 /* SetupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupController.swift; sourceTree = "<group>"; };
-		22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageThreeView.swift; sourceTree = "<group>"; };
+		22803A192A9C913B004EF9B3 /* SetupAgePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupAgePageView.swift; sourceTree = "<group>"; };
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWeightPageView.swift; sourceTree = "<group>"; };
+		228F264F2A9E68D000AD46D9 /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
+		228F26522A9E73A600AD46D9 /* GaugeArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeArrowView.swift; sourceTree = "<group>"; };
+		228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingTextView.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
 		22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordMainView.swift; sourceTree = "<group>"; };
@@ -187,7 +195,7 @@
 		22FC13C42A978C5B0016E17C /* RestorePasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordStatusView.swift; sourceTree = "<group>"; };
 		22FD03342A9B8372005A6A13 /* SetupPageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageOneView.swift; sourceTree = "<group>"; };
 		22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageViewManager.swift; sourceTree = "<group>"; };
-		22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageTwoView.swift; sourceTree = "<group>"; };
+		22FD03382A9B87C6005A6A13 /* SetupPageGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageGenderView.swift; sourceTree = "<group>"; };
 		22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectRowView.swift; sourceTree = "<group>"; };
 		22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeResendButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -510,6 +518,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		228F26512A9E739600AD46D9 /* Gauge */ = {
+			isa = PBXGroup;
+			children = (
+				228F264F2A9E68D000AD46D9 /* GaugeView.swift */,
+				228F26522A9E73A600AD46D9 /* GaugeArrowView.swift */,
+			);
+			path = Gauge;
+			sourceTree = "<group>";
+		};
 		22969D462A94A7EE00935A3C /* TwoFa Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,9 +677,10 @@
 			children = (
 				22FD03342A9B8372005A6A13 /* SetupPageOneView.swift */,
 				22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */,
-				22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */,
-				22803A192A9C913B004EF9B3 /* SetupPageThreeView.swift */,
-				2277FC232A9E13420082AA12 /* SetupPageFourView.swift */,
+				22FD03382A9B87C6005A6A13 /* SetupPageGenderView.swift */,
+				22803A192A9C913B004EF9B3 /* SetupAgePageView.swift */,
+				2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */,
+				228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -673,6 +691,8 @@
 				2277FC292A9E1C7E0082AA12 /* Vertical Number Selector */,
 				22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */,
 				2277FC252A9E13850082AA12 /* UnitSelectView.swift */,
+				228F26512A9E739600AD46D9 /* Gauge */,
+				228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -766,15 +786,18 @@
 				220266D62A8A5144009D299F /* TwoLineHeadingView.swift in Sources */,
 				22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */,
 				22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */,
-				22803A1A2A9C913B004EF9B3 /* SetupPageThreeView.swift in Sources */,
+				22803A1A2A9C913B004EF9B3 /* SetupAgePageView.swift in Sources */,
 				220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */,
+				228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */,
 				22DED6892A908C1400D1EBBB /* TwoFaCodeNumberField.swift in Sources */,
 				220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */,
+				228F264E2A9E685800AD46D9 /* SetupWeightPageView.swift in Sources */,
 				22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */,
 				22969D592A94C28F00935A3C /* ResendConfirmEmailController.swift in Sources */,
 				22374B182A9292D7006BE6BB /* Authentication.swift in Sources */,
 				220266F82A8A7066009D299F /* MainAccountAuthView.swift in Sources */,
 				22ED2EC02A9136E600BB623E /* CustomNumpadButtonStyle.swift in Sources */,
+				228F26532A9E73A600AD46D9 /* GaugeArrowView.swift in Sources */,
 				22E8246D2A8BA68A00B51C60 /* AuthenticationFooterView.swift in Sources */,
 				220266ED2A8A5DE2009D299F /* TutorialSecondPageView.swift in Sources */,
 				22CDFF962A94E37B009DB029 /* SignUpValidationController.swift in Sources */,
@@ -788,6 +811,7 @@
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
 				22FD03352A9B8372005A6A13 /* SetupPageOneView.swift in Sources */,
+				228F26502A9E68D000AD46D9 /* GaugeView.swift in Sources */,
 				22DA77B62A98D83300550A6B /* FakeLaunchScreenView.swift in Sources */,
 				22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */,
 				22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */,
@@ -831,14 +855,14 @@
 				22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */,
 				224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */,
 				22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */,
-				2277FC242A9E13420082AA12 /* SetupPageFourView.swift in Sources */,
+				2277FC242A9E13420082AA12 /* SetupHeightPageView.swift in Sources */,
 				22374B1C2A92A6EB006BE6BB /* TwoFaAuthController.swift in Sources */,
 				2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */,
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
-				22FD03392A9B87C6005A6A13 /* SetupPageTwoView.swift in Sources */,
+				22FD03392A9B87C6005A6A13 /* SetupPageGenderView.swift in Sources */,
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,
 				224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */,
 				22E824742A8BB26F00B51C60 /* TwoFaCodeMainView.swift in Sources */,

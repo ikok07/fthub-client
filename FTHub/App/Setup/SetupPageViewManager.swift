@@ -17,13 +17,16 @@ struct SetupPageViewManager: View {
         ZStack {
             switch setupController.activePage {
             case 0:
-                SetupPageOneView()
+//                SetupPageOneView()
+                SetupWeightPageView()
             case 1:
-                SetupPageTwoView()
+                SetupPageGenderView()
             case 2:
-                SetupPageThreeView()
+                SetupAgePageView()
             case 3:
-                SetupPageFourView()
+                SetupHeightPageView()
+            case 4 :
+                SetupWeightPageView()
             default:
                 Button(action: {
                     userLoggedIn = false

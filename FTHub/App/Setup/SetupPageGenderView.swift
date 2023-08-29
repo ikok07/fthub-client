@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct SetupPageTwoView: View {
+struct SetupPageGenderView: View {
     
     @EnvironmentObject private var setupController: SetupController
     
@@ -46,5 +46,5 @@ struct SetupPageTwoView: View {
 }
 
 #Preview {
-    SetupPageTwoView()
+    SetupPageGenderView()
 }
