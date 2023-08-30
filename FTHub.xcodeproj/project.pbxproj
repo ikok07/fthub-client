@@ -66,6 +66,7 @@
 		22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D602A94EA9F00935A3C /* ConfirmEmailRequestModel.swift */; };
 		22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D622A94EC3500935A3C /* ConfirmEmailModel.swift */; };
 		229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */; };
+		229CC52B2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */; };
 		22C34A542A94ECC500313D89 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C34A532A94ECC500313D89 /* Validator.swift */; };
 		22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C89D0C2A964299001055F0 /* WithCustomMessageModifier.swift */; };
 		22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */; };
@@ -166,6 +167,7 @@
 		22969D602A94EA9F00935A3C /* ConfirmEmailRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailRequestModel.swift; sourceTree = "<group>"; };
 		22969D622A94EC3500935A3C /* ConfirmEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailModel.swift; sourceTree = "<group>"; };
 		229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorButtonsView.swift; sourceTree = "<group>"; };
+		229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorStepsLabelsView.swift; sourceTree = "<group>"; };
 		22C34A532A94ECC500313D89 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		22C89D0C2A964299001055F0 /* WithCustomMessageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithCustomMessageModifier.swift; sourceTree = "<group>"; };
 		22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithLoadingAnimationModifier.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 			children = (
 				2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */,
 				229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */,
+				229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */,
 			);
 			path = "Vertical Number Selector";
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				22FC13BA2A9756690016E17C /* ValidationController.swift in Sources */,
 				224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */,
 				224A5D8E2A8CC55100490614 /* CoachesPageView.swift in Sources */,
+				229CC52B2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift in Sources */,
 				2277FC262A9E13850082AA12 /* UnitSelectView.swift in Sources */,
 				22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */,
 				22969D512A94AAAD00935A3C /* RestorePasswordHeaderView.swift in Sources */,
