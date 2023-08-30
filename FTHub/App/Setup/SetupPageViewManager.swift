@@ -17,8 +17,9 @@ struct SetupPageViewManager: View {
         ZStack {
             switch setupController.activePage {
             case 0:
-                SetupPageOneView()
+//                SetupPageOneView()
 //                SetupWeightPageView()
+                GaugeView()
             case 1:
                 SetupPageGenderView()
             case 2:
