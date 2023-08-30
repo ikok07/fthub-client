@@ -9,49 +9,51 @@ import SwiftUI
 
 struct GaugeView: View {
     
-//    @Binding var percentage: Double
-//    @Binding var text: String
+    @Binding var percentage: Double
+    @Binding var text: String
     
-//    func calcPercentage() -> CGFloat {
-//        return 0.1 + percentage * 0.7
-//    }
+    func calcPercentage() -> CGFloat {
+        return 0.1 + percentage * 0.7
+    }
     
     var body: some View {
         ZStack() {
-//            GaugeShape()
-//                .fill(Color.clear) // Set the fill color
-//                .stroke(Color.blue, lineWidth: 10)
-//                .frame(width: 300, height: 300) // Set the desired size
-            UIKitGaugeView()
+            Circle()
+                .trim(from: 0.2, to: 0.8)
+                .stroke(K.Gradients.grayGradient, style: StrokeStyle(lineWidth: 25, lineCap: .round))
+                .frame(width: 300)
+                .rotationEffect(.degrees(90))
+            
+            Circle()
+                .trim(from: 0.2, to: calcPercentage())
+                .stroke(K.Gradients.mainGradient, style: StrokeStyle(lineWidth: 25, lineCap: .round))
+                .frame(width: 300)
+                .rotationEffect(.degrees(90))
+
+                Text(text)
+                    .font(.system(size: 50))
+                    .fontWeight(.bold)
+                    .offset(y: -20)
+                    .contentTransition(.numericText())
+
         }
     }
 }
 
 struct GaugeShape: Shape {
-    
-    var outerBezelColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
-    var outerBezelWidth: CGFloat = 10
-    
-    var innerBezelColor = UIColor.white
-    var innerBezelWidth: CGFloat = 5
-    
-    var insideColor = UIColor.white
+    let startAngle: Angle
+    let endAngle: Angle
+    let clockwise: Bool
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
-
-        path.addEllipse(in: rect)
-
-        let innerBezelRect = rect.insetBy(dx: outerBezelWidth, dy: outerBezelWidth)
-        path.addEllipse(in: innerBezelRect)
-
-        let insideRect = innerBezelRect.insetBy(dx: innerBezelWidth, dy: innerBezelWidth)
-        path.addEllipse(in: insideRect)
-
+         
+        path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: startAngle - .degrees(90), endAngle: endAngle - .degrees(90), clockwise: !clockwise)
+        
         return path
     }
 }
 
 #Preview {
-    GaugeView()
+    GaugeView(percentage: .constant(0.25), text: .constant("75 kg"))
 }

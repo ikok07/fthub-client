@@ -28,9 +28,9 @@ struct SetupWeightPageView: View {
             
             TwoLineHeadingView(upperPart: "What about", bottomPart: "your weight")
             Spacer()
-//            GaugeView()
-//                .offset(y: 50)
-//                .padding(.bottom, 50)
+            GaugeView(percentage: $percentage, text: $gaugeText)
+                .offset(y: 50)
+                .padding(.bottom, 50)
             
             VStack(spacing: 0) {
                 HorizontalPickerView(value: $selectedWeight, minValue: 20, maxValue: 140)
