@@ -4,37 +4,25 @@
     " " : {
 
     },
+    "%@ inch" : {
+
+    },
     "%lld" : {
 
     },
     "%lld cm" : {
 
     },
-    "%lld inch" : {
-
-    },
-    "47 inch" : {
-
-    },
-    "63 inch" : {
-
-    },
-    "75 inch" : {
-
-    },
-    "90 inch" : {
+    "%lld inches" : {
 
     },
     "120 cm" : {
 
     },
-    "160 cm" : {
+    "170 cm" : {
 
     },
-    "190 cm" : {
-
-    },
-    "230 cm" : {
+    "220 cm" : {
 
     },
     "A code will be sent to your email" : {
