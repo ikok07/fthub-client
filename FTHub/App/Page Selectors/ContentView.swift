@@ -19,7 +19,7 @@ struct ContentView: View {
             if loadContentView {
                 ZStack {
                     if userLoggedIn == true {
-                        CoachesPageView()
+                        SetupPageViewManager()
                     } else {
                         BeforeAuthView()
                     }

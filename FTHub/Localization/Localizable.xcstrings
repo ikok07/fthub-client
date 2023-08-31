@@ -4,7 +4,25 @@
     " " : {
 
     },
+    "%@ inch" : {
+
+    },
     "%lld" : {
+
+    },
+    "%lld cm" : {
+
+    },
+    "%lld inches" : {
+
+    },
+    "120 cm" : {
+
+    },
+    "170 cm" : {
+
+    },
+    "220 cm" : {
 
     },
     "A code will be sent to your email" : {
@@ -76,6 +94,9 @@
           }
         }
       }
+    },
+    "Continue" : {
+
     },
     "Create new password" : {
 
@@ -170,6 +191,9 @@
         }
       }
     },
+    "Female" : {
+
+    },
     "Finish" : {
       "localizations" : {
         "bg" : {
@@ -208,10 +232,28 @@
     "Hello, World!" : {
 
     },
+    "Imperial" : {
+
+    },
+    "kg" : {
+
+    },
+    "lbs" : {
+
+    },
+    "Log Out" : {
+
+    },
     "Logged into FTHub\npage: coaches" : {
 
     },
     "Lorem Ipsum is simply dummy text of the printing and typesetting" : {
+
+    },
+    "Male" : {
+
+    },
+    "Metric" : {
 
     },
     "Open Mail" : {
@@ -432,6 +474,9 @@
       }
     },
     "We have sent a link to" : {
+
+    },
+    "years" : {
 
     },
     "You have successfuly changed your password" : {

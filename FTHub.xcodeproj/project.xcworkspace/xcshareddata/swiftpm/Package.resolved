@@ -17,6 +17,24 @@
         "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
         "version" : "1.0.2"
       }
+    },
+    {
+      "identity" : "swiftuigauge",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ikok07/SwiftUIGauge.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "dd95780bf7045e523e0cde4b2bc8f5cac9caba9e"
+      }
+    },
+    {
+      "identity" : "swiftuihorizontalnumberpicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ikok07/SwiftUIHorizontalNumberPicker.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "afd79e101fa208aef597a972706d63ad9e009ffb"
+      }
     }
   ],
   "version" : 2

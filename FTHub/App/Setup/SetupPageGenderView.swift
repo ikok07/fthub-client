@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct SetupPageTwoView: View {
+struct SetupPageGenderView: View {
+    
+    @EnvironmentObject private var setupController: SetupController
+    
+    @State private var activeOption: Int = 0
+    
     var body: some View {
         ScrollView {
             Image("setup1")
@@ -18,15 +24,15 @@ struct SetupPageTwoView: View {
             TwoLineHeadingView(upperPart: "Please select", bottomPart: "your gender")
             
             VStack(spacing: 20) {
-                GenderSelectRowView(gender: .male, active: true)
+                GenderSelectRowView(gender: .male, id: 0, activeOption: $activeOption)
                 
-                GenderSelectRowView(gender: .female, active: false)
+                GenderSelectRowView(gender: .female, id: 1, activeOption: $activeOption)
             }
             .padding(.horizontal, 30)
             .padding(.vertical)
             
             Button {
-                
+                setupController.activePage += 1
             } label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -40,5 +46,5 @@ struct SetupPageTwoView: View {
 }
 
 #Preview {
-    SetupPageTwoView()
+    SetupPageGenderView()
 }

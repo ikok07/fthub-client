@@ -9,21 +9,38 @@ import SwiftUI
 
 struct SetupPageViewManager: View {
     
-    @AppStorage("activeSetupPage") private var activeSetupPage: Int = 0
+    @EnvironmentObject private var setupController: SetupController
+    @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
+    @AppStorage("userToken") private var userToken: String?
     
     var body: some View {
         ZStack {
-            switch activeSetupPage {
+            switch setupController.activePage {
             case 0:
                 SetupPageOneView()
+            case 1:
+                SetupPageGenderView()
+            case 2:
+                SetupAgePageView()
+            case 3:
+                SetupHeightPageView()
+            case 4 :
+                SetupWeightPageView()
             default:
-                SetupPageOneView()
+                Button(action: {
+                    userLoggedIn = false
+                    userToken = ""
+                    print(setupController.age, setupController.height, setupController.weight, setupController.gender)
+                }, label: {
+                    Text("Log Out")
+                })
             }
         }
-        .animation(.easeOut, value: activeSetupPage)
+        .animation(.easeOut, value: setupController.activePage)
     }
 }
 
 #Preview {
     SetupPageViewManager()
+        .environmentObject(SetupController())
 }

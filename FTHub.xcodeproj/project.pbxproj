@@ -31,6 +31,7 @@
 		22374B182A9292D7006BE6BB /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22374B172A9292D7006BE6BB /* Authentication.swift */; };
 		22374B1A2A929C5C006BE6BB /* BaseAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22374B192A929C5C006BE6BB /* BaseAuthController.swift */; };
 		22374B1C2A92A6EB006BE6BB /* TwoFaAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22374B1B2A92A6EB006BE6BB /* TwoFaAuthController.swift */; };
+		223B1A432AA0856600DADB7D /* SwiftUIGauge in Frameworks */ = {isa = PBXBuildFile; productRef = 223B1A422AA0856600DADB7D /* SwiftUIGauge */; };
 		224A5D862A8CB82B00490614 /* TwoFaCodeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D852A8CB82B00490614 /* TwoFaCodeHeaderView.swift */; };
 		224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D882A8CB8EE00490614 /* TwoFaCodeView.swift */; };
 		224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D8A2A8CB9BC00490614 /* TwoFaCodeFooter.swift */; };
@@ -41,8 +42,16 @@
 		224A5DA12A8CF98D00490614 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5DA02A8CF98D00490614 /* User.swift */; };
 		224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */; };
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
+		2277FC242A9E13420082AA12 /* SetupHeightPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */; };
+		2277FC262A9E13850082AA12 /* UnitSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC252A9E13850082AA12 /* UnitSelectView.swift */; };
+		2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */; };
 		228006772A921C7000A299EC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 228006762A921C7000A299EC /* Localizable.xcstrings */; };
+		22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A172A9C8E97004EF9B3 /* SetupController.swift */; };
+		22803A1A2A9C913B004EF9B3 /* SetupAgePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A192A9C913B004EF9B3 /* SetupAgePageView.swift */; };
+		22803A282A9CC8E0004EF9B3 /* HorizontalNumberPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */; };
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
+		228F264E2A9E685800AD46D9 /* SetupWeightPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */; };
+		228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
 		22969D4E2A94AA4600935A3C /* RestorePasswordMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */; };
@@ -54,6 +63,8 @@
 		22969D5F2A94E75300935A3C /* ConfirmEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D5E2A94E75300935A3C /* ConfirmEmailController.swift */; };
 		22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D602A94EA9F00935A3C /* ConfirmEmailRequestModel.swift */; };
 		22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D622A94EC3500935A3C /* ConfirmEmailModel.swift */; };
+		229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */; };
+		229CC52B2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */; };
 		22C34A542A94ECC500313D89 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C34A532A94ECC500313D89 /* Validator.swift */; };
 		22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C89D0C2A964299001055F0 /* WithCustomMessageModifier.swift */; };
 		22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */; };
@@ -88,7 +99,7 @@
 		22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13C42A978C5B0016E17C /* RestorePasswordStatusView.swift */; };
 		22FD03352A9B8372005A6A13 /* SetupPageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03342A9B8372005A6A13 /* SetupPageOneView.swift */; };
 		22FD03372A9B83C4005A6A13 /* SetupPageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */; };
-		22FD03392A9B87C6005A6A13 /* SetupPageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */; };
+		22FD03392A9B87C6005A6A13 /* SetupPageGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03382A9B87C6005A6A13 /* SetupPageGenderView.swift */; };
 		22FD033C2A9B88A0005A6A13 /* GenderSelectRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */; };
 		22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */; };
 /* End PBXBuildFile section */
@@ -130,8 +141,15 @@
 		224A5DA02A8CF98D00490614 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageView.swift; sourceTree = "<group>"; };
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
+		2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupHeightPageView.swift; sourceTree = "<group>"; };
+		2277FC252A9E13850082AA12 /* UnitSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSelectView.swift; sourceTree = "<group>"; };
+		2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorView.swift; sourceTree = "<group>"; };
 		228006762A921C7000A299EC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		22803A172A9C8E97004EF9B3 /* SetupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupController.swift; sourceTree = "<group>"; };
+		22803A192A9C913B004EF9B3 /* SetupAgePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupAgePageView.swift; sourceTree = "<group>"; };
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWeightPageView.swift; sourceTree = "<group>"; };
+		228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingTextView.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
 		22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordMainView.swift; sourceTree = "<group>"; };
@@ -143,6 +161,8 @@
 		22969D5E2A94E75300935A3C /* ConfirmEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailController.swift; sourceTree = "<group>"; };
 		22969D602A94EA9F00935A3C /* ConfirmEmailRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailRequestModel.swift; sourceTree = "<group>"; };
 		22969D622A94EC3500935A3C /* ConfirmEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailModel.swift; sourceTree = "<group>"; };
+		229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorButtonsView.swift; sourceTree = "<group>"; };
+		229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorStepsLabelsView.swift; sourceTree = "<group>"; };
 		22C34A532A94ECC500313D89 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		22C89D0C2A964299001055F0 /* WithCustomMessageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithCustomMessageModifier.swift; sourceTree = "<group>"; };
 		22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithLoadingAnimationModifier.swift; sourceTree = "<group>"; };
@@ -176,7 +196,7 @@
 		22FC13C42A978C5B0016E17C /* RestorePasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordStatusView.swift; sourceTree = "<group>"; };
 		22FD03342A9B8372005A6A13 /* SetupPageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageOneView.swift; sourceTree = "<group>"; };
 		22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageViewManager.swift; sourceTree = "<group>"; };
-		22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageTwoView.swift; sourceTree = "<group>"; };
+		22FD03382A9B87C6005A6A13 /* SetupPageGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageGenderView.swift; sourceTree = "<group>"; };
 		22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectRowView.swift; sourceTree = "<group>"; };
 		22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeResendButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,7 +206,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223B1A432AA0856600DADB7D /* SwiftUIGauge in Frameworks */,
 				22EB51AE2A8B62F80079A3B1 /* Algorithms in Frameworks */,
+				22803A282A9CC8E0004EF9B3 /* HorizontalNumberPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,8 +244,8 @@
 				220266CF2A8A4935009D299F /* Utils */,
 				220266DE2A8A5371009D299F /* Style */,
 				224A5D982A8CDE8500490614 /* Model */,
-				220266D32A8A511D009D299F /* View */,
 				224A5D932A8CDB4E00490614 /* Controller */,
+				220266D32A8A511D009D299F /* View */,
 				220266E22A8A5734009D299F /* App */,
 				220266C52A8A4818009D299F /* Assets.xcassets */,
 				220266C72A8A4818009D299F /* Preview Content */,
@@ -398,6 +420,7 @@
 		224A5D932A8CDB4E00490614 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				22803A162A9C8E8C004EF9B3 /* Setup */,
 				22969D542A94B90800935A3C /* Restore Password */,
 				222F3C6F2A9385D7005BC46F /* Authentication */,
 				222F3C702A9385E2005BC46F /* Common */,
@@ -457,12 +480,30 @@
 			path = "Restore Password";
 			sourceTree = "<group>";
 		};
+		2277FC292A9E1C7E0082AA12 /* Vertical Number Selector */ = {
+			isa = PBXGroup;
+			children = (
+				2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */,
+				229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */,
+				229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */,
+			);
+			path = "Vertical Number Selector";
+			sourceTree = "<group>";
+		};
 		228006752A921C4600A299EC /* Localization */ = {
 			isa = PBXGroup;
 			children = (
 				228006762A921C7000A299EC /* Localizable.xcstrings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		22803A162A9C8E8C004EF9B3 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				22803A172A9C8E97004EF9B3 /* SetupController.swift */,
+			);
+			path = Setup;
 			sourceTree = "<group>";
 		};
 		228744C72A8E5BA300DB77DF /* Extensions */ = {
@@ -631,7 +672,10 @@
 			children = (
 				22FD03342A9B8372005A6A13 /* SetupPageOneView.swift */,
 				22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */,
-				22FD03382A9B87C6005A6A13 /* SetupPageTwoView.swift */,
+				22FD03382A9B87C6005A6A13 /* SetupPageGenderView.swift */,
+				22803A192A9C913B004EF9B3 /* SetupAgePageView.swift */,
+				2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */,
+				228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -639,7 +683,10 @@
 		22FD033A2A9B888D005A6A13 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
+				2277FC292A9E1C7E0082AA12 /* Vertical Number Selector */,
 				22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */,
+				2277FC252A9E13850082AA12 /* UnitSelectView.swift */,
+				228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -662,6 +709,8 @@
 			name = FTHub;
 			packageProductDependencies = (
 				22EB51AD2A8B62F80079A3B1 /* Algorithms */,
+				22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */,
+				223B1A422AA0856600DADB7D /* SwiftUIGauge */,
 			);
 			productName = FTHub;
 			productReference = 220266BE2A8A4815009D299F /* FTHub.app */;
@@ -695,6 +744,8 @@
 			mainGroup = 220266B52A8A4815009D299F;
 			packageReferences = (
 				22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */,
+				223B1A412AA0856600DADB7D /* XCRemoteSwiftPackageReference "SwiftUIGauge" */,
 			);
 			productRefGroup = 220266BF2A8A4815009D299F /* Products */;
 			projectDirPath = "";
@@ -731,9 +782,12 @@
 				220266D62A8A5144009D299F /* TwoLineHeadingView.swift in Sources */,
 				22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */,
 				22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */,
+				22803A1A2A9C913B004EF9B3 /* SetupAgePageView.swift in Sources */,
 				220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */,
+				228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */,
 				22DED6892A908C1400D1EBBB /* TwoFaCodeNumberField.swift in Sources */,
 				220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */,
+				228F264E2A9E685800AD46D9 /* SetupWeightPageView.swift in Sources */,
 				22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */,
 				22969D592A94C28F00935A3C /* ResendConfirmEmailController.swift in Sources */,
 				22374B182A9292D7006BE6BB /* Authentication.swift in Sources */,
@@ -747,6 +801,7 @@
 				22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */,
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				22C34A542A94ECC500313D89 /* Validator.swift in Sources */,
+				22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */,
 				22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */,
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
@@ -780,6 +835,8 @@
 				22FC13BA2A9756690016E17C /* ValidationController.swift in Sources */,
 				224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */,
 				224A5D8E2A8CC55100490614 /* CoachesPageView.swift in Sources */,
+				229CC52B2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift in Sources */,
+				2277FC262A9E13850082AA12 /* UnitSelectView.swift in Sources */,
 				22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */,
 				22969D512A94AAAD00935A3C /* RestorePasswordHeaderView.swift in Sources */,
 				22FC13BD2A9757160016E17C /* RestorePasswordModel.swift in Sources */,
@@ -792,13 +849,16 @@
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,
 				22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */,
 				224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */,
+				229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */,
 				22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */,
+				2277FC242A9E13420082AA12 /* SetupHeightPageView.swift in Sources */,
 				22374B1C2A92A6EB006BE6BB /* TwoFaAuthController.swift in Sources */,
+				2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */,
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
-				22FD03392A9B87C6005A6A13 /* SetupPageTwoView.swift in Sources */,
+				22FD03392A9B87C6005A6A13 /* SetupPageGenderView.swift in Sources */,
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,
 				224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */,
 				22E824742A8BB26F00B51C60 /* TwoFaCodeMainView.swift in Sources */,
@@ -1018,6 +1078,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		223B1A412AA0856600DADB7D /* XCRemoteSwiftPackageReference "SwiftUIGauge" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ikok07/SwiftUIGauge.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ikok07/SwiftUIHorizontalNumberPicker.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -1029,6 +1105,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		223B1A422AA0856600DADB7D /* SwiftUIGauge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223B1A412AA0856600DADB7D /* XCRemoteSwiftPackageReference "SwiftUIGauge" */;
+			productName = SwiftUIGauge;
+		};
+		22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */;
+			productName = HorizontalNumberPicker;
+		};
 		22EB51AD2A8B62F80079A3B1 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */;

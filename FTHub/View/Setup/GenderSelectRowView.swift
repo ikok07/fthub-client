@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import SwiftData
 
 enum Gender: String, CaseIterable {
     case male, female
@@ -14,33 +14,43 @@ enum Gender: String, CaseIterable {
 
 struct GenderSelectRowView: View {
     
+    @EnvironmentObject private var setupController: SetupController
+    
     let gender: Gender
-    @State var active: Bool
+    let id: Int
+    @Binding var activeOption: Int
     
     var body: some View {
-        HStack {
-            Image(active == true ? gender.rawValue : "\(gender.rawValue)-gray")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 30)
-            
-            Text(gender == .male ? "Male" : "Female")
-                .font(.title3)
-                .fontWeight(.semibold)
-                .foregroundStyle(active == true ? .white : .textGray)
-            Spacer()
+        Button {
+            activeOption = id
+            setupController.gender = self.gender
+        } label: {
+            HStack {
+                Image(activeOption == id ? gender.rawValue : "\(gender.rawValue)-gray")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30)
+                
+                Text(gender == .male ? "Male" : "Female")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(activeOption == id ? .white : .textGray)
+                Spacer()
+            }
+            .padding(EdgeInsets(top: 13, leading: 10, bottom: 13, trailing: 10))
+            .background(activeOption == id ? K.Gradients.secondaryGradient : K.Gradients.clearGradient)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .overlay {
+                RoundedRectangle(cornerRadius: 12)
+                    .strokeBorder(activeOption == id ? .clear : .textGray.opacity(0.5))
+            }
         }
-        .padding(EdgeInsets(top: 13, leading: 10, bottom: 13, trailing: 10))
-        .background(active == true ? K.Gradients.secondaryGradient : K.Gradients.clearGradient)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .overlay {
-            RoundedRectangle(cornerRadius: 12)
-                .strokeBorder(active == false ? .textGray : .clear)
-        }
+
     }
 }
 
 #Preview {
-    GenderSelectRowView(gender: .female, active: true)
+    GenderSelectRowView(gender: .female, id: 0, activeOption: .constant(0))
         .padding()
+        .environmentObject(SetupController())
 }
