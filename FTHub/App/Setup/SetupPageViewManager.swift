@@ -30,6 +30,7 @@ struct SetupPageViewManager: View {
                 Button(action: {
                     userLoggedIn = false
                     userToken = ""
+                    setupController.activePage = 0
                     print(setupController.age, setupController.height, setupController.weight, setupController.gender)
                 }, label: {
                     Text("Log Out")

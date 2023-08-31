@@ -13,8 +13,8 @@ struct SetupAgePageView: View {
     @EnvironmentObject private var setupController: SetupController
     
     @State private var activeAge: Int = 15
-    let startAge = 15
-    let endAge = 75
+    let startAge = 40
+    let endAge = 180
 
     var body: some View {
         VStack(spacing: 40) {
@@ -45,10 +45,10 @@ struct SetupAgePageView: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             })
             .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
-            .padding()
             
             Spacer()
         }
+        .padding()
     }
 }
 
