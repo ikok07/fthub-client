@@ -37,8 +37,25 @@ struct K {
         static let apiV2: String = "v2"
     }
     
+    // MARK: - Grid
     struct GridLayouts {
         static let standardColumnLayout: [GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
+    }
+    
+    
+    // MARK: - User
+    struct UserDetails {
+        static let minHeight: Int = 120
+        static let maxHeight: Int = 220
+        
+        static let minWeight: Int = 40
+        static let maxWeight: Int = 180
+    }
+    
+    
+    // MARK: - Units
+    struct Units {
+        static let kgToLbs: Double = 2.2046226218488
     }
     
 }

@@ -18,8 +18,6 @@ struct SetupPageViewManager: View {
             switch setupController.activePage {
             case 0:
                 SetupPageOneView()
-//                SetupWeightPageView()
-//                GaugeView()
             case 1:
                 SetupPageGenderView()
             case 2:
@@ -32,6 +30,7 @@ struct SetupPageViewManager: View {
                 Button(action: {
                     userLoggedIn = false
                     userToken = ""
+                    print(setupController.age, setupController.height, setupController.weight, setupController.gender)
                 }, label: {
                     Text("Log Out")
                 })

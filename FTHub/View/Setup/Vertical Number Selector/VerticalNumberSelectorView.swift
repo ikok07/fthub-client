@@ -10,8 +10,6 @@ import SwiftUI
 struct VerticalNumberSelectorView: View {
     @EnvironmentObject private var setupController: SetupController
     
-    let minValue: Double = 120
-    let maxValue: Double = 220
     @State private var percentage: Double = 0.6
     
 
@@ -20,7 +18,7 @@ struct VerticalNumberSelectorView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             
-            VerticalNumberSelectorButtonsView(percentage: $percentage, userHeight: $userHeight, minValue: self.minValue, maxValue: self.maxValue)
+            VerticalNumberSelectorButtonsView(percentage: $percentage, userHeight: $userHeight, minValue: Double(K.UserDetails.minHeight), maxValue: Double(K.UserDetails.maxHeight))
             
             VStack {
                 Text(setupController.units == .metric ? "\(Int(userHeight ?? 0)) cm" : "\(String(format: "%5.1f", 0.3937 * (userHeight ?? 0))) inch")
@@ -52,7 +50,7 @@ struct VerticalNumberSelectorView: View {
                                 percentage = 1
                             } else {
                                 percentage = newHeight / 400
-                                userHeight = 120 + (percentage * (maxValue - minValue))
+                                userHeight = 120 + (percentage * (Double(K.UserDetails.maxHeight) - Double(K.UserDetails.minHeight)))
                             }
                             setupController.height = Int(userHeight ?? 0)
                             
@@ -68,7 +66,7 @@ struct VerticalNumberSelectorView: View {
             
         }
         .onAppear {
-            userHeight = 120 + (percentage * (maxValue - minValue))
+            userHeight = 120 + (percentage * (Double(K.UserDetails.maxHeight) - Double(K.UserDetails.minHeight)))
         }
         .frame(width: 260)
     }

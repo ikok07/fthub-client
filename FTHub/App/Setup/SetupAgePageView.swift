@@ -23,6 +23,7 @@ struct SetupAgePageView: View {
                 
                 HeadlineView(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
             }
+            .padding()
             
             VStack {
                 VStack {
@@ -33,7 +34,7 @@ struct SetupAgePageView: View {
                         .font(.system(size: 60))
                         .fontWeight(.bold)
                 }
-                HorizontalPickerView(value: $activeAge, minValue: startAge, maxValue: endAge)
+                HorizontalPickerView(value: $activeAge, selectorGradient: K.Gradients.mainGradient, minValue: startAge, maxValue: endAge, startValue: 18)
             }
             
             Button(action: {
@@ -44,10 +45,10 @@ struct SetupAgePageView: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             })
             .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
+            .padding()
             
             Spacer()
         }
-        .padding()
     }
 }
 

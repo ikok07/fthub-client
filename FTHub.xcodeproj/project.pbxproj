@@ -31,6 +31,7 @@
 		22374B182A9292D7006BE6BB /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22374B172A9292D7006BE6BB /* Authentication.swift */; };
 		22374B1A2A929C5C006BE6BB /* BaseAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22374B192A929C5C006BE6BB /* BaseAuthController.swift */; };
 		22374B1C2A92A6EB006BE6BB /* TwoFaAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22374B1B2A92A6EB006BE6BB /* TwoFaAuthController.swift */; };
+		223B1A432AA0856600DADB7D /* SwiftUIGauge in Frameworks */ = {isa = PBXBuildFile; productRef = 223B1A422AA0856600DADB7D /* SwiftUIGauge */; };
 		224A5D862A8CB82B00490614 /* TwoFaCodeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D852A8CB82B00490614 /* TwoFaCodeHeaderView.swift */; };
 		224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D882A8CB8EE00490614 /* TwoFaCodeView.swift */; };
 		224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D8A2A8CB9BC00490614 /* TwoFaCodeFooter.swift */; };
@@ -50,10 +51,7 @@
 		22803A282A9CC8E0004EF9B3 /* HorizontalNumberPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */; };
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
 		228F264E2A9E685800AD46D9 /* SetupWeightPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */; };
-		228F26502A9E68D000AD46D9 /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F264F2A9E68D000AD46D9 /* GaugeView.swift */; };
-		228F26532A9E73A600AD46D9 /* GaugeArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26522A9E73A600AD46D9 /* GaugeArrowView.swift */; };
 		228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */; };
-		228F26582A9E8B0D00AD46D9 /* UIKitGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26572A9E8B0D00AD46D9 /* UIKitGaugeView.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
 		22969D4E2A94AA4600935A3C /* RestorePasswordMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */; };
@@ -151,10 +149,7 @@
 		22803A192A9C913B004EF9B3 /* SetupAgePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupAgePageView.swift; sourceTree = "<group>"; };
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWeightPageView.swift; sourceTree = "<group>"; };
-		228F264F2A9E68D000AD46D9 /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
-		228F26522A9E73A600AD46D9 /* GaugeArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeArrowView.swift; sourceTree = "<group>"; };
 		228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingTextView.swift; sourceTree = "<group>"; };
-		228F26572A9E8B0D00AD46D9 /* UIKitGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitGaugeView.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
 		22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordMainView.swift; sourceTree = "<group>"; };
@@ -211,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223B1A432AA0856600DADB7D /* SwiftUIGauge in Frameworks */,
 				22EB51AE2A8B62F80079A3B1 /* Algorithms in Frameworks */,
 				22803A282A9CC8E0004EF9B3 /* HorizontalNumberPicker in Frameworks */,
 			);
@@ -238,7 +234,6 @@
 		220266C02A8A4815009D299F /* FTHub */ = {
 			isa = PBXGroup;
 			children = (
-				228F26562A9E8AF500AD46D9 /* UIKit */,
 				22C89D0B2A964289001055F0 /* ViewModifier */,
 				228006752A921C4600A299EC /* Localization */,
 				228744CA2A8E633800DB77DF /* Protocols */,
@@ -527,23 +522,6 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		228F26512A9E739600AD46D9 /* Gauge */ = {
-			isa = PBXGroup;
-			children = (
-				228F264F2A9E68D000AD46D9 /* GaugeView.swift */,
-				228F26522A9E73A600AD46D9 /* GaugeArrowView.swift */,
-			);
-			path = Gauge;
-			sourceTree = "<group>";
-		};
-		228F26562A9E8AF500AD46D9 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				228F26572A9E8B0D00AD46D9 /* UIKitGaugeView.swift */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
 		22969D462A94A7EE00935A3C /* TwoFa Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,7 +686,6 @@
 				2277FC292A9E1C7E0082AA12 /* Vertical Number Selector */,
 				22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */,
 				2277FC252A9E13850082AA12 /* UnitSelectView.swift */,
-				228F26512A9E739600AD46D9 /* Gauge */,
 				228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */,
 			);
 			path = Setup;
@@ -733,6 +710,7 @@
 			packageProductDependencies = (
 				22EB51AD2A8B62F80079A3B1 /* Algorithms */,
 				22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */,
+				223B1A422AA0856600DADB7D /* SwiftUIGauge */,
 			);
 			productName = FTHub;
 			productReference = 220266BE2A8A4815009D299F /* FTHub.app */;
@@ -767,6 +745,7 @@
 			packageReferences = (
 				22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */,
+				223B1A412AA0856600DADB7D /* XCRemoteSwiftPackageReference "SwiftUIGauge" */,
 			);
 			productRefGroup = 220266BF2A8A4815009D299F /* Products */;
 			projectDirPath = "";
@@ -814,7 +793,6 @@
 				22374B182A9292D7006BE6BB /* Authentication.swift in Sources */,
 				220266F82A8A7066009D299F /* MainAccountAuthView.swift in Sources */,
 				22ED2EC02A9136E600BB623E /* CustomNumpadButtonStyle.swift in Sources */,
-				228F26532A9E73A600AD46D9 /* GaugeArrowView.swift in Sources */,
 				22E8246D2A8BA68A00B51C60 /* AuthenticationFooterView.swift in Sources */,
 				220266ED2A8A5DE2009D299F /* TutorialSecondPageView.swift in Sources */,
 				22CDFF962A94E37B009DB029 /* SignUpValidationController.swift in Sources */,
@@ -828,7 +806,6 @@
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
 				22FD03352A9B8372005A6A13 /* SetupPageOneView.swift in Sources */,
-				228F26502A9E68D000AD46D9 /* GaugeView.swift in Sources */,
 				22DA77B62A98D83300550A6B /* FakeLaunchScreenView.swift in Sources */,
 				22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */,
 				22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */,
@@ -872,7 +849,6 @@
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,
 				22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */,
 				224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */,
-				228F26582A9E8B0D00AD46D9 /* UIKitGaugeView.swift in Sources */,
 				229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */,
 				22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */,
 				2277FC242A9E13420082AA12 /* SetupHeightPageView.swift in Sources */,
@@ -1102,6 +1078,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		223B1A412AA0856600DADB7D /* XCRemoteSwiftPackageReference "SwiftUIGauge" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ikok07/SwiftUIGauge.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ikok07/SwiftUIHorizontalNumberPicker.git";
@@ -1121,6 +1105,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		223B1A422AA0856600DADB7D /* SwiftUIGauge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223B1A412AA0856600DADB7D /* XCRemoteSwiftPackageReference "SwiftUIGauge" */;
+			productName = SwiftUIGauge;
+		};
 		22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */;
