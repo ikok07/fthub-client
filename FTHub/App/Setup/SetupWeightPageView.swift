@@ -65,6 +65,7 @@ struct SetupWeightPageView: View {
             .padding()
             .offset(y: -35)
         }
+        .padding()
         .onChange(of: selectedWeight) { _, _ in
             withAnimation(.linear) {
                 percentage = Double(selectedWeight - K.UserDetails.minWeight) / Double(K.UserDetails.maxWeight - K.UserDetails.minWeight)
