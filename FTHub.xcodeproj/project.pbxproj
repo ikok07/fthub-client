@@ -46,6 +46,7 @@
 		224CE9642AA1BE580027FB2D /* GoalTabViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CE9632AA1BE580027FB2D /* GoalTabViewItem.swift */; };
 		224CE9662AA1C6500027FB2D /* TeasingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CE9652AA1C6500027FB2D /* TeasingTabView.swift */; };
 		224CE9682AA1CD8E0027FB2D /* SetupGoalTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CE9672AA1CD8E0027FB2D /* SetupGoalTabView.swift */; };
+		224CE96C2AA1D3D10027FB2D /* HealthKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CE96B2AA1D3D10027FB2D /* HealthKitController.swift */; };
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
 		2277FC242A9E13420082AA12 /* SetupHeightPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */; };
 		2277FC262A9E13850082AA12 /* UnitSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC252A9E13850082AA12 /* UnitSelectView.swift */; };
@@ -150,6 +151,8 @@
 		224CE9632AA1BE580027FB2D /* GoalTabViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTabViewItem.swift; sourceTree = "<group>"; };
 		224CE9652AA1C6500027FB2D /* TeasingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeasingTabView.swift; sourceTree = "<group>"; };
 		224CE9672AA1CD8E0027FB2D /* SetupGoalTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGoalTabView.swift; sourceTree = "<group>"; };
+		224CE9692AA1D37C0027FB2D /* FTHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FTHub.entitlements; sourceTree = "<group>"; };
+		224CE96B2AA1D3D10027FB2D /* HealthKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitController.swift; sourceTree = "<group>"; };
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
 		2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupHeightPageView.swift; sourceTree = "<group>"; };
 		2277FC252A9E13850082AA12 /* UnitSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSelectView.swift; sourceTree = "<group>"; };
@@ -244,6 +247,7 @@
 		220266C02A8A4815009D299F /* FTHub */ = {
 			isa = PBXGroup;
 			children = (
+				224CE9692AA1D37C0027FB2D /* FTHub.entitlements */,
 				22C89D0B2A964289001055F0 /* ViewModifier */,
 				228006752A921C4600A299EC /* Localization */,
 				228744CA2A8E633800DB77DF /* Protocols */,
@@ -431,6 +435,7 @@
 		224A5D932A8CDB4E00490614 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				224CE96A2AA1D3C60027FB2D /* HealthKit */,
 				22803A162A9C8E8C004EF9B3 /* Setup */,
 				22969D542A94B90800935A3C /* Restore Password */,
 				222F3C6F2A9385D7005BC46F /* Authentication */,
@@ -467,6 +472,14 @@
 				224C9FB42A8E0DFF00AF5612 /* CustomMessageView.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		224CE96A2AA1D3C60027FB2D /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				224CE96B2AA1D3D10027FB2D /* HealthKitController.swift */,
+			);
+			path = HealthKit;
 			sourceTree = "<group>";
 		};
 		2257C9342A8BF252000E3CD2 /* TwoFa Code */ = {
@@ -876,6 +889,7 @@
 				22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */,
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
+				224CE96C2AA1D3D10027FB2D /* HealthKitController.swift in Sources */,
 				22FD03392A9B87C6005A6A13 /* SetupPageGenderView.swift in Sources */,
 				224CE9662AA1C6500027FB2D /* TeasingTabView.swift in Sources */,
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,
@@ -1015,6 +1029,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FTHub/FTHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FTHub/Preview Content\"";
@@ -1047,6 +1062,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FTHub/FTHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FTHub/Preview Content\"";
