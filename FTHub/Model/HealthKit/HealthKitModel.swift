@@ -10,24 +10,19 @@ import HealthKit
 
 
 struct HealthKitModel {
-    static func requestAuthorization(store: HKHealthStore) throws -> Bool {
+    static func requestAuthorization(store: HKHealthStore, healthData: Set<HKSampleType>, completion: (() -> Void)?) throws -> [HKAuthorizationStatus] {
         
-        var authStatus: Bool = false
-        
-        let healthData = Set([
-            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
-            HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!,
-            HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!,
-            HKQuantityType.quantityType(forIdentifier: .height)!,
-            HKQuantityType.quantityType(forIdentifier: .bodyMass)!
-        ])
+        var authStatus: [HKAuthorizationStatus] = []
         
         if HKHealthStore.isHealthDataAvailable() {
             store.requestAuthorization(toShare: healthData, read: healthData) { success, error in
-                if success {
-                    authStatus = true
-                } else {
+                if error != nil {
                     print("Error authorizing health data: \(error!)")
+                } else {
+                    for data in healthData {
+                        authStatus.append(store.authorizationStatus(for: data))
+                    }
+                    completion?()
                 }
             }
         } else {

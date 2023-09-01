@@ -16,11 +16,20 @@ class HealthKitController: ObservableObject {
     
     let healthStore = HKHealthStore()
     
-    var authStatus: Bool = false
+    var authStatus: [HKAuthorizationStatus] = []
     
-    func checkAuthStatus() {
+    let healthData = Set([
+        HKQuantityType.workoutType(),
+        HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+        HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage)!,
+        HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!,
+        HKQuantityType.quantityType(forIdentifier: .height)!,
+        HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+    ])
+    
+    func askForAuthorization(completion: (() -> Void)?) {
         do {
-            authStatus = try HealthKitModel.requestAuthorization(store: self.healthStore)
+            authStatus = try HealthKitModel.requestAuthorization(store: self.healthStore, healthData: self.healthData, completion: completion)
         } catch {
             print(error)
         }

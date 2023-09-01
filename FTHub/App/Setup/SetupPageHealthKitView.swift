@@ -10,6 +10,7 @@ import SwiftUI
 struct SetupPageHealthKitView: View {
     
     @EnvironmentObject private var healthKitController: HealthKitController
+    @EnvironmentObject private var setupController: SetupController
     
     var body: some View {
         VStack {
@@ -20,13 +21,27 @@ struct SetupPageHealthKitView: View {
             }
             .padding(.top)
             
-            Button(action: {
-                healthKitController.checkAuthStatus()
-            }, label: {
-                Text("Connect")
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-            })
-            .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
+            VStack {
+                Button(action: {
+                    healthKitController.askForAuthorization() {
+                        DispatchQueue.main.async {
+                            setupController.activePage += 1
+                        }
+                    }
+                }, label: {
+                    Text("Connect")
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                })
+                .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
+                
+                Button(action: {
+                    setupController.activePage += 1
+                }, label: {
+                    Text("Skip")
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                })
+                .buttonStyle(CTAButtonStyle(gradient: K.Gradients.grayGradient))
+            }
             .padding(.vertical)
             
             Spacer()
@@ -38,4 +53,5 @@ struct SetupPageHealthKitView: View {
 #Preview {
     SetupPageHealthKitView()
         .environmentObject(HealthKitController())
+        .environmentObject(SetupController())
 }

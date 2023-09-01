@@ -34,7 +34,7 @@ struct SetupPageTrainingsPerWeekView: View {
                         .fontWeight(.bold)
                 }
                 
-                HorizontalPickerView(value: $selectedDays, minValue: 2, maxValue: 8, startValue: 3)
+                HorizontalPickerView(value: $selectedDays, selectorGradient: K.Gradients.mainGradient, minValue: 2, maxValue: 7, startValue: 3)
             }
             
             Button(action: {
