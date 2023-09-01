@@ -50,7 +50,7 @@
 		224CE9682AA1CD8E0027FB2D /* SetupGoalTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CE9672AA1CD8E0027FB2D /* SetupGoalTabView.swift */; };
 		224CE96C2AA1D3D10027FB2D /* HealthKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CE96B2AA1D3D10027FB2D /* HealthKitController.swift */; };
 		2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */; };
-		2277FC242A9E13420082AA12 /* SetupHeightPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */; };
+		2277FC242A9E13420082AA12 /* SetupPageHeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC232A9E13420082AA12 /* SetupPageHeightView.swift */; };
 		2277FC262A9E13850082AA12 /* UnitSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC252A9E13850082AA12 /* UnitSelectView.swift */; };
 		2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */; };
 		228006772A921C7000A299EC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 228006762A921C7000A299EC /* Localizable.xcstrings */; };
@@ -58,7 +58,7 @@
 		22803A1A2A9C913B004EF9B3 /* SetupAgePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22803A192A9C913B004EF9B3 /* SetupAgePageView.swift */; };
 		22803A282A9CC8E0004EF9B3 /* HorizontalNumberPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */; };
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
-		228F264E2A9E685800AD46D9 /* SetupWeightPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */; };
+		228F264E2A9E685800AD46D9 /* SetupPageWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F264D2A9E685800AD46D9 /* SetupPageWeightView.swift */; };
 		228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
@@ -100,6 +100,9 @@
 		22ED2EC22A91392300BB623E /* NumpadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2EC12A91392300BB623E /* NumpadController.swift */; };
 		22F2709C2A95DD8300AA8AC6 /* NetworkCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2709B2A95DD8300AA8AC6 /* NetworkCapable.swift */; };
 		22F2709E2A95E5FA00AA8AC6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2709D2A95E5FA00AA8AC6 /* Networking.swift */; };
+		22F55BEE2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BED2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift */; };
+		22F55BF02AA26323007DBBA9 /* SetupPageNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BEF2AA26323007DBBA9 /* SetupPageNotificationsView.swift */; };
+		22F55BF32AA2678F007DBBA9 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BF22AA2678F007DBBA9 /* NotificationsController.swift */; };
 		22FC13BA2A9756690016E17C /* ValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13B92A9756690016E17C /* ValidationController.swift */; };
 		22FC13BD2A9757160016E17C /* RestorePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BC2A9757160016E17C /* RestorePasswordModel.swift */; };
 		22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */; };
@@ -158,14 +161,14 @@
 		224CE9692AA1D37C0027FB2D /* FTHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FTHub.entitlements; sourceTree = "<group>"; };
 		224CE96B2AA1D3D10027FB2D /* HealthKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitController.swift; sourceTree = "<group>"; };
 		2257C9392A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordEmailView.swift; sourceTree = "<group>"; };
-		2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupHeightPageView.swift; sourceTree = "<group>"; };
+		2277FC232A9E13420082AA12 /* SetupPageHeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageHeightView.swift; sourceTree = "<group>"; };
 		2277FC252A9E13850082AA12 /* UnitSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSelectView.swift; sourceTree = "<group>"; };
 		2277FC272A9E15BF0082AA12 /* VerticalNumberSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorView.swift; sourceTree = "<group>"; };
 		228006762A921C7000A299EC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		22803A172A9C8E97004EF9B3 /* SetupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupController.swift; sourceTree = "<group>"; };
 		22803A192A9C913B004EF9B3 /* SetupAgePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupAgePageView.swift; sourceTree = "<group>"; };
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
-		228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWeightPageView.swift; sourceTree = "<group>"; };
+		228F264D2A9E685800AD46D9 /* SetupPageWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageWeightView.swift; sourceTree = "<group>"; };
 		228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingTextView.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
@@ -206,6 +209,9 @@
 		22ED2EC12A91392300BB623E /* NumpadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumpadController.swift; sourceTree = "<group>"; };
 		22F2709B2A95DD8300AA8AC6 /* NetworkCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCapable.swift; sourceTree = "<group>"; };
 		22F2709D2A95E5FA00AA8AC6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		22F55BED2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleHealthIntegrateView.swift; sourceTree = "<group>"; };
+		22F55BEF2AA26323007DBBA9 /* SetupPageNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageNotificationsView.swift; sourceTree = "<group>"; };
+		22F55BF22AA2678F007DBBA9 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		22FC13B92A9756690016E17C /* ValidationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationController.swift; sourceTree = "<group>"; };
 		22FC13BC2A9757160016E17C /* RestorePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordModel.swift; sourceTree = "<group>"; };
 		22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordRequestModel.swift; sourceTree = "<group>"; };
@@ -447,6 +453,7 @@
 		224A5D932A8CDB4E00490614 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				22F55BF12AA26783007DBBA9 /* Notifications */,
 				224CE96A2AA1D3C60027FB2D /* HealthKit */,
 				22803A162A9C8E8C004EF9B3 /* Setup */,
 				22969D542A94B90800935A3C /* Restore Password */,
@@ -678,6 +685,14 @@
 			path = Numpad;
 			sourceTree = "<group>";
 		};
+		22F55BF12AA26783007DBBA9 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				22F55BF22AA2678F007DBBA9 /* NotificationsController.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		22FC13BB2A9757030016E17C /* Restore Password */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,11 +726,12 @@
 				22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */,
 				22FD03382A9B87C6005A6A13 /* SetupPageGenderView.swift */,
 				22803A192A9C913B004EF9B3 /* SetupAgePageView.swift */,
-				2277FC232A9E13420082AA12 /* SetupHeightPageView.swift */,
-				228F264D2A9E685800AD46D9 /* SetupWeightPageView.swift */,
+				2277FC232A9E13420082AA12 /* SetupPageHeightView.swift */,
+				228F264D2A9E685800AD46D9 /* SetupPageWeightView.swift */,
 				224CE95F2AA1BAEB0027FB2D /* SetupPageTrainingsPerWeekView.swift */,
 				224CE9612AA1BDDA0027FB2D /* SetupPageGoalView.swift */,
 				223A2E212AA21E2800848B2B /* SetupPageHealthKitView.swift */,
+				22F55BEF2AA26323007DBBA9 /* SetupPageNotificationsView.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -729,6 +745,7 @@
 				228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */,
 				224CE9632AA1BE580027FB2D /* GoalTabViewItem.swift */,
 				224CE9672AA1CD8E0027FB2D /* SetupGoalTabView.swift */,
+				22F55BED2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -829,7 +846,7 @@
 				228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */,
 				22DED6892A908C1400D1EBBB /* TwoFaCodeNumberField.swift in Sources */,
 				220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */,
-				228F264E2A9E685800AD46D9 /* SetupWeightPageView.swift in Sources */,
+				228F264E2A9E685800AD46D9 /* SetupPageWeightView.swift in Sources */,
 				22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */,
 				22969D592A94C28F00935A3C /* ResendConfirmEmailController.swift in Sources */,
 				22374B182A9292D7006BE6BB /* Authentication.swift in Sources */,
@@ -850,6 +867,7 @@
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
 				22FD03352A9B8372005A6A13 /* SetupPageOneView.swift in Sources */,
 				22DA77B62A98D83300550A6B /* FakeLaunchScreenView.swift in Sources */,
+				22F55BEE2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift in Sources */,
 				22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */,
 				22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */,
 				22ED2EBC2A912FFF00BB623E /* NumpadButtonView.swift in Sources */,
@@ -868,6 +886,7 @@
 				22DA77AF2A98A45900550A6B /* AccountModel.swift in Sources */,
 				2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */,
 				22FD033C2A9B88A0005A6A13 /* GenderSelectRowView.swift in Sources */,
+				22F55BF02AA26323007DBBA9 /* SetupPageNotificationsView.swift in Sources */,
 				22E824692A8B9D3300B51C60 /* SignUpWithAppleView.swift in Sources */,
 				220266E52A8A5765009D299F /* TutorialPageViewManager.swift in Sources */,
 				22F2709C2A95DD8300AA8AC6 /* NetworkCapable.swift in Sources */,
@@ -897,7 +916,7 @@
 				224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */,
 				229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */,
 				22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */,
-				2277FC242A9E13420082AA12 /* SetupHeightPageView.swift in Sources */,
+				2277FC242A9E13420082AA12 /* SetupPageHeightView.swift in Sources */,
 				22374B1C2A92A6EB006BE6BB /* TwoFaAuthController.swift in Sources */,
 				2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
@@ -915,6 +934,7 @@
 				224A5D972A8CDC4400490614 /* Requests.swift in Sources */,
 				22DA77B42A98CE2E00550A6B /* Database.swift in Sources */,
 				22F2709E2A95E5FA00AA8AC6 /* Networking.swift in Sources */,
+				22F55BF32AA2678F007DBBA9 /* NotificationsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,7 +1076,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = FTHub;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need access to this data in order to provide the most accurate information about your workouts";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to access to modify your health data in order to keep it up to date ";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need access to modify your health data in order to keep it up to date ";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -1091,7 +1112,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = FTHub;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need access to this data in order to provide the most accurate information about your workouts";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to access to modify your health data in order to keep it up to date ";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need access to modify your health data in order to keep it up to date ";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";

@@ -10,24 +10,19 @@ import HealthKit
 
 
 struct HealthKitModel {
-    static func requestAuthorization(store: HKHealthStore, healthData: Set<HKSampleType>, completion: (() -> Void)?) throws -> [HKAuthorizationStatus] {
+    static func requestPermission(store: HKHealthStore, healthData: Set<HKSampleType>, completion: ((Bool) -> Void)?) {
         
-        var authStatus: [HKAuthorizationStatus] = []
+        guard HKHealthStore.isHealthDataAvailable() else { return }
         
-        if HKHealthStore.isHealthDataAvailable() {
-            store.requestAuthorization(toShare: healthData, read: healthData) { success, error in
+        store.requestAuthorization(toShare: healthData, read: healthData) { success, error in
+            if success {
+                completion?(true)
+            } else {
                 if error != nil {
                     print("Error authorizing health data: \(error!)")
-                } else {
-                    for data in healthData {
-                        authStatus.append(store.authorizationStatus(for: data))
-                    }
-                    completion?()
                 }
+                completion?(false)
             }
-        } else {
-            throw HealthKitError.notAvailable
         }
-        return authStatus
     }
 }

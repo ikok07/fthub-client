@@ -1,5 +1,5 @@
 //
-//  SetupPageHealthKitView.swift
+//  SetupPageNotificationsView.swift
 //  FTHub
 //
 //  Created by Kaloyan Petkov on 1.09.23.
@@ -7,38 +7,37 @@
 
 import SwiftUI
 
-struct SetupPageHealthKitView: View {
+struct SetupPageNotificationsView: View {
     
-    @EnvironmentObject private var healthKitController: HealthKitController
     @EnvironmentObject private var setupController: SetupController
     
     var body: some View {
         VStack {
             VStack(spacing: 20) {
-                TwoLineHeadingView(upperPart: "Improve your", bottomPart: "whole experience")
+                TwoLineHeadingView(upperPart: "Always knows", bottomPart: "what's happening")
                 
                 HeadlineView(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ")
             }
             .padding(.top)
             
-            AppleHealthIntegrateView()
-                .padding(.vertical, 30)
+            Image("setup4")
+                .resizable()
+                .scaledToFit()
             
             Spacer()
             
             VStack(spacing: 10) {
                 Button(action: {
-                    healthKitController.askForAuthorization() { success in
+                    NotificationsController.requestPermission { success, error in
                         if success {
-                            DispatchQueue.main.async {
-                                setupController.activePage += 1
-                            }
-                        } else {
-                            Message.send(type: "error", message: "There was an error accessing Apple Health Data")
+                            setupController.activePage += 1
+                        } else if error != nil {
+                            print("Error getting permission for notifications: \(error!)")
+                            Message.send(type: "error", message: "An error occurred")
                         }
                     }
                 }, label: {
-                    Text("Connect")
+                    Text("Allow Notifications")
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 })
                 .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
@@ -54,14 +53,12 @@ struct SetupPageHealthKitView: View {
             }
             .padding(.vertical)
             
-            
         }
         .padding()
     }
 }
 
 #Preview {
-    SetupPageHealthKitView()
-        .environmentObject(HealthKitController())
+    SetupPageNotificationsView()
         .environmentObject(SetupController())
 }

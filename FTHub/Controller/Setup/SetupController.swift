@@ -22,9 +22,5 @@ class SetupController: ObservableObject {
     @Published var weight: Int?
     @Published var workoutsPerWeek: Int?
     @Published var goal: FitnessGoal?
-    @Published var activeAppleHealth: Bool?
-    @Published var activeNotifications: Bool?
-    
-    
     
 }

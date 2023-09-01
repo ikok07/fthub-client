@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SetupHeightPageView: View {
+struct SetupPageHeightView: View {
     
     @EnvironmentObject private var setupController: SetupController
     
@@ -34,5 +34,5 @@ struct SetupHeightPageView: View {
 }
 
 #Preview {
-    SetupHeightPageView()
+    SetupPageHeightView()
 }

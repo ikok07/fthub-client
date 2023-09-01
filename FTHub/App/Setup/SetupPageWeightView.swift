@@ -9,7 +9,7 @@ import SwiftUI
 import HorizontalNumberPicker
 import SwiftUIGauge
 
-struct SetupWeightPageView: View {
+struct SetupPageWeightView: View {
     
     @EnvironmentObject private var setupController: SetupController
     
@@ -83,6 +83,6 @@ struct SetupWeightPageView: View {
 }
 
 #Preview {
-    SetupWeightPageView()
+    SetupPageWeightView()
         .environmentObject(SetupController())
 }

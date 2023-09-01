@@ -13,6 +13,8 @@ struct SetupPageViewManager: View {
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
     @AppStorage("userToken") private var userToken: String?
     
+    @EnvironmentObject private var healthKitController: HealthKitController
+    
     var body: some View {
         ZStack {
             switch setupController.activePage {
@@ -23,15 +25,17 @@ struct SetupPageViewManager: View {
             case 2:
                 SetupAgePageView()
             case 3:
-                SetupHeightPageView()
+                SetupPageHeightView()
             case 4 :
-                SetupWeightPageView()
+                SetupPageWeightView()
             case 5:
                 SetupPageTrainingsPerWeekView()
             case 6:
                 SetupPageGoalView()
             case 7:
                 SetupPageHealthKitView()
+            case 8:
+                SetupPageNotificationsView()
             default:
                 Button(action: {
                     userLoggedIn = false
