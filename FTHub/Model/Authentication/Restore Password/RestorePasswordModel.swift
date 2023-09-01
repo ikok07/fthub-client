@@ -39,7 +39,7 @@ struct RestorePasswordModel {
         
         if let safeResponse = response {
             defaults.setValue(safeResponse.token, forKey: "userToken")
-            Database.saveUserData(safeResponse.data.user)
+            await Database.saveUserData(safeResponse.data.user)
             defaults.setValue(true, forKey: "userLoggedIn")
             defaults.setValue(RestorePasswordStatus.success.rawValue, forKey: "restorePasswordStatus")
             defaults.setValue(true, forKey: "showRestorePasswordStatus")

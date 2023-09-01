@@ -29,11 +29,13 @@ struct SetupPageNotificationsView: View {
             VStack(spacing: 10) {
                 Button(action: {
                     NotificationsController.requestPermission { success, error in
-                        if success {
-                            setupController.activePage += 1
-                        } else if error != nil {
-                            print("Error getting permission for notifications: \(error!)")
-                            Message.send(type: "error", message: "An error occurred")
+                        DispatchQueue.main.async {
+                            if success {
+                                setupController.activePage += 1
+                            } else if error != nil {
+                                print("Error getting permission for notifications: \(error!)")
+                                Message.send(type: "error", message: "An error occurred")
+                            }
                         }
                     }
                 }, label: {

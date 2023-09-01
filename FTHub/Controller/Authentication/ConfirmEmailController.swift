@@ -14,7 +14,7 @@ class ConfirmEmailController {
     static func confirmEmail(url: URL, email: String) async -> Bool {
         if let result = await ConfirmEmailModel.confirmEmail(url: url, email: email) {
             defaults.setValue(result.token, forKey: "userToken")
-            Database.saveUserData(result.data.user)
+            await Database.saveUserData(result.data.user)
             return true
         }
         return false

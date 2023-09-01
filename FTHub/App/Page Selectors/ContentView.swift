@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    
+    @Environment(\.modelContext) private var modelContext
+    @Query private var user: [User]
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
     @AppStorage("userToken") private var userToken: String = ""
@@ -20,6 +24,8 @@ struct ContentView: View {
                 ZStack {
                     if userLoggedIn == true {
                         SetupPageViewManager()
+                    } else if userLoggedIn == true {
+                        CoachesPageView()
                     } else {
                         BeforeAuthView()
                     }
@@ -34,7 +40,14 @@ struct ContentView: View {
         }
         .onAppear {
             Task {
-                await AccountController.checkToken()
+                if let user = user.first {
+                    modelContext.delete(user)
+                }
+                let response = await AccountController.checkToken()
+                if let safeResponse = response {
+                    modelContext.insert(safeResponse.data!)
+                }
+                print(user)
                 withAnimation {
                     loadContentView = true
                 }

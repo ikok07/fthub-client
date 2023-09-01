@@ -13,7 +13,7 @@ class TwoFaAuthController: ObservableObject {
     @Published var email: String?
     @Published var token: Int?
     
-    func authenticateCode() {
+    @MainActor func authenticateCode() {
         twoFaAuthModel.authenticate(email: self.email, token: self.token)
     }
     

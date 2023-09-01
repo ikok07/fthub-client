@@ -20,7 +20,7 @@ struct FTHubApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: User.self)
+                .modelContainer(for: User.self, isAutosaveEnabled: true)
                 .environmentObject(numpadController)
                 .environmentObject(authController)
                 .environmentObject(baseAuthController)

@@ -11,7 +11,7 @@ import SwiftData
 
 struct TwoFaAuthModel {
     
-    func authenticate(email: String?, token: Int?) {
+    @MainActor func authenticate(email: String?, token: Int?) {
         
         let defaults = UserDefaults.standard
         

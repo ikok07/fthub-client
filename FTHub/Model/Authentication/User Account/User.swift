@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 class User: Codable {
-    let _id: String
+    @Attribute(.unique) let _id: String
     let name: String
     let email: String
     let photo: String
@@ -47,8 +47,6 @@ class UserDetails {
     var height: Double
     var weight: Double
     var goal: String
-    var activeAppleHealth: Bool
-    var activeNotifications: Bool
     
     init(gender: String, age: Int, height: Double, weight: Double, goal: String, activeAppleHealth: Bool, activeNotifications: Bool) {
         self.gender = gender
@@ -56,7 +54,5 @@ class UserDetails {
         self.height = height
         self.weight = weight
         self.goal = goal
-        self.activeAppleHealth = activeAppleHealth
-        self.activeNotifications = activeNotifications
     }
 }
