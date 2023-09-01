@@ -51,6 +51,7 @@ struct SetupWeightPageView: View {
                 
             HorizontalPickerView(value: $selectedWeight, selectorGradient: K.Gradients.mainGradient, minValue: K.UserDetails.minWeight, maxValue: K.UserDetails.maxWeight, startValue: 80)
                 .offset(y: -35)
+                .padding(.horizontal)
             
             Spacer()
             

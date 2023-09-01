@@ -26,6 +26,10 @@ struct SetupPageViewManager: View {
                 SetupHeightPageView()
             case 4 :
                 SetupWeightPageView()
+            case 5:
+                SetupPageTrainingsPerWeekView()
+            case 6:
+                SetupPageGoalView()
             default:
                 Button(action: {
                     userLoggedIn = false

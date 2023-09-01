@@ -45,6 +45,9 @@ struct K {
     
     // MARK: - User
     struct UserDetails {
+        static let minAge: Int = 15
+        static let maxAge: Int = 75
+        
         static let minHeight: Int = 120
         static let maxHeight: Int = 220
         

@@ -20,7 +20,8 @@ class SetupController: ObservableObject {
     @Published var age: Int?
     @Published var height: Int?
     @Published var weight: Int?
-    @Published var goal: String?
+    @Published var workoutsPerWeek: Int?
+    @Published var goal: FitnessGoal?
     @Published var activeAppleHealth: Bool?
     @Published var activeNotifications: Bool?
     
