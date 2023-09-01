@@ -15,6 +15,7 @@ struct FTHubApp: App {
     @StateObject var baseAuthController: BaseAuthController = BaseAuthController()
     @StateObject var codeAuthController: TwoFaAuthController = TwoFaAuthController()
     @StateObject var setupController: SetupController = SetupController()
+    @StateObject var healthKitController: HealthKitController = HealthKitController()
     
     var body: some Scene {
         WindowGroup {
@@ -25,6 +26,7 @@ struct FTHubApp: App {
                 .environmentObject(baseAuthController)
                 .environmentObject(codeAuthController)
                 .environmentObject(setupController)
+                .environmentObject(healthKitController)
         }
     }
 }

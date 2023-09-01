@@ -30,6 +30,8 @@ struct SetupPageViewManager: View {
                 SetupPageTrainingsPerWeekView()
             case 6:
                 SetupPageGoalView()
+            case 7:
+                SetupPageHealthKitView()
             default:
                 Button(action: {
                     userLoggedIn = false
