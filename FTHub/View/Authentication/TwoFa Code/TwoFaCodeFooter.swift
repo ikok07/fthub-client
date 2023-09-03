@@ -17,6 +17,8 @@ struct TwoFaCodeFooter: View {
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     @AppStorage("buttonLoading") private var buttonLoading: Bool = false
     
+    @Query private var user: [User]
+    
     let email: String
     let code: Int
     
@@ -29,10 +31,16 @@ struct TwoFaCodeFooter: View {
                         codeAuthController.email = self.email
                         codeAuthController.token = self.code
                         
-                        codeAuthController.authenticateCode() { user in
-                            if let user = user {
-                                user.details = UserDetails(setupActivePage: 0)
-                                modelContext.insert(user)
+                        Task {
+                            await codeAuthController.authenticateCode() { newUser in
+                                let details = await AccountController.checkDetails()
+                                if let userDetails = details, let safeUser = newUser {
+                                    if let user = user.first {
+                                        modelContext.delete(user)
+                                    }
+                                    newUser?.details = userDetails
+                                    modelContext.insert(safeUser)
+                                }
                             }
                         }
                     }

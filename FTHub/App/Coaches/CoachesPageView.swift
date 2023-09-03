@@ -20,8 +20,11 @@ struct CoachesPageView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Logged into FTHub\npage: coaches")
-                .multilineTextAlignment(.center)
+            Text("Age: \(user.first?.details?.age ?? 0)")
+            
+            Text("\((user.first?.details!.gender ?? .Male).rawValue)")
+            
+            Text("\(user.first?.name ?? "")")
             
             Button(action: {
                 withAnimation {

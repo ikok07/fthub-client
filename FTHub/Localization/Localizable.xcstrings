@@ -4,6 +4,9 @@
     " " : {
 
     },
+    "%@" : {
+
+    },
     "%@ inch" : {
 
     },
@@ -40,6 +43,9 @@
           }
         }
       }
+    },
+    "Age: %lld" : {
+
     },
     "Allow Notifications" : {
 
@@ -248,9 +254,6 @@
 
     },
     "lbs" : {
-
-    },
-    "Logged into FTHub\npage: coaches" : {
 
     },
     "Lorem Ipsum is simply dummy text of the printing and typesetting" : {

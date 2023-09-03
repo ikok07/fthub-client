@@ -45,6 +45,8 @@ struct AccountModel {
                 newDetails.height = safeResponse.data.userDetails.height
                 newDetails.weight = safeResponse.data.userDetails.weight
                 newDetails.workoutsPerWeek = safeResponse.data.userDetails.trainingFrequencyPerWeek
+            } else {
+                Message.send(type: "error", message: safeResponse.status)
             }
         } else {
             defaults.setValue(false, forKey: "hasDetails")
