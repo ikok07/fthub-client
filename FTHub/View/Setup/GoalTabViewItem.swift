@@ -32,7 +32,7 @@ struct GoalTabViewItem: View {
                 .fontWeight(.semibold)
             
         }
-//        .frame(width: 0.8 * UIScreen.main.bounds.width)
+        .frame(height: 175)
         .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
         .background {
             if active {

@@ -17,7 +17,7 @@ struct SetupPageGenderView: View {
     @Query private var user: [User]
     
     var body: some View {
-        ScrollView {
+        VStack {
             Image("setup1")
                 .resizable()
                 .scaledToFit()

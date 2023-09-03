@@ -24,6 +24,7 @@ struct SetupAgePageView: View {
                 HeadlineView(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
             }
             .padding()
+            .padding(.top)
             
             VStack {
                 VStack {

@@ -50,6 +50,9 @@ struct SetupPageNotificationsView: View {
                 .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
                 
                 Button(action: {
+                    if let user = user.first {
+                        user.details?.setupActivePage += 1
+                    }
                     setupController.activePage += 1
                 }, label: {
                     Text("Skip")

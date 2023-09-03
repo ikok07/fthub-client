@@ -29,13 +29,13 @@ struct SetupPageWeightView: View {
     
     var body: some View {
         VStack {
-            Spacer()
             UnitSelectView()
+                .padding(.top, 50)
             
             TwoLineHeadingView(upperPart: "What about", bottomPart: "your weight")
             
             ZStack {
-                GaugeView(percentage: $percentage, width: UIScreen.main.bounds.width - 50, backgroundArcGradient: K.Gradients.grayGradient, arrowLength: CGFloat(100), arrowAnchorMainCircleGradient: K.Gradients.mainGradient)
+                GaugeView(percentage: $percentage, width: UIScreen.main.bounds.width - 80, backgroundArcGradient: K.Gradients.grayGradient, arrowLength: CGFloat(100), arrowAnchorMainCircleGradient: K.Gradients.mainGradient)
                     .padding(.horizontal)
                 
                 VStack {
@@ -53,10 +53,8 @@ struct SetupPageWeightView: View {
             }
                 
             HorizontalPickerView(value: $selectedWeight, selectorGradient: K.Gradients.mainGradient, minValue: K.UserDetails.minWeight, maxValue: K.UserDetails.maxWeight, startValue: 80)
-                .offset(y: -35)
-                .padding(.horizontal)
-            
-            Spacer()
+                .offset(y: -65)
+//                .padding(.horizontal)
             
             Button(action: {
                 if let user = user.first {
@@ -70,10 +68,12 @@ struct SetupPageWeightView: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             })
             .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
-            .padding()
-            .offset(y: -35)
+            .padding(.horizontal)
+            .offset(y: -65)
+            
+            Spacer()
         }
-        .padding()
+//        .padding()
         .onChange(of: selectedWeight) { _, _ in
             withAnimation(.linear) {
                 percentage = Double(selectedWeight - K.UserDetails.minWeight) / Double(K.UserDetails.maxWeight - K.UserDetails.minWeight)

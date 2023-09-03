@@ -14,7 +14,7 @@ struct SetupPageOneView: View {
     @Query private var user: [User]
     
     var body: some View {
-        ScrollView {
+        VStack {
             Image("setup0")
                 .resizable()
                 .scaledToFit()
@@ -30,7 +30,6 @@ struct SetupPageOneView: View {
             Button(action: {
                 if let user = user.first {
                     user.details?.setupActivePage = 1
-                    print(user.details?.setupActivePage)
                 }
                 setupController.activePage += 1
             }, label: {
