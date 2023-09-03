@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 
 struct BeforeAuthView: View {
     
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.modelContext) private var modelContext
     
     @AppStorage("showTutorial") private var showTutorial: Bool = true
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
@@ -49,7 +51,12 @@ struct BeforeAuthView: View {
             if url.pathComponents[1] == "confirm" {
                 loadingPresented = true
                 Task {
-                    await CustomURLController.confirmEmail(url: url)
+                    await CustomURLController.confirmEmail(url: url) { user in
+                        if let user = user {
+                            user.details = UserDetails(setupActivePage: 0)
+                            modelContext.insert(user)
+                        }
+                    }
                 }
             } else if url.pathComponents[1] == "reset" {
                 loadingPresented = true

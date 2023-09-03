@@ -11,8 +11,8 @@ struct CustomURLController {
     
     static let defaults = UserDefaults.standard
     
-    static func confirmEmail(url: URL) async {
-        let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: defaults.string(forKey: "userCurrentEmail") ?? "No email")
+    static func confirmEmail(url: URL, completion: ((User?) -> Void)? = nil) async {
+        let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: defaults.string(forKey: "userCurrentEmail") ?? "No email", completion: completion)
         defaults.setValue(false, forKey: "loadingPresented")
         if emailConfirmed {
             defaults.set(TokenVerifyStatus.success.rawValue, forKey: "tokenConfirmationStatus")

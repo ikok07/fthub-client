@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RestorePasswordMainView: View {
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.modelContext) private var modelContext
     
     @AppStorage("userToken") private var userToken: String = ""
     @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
@@ -31,7 +32,12 @@ struct RestorePasswordMainView: View {
             Button(action: {
                 Task {
                     loadingPresented = true
-                    await RestorePasswordController.changePassword(password: self.password, confirmPassword: self.confirmPassword)
+                    await RestorePasswordController.changePassword(password: self.password, confirmPassword: self.confirmPassword) { user in
+                        if let user = user {
+                            user.details = UserDetails(setupActivePage: 0)
+                            modelContext.insert(user)
+                        }
+                    }
                 }
             }, label: {
                 Text("Create new password")
