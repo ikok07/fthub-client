@@ -8,8 +8,8 @@
 import SwiftUI
 import SwiftData
 
-enum Gender: String, CaseIterable {
-    case male, female
+enum Gender: String, CaseIterable, Codable {
+    case Male, Female
 }
 
 struct GenderSelectRowView: View {
@@ -31,7 +31,7 @@ struct GenderSelectRowView: View {
                     .scaledToFit()
                     .frame(width: 30)
                 
-                Text(gender == .male ? "Male" : "Female")
+                Text(gender == .Male ? "Male" : "Female")
                     .font(.title3)
                     .fontWeight(.semibold)
                     .foregroundStyle(activeOption == id ? .white : .textGray)
@@ -50,7 +50,7 @@ struct GenderSelectRowView: View {
 }
 
 #Preview {
-    GenderSelectRowView(gender: .female, id: 0, activeOption: .constant(0))
+    GenderSelectRowView(gender: .Female, id: 0, activeOption: .constant(0))
         .padding()
         .environmentObject(SetupController())
 }

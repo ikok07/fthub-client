@@ -12,8 +12,7 @@ struct VerticalNumberSelectorView: View {
     
     @State private var percentage: Double = 0.6
     
-
-    @State var userHeight: Double?
+    @Binding var userHeight: Double?
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -73,6 +72,6 @@ struct VerticalNumberSelectorView: View {
 }
 
 #Preview {
-    VerticalNumberSelectorView()
+    VerticalNumberSelectorView(userHeight: .constant(175))
         .environmentObject(SetupController())
 }

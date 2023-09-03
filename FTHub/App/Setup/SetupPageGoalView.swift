@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
-enum FitnessGoal: String, CaseIterable {
-    case loseWeight, buildMuscles, gainMass
+enum FitnessGoal: String, CaseIterable, Codable {
+    case WeightLoss, Balance, MuscleBuilding
 }
 
 struct SetupPageGoalView: View {
     
     @EnvironmentObject private var setupController: SetupController
     
-    @State private var selectedGoal: FitnessGoal = .buildMuscles
+    @State private var selectedGoal: FitnessGoal = .Balance
+    
+    @Query private var user: [User]
     
     var body: some View {
         VStack {
@@ -29,6 +32,10 @@ struct SetupPageGoalView: View {
             SetupGoalTabView(selectedGoal: $selectedGoal)
             
             Button(action: {
+                if let user = user.first {
+                    user.details?.setupActivePage += 1
+                    user.details?.goal = selectedGoal
+                }
                 setupController.goal = selectedGoal
                 setupController.activePage += 1
             }, label: {

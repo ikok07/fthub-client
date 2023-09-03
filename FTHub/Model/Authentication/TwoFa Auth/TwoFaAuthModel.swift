@@ -11,7 +11,7 @@ import SwiftData
 
 struct TwoFaAuthModel {
     
-    @MainActor func authenticate(email: String?, token: Int?) {
+    @MainActor func authenticate(email: String?, token: Int?, completion: ((User?) -> Void)?) {
         
         let defaults = UserDefaults.standard
         
@@ -22,7 +22,11 @@ struct TwoFaAuthModel {
                     withAnimation {
                         defaults.setValue(false, forKey: "buttonLoading")
                         defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
-                        Database.saveUserData(safeResponse.data!.user)
+                        
+                        let newUser = safeResponse.data?.user
+                        completion?(newUser)
+                        
+                        
                         defaults.setValue(true, forKey: "userLoggedIn")
                         print("loggedin: \(defaults.bool(forKey: "userLoggedIn"))")
                         defaults.setValue(false, forKey: "showTwoFa")

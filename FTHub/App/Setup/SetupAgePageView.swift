@@ -7,10 +7,13 @@
 
 import SwiftUI
 import HorizontalNumberPicker
+import SwiftData
 
 struct SetupAgePageView: View {
     
     @EnvironmentObject private var setupController: SetupController
+    
+    @Query private var user: [User]
     
     @State private var activeAge: Int = 15
     var body: some View {
@@ -35,6 +38,10 @@ struct SetupAgePageView: View {
             }
             
             Button(action: {
+                if let user = user.first {
+                    user.details?.setupActivePage += 1
+                    user.details?.age = activeAge
+                }
                 setupController.age = self.activeAge
                 setupController.activePage += 1
             }, label: {

@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SetupPageOneView: View {
     
     @EnvironmentObject private var setupController: SetupController
+    @Query private var user: [User]
     
     var body: some View {
         ScrollView {
@@ -26,6 +28,10 @@ struct SetupPageOneView: View {
             .padding(.horizontal)
             
             Button(action: {
+                if let user = user.first {
+                    user.details?.setupActivePage = 1
+                    print(user.details?.setupActivePage)
+                }
                 setupController.activePage += 1
             }, label: {
                 Text("Continue")

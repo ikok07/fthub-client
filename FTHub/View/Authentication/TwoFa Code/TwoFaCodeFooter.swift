@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TwoFaCodeFooter: View {
+    @Environment(\.modelContext) private var modelContext
+    
     @EnvironmentObject var numpadController: NumpadController
     @EnvironmentObject var codeAuthController: TwoFaAuthController
     
@@ -17,22 +20,21 @@ struct TwoFaCodeFooter: View {
     let email: String
     let code: Int
     
-    private func saveData() {
-        codeAuthController.email = self.email
-        codeAuthController.token = self.code
-    }
-    
-    private func performAuthentication() {
-        buttonLoading = true
-        saveData()
-        codeAuthController.authenticateCode()
-    }
-    
     var body: some View {
             VStack {
                 Button(action: {
                     if numpadController.fullFields {
-                        performAuthentication()
+                        buttonLoading = true
+                        
+                        codeAuthController.email = self.email
+                        codeAuthController.token = self.code
+                        
+                        codeAuthController.authenticateCode() { user in
+                            if let user = user {
+                                user.details = UserDetails(setupActivePage: 0)
+                                modelContext.insert(user)
+                            }
+                        }
                     }
                 }, label: {
                     

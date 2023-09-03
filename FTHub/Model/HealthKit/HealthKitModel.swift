@@ -12,7 +12,7 @@ import HealthKit
 struct HealthKitModel {
     static func requestPermission(store: HKHealthStore, healthData: Set<HKSampleType>, completion: ((Bool) -> Void)?) {
         
-        guard HKHealthStore.isHealthDataAvailable() else { return }
+        guard HKHealthStore.isHealthDataAvailable() else { return  }
         
         store.requestAuthorization(toShare: healthData, read: healthData) { success, error in
             if success {

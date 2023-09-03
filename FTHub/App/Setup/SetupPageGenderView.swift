@@ -14,6 +14,8 @@ struct SetupPageGenderView: View {
     
     @State private var activeOption: Int = 0
     
+    @Query private var user: [User]
+    
     var body: some View {
         ScrollView {
             Image("setup1")
@@ -24,14 +26,18 @@ struct SetupPageGenderView: View {
             TwoLineHeadingView(upperPart: "Please select", bottomPart: "your gender")
             
             VStack(spacing: 20) {
-                GenderSelectRowView(gender: .male, id: 0, activeOption: $activeOption)
+                GenderSelectRowView(gender: .Male, id: 0, activeOption: $activeOption)
                 
-                GenderSelectRowView(gender: .female, id: 1, activeOption: $activeOption)
+                GenderSelectRowView(gender: .Female, id: 1, activeOption: $activeOption)
             }
             .padding(.horizontal, 30)
             .padding(.vertical)
             
             Button {
+                if let user = user.first {
+                    user.details?.setupActivePage += 1
+                    user.details?.gender = activeOption == 0 ? .Male : .Female
+                }
                 setupController.activePage += 1
             } label: {
                 Text("Continue")

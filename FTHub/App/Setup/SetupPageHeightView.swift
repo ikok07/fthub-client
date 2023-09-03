@@ -6,10 +6,15 @@
 // 
 
 import SwiftUI
+import SwiftData
 
 struct SetupPageHeightView: View {
     
     @EnvironmentObject private var setupController: SetupController
+    
+    @Query private var user: [User]
+    
+    @State private var userHeight: Double?
     
     var body: some View {
         VStack {
@@ -19,9 +24,13 @@ struct SetupPageHeightView: View {
             
             Spacer()
             
-            VerticalNumberSelectorView()
+            VerticalNumberSelectorView(userHeight: $userHeight)
             
             Button(action: {
+                if let user = user.first {
+                    user.details?.setupActivePage += 1
+                    user.details?.height = Int(userHeight ?? 170)
+                }
                 setupController.activePage += 1
             }, label: {
                 Text("Continue")

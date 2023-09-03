@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SetupPageHealthKitView: View {
     
     @EnvironmentObject private var healthKitController: HealthKitController
     @EnvironmentObject private var setupController: SetupController
+    @Query private var user: [User]
     
     var body: some View {
         VStack {
@@ -44,6 +46,9 @@ struct SetupPageHealthKitView: View {
                 .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
                 
                 Button(action: {
+                    if let user = user.first {
+                        user.details?.setupActivePage += 1
+                    }
                     setupController.activePage += 1
                 }, label: {
                     Text("Skip")

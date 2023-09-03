@@ -33,6 +33,8 @@ struct K {
     
     // MARK: - API
     struct API {
+        static let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
+        
         static let apiURL: String = "https://api.fthub.eu"
         static let apiV1: String = "v1"
         static let apiV2: String = "v2"

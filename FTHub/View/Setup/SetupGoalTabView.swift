@@ -15,24 +15,24 @@ struct SetupGoalTabView: View {
     var body: some View {
         TeasingTabView(selectedTab: $shownGoal, spacing: 10) {
             [
-                AnyView(GoalTabViewItem(active: selectedGoal == .loseWeight ? true : false, header: "Lose weight", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
+                AnyView(GoalTabViewItem(active: selectedGoal == .WeightLoss ? true : false, header: "Normal", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
                     .onTapGesture {
                         withAnimation(.easeOut) {
-                            selectedGoal = .loseWeight
+                            selectedGoal = .WeightLoss
                         }
                     }
                 ),
-                AnyView(GoalTabViewItem(active: selectedGoal == .buildMuscles ? true : false, header: "Build muscles", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
+                AnyView(GoalTabViewItem(active: selectedGoal == .Balance ? true : false, header: "Balance", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
                     .onTapGesture {
                         withAnimation(.easeOut) {
-                            selectedGoal = .buildMuscles
+                            selectedGoal = .Balance
                         }
                     }
                 ),
-                AnyView(GoalTabViewItem(active: selectedGoal == .gainMass ? true : false, header: "Gain Mass", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
+                AnyView(GoalTabViewItem(active: selectedGoal == .MuscleBuilding ? true : false, header: "Max", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
                     .onTapGesture {
                         withAnimation(.easeOut) {
-                            selectedGoal = .gainMass
+                            selectedGoal = .MuscleBuilding
                         }
                     }
                 )
@@ -42,5 +42,5 @@ struct SetupGoalTabView: View {
 }
 
 #Preview {
-    SetupGoalTabView(selectedGoal: .constant(.buildMuscles))
+    SetupGoalTabView(selectedGoal: .constant(.Balance))
 }

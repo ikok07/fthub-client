@@ -8,6 +8,7 @@
 import SwiftUI
 import HorizontalNumberPicker
 import SwiftUIGauge
+import SwiftData
 
 struct SetupPageWeightView: View {
     
@@ -16,6 +17,8 @@ struct SetupPageWeightView: View {
     @State private var selectedWeight: Int = K.UserDetails.minWeight
     @State private var percentage: Double = 0
     @State private var gaugeText: String = ""
+    
+    @Query private var user: [User]
     
     
     func updateText() {
@@ -56,6 +59,10 @@ struct SetupPageWeightView: View {
             Spacer()
             
             Button(action: {
+                if let user = user.first {
+                    user.details?.setupActivePage += 1
+                    user.details?.weight = selectedWeight
+                }
                 setupController.weight = selectedWeight
                 setupController.activePage += 1
             }, label: {

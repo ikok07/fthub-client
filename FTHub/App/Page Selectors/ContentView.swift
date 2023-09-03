@@ -15,14 +15,33 @@ struct ContentView: View {
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
     @AppStorage("userToken") private var userToken: String = ""
+    @AppStorage("hasDetails") private var hasDetails: Bool = false
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     @State private var loadContentView: Bool = false
+    
+    func checkToken() async -> Bool {
+        if let user = user.first {
+            modelContext.delete(user)
+        }
+        let response = await AccountController.checkToken()
+        if let safeResponse = response {
+            modelContext.insert(safeResponse.data!)
+            return true
+        }
+        return false
+    }
+    
+    func checkDetails() async {
+        if let user = user.first {
+            
+        }
+    }
     
     var body: some View {
         ZStack {
             if loadContentView {
                 ZStack {
-                    if userLoggedIn == true {
+                    if userLoggedIn == true && !hasDetails {
                         SetupPageViewManager()
                     } else if userLoggedIn == true {
                         CoachesPageView()
@@ -34,20 +53,16 @@ struct ContentView: View {
                 .withLoadingAnimation()
                 .sensoryFeedback(.success, trigger: userLoggedIn)
                 .animation(.easeOut, value: userLoggedIn)
+                .animation(.easeOut, value: hasDetails)
             } else {
                 FakeLaunchScreenView()
             }
         }
         .onAppear {
             Task {
-                if let user = user.first {
-                    modelContext.delete(user)
+                if await checkToken() {
+                    await checkDetails()
                 }
-                let response = await AccountController.checkToken()
-                if let safeResponse = response {
-                    modelContext.insert(safeResponse.data!)
-                }
-                print(user)
                 withAnimation {
                     loadContentView = true
                 }

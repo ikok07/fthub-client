@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SetupPageViewManager: View {
+    
+    @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.modelContext) private var modelContext
+    @Query private var user: [User]
     
     @EnvironmentObject private var setupController: SetupController
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
@@ -17,34 +22,31 @@ struct SetupPageViewManager: View {
     
     var body: some View {
         ZStack {
-            switch setupController.activePage {
-            case 0:
-                SetupPageOneView()
-            case 1:
-                SetupPageGenderView()
-            case 2:
-                SetupAgePageView()
-            case 3:
-                SetupPageHeightView()
-            case 4 :
-                SetupPageWeightView()
-            case 5:
-                SetupPageTrainingsPerWeekView()
-            case 6:
-                SetupPageGoalView()
-            case 7:
-                SetupPageHealthKitView()
-            case 8:
-                SetupPageNotificationsView()
-            default:
-                Button(action: {
-                    userLoggedIn = false
-                    userToken = ""
-                    setupController.activePage = 0
-                    print(setupController.age, setupController.height, setupController.weight, setupController.gender)
-                }, label: {
-                    Text("Log Out")
-                })
+            if let user = user.first {
+                switch user.details?.setupActivePage {
+                case 0:
+                    SetupPageOneView()
+                case 1:
+                    SetupPageGenderView()
+                case 2:
+                    SetupAgePageView()
+                case 3:
+                    SetupPageHeightView()
+                case 4 :
+                    SetupPageWeightView()
+                case 5:
+                    SetupPageTrainingsPerWeekView()
+                case 6:
+                    SetupPageGoalView()
+                case 7:
+                    SetupPageHealthKitView()
+                case 8:
+                    SetupPageNotificationsView()
+                case 9:
+                    SetupPageFinishView()
+                default:
+                    SetupPageOneView()
+                }
             }
         }
         .animation(.easeOut, value: setupController.activePage)

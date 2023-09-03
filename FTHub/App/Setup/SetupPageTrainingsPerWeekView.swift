@@ -7,12 +7,15 @@
 
 import SwiftUI
 import HorizontalNumberPicker
+import SwiftData
 
 struct SetupPageTrainingsPerWeekView: View {
     
     @EnvironmentObject private var setupController: SetupController
     
     @State private var selectedDays: Int = 0
+    
+    @Query private var user: [User]
     
     var body: some View {
         VStack {
@@ -38,6 +41,10 @@ struct SetupPageTrainingsPerWeekView: View {
             }
             
             Button(action: {
+                if let user = user.first {
+                    user.details?.setupActivePage += 1
+                    user.details?.workoutsPerWeek = selectedDays
+                }
                 setupController.workoutsPerWeek = selectedDays
                 setupController.activePage += 1
             }, label: {
