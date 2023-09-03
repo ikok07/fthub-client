@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CoachesPageView: View {
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = true
     @AppStorage("userToken") private var userToken: String = ""
+    @AppStorage("hasDetails") private var hasDetails: Bool = true
+    
+    @Environment(\.modelContext) private var modelContext
+    
+    @Query private var user: [User]
     
     var body: some View {
         VStack(spacing: 20) {
@@ -21,6 +27,10 @@ struct CoachesPageView: View {
                 withAnimation {
                     userLoggedIn = false
                     userToken = ""
+                    hasDetails = false
+                    if let user = user.first {
+                        modelContext.delete(user)
+                    }
                 }
             }, label: {
                 Text("Sign Out")

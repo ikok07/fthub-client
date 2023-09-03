@@ -49,6 +49,9 @@ struct SetupPageViewManager: View {
                 }
             }
         }
+        .onAppear {
+            print("SETUP PAGE: \(user.first?.details?.setupActivePage)")
+        }
         .animation(.easeOut, value: setupController.activePage)
     }
 }

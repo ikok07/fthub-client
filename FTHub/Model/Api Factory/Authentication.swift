@@ -130,7 +130,18 @@ struct Authentication {
             print("Error making request to API: \(error)")
             return nil
         }
+    }
+    
+    static func checkDetails(_ token: String) async -> ApiUserDetailsResponse? {
+        let url: URL = URL(string: "\(K.API.apiURL)/en/api/\(K.API.apiV1)/user/detail")!
         
+        do {
+            let response: ApiUserDetailsResponse = try await Networking.sendGetRequest(url: url, token: token)
+            return response
+        } catch {
+            print("Error making request to API: \(error)")
+            return nil
+        }
     }
     
 }
