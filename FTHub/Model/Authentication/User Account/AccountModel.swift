@@ -12,14 +12,13 @@ struct AccountModel {
     
     static let defaults = UserDefaults.standard
     
-    static func authToken(_ token: String) async {
+    static func authToken(_ token: String) async -> AccountTokenAuthResponse? {
        let response =  await Authentication.authToken(token)
-        defaults.setValue(false, forKey: "loadingPresented")
         
         if let safeResponse = response {
             if safeResponse.status == "success" {
                 defaults.setValue(true, forKey: "userLoggedIn")
-                if safeResponse.data != nil { Database.saveUserData(safeResponse.data!) }
+                if safeResponse.data != nil { return safeResponse }
             } else {
                 defaults.setValue(false, forKey: "userLoggedIn")
             }
@@ -27,6 +26,32 @@ struct AccountModel {
             defaults.setValue(false, forKey: "userLoggedIn")
             Message.send(type: "error", message: "There was an error connecting to our servers. Please try again later.")
         }
+        return nil
+    }
+    
+    static func checkDetails(_ token: String) async -> UserDetails? {
+        
+        let response = await Authentication.checkDetails(token)
+        defaults.setValue(false, forKey: "loadingPresented")
+        
+        var newDetails = UserDetails(setupActivePage: 0)
+        
+        if let safeResponse = response {
+            if safeResponse.status == "success" {
+                defaults.setValue(true, forKey: "hasDetails")
+                newDetails.age = safeResponse.data.userDetails.age
+                newDetails.gender = Gender(rawValue: safeResponse.data.userDetails.gender!)
+                newDetails.goal = FitnessGoal(rawValue: safeResponse.data.userDetails.goal!.camelCased)
+                newDetails.height = safeResponse.data.userDetails.height
+                newDetails.weight = safeResponse.data.userDetails.weight
+                newDetails.workoutsPerWeek = safeResponse.data.userDetails.trainingFrequencyPerWeek
+            } else {
+                Message.send(type: "error", message: safeResponse.status)
+            }
+        } else {
+            defaults.setValue(false, forKey: "hasDetails")
+        }
+        return newDetails
     }
     
 }

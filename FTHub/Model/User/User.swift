@@ -10,12 +10,13 @@ import SwiftData
 
 @Model
 class User: Codable {
-    let _id: String
+    @Attribute(.unique) let _id: String
     let name: String
     let email: String
     let photo: String
     let role: String
-    let details: UserDetails?
+    var details: UserDetails?
+    var hasFullDetails: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case _id
@@ -42,21 +43,16 @@ class User: Codable {
 @Model
 class UserDetails {
     
-    var gender: String
-    var age: Int
-    var height: Double
-    var weight: Double
-    var goal: String
-    var activeAppleHealth: Bool
-    var activeNotifications: Bool
+    var setupActivePage: Int = 0
     
-    init(gender: String, age: Int, height: Double, weight: Double, goal: String, activeAppleHealth: Bool, activeNotifications: Bool) {
-        self.gender = gender
-        self.age = age
-        self.height = height
-        self.weight = weight
-        self.goal = goal
-        self.activeAppleHealth = activeAppleHealth
-        self.activeNotifications = activeNotifications
+    var gender: Gender?
+    var age: Int?
+    var height: Int?
+    var weight: Int?
+    var workoutsPerWeek: Int?
+    var goal: FitnessGoal?
+    
+    init(setupActivePage: Int) {
+        self.setupActivePage = setupActivePage
     }
 }

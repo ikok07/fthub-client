@@ -9,9 +9,16 @@ import Foundation
 
 final class AccountController {
     
-    static func checkToken() async {
+    static func checkToken() async -> AccountTokenAuthResponse? {
         let token = UserDefaults.standard.string(forKey: "userToken")
-        await AccountModel.authToken(token ?? "")
+        let response = await AccountModel.authToken(token ?? "")
+        return response
+    }
+    
+    static func checkDetails() async -> UserDetails? {
+        let token = UserDefaults.standard.string(forKey: "userToken")
+        let details = await AccountModel.checkDetails(token ?? "")
+        return details
     }
     
 }

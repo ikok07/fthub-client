@@ -4,6 +4,9 @@
     " " : {
 
     },
+    "%@" : {
+
+    },
     "%@ inch" : {
 
     },
@@ -40,6 +43,12 @@
           }
         }
       }
+    },
+    "Age: %lld" : {
+
+    },
+    "Allow Notifications" : {
+
     },
     "App Account" : {
       "localizations" : {
@@ -95,10 +104,16 @@
         }
       }
     },
+    "Connect" : {
+
+    },
     "Continue" : {
 
     },
     "Create new password" : {
+
+    },
+    "days/week" : {
 
     },
     "Didn't receive code?" : {
@@ -120,7 +135,7 @@
     "Done" : {
 
     },
-    "Email %@verified" : {
+    "Email %@approved" : {
 
     },
     "Enter new password" : {
@@ -239,12 +254,6 @@
 
     },
     "lbs" : {
-
-    },
-    "Log Out" : {
-
-    },
-    "Logged into FTHub\npage: coaches" : {
 
     },
     "Lorem Ipsum is simply dummy text of the printing and typesetting" : {
@@ -433,6 +442,7 @@
       }
     },
     "The entered code is invalid or expired" : {
+      "extractionState" : "stale",
       "localizations" : {
         "bg" : {
           "stringUnit" : {
@@ -448,10 +458,13 @@
         }
       }
     },
-    "There was an error changing your password. Please try again." : {
+    "The entered link is invalid or expired" : {
 
     },
-    "There was an error verifying your email address. Please try again." : {
+    "There was an error approving your email address. Please try again." : {
+
+    },
+    "There was an error changing your password. Please try again." : {
 
     },
     "Try Again" : {
@@ -479,10 +492,10 @@
     "years" : {
 
     },
-    "You have successfuly changed your password" : {
+    "You have successfuly approved\n your email" : {
 
     },
-    "You have successfuly verified\n your email" : {
+    "You have successfuly changed your password" : {
 
     }
   },

@@ -25,6 +25,7 @@ struct K {
         static let errorGradient: LinearGradient = LinearGradient(gradient: Gradient(colors: [.customDarkRed]), startPoint: .topLeading, endPoint: .bottomTrailing)
         
         static let grayGradient: LinearGradient = LinearGradient(colors: [.textGray], startPoint: .leading, endPoint: .trailing)
+        static let lightGrayGradient: LinearGradient = LinearGradient(colors: [.textGray.opacity(0.35)], startPoint: .leading, endPoint: .trailing)
         static let clearGradient: LinearGradient = LinearGradient(colors: [.clear], startPoint: .leading, endPoint: .trailing)
     }
 
@@ -32,6 +33,8 @@ struct K {
     
     // MARK: - API
     struct API {
+        static let language = UserDefaults.standard.object(forKey: "AppleLanguages") as? [String]
+        
         static let apiURL: String = "https://api.fthub.eu"
         static let apiV1: String = "v1"
         static let apiV2: String = "v2"
@@ -45,6 +48,9 @@ struct K {
     
     // MARK: - User
     struct UserDetails {
+        static let minAge: Int = 16
+        static let maxAge: Int = 60
+        
         static let minHeight: Int = 120
         static let maxHeight: Int = 220
         

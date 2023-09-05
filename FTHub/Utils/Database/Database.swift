@@ -10,10 +10,10 @@ import SwiftData
 
 struct Database {
     
-    static func saveUserData(_ user: User) {
+    @MainActor static func saveUserData(_ user: User) {
         do {
             let container = try ModelContainer(for: User.self)
-            let context = ModelContext(container)
+            let context = container.mainContext
             
             context.insert(user)
             try context.save()

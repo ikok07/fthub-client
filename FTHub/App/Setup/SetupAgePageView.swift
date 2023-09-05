@@ -7,15 +7,15 @@
 
 import SwiftUI
 import HorizontalNumberPicker
+import SwiftData
 
 struct SetupAgePageView: View {
     
     @EnvironmentObject private var setupController: SetupController
     
+    @Query private var user: [User]
+    
     @State private var activeAge: Int = 15
-    let startAge = 40
-    let endAge = 180
-
     var body: some View {
         VStack(spacing: 40) {
             VStack(spacing: 20) {
@@ -24,6 +24,7 @@ struct SetupAgePageView: View {
                 HeadlineView(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
             }
             .padding()
+            .padding(.top)
             
             VStack {
                 VStack {
@@ -34,10 +35,14 @@ struct SetupAgePageView: View {
                         .font(.system(size: 60))
                         .fontWeight(.bold)
                 }
-                HorizontalPickerView(value: $activeAge, selectorGradient: K.Gradients.mainGradient, minValue: startAge, maxValue: endAge, startValue: 18)
+                HorizontalPickerView(value: $activeAge, selectorGradient: K.Gradients.mainGradient, minValue: K.UserDetails.minAge, maxValue: K.UserDetails.maxAge, startValue: 18)
             }
             
             Button(action: {
+                if let user = user.first {
+                    user.details?.setupActivePage += 1
+                    user.details?.age = activeAge
+                }
                 setupController.age = self.activeAge
                 setupController.activePage += 1
             }, label: {
@@ -45,10 +50,10 @@ struct SetupAgePageView: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             })
             .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
+            .padding(.horizontal)
             
             Spacer()
         }
-        .padding()
     }
 }
 

@@ -11,9 +11,10 @@ struct CustomURLController {
     
     static let defaults = UserDefaults.standard
     
-    static func confirmEmail(url: URL) async {
-        let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: defaults.string(forKey: "userCurrentEmail") ?? "No email")
+    static func confirmEmail(url: URL, completion: ((User?) -> Void)? = nil) async {
+        let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: defaults.string(forKey: "userCurrentEmail") ?? "No email", completion: completion)
         defaults.setValue(false, forKey: "loadingPresented")
+        defaults.setValue(SendEmailType.confirm.rawValue, forKey: "sendEmailType")
         if emailConfirmed {
             defaults.set(TokenVerifyStatus.success.rawValue, forKey: "tokenConfirmationStatus")
         } else {
@@ -27,6 +28,11 @@ struct CustomURLController {
         defaults.setValue(url.pathComponents[2], forKey: "restorePasswordToken")
         defaults.setValue(true, forKey: "showRestorePassword")
         defaults.setValue(false, forKey: "loadingPresented")
+    }
+    
+    static func checkTwoFa(email: String, url: URL, completion: @escaping ((User?) async -> Void)) async {
+        let token = url.pathComponents[2]
+        await TwoFaAuthModel.authenticate(email: email, token: token, completion: completion)
     }
     
 }

@@ -15,7 +15,7 @@ struct AccountAuthModel {
         if activeOption == .signIn {
             Task {
                 let response = await Authentication.signIn(email: email, password: password)
-                advanceSignIn(method: activeOption, response: response, email: email)
+                advanceSignIn(response: response, email: email)
             }
         } else if activeOption == .signUp {
             Task {
@@ -35,27 +35,23 @@ struct AccountAuthModel {
     
     
     
-    private func advanceSignIn(method: AuthOption, response: AccountAuthResponse?, email: String) {
+    private func advanceSignIn(response: AccountAuthResponse?, email: String) {
         if response != nil {
-            if response!.status == "fail" && response!.identifier != "EmailNotVerified"{
+            if response!.status == "fail" && response!.identifier != "EmailNotVerified" {
                 defaults.setValue(false, forKey: "loadingPresented")
                 Message.send(type: "error", message: response!.message)
-            } else if response!.identifier == "EmailNotVerified"{
+            } else if response!.identifier == "EmailNotVerified" {
                 Task {
                     await Authentication.sendConfirmEmail(email: email)
                 }
             } else {
-                    if method == .signIn {
-                        defaults.setValue(true, forKey: "showTwoFa")
-                    } else {
-                        defaults.setValue(email, forKey: "userCurrentEmail")
-                        defaults.setValue(true, forKey: "emailWithLinkSent")
-                    }
+                defaults.setValue(email, forKey: "userCurrentEmail")
+                defaults.setValue(true, forKey: "emailWithLinkSent")
             }
         } else {
             Message.send(type: "error", message: "Error connecting to server")
         }
-        defaults.setValue(false, forKey: "buttonLoading")
+        defaults.setValue(false, forKey: "loadingPresented")
     }
     
 }

@@ -19,11 +19,11 @@ struct Networking {
         }
     }
     
-    static func sendPostRequest<T: NetworkCapable, V: Codable>(data: V, url: URL) async throws -> T {
+    static func sendPostRequest<T: NetworkCapable, V: Codable>(data: V, url: URL, authToken: String? = nil) async throws -> T {
             let jsonData = try JSONEncoder().encode(data)
             print(String(data: jsonData, encoding: .utf8))
         
-            let result: Result<T, Error> = await Request.create(url: url, body: jsonData)
+        let result: Result<T, Error> = await Request.create(url: url, body: jsonData, authToken: authToken)
             switch result {
             case .success(let response):
                 return response
