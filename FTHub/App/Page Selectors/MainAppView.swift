@@ -57,7 +57,7 @@ struct MainAppView: View {
                 .tag(Tab.calculators)
 
             
-            CoachesPageView()
+            SettingsMainView()
                 .tabItem {
                     Image(systemName: "ellipsis")
                     Text("More")
