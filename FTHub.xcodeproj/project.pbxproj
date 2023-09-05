@@ -34,7 +34,6 @@
 		222F3C642A935D66005BC46F /* AccountAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F3C632A935D66005BC46F /* AccountAuthRequestModel.swift */; };
 		22374B182A9292D7006BE6BB /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22374B172A9292D7006BE6BB /* Authentication.swift */; };
 		22374B1A2A929C5C006BE6BB /* BaseAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22374B192A929C5C006BE6BB /* BaseAuthController.swift */; };
-		22374B1C2A92A6EB006BE6BB /* TwoFaAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22374B1B2A92A6EB006BE6BB /* TwoFaAuthController.swift */; };
 		223A2E202AA21C2600848B2B /* HealthKitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2E1F2AA21C2600848B2B /* HealthKitModel.swift */; };
 		223A2E222AA21E2800848B2B /* SetupPageHealthKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2E212AA21E2800848B2B /* SetupPageHealthKitView.swift */; };
 		223B1A432AA0856600DADB7D /* SwiftUIGauge in Frameworks */ = {isa = PBXBuildFile; productRef = 223B1A422AA0856600DADB7D /* SwiftUIGauge */; };
@@ -67,7 +66,6 @@
 		22969D512A94AAAD00935A3C /* RestorePasswordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D502A94AAAD00935A3C /* RestorePasswordHeaderView.swift */; };
 		22969D532A94B17B00935A3C /* EmailConfirmationLinkSentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D522A94B17B00935A3C /* EmailConfirmationLinkSentView.swift */; };
 		22969D562A94B91A00935A3C /* RestorePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D552A94B91A00935A3C /* RestorePasswordController.swift */; };
-		22969D592A94C28F00935A3C /* ResendConfirmEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D582A94C28F00935A3C /* ResendConfirmEmailController.swift */; };
 		22969D5B2A94D86600935A3C /* TokenConfirmationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D5A2A94D86600935A3C /* TokenConfirmationStatusView.swift */; };
 		22969D5F2A94E75300935A3C /* ConfirmEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D5E2A94E75300935A3C /* ConfirmEmailController.swift */; };
 		22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D602A94EA9F00935A3C /* ConfirmEmailRequestModel.swift */; };
@@ -97,6 +95,7 @@
 		22ED2EBE2A9132AE00BB623E /* CustomNumpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2EBD2A9132AE00BB623E /* CustomNumpadView.swift */; };
 		22ED2EC02A9136E600BB623E /* CustomNumpadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2EBF2A9136E600BB623E /* CustomNumpadButtonStyle.swift */; };
 		22ED2EC22A91392300BB623E /* NumpadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2EC12A91392300BB623E /* NumpadController.swift */; };
+		22EF43002AA77437002B6B1B /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EF42FF2AA77437002B6B1B /* MainAppView.swift */; };
 		22F2709C2A95DD8300AA8AC6 /* NetworkCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2709B2A95DD8300AA8AC6 /* NetworkCapable.swift */; };
 		22F2709E2A95E5FA00AA8AC6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2709D2A95E5FA00AA8AC6 /* Networking.swift */; };
 		22F55BEE2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BED2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift */; };
@@ -143,7 +142,6 @@
 		222F3C632A935D66005BC46F /* AccountAuthRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthRequestModel.swift; sourceTree = "<group>"; };
 		22374B172A9292D7006BE6BB /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		22374B192A929C5C006BE6BB /* BaseAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthController.swift; sourceTree = "<group>"; };
-		22374B1B2A92A6EB006BE6BB /* TwoFaAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaAuthController.swift; sourceTree = "<group>"; };
 		223A2E1F2AA21C2600848B2B /* HealthKitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitModel.swift; sourceTree = "<group>"; };
 		223A2E212AA21E2800848B2B /* SetupPageHealthKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageHealthKitView.swift; sourceTree = "<group>"; };
 		224A5D8D2A8CC55100490614 /* CoachesPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachesPageView.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 		22969D502A94AAAD00935A3C /* RestorePasswordHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordHeaderView.swift; sourceTree = "<group>"; };
 		22969D522A94B17B00935A3C /* EmailConfirmationLinkSentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailConfirmationLinkSentView.swift; sourceTree = "<group>"; };
 		22969D552A94B91A00935A3C /* RestorePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordController.swift; sourceTree = "<group>"; };
-		22969D582A94C28F00935A3C /* ResendConfirmEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendConfirmEmailController.swift; sourceTree = "<group>"; };
 		22969D5A2A94D86600935A3C /* TokenConfirmationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationStatusView.swift; sourceTree = "<group>"; };
 		22969D5E2A94E75300935A3C /* ConfirmEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailController.swift; sourceTree = "<group>"; };
 		22969D602A94EA9F00935A3C /* ConfirmEmailRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailRequestModel.swift; sourceTree = "<group>"; };
@@ -204,6 +201,7 @@
 		22ED2EBD2A9132AE00BB623E /* CustomNumpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNumpadView.swift; sourceTree = "<group>"; };
 		22ED2EBF2A9136E600BB623E /* CustomNumpadButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNumpadButtonStyle.swift; sourceTree = "<group>"; };
 		22ED2EC12A91392300BB623E /* NumpadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumpadController.swift; sourceTree = "<group>"; };
+		22EF42FF2AA77437002B6B1B /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
 		22F2709B2A95DD8300AA8AC6 /* NetworkCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCapable.swift; sourceTree = "<group>"; };
 		22F2709D2A95E5FA00AA8AC6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		22F55BED2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleHealthIntegrateView.swift; sourceTree = "<group>"; };
@@ -415,8 +413,6 @@
 				224A5D942A8CDB6100490614 /* ResendCodeController.swift */,
 				22374B192A929C5C006BE6BB /* BaseAuthController.swift */,
 				22969D5E2A94E75300935A3C /* ConfirmEmailController.swift */,
-				22969D582A94C28F00935A3C /* ResendConfirmEmailController.swift */,
-				22374B1B2A92A6EB006BE6BB /* TwoFaAuthController.swift */,
 				22FC13C02A97692D0016E17C /* CustomURLController.swift */,
 			);
 			path = Authentication;
@@ -628,6 +624,7 @@
 			children = (
 				220266C32A8A4815009D299F /* ContentView.swift */,
 				22D56B462A962255009270FA /* BeforeAuthView.swift */,
+				22EF42FF2AA77437002B6B1B /* MainAppView.swift */,
 			);
 			path = "Page Selectors";
 			sourceTree = "<group>";
@@ -848,7 +845,6 @@
 				228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */,
 				220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */,
 				228F264E2A9E685800AD46D9 /* SetupPageWeightView.swift in Sources */,
-				22969D592A94C28F00935A3C /* ResendConfirmEmailController.swift in Sources */,
 				22374B182A9292D7006BE6BB /* Authentication.swift in Sources */,
 				220266F82A8A7066009D299F /* MainAccountAuthView.swift in Sources */,
 				22ED2EC02A9136E600BB623E /* CustomNumpadButtonStyle.swift in Sources */,
@@ -877,6 +873,7 @@
 				22D56B472A962255009270FA /* BeforeAuthView.swift in Sources */,
 				222F3C5B2A935C6F005BC46F /* ResendTwoFaCodeModel.swift in Sources */,
 				22969D5B2A94D86600935A3C /* TokenConfirmationStatusView.swift in Sources */,
+				22EF43002AA77437002B6B1B /* MainAppView.swift in Sources */,
 				220323D92AA48A1200E47CE2 /* ApiUserDetailsNetwork.swift in Sources */,
 				220266E12A8A538F009D299F /* CTAButtonStyle.swift in Sources */,
 				22969D562A94B91A00935A3C /* RestorePasswordController.swift in Sources */,
@@ -917,7 +914,6 @@
 				229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */,
 				22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */,
 				2277FC242A9E13420082AA12 /* SetupPageHeightView.swift in Sources */,
-				22374B1C2A92A6EB006BE6BB /* TwoFaAuthController.swift in Sources */,
 				2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */,

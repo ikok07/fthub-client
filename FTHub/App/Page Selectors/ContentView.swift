@@ -47,7 +47,7 @@ struct ContentView: View {
                     if userLoggedIn == true && !hasDetails {
                         SetupPageViewManager()
                     } else if userLoggedIn == true {
-                        CoachesPageView()
+                        MainAppView()
                     } else {
                         BeforeAuthView()
                     }

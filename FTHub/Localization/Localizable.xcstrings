@@ -66,6 +66,12 @@
     "Back to sign in" : {
 
     },
+    "Calculators" : {
+
+    },
+    "Coaches" : {
+
+    },
     "Confirm" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -255,6 +261,9 @@
     "lbs" : {
 
     },
+    "Logs" : {
+
+    },
     "Lorem Ipsum is simply dummy text of the printing and typesetting" : {
 
     },
@@ -262,6 +271,9 @@
 
     },
     "Metric" : {
+
+    },
+    "More" : {
 
     },
     "Open Mail" : {
@@ -488,6 +500,9 @@
       }
     },
     "We have sent a link to" : {
+
+    },
+    "Workout" : {
 
     },
     "years" : {

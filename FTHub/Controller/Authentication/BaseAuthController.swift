@@ -33,9 +33,6 @@ class BaseAuthController: ObservableObject {
     }
     
     func authenticateUser() {
-        
-        
-        
         accountAuthModel.authenticate(activeOption: self.activeOption!, name: self.name, email: self.email!, password: self.password!, confirmPassword: self.confirmPassword)
     }
     
