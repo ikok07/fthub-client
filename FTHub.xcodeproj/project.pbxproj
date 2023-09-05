@@ -38,7 +38,6 @@
 		223A2E202AA21C2600848B2B /* HealthKitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2E1F2AA21C2600848B2B /* HealthKitModel.swift */; };
 		223A2E222AA21E2800848B2B /* SetupPageHealthKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2E212AA21E2800848B2B /* SetupPageHealthKitView.swift */; };
 		223B1A432AA0856600DADB7D /* SwiftUIGauge in Frameworks */ = {isa = PBXBuildFile; productRef = 223B1A422AA0856600DADB7D /* SwiftUIGauge */; };
-		224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D882A8CB8EE00490614 /* TwoFaCodeView.swift */; };
 		224A5D8E2A8CC55100490614 /* CoachesPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D8D2A8CC55100490614 /* CoachesPageView.swift */; };
 		224A5D912A8CC9E000490614 /* fthub.i18n.json in Resources */ = {isa = PBXBuildFile; fileRef = 224A5D902A8CC9E000490614 /* fthub.i18n.json */; };
 		224A5D952A8CDB6100490614 /* ResendCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D942A8CDB6100490614 /* ResendCodeController.swift */; };
@@ -147,7 +146,6 @@
 		22374B1B2A92A6EB006BE6BB /* TwoFaAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaAuthController.swift; sourceTree = "<group>"; };
 		223A2E1F2AA21C2600848B2B /* HealthKitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitModel.swift; sourceTree = "<group>"; };
 		223A2E212AA21E2800848B2B /* SetupPageHealthKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageHealthKitView.swift; sourceTree = "<group>"; };
-		224A5D882A8CB8EE00490614 /* TwoFaCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeView.swift; sourceTree = "<group>"; };
 		224A5D8D2A8CC55100490614 /* CoachesPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachesPageView.swift; sourceTree = "<group>"; };
 		224A5D902A8CC9E000490614 /* fthub.i18n.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fthub.i18n.json; sourceTree = "<group>"; };
 		224A5D942A8CDB6100490614 /* ResendCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendCodeController.swift; sourceTree = "<group>"; };
@@ -370,7 +368,6 @@
 			children = (
 				22969D522A94B17B00935A3C /* EmailConfirmationLinkSentView.swift */,
 				220266F72A8A7066009D299F /* MainAccountAuthView.swift */,
-				224A5D882A8CB8EE00490614 /* TwoFaCodeView.swift */,
 				22969D5A2A94D86600935A3C /* TokenConfirmationStatusView.swift */,
 			);
 			path = Authentication;
@@ -932,7 +929,6 @@
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,
 				223A2E202AA21C2600848B2B /* HealthKitModel.swift in Sources */,
 				224CE9622AA1BDDA0027FB2D /* SetupPageGoalView.swift in Sources */,
-				224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */,
 				224A5D972A8CDC4400490614 /* Requests.swift in Sources */,
 				22DA77B42A98CE2E00550A6B /* Database.swift in Sources */,
 				220323DD2AA48B2600E47CE2 /* SetupModel.swift in Sources */,

@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    " " : {
-
-    },
     "%@" : {
 
     },
@@ -70,6 +67,7 @@
 
     },
     "Confirm" : {
+      "extractionState" : "stale",
       "localizations" : {
         "bg" : {
           "stringUnit" : {
@@ -117,6 +115,7 @@
 
     },
     "Didn't receive code?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "bg" : {
           "stringUnit" : {
@@ -294,6 +293,7 @@
 
     },
     "Resend now" : {
+      "extractionState" : "stale",
       "localizations" : {
         "bg" : {
           "stringUnit" : {
@@ -471,6 +471,7 @@
 
     },
     "We have sent a code to" : {
+      "extractionState" : "stale",
       "localizations" : {
         "bg" : {
           "stringUnit" : {

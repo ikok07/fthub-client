@@ -17,7 +17,6 @@ struct AuthenticationFooterView: View {
     let password: String
     let confirmPassword: String?
     
-    @AppStorage("showTwoFa") private var showTwoFa: Bool = false
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     @AppStorage("buttonLoading") private var buttonLoading: Bool = false
     
@@ -51,9 +50,6 @@ struct AuthenticationFooterView: View {
             .padding()
             
         } //: VStack
-        .navigationDestination(isPresented: $showTwoFa) {
-            TwoFaCodeView(email: email, password: password)
-        }
         .onAppear {
             buttonLoading = false
         }
