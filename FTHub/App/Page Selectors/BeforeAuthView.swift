@@ -14,6 +14,8 @@ struct BeforeAuthView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) private var modelContext
     
+    @EnvironmentObject private var baseAuthController: BaseAuthController
+    
     @AppStorage("showTutorial") private var showTutorial: Bool = true
     @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
@@ -22,6 +24,8 @@ struct BeforeAuthView: View {
     @AppStorage("showTokenVerifyStatus") private var showTokenVerifyStatus: Bool = false
     @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
     @AppStorage("tokenConfirmationStatus") private var tokenConfirmationStatus: TokenVerifyStatus = .success
+    
+    @Query private var user: [User]
     
     var body: some View {
         ZStack {
@@ -48,7 +52,13 @@ struct BeforeAuthView: View {
         .animation(.easeOut, value: showRestorePasswordStatus)
         .onOpenURL { url in
             print(url.pathComponents)
-            if url.pathComponents[1] == "confirm" {
+            
+            guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+                print("Invalid URL")
+                return
+            }
+            
+            if components.host == "email" && url.pathComponents[1] == "confirm" {
                 loadingPresented = true
                 Task {
                     await CustomURLController.confirmEmail(url: url) { user in
@@ -58,6 +68,28 @@ struct BeforeAuthView: View {
                         }
                     }
                 }
+            } else if components.host == "login" && url.pathComponents[1] == "confirm" {
+                loadingPresented = true
+                
+                if baseAuthController.activeOption != nil {
+                    Task {
+                        await CustomURLController.checkTwoFa(email: self.userCurrentEmail, url: url) { newUser in
+                            let details = await AccountController.checkDetails()
+                            if let userDetails = details, let safeUser = newUser {
+                                if let user = user.first {
+                                    modelContext.delete(user)
+                                }
+                                newUser?.details = userDetails
+                                modelContext.insert(safeUser)
+                            }
+                        }
+                    }
+                } else {
+                    showTokenVerifyStatus = false
+                    emailWithLinkSent = false
+                    loadingPresented = false
+                }
+                
             } else if url.pathComponents[1] == "reset" {
                 loadingPresented = true
                 Task {
@@ -76,4 +108,5 @@ struct BeforeAuthView: View {
 
 #Preview {
     BeforeAuthView()
+        .environmentObject(BaseAuthController())
 }

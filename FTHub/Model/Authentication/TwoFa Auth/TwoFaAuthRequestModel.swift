@@ -9,11 +9,9 @@ import Foundation
 
 struct TwoFaAuthPostData: NetworkCapable {
     let email: String
-    let token: Int
     
-    init(email: String, token: Int) {
+    init(email: String) {
         self.email = email
-        self.token = token
     }
 }
 

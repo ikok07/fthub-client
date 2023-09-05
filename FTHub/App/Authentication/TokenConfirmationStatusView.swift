@@ -11,9 +11,15 @@ enum TokenVerifyStatus: String, Codable, CaseIterable {
     case success, fail
 }
 
+enum SendEmailType: String, Codable, CaseIterable {
+    case twoFa, confirm
+}
+
 struct TokenConfirmationStatusView: View {
     
     @Environment(\.scenePhase) var scenePhase
+    
+    @EnvironmentObject private var baseAuthController: BaseAuthController
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
     @AppStorage("userToken") private var userToken: String = ""
@@ -22,6 +28,7 @@ struct TokenConfirmationStatusView: View {
     @AppStorage("showTokenVerifyStatus") private var showTokenVerifyStatus: Bool = false
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     @AppStorage("tokenConfirmationStatus") private var status: TokenVerifyStatus = .success
+    @AppStorage("sendEmailType") private var sendEmailType: SendEmailType = .twoFa
     
     var body: some View {
         VStack {
@@ -31,10 +38,10 @@ struct TokenConfirmationStatusView: View {
                 .padding(.bottom, 5)
                 .symbolEffect(.bounce.up.byLayer, value: emailNotVerified)
             VStack(spacing: 15) {
-                Text("Email \(status == .fail ? "not ": "")verified")
+                Text("Email \(status == .fail ? "not ": "")approved")
                     .font(.title)
                     .fontWeight(.bold)
-                Text(status == .success ? "You have successfuly verified\n your email" : "There was an error verifying your email address. Please try again.")
+                Text(status == .success ? "You have successfuly approved\n your email" : "There was an error approving your email address. Please try again.")
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.textGray)
                     .fontWeight(.semibold)
@@ -46,10 +53,14 @@ struct TokenConfirmationStatusView: View {
                     Task {
                         if status == .fail {
                             loadingPresented = true
-                            await Authentication.sendConfirmEmail(email: userCurrentEmail)
-                            withAnimation {
-                                emailNotVerified = true
-                                showTokenVerifyStatus = false
+                            if sendEmailType == .confirm {
+                                await Authentication.sendConfirmEmail(email: userCurrentEmail)
+                                withAnimation {
+                                    emailNotVerified = true
+                                    showTokenVerifyStatus = false
+                                }
+                            } else {
+                                baseAuthController.authenticateUser()
                             }
                         } else {
                             withAnimation {
@@ -96,4 +107,5 @@ struct TokenConfirmationStatusView: View {
 
 #Preview {
     TokenConfirmationStatusView()
+        .environmentObject(BaseAuthController())
 }

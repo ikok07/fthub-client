@@ -13,7 +13,7 @@ struct Authentication {
     
     static func signIn(email: String, password: String) async -> AccountAuthResponse? {
 
-        let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/login")!
+        let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/login")!
         let signInData: SignInPostData = SignInPostData(email: email, password: password)
         
         do {
@@ -37,10 +37,10 @@ struct Authentication {
         }
     }
     
-    static func authTwoFa(email: String, code: Int) async -> TwoFaAuthResponse? {
+    static func authTwoFa(email: String, token: String) async -> TwoFaAuthResponse? {
         
-        let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/login/confirm")!
-        let data: TwoFaAuthPostData = TwoFaAuthPostData(email: email, token: code)
+        let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV2)/user/login/confirm/\(token)")!
+        let data: TwoFaAuthPostData = TwoFaAuthPostData(email: email)
         
         do {
             let response: TwoFaAuthResponse = try await Networking.sendPostRequest(data: data, url: url)

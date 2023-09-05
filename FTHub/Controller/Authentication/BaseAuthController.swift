@@ -17,6 +17,8 @@ class BaseAuthController: ObservableObject {
     @Published var password: String?
     @Published var confirmPassword: String?
     
+    let defaults = UserDefaults.standard
+    
     
     func saveData(activeOption: AuthOption, name: String, email: String, password: String, confirmPassword: String) {
         self.activeOption = activeOption
@@ -31,6 +33,9 @@ class BaseAuthController: ObservableObject {
     }
     
     func authenticateUser() {
+        
+        
+        
         accountAuthModel.authenticate(activeOption: self.activeOption!, name: self.name, email: self.email!, password: self.password!, confirmPassword: self.confirmPassword)
     }
     

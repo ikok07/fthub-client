@@ -38,9 +38,7 @@
 		223A2E202AA21C2600848B2B /* HealthKitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2E1F2AA21C2600848B2B /* HealthKitModel.swift */; };
 		223A2E222AA21E2800848B2B /* SetupPageHealthKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2E212AA21E2800848B2B /* SetupPageHealthKitView.swift */; };
 		223B1A432AA0856600DADB7D /* SwiftUIGauge in Frameworks */ = {isa = PBXBuildFile; productRef = 223B1A422AA0856600DADB7D /* SwiftUIGauge */; };
-		224A5D862A8CB82B00490614 /* TwoFaCodeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D852A8CB82B00490614 /* TwoFaCodeHeaderView.swift */; };
 		224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D882A8CB8EE00490614 /* TwoFaCodeView.swift */; };
-		224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D8A2A8CB9BC00490614 /* TwoFaCodeFooter.swift */; };
 		224A5D8E2A8CC55100490614 /* CoachesPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D8D2A8CC55100490614 /* CoachesPageView.swift */; };
 		224A5D912A8CC9E000490614 /* fthub.i18n.json in Resources */ = {isa = PBXBuildFile; fileRef = 224A5D902A8CC9E000490614 /* fthub.i18n.json */; };
 		224A5D952A8CDB6100490614 /* ResendCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A5D942A8CDB6100490614 /* ResendCodeController.swift */; };
@@ -88,14 +86,12 @@
 		22DA77B12A98A59600550A6B /* AccountRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B02A98A59600550A6B /* AccountRequestModel.swift */; };
 		22DA77B42A98CE2E00550A6B /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B32A98CE2E00550A6B /* Database.swift */; };
 		22DA77B62A98D83300550A6B /* FakeLaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B52A98D83300550A6B /* FakeLaunchScreenView.swift */; };
-		22DED6892A908C1400D1EBBB /* TwoFaCodeNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DED6882A908C1400D1EBBB /* TwoFaCodeNumberField.swift */; };
 		22E81F1A2A9525E10021DBE0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E81F192A9525E10021DBE0 /* Message.swift */; };
 		22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */; };
 		22E824692A8B9D3300B51C60 /* SignUpWithAppleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824682A8B9D3300B51C60 /* SignUpWithAppleView.swift */; };
 		22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8246A2A8BA5D800B51C60 /* AuthenticationHeaderView.swift */; };
 		22E8246D2A8BA68A00B51C60 /* AuthenticationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8246C2A8BA68A00B51C60 /* AuthenticationFooterView.swift */; };
 		22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8246E2A8BA89A00B51C60 /* SignInView.swift */; };
-		22E824742A8BB26F00B51C60 /* TwoFaCodeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824732A8BB26F00B51C60 /* TwoFaCodeMainView.swift */; };
 		22EB51AE2A8B62F80079A3B1 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 22EB51AD2A8B62F80079A3B1 /* Algorithms */; };
 		22EB51B12A8B70AC0079A3B1 /* LogRegButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB51B02A8B70AC0079A3B1 /* LogRegButtonsView.swift */; };
 		22ED2EBC2A912FFF00BB623E /* NumpadButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2EBB2A912FFF00BB623E /* NumpadButtonView.swift */; };
@@ -116,7 +112,6 @@
 		22FD03372A9B83C4005A6A13 /* SetupPageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */; };
 		22FD03392A9B87C6005A6A13 /* SetupPageGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD03382A9B87C6005A6A13 /* SetupPageGenderView.swift */; };
 		22FD033C2A9B88A0005A6A13 /* GenderSelectRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */; };
-		22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,9 +147,7 @@
 		22374B1B2A92A6EB006BE6BB /* TwoFaAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaAuthController.swift; sourceTree = "<group>"; };
 		223A2E1F2AA21C2600848B2B /* HealthKitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitModel.swift; sourceTree = "<group>"; };
 		223A2E212AA21E2800848B2B /* SetupPageHealthKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageHealthKitView.swift; sourceTree = "<group>"; };
-		224A5D852A8CB82B00490614 /* TwoFaCodeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeHeaderView.swift; sourceTree = "<group>"; };
 		224A5D882A8CB8EE00490614 /* TwoFaCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeView.swift; sourceTree = "<group>"; };
-		224A5D8A2A8CB9BC00490614 /* TwoFaCodeFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeFooter.swift; sourceTree = "<group>"; };
 		224A5D8D2A8CC55100490614 /* CoachesPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachesPageView.swift; sourceTree = "<group>"; };
 		224A5D902A8CC9E000490614 /* fthub.i18n.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fthub.i18n.json; sourceTree = "<group>"; };
 		224A5D942A8CDB6100490614 /* ResendCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendCodeController.swift; sourceTree = "<group>"; };
@@ -202,14 +195,12 @@
 		22DA77B02A98A59600550A6B /* AccountRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRequestModel.swift; sourceTree = "<group>"; };
 		22DA77B32A98CE2E00550A6B /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		22DA77B52A98D83300550A6B /* FakeLaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLaunchScreenView.swift; sourceTree = "<group>"; };
-		22DED6882A908C1400D1EBBB /* TwoFaCodeNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeNumberField.swift; sourceTree = "<group>"; };
 		22E81F192A9525E10021DBE0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		22E824682A8B9D3300B51C60 /* SignUpWithAppleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWithAppleView.swift; sourceTree = "<group>"; };
 		22E8246A2A8BA5D800B51C60 /* AuthenticationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHeaderView.swift; sourceTree = "<group>"; };
 		22E8246C2A8BA68A00B51C60 /* AuthenticationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFooterView.swift; sourceTree = "<group>"; };
 		22E8246E2A8BA89A00B51C60 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		22E824732A8BB26F00B51C60 /* TwoFaCodeMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeMainView.swift; sourceTree = "<group>"; };
 		22EB51B02A8B70AC0079A3B1 /* LogRegButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRegButtonsView.swift; sourceTree = "<group>"; };
 		22ED2EBB2A912FFF00BB623E /* NumpadButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumpadButtonView.swift; sourceTree = "<group>"; };
 		22ED2EBD2A9132AE00BB623E /* CustomNumpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNumpadView.swift; sourceTree = "<group>"; };
@@ -229,7 +220,6 @@
 		22FD03362A9B83C4005A6A13 /* SetupPageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageViewManager.swift; sourceTree = "<group>"; };
 		22FD03382A9B87C6005A6A13 /* SetupPageGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageGenderView.swift; sourceTree = "<group>"; };
 		22FD033B2A9B88A0005A6A13 /* GenderSelectRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectRowView.swift; sourceTree = "<group>"; };
-		22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFaCodeResendButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -529,18 +519,6 @@
 			path = HealthKit;
 			sourceTree = "<group>";
 		};
-		2257C9342A8BF252000E3CD2 /* TwoFa Code */ = {
-			isa = PBXGroup;
-			children = (
-				22E824732A8BB26F00B51C60 /* TwoFaCodeMainView.swift */,
-				224A5D852A8CB82B00490614 /* TwoFaCodeHeaderView.swift */,
-				224A5D8A2A8CB9BC00490614 /* TwoFaCodeFooter.swift */,
-				22DED6882A908C1400D1EBBB /* TwoFaCodeNumberField.swift */,
-				22FD47E72A923A3700C99BE6 /* TwoFaCodeResendButton.swift */,
-			);
-			path = "TwoFa Code";
-			sourceTree = "<group>";
-		};
 		2257C93B2A8BFD36000E3CD2 /* Restore Password */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,7 +671,6 @@
 		22EB51AF2A8B708E0079A3B1 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				2257C9342A8BF252000E3CD2 /* TwoFa Code */,
 				22EB51B02A8B70AC0079A3B1 /* LogRegButtonsView.swift */,
 				22E824682A8B9D3300B51C60 /* SignUpWithAppleView.swift */,
 				22E8246A2A8BA5D800B51C60 /* AuthenticationHeaderView.swift */,
@@ -872,10 +849,8 @@
 				22803A1A2A9C913B004EF9B3 /* SetupAgePageView.swift in Sources */,
 				220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */,
 				228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */,
-				22DED6892A908C1400D1EBBB /* TwoFaCodeNumberField.swift in Sources */,
 				220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */,
 				228F264E2A9E685800AD46D9 /* SetupPageWeightView.swift in Sources */,
-				22FD47E82A923A3700C99BE6 /* TwoFaCodeResendButton.swift in Sources */,
 				22969D592A94C28F00935A3C /* ResendConfirmEmailController.swift in Sources */,
 				22374B182A9292D7006BE6BB /* Authentication.swift in Sources */,
 				220266F82A8A7066009D299F /* MainAccountAuthView.swift in Sources */,
@@ -911,7 +886,6 @@
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
 				224A5DA12A8CF98D00490614 /* User.swift in Sources */,
 				228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */,
-				224A5D862A8CB82B00490614 /* TwoFaCodeHeaderView.swift in Sources */,
 				22DA77AF2A98A45900550A6B /* AccountModel.swift in Sources */,
 				2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */,
 				22FD033C2A9B88A0005A6A13 /* GenderSelectRowView.swift in Sources */,
@@ -943,7 +917,6 @@
 				22969D5F2A94E75300935A3C /* ConfirmEmailController.swift in Sources */,
 				220266D12A8A494A009D299F /* Constants.swift in Sources */,
 				22E8246B2A8BA5D800B51C60 /* AuthenticationHeaderView.swift in Sources */,
-				224A5D8B2A8CB9BC00490614 /* TwoFaCodeFooter.swift in Sources */,
 				229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */,
 				22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */,
 				2277FC242A9E13420082AA12 /* SetupPageHeightView.swift in Sources */,
@@ -960,7 +933,6 @@
 				223A2E202AA21C2600848B2B /* HealthKitModel.swift in Sources */,
 				224CE9622AA1BDDA0027FB2D /* SetupPageGoalView.swift in Sources */,
 				224A5D892A8CB8EE00490614 /* TwoFaCodeView.swift in Sources */,
-				22E824742A8BB26F00B51C60 /* TwoFaCodeMainView.swift in Sources */,
 				224A5D972A8CDC4400490614 /* Requests.swift in Sources */,
 				22DA77B42A98CE2E00550A6B /* Database.swift in Sources */,
 				220323DD2AA48B2600E47CE2 /* SetupModel.swift in Sources */,
