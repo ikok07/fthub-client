@@ -11,6 +11,9 @@ struct SettingsGroupView: View {
     
     @State private var appleHealth: Bool = false
     
+    let groupNumber: Int
+    
+    
     var body: some View {
         VStack {
             HStack(spacing: 15) {
@@ -26,14 +29,12 @@ struct SettingsGroupView: View {
             }
             .padding(.bottom)
             
-            VStack(alignment: .leading, spacing: 0) {
-                SettingsRowView(icon: "person", label: "Profile Data")
-                SettingsRowView(icon: "star", label: "Subscription")
-                SettingsRowView(icon: "key.horizontal", label: "Change Password")
-                SettingsRowView(icon: "clock.arrow.2.circlepath", label: "Workouts Synchronization")
-                SettingsRowView(icon: "bell", label: "Notifications")
-                SettingsRowToggleView(icon: "heart", label: "Apple Health", isToggled: $appleHealth)
+            if groupNumber == 1 {
+                SettingsFirstGroupRowsView(appleHealth: $appleHealth)
+            } else if groupNumber == 2 {
+                SettingsSecondGroupRowsView()
             }
+            
         }
         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
         .overlay {
@@ -45,6 +46,6 @@ struct SettingsGroupView: View {
 }
 
 #Preview {
-    SettingsGroupView()
+    SettingsGroupView(groupNumber: 1)
         .padding()
 }

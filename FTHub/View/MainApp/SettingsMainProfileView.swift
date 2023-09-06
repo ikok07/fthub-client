@@ -16,23 +16,7 @@ struct SettingsMainProfileView: View {
     var body: some View {
         HStack(spacing: 20) {
             
-            AsyncImage(url: imageUrl) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 60)
-                    .clipShape(Circle())
-            } placeholder: {
-                ZStack {
-                    Circle()
-                        .foregroundStyle(.customGray.opacity(0.3))
-                        .frame(width: 60)
-                    Image(systemName: "person.fill")
-                        .foregroundStyle(.textGray)
-                        .font(.title)
-                }
-            }
-                
+            ProfileImageView(imageUrl: imageUrl)
             
             VStack(alignment: .leading) {
                 Text(name)

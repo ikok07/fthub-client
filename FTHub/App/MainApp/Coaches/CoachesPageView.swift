@@ -27,14 +27,7 @@ struct CoachesPageView: View {
             Text("\(user.first?.name ?? "")")
             
             Button(action: {
-                withAnimation {
-                    userLoggedIn = false
-                    userToken = ""
-                    hasDetails = false
-                    if let user = user.first {
-                        modelContext.delete(user)
-                    }
-                }
+                
             }, label: {
                 Text("Sign Out")
             })

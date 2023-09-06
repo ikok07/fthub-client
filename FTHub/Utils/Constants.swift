@@ -24,6 +24,8 @@ struct K {
         
         static let errorGradient: LinearGradient = LinearGradient(gradient: Gradient(colors: [.customDarkRed]), startPoint: .topLeading, endPoint: .bottomTrailing)
         
+        static let redGradient: LinearGradient = LinearGradient(gradient: Gradient(colors: [.customRed2]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        
         static let grayGradient: LinearGradient = LinearGradient(colors: [.textGray], startPoint: .leading, endPoint: .trailing)
         static let lightGrayGradient: LinearGradient = LinearGradient(colors: [.textGray.opacity(0.35)], startPoint: .leading, endPoint: .trailing)
         static let clearGradient: LinearGradient = LinearGradient(colors: [.clear], startPoint: .leading, endPoint: .trailing)

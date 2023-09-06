@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SettingsRowView: View {
     
-    let icon: String
+    let icon: String?
+    let image: String?
     let label: String
     
     @State private var isPressed: Bool = false
@@ -18,9 +19,15 @@ struct SettingsRowView: View {
         VStack(spacing: 0) {
                 HStack {
                     HStack(spacing: 10) {
-                        Image(systemName: icon)
-                            .font(.system(size: 25))
-                            .frame(width: 30)
+                        if icon != nil {
+                            Image(systemName: icon!)
+                                .font(.system(size: 25))
+                                .frame(width: 30)
+                        } else if image != nil {
+                            Image(image!)
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                        }
                         
                         Text(label)
                             .font(.subheadline)
@@ -55,6 +62,6 @@ struct SettingsRowView: View {
 }
 
 #Preview {
-    SettingsRowView(icon: "person", label: "Profile data")
+    SettingsRowView(icon: "person", image: nil, label: "Profile data")
         .padding()
 }
