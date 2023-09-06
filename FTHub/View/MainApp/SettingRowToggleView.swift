@@ -36,7 +36,7 @@ struct SettingsRowToggleView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 7))
                 
                 Rectangle()
-                    .frame(width: .infinity, height: 1)
+                    .frame(height: 1)
                     .foregroundStyle(.customGray)
             }
             .contentShape(Rectangle())

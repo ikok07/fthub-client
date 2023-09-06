@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct UnitSelectView: View {
     
     @EnvironmentObject private var setupController: SetupController
     
     @State var activeUnits: Unit = .metric
+    
+    @Query private var user: [User]
     
     var body: some View {
         VStack {
@@ -24,6 +27,9 @@ struct UnitSelectView: View {
                     withAnimation {
                         setupController.units = .metric
                         activeUnits = .metric
+                        if let user = user.first {
+                            user.details?.units = .metric
+                        }
                     }
                 }, label: {
                     Text("Metric")
@@ -36,6 +42,9 @@ struct UnitSelectView: View {
                     withAnimation {
                         setupController.units = .imperial
                         activeUnits = .imperial
+                        if let user = user.first {
+                            user.details?.units = .imperial
+                        }
                     }
                 }, label: {
                     Text("Imperial")

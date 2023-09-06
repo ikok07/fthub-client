@@ -1,10 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
 
     },
     "%@ inch" : {
+
+    },
+    "%@ lbs" : {
 
     },
     "%lld" : {
@@ -14,6 +20,12 @@
 
     },
     "%lld inches" : {
+
+    },
+    "%lld kg" : {
+
+    },
+    "%lld times/week" : {
 
     },
     "120 cm" : {
@@ -136,6 +148,9 @@
           }
         }
       }
+    },
+    "Discover more" : {
+
     },
     "Done" : {
 
@@ -261,6 +276,9 @@
     "lbs" : {
 
     },
+    "Log Out" : {
+
+    },
     "Logs" : {
 
     },
@@ -301,6 +319,9 @@
     "Password was\nnot changed" : {
 
     },
+    "Profile data" : {
+
+    },
     "Resend Email" : {
 
     },
@@ -338,6 +359,9 @@
       }
     },
     "Return to sign in" : {
+
+    },
+    "Save" : {
 
     },
     "Send email" : {

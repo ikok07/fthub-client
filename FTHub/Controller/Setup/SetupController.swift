@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Unit: String, CaseIterable {
+enum Unit: String, CaseIterable, Codable {
     case metric, imperial
 }
 

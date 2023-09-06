@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-struct SettingsGroupView: View {
+struct SettingsGroupView<Content: View>: View {
     
-    @State private var appleHealth: Bool = false
-    
-    let groupNumber: Int
+    let name: String
+    @ViewBuilder let rows: Content
     
     
     var body: some View {
@@ -21,19 +20,14 @@ struct SettingsGroupView: View {
                     .frame(width: 6, height: 30)
                     .foregroundStyle(K.Gradients.mainGradient.opacity(0.75))
                 
-                Text("Account Settings")
+                Text(name)
                     .font(.title2)
                     .fontWeight(.bold)
                 
                 Spacer()
             }
-            .padding(.bottom)
             
-            if groupNumber == 1 {
-                SettingsFirstGroupRowsView(appleHealth: $appleHealth)
-            } else if groupNumber == 2 {
-                SettingsSecondGroupRowsView()
-            }
+            rows
             
         }
         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
@@ -46,6 +40,13 @@ struct SettingsGroupView: View {
 }
 
 #Preview {
-    SettingsGroupView(groupNumber: 1)
+    SettingsGroupView(name: "Account Settings") {
+        VStack(alignment: .leading, spacing: 0) {
+            SettingsRowView(icon: nil, image: "instagram", label: "Profile Data")
+            SettingsRowView(icon: nil, image: "facebook", label: "Subscription")
+            SettingsRowView(icon: "person.2.badge.gearshape", image: nil, label: "Support & Feedback")
+            SettingsRowView(icon: "lock", image: nil, label: "Privacy Policy")
+        }
+    }
         .padding()
 }

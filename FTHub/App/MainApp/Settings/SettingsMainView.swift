@@ -15,17 +15,41 @@ struct SettingsMainView: View {
     @AppStorage("hasDetails") private var hasDetails: Bool = true
     
     @Environment(\.modelContext) private var modelContext
-    
     @Query private var user: [User]
+    
+    @State private var appleHealth: Bool = false
+    
+    let imageUrl: URL? = URL(string: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
     
     var body: some View {
         NavigationStack {
             ScrollView {
-                SettingsMainProfileView(imageUrl: URL(string: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"), name: "John Smith", email: "kokmarok@gmail.com")
+                SettingsMainProfileView(imageUrl: imageUrl, name: "John Smith", email: "kokmarok@gmail.com")
                 
-                SettingsGroupView(groupNumber: 1)
+                SettingsGroupView(name: "Account Settings") {
+                    VStack(alignment: .leading, spacing: 0) {
+                        NavigationLink(destination: SettingsProfileDataView(imageUrl: imageUrl)) {
+                            SettingsRowView(icon: "person", image: nil, label: "Profile Data")
+                                .overlay {
+                                    Color.black.opacity(0.1)
+                                }
+                        }
+                        SettingsRowView(icon: "star", image: nil, label: "Subscription")
+                        SettingsRowView(icon: "key.horizontal", image: nil, label: "Change Password")
+                        SettingsRowView(icon: "clock.arrow.2.circlepath", image: nil, label: "Workouts Synchronization")
+                        SettingsRowView(icon: "bell", image: nil, label: "Notifications")
+                        SettingsRowToggleView(icon: "heart", label: "Apple Health", isToggled: $appleHealth)
+                    }
+                }
                 
-                SettingsGroupView(groupNumber: 2)
+                SettingsGroupView(name: "Information") {
+                    VStack(alignment: .leading, spacing: 0) {
+                        SettingsRowView(icon: nil, image: "instagram", label: "Profile Data")
+                        SettingsRowView(icon: nil, image: "facebook", label: "Subscription")
+                        SettingsRowView(icon: "person.2.badge.gearshape", image: nil, label: "Support & Feedback")
+                        SettingsRowView(icon: "lock", image: nil, label: "Privacy Policy")
+                    }
+                }
                 
                 Button(action: {
                     withAnimation {
