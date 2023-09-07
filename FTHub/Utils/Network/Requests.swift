@@ -51,10 +51,13 @@ struct Request {
         }
     }
     
-    static func update<T: Codable>(url: URL, body: Data) async -> Result<T, Error> {
+    static func update<T: Codable>(url: URL, body: Data, authToken: String?) async -> Result<T, Error> {
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if authToken != nil {
+            request.setValue("Bearer \(authToken!)", forHTTPHeaderField: "Authorization")
+        }
         request.httpBody = body
 
         do {

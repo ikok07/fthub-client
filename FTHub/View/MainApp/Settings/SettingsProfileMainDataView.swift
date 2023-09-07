@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SettingsProfileMainDataView: View {
     
-    @Binding var name: String
-    @Binding var email: String
+    var name: String
+    var email: String
     @Binding var gender: Gender
     @Binding var age: Int
     
@@ -19,16 +19,16 @@ struct SettingsProfileMainDataView: View {
         SettingsGroupView(name: "Main Data") {
             VStack(alignment: .leading, spacing: 0) {
                 SettingsInputRowView(name: "Name") {
-                    TextField("", text: $name)
-                    .frame(width: 200)
-                    .multilineTextAlignment(.trailing)
+                    Text(name)
+                        .foregroundStyle(.textGray)
+                        .multilineTextAlignment(.trailing)
                 }
                 SettingsInputRowView(name: "Email") {
-                    TextField("", text: $email)
-                    .frame(width: 200)
-                    .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
-                    .multilineTextAlignment(.trailing)
-                    .clipShape(RoundedRectangle(cornerRadius: 7))
+                    Spacer()
+                    Text(email)
+                        .foregroundStyle(.textGray)
+                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                        .multilineTextAlignment(.trailing)
                 }
                 SettingsInputRowView(name: "Gender") {
                     Picker("", selection: $gender) {
@@ -55,5 +55,6 @@ struct SettingsProfileMainDataView: View {
 }
 
 #Preview {
-    SettingsProfileMainDataView(name: .constant("John Smith"), email: .constant("testemail@email.com"), gender: .constant(.Male), age: .constant(18))
+    SettingsProfileMainDataView(name: "John Smith", email: "testemail@email.com", gender: .constant(.Male), age: .constant(18))
+        .padding()
 }

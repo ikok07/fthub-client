@@ -19,7 +19,7 @@ struct SettingsProfileDataView: View {
     
     
     @State private var name: String = "test name"
-    @State private var email: String = "kokmarok@gmail.com"
+    @State private var email: String = "youremail@email.com"
     @State private var gender: Gender = .Male
     @State private var age: Int = 22
     
@@ -36,7 +36,7 @@ struct SettingsProfileDataView: View {
                 
                 SettingsProfileImagePickerView(imageUrl: imageUrl)
                 
-                SettingsProfileMainDataView(name: $name, email: $email, gender: $gender, age: $age)
+                SettingsProfileMainDataView(name: name, email: email, gender: $gender, age: $age)
                 
                 SettingsFitnessDataView(height: $height, weight: $weight, workoutsPerWeek: $workoutsPerWeek, goal: $goal)
                 
@@ -45,7 +45,26 @@ struct SettingsProfileDataView: View {
             .navigationTitle("Profile data")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button {} label: {
+                Button {
+                    Task {
+                        await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: self.height, weight: self.weight, workoutsPerWeek: self.workoutsPerWeek, goal: self.goal) { response in
+                            if response != nil {
+                                
+                                if let user = user.first {
+                                    user.details?.gender = self.gender
+                                    user.details?.age = self.age
+                                    user.details?.height = self.height
+                                    user.details?.weight = self.weight
+                                    user.details?.workoutsPerWeek = self.workoutsPerWeek
+                                    user.details?.goal = self.goal
+                                }
+                                
+                                self.initConfiguration = [gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
+                                saveButtonActive = false
+                            }
+                        }
+                    }
+                } label: {
                     Text("Save")
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                 }
@@ -64,10 +83,11 @@ struct SettingsProfileDataView: View {
                 self.weight = user.details?.weight ?? 0
                 self.workoutsPerWeek = user.details?.workoutsPerWeek ?? 2
                 self.goal = user.details?.goal ?? .Balance
-                self.initConfiguration = [name, email, gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
+                self.initConfiguration = [gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
             }
         }
-        .onChange(of: [name, email, gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue], { oldValue, newValue in
+        .onChange(of: [gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue], { oldValue, newValue in
+            print(newValue)
             if newValue != initConfiguration {
                 saveButtonActive = true
             } else {
