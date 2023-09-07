@@ -45,7 +45,7 @@ class UserDetails {
     
     var setupActivePage: Int = 0
     
-    var units: Unit?
+    var units: Unit = Unit.metric
     var gender: Gender?
     var age: Int?
     var height: Int?

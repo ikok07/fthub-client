@@ -42,10 +42,10 @@ struct SettingsGroupView<Content: View>: View {
 #Preview {
     SettingsGroupView(name: "Account Settings") {
         VStack(alignment: .leading, spacing: 0) {
-            SettingsRowView(icon: nil, image: "instagram", label: "Profile Data")
-            SettingsRowView(icon: nil, image: "facebook", label: "Subscription")
-            SettingsRowView(icon: "person.2.badge.gearshape", image: nil, label: "Support & Feedback")
-            SettingsRowView(icon: "lock", image: nil, label: "Privacy Policy")
+//            SettingsRowView(icon: nil, image: "instagram", label: "Profile Data")
+//            SettingsRowView(icon: nil, image: "facebook", label: "Subscription")
+//            SettingsRowView(icon: "person.2.badge.gearshape", image: nil, label: "Support & Feedback")
+//            SettingsRowView(icon: "lock", image: nil, label: "Privacy Policy")
         }
     }
         .padding()

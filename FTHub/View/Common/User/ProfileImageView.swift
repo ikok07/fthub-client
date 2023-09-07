@@ -6,32 +6,42 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ProfileImageView: View {
     
     let imageUrl: URL?
+    let localImage: Image?
     let width: Double
     
     var body: some View {
         AsyncImage(url: imageUrl) { image in
             image
                 .resizable()
-                .scaledToFit()
-                .frame(width: width)
-                .clipShape(Circle())
+                .scaledToFill()
         } placeholder: {
-            ZStack {
-                Circle()
-                    .foregroundStyle(.customGray.opacity(0.3))
-                    .frame(width: width)
-                Image(systemName: "person.fill")
-                    .foregroundStyle(.textGray)
-                    .font(.title)
+            if localImage != nil {
+                localImage!
+                    .resizable()
+                    .scaledToFill()
+            } else {
+                ZStack {
+                    Circle()
+                        .foregroundStyle(.customGray.opacity(0.3))
+                        .frame(width: width, height: width)
+                    
+                    Image(systemName: "person.fill")
+                        .foregroundStyle(.textGray)
+                        .font(.title)
+                }
             }
         }
+        .frame(width: width, height: width)
+        .clipShape(Circle())
+        .padding(.vertical, 25)
     }
 }
 
 #Preview {
-    ProfileImageView(imageUrl: URL(string: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"), width: 60)
+    ProfileImageView(imageUrl: URL(string: ""), localImage: nil, width: 100)
 }

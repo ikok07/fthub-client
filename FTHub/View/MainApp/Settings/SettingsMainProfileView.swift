@@ -16,7 +16,7 @@ struct SettingsMainProfileView: View {
     var body: some View {
         HStack(spacing: 20) {
             
-            ProfileImageView(imageUrl: imageUrl, width: 60)
+            ProfileImageView(imageUrl: imageUrl, localImage: nil, width: 60)
             
             VStack(alignment: .leading) {
                 Text(name)

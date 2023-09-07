@@ -19,7 +19,7 @@ struct SettingsMainView: View {
     
     @State private var appleHealth: Bool = false
     
-    let imageUrl: URL? = URL(string: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
+    let imageUrl: URL? = URL(string: "")
     
     var body: some View {
         NavigationStack {
@@ -30,9 +30,6 @@ struct SettingsMainView: View {
                     VStack(alignment: .leading, spacing: 0) {
                         NavigationLink(destination: SettingsProfileDataView(imageUrl: imageUrl)) {
                             SettingsRowView(icon: "person", image: nil, label: "Profile Data")
-                                .overlay {
-                                    Color.black.opacity(0.1)
-                                }
                         }
                         SettingsRowView(icon: "star", image: nil, label: "Subscription")
                         SettingsRowView(icon: "key.horizontal", image: nil, label: "Change Password")
