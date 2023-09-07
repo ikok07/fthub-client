@@ -10,9 +10,18 @@ import PhotosUI
 
 struct SettingsProfileImagePickerView: View {
     
-    let imageUrl: URL?
     @State private var profileImageItem: PhotosPickerItem?
     @State private var profileImage: Image?
+    
+    @Binding var imageUrl: URL?
+    @Binding var saveButtonActive: Bool
+    @Binding var uiImage: UIImage? {
+        didSet {
+            print("NEW IMAGE ADDED")
+            imageUrl = nil
+            saveButtonActive = true
+        }
+    }
     
     var body: some View {
         PhotosPicker(selection: $profileImageItem, matching: .images) {
@@ -35,6 +44,7 @@ struct SettingsProfileImagePickerView: View {
             Task {
                 if let data = try? await profileImageItem?.loadTransferable(type: Data.self) {
                     if let uiImage = UIImage(data: data) {
+                        self.uiImage = uiImage
                         withAnimation {
                             profileImage = Image(uiImage: uiImage)
                         }
@@ -48,5 +58,5 @@ struct SettingsProfileImagePickerView: View {
 }
 
 #Preview {
-    SettingsProfileImagePickerView(imageUrl: URL(string: ""))
+    SettingsProfileImagePickerView(imageUrl: .constant(URL(string: "")), saveButtonActive: .constant(false), uiImage: .constant(nil))
 }

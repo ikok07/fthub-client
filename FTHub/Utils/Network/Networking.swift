@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum NetworkError: String, Error {
+    case undefinedNetworkError = "Error sending patch request: no success, no failure"
+}
+
 struct Networking {
     
     static func sendGetRequest<T: NetworkCapable>(url: URL, token: String) async throws -> T {
@@ -32,15 +36,29 @@ struct Networking {
             }
     }
     
-    static func sendPatchRequest<T: NetworkCapable, V: Codable>(data: V, url: URL, authToken: String? = nil) async throws -> T {
-        let jsonData = try JSONEncoder().encode(data)
-        print(String(data: jsonData, encoding: .utf8))
-        let result: Result<T, Error> = await Request.update(url: url, body: jsonData, authToken: authToken)
+    static func sendPatchRequest<T: NetworkCapable, V: Codable>(data: V, url: URL, authToken: String? = nil, formData: Bool = false) async throws -> T {
+        var jsonData: Data?
+        
+        if !formData {
+            jsonData = try JSONEncoder().encode(data)
+            print("SEND DATA: \(String(data: jsonData!, encoding: .utf8))")
+        }
+        
+        var result: Result<T, Error>?
+        
+        if formData {
+            result = await Request.update(url: url, body: data as! Data, authToken: authToken, formData: formData)
+        } else {
+            result = await Request.update(url: url, body: jsonData!, authToken: authToken, formData: formData)
+        }
+        
         switch result {
         case .success(let response):
             return response
         case .failure(let error):
             throw error
+        case .none:
+            throw NetworkError.undefinedNetworkError
         }
     }
     

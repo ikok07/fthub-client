@@ -11,13 +11,12 @@ import PhotosUI
 
 struct SettingsProfileDataView: View {
     
-    let imageUrl: URL?
-    
     @Query private var user: [User]
     
     @State private var saveButtonActive: Bool = false
     
-    
+    @State private var imageUrl: URL?
+    @State private var localProfileImage: UIImage?
     @State private var name: String = "test name"
     @State private var email: String = "youremail@email.com"
     @State private var gender: Gender = .Male
@@ -34,7 +33,7 @@ struct SettingsProfileDataView: View {
         NavigationStack {
             ScrollView {
                 
-                SettingsProfileImagePickerView(imageUrl: imageUrl)
+                SettingsProfileImagePickerView(imageUrl: $imageUrl, saveButtonActive: $saveButtonActive, uiImage: $localProfileImage)
                 
                 SettingsProfileMainDataView(name: name, email: email, gender: $gender, age: $age)
                 
@@ -57,9 +56,17 @@ struct SettingsProfileDataView: View {
                                     user.details?.weight = self.weight
                                     user.details?.workoutsPerWeek = self.workoutsPerWeek
                                     user.details?.goal = self.goal
+                                    
+                                    if localProfileImage != nil {
+                                        await SettingsProfileDataController.uploadImageToServer(localProfileImage!) { response in
+                                            user.photo = response.data.user.photo
+                                        }
+                                    }
                                 }
                                 
                                 self.initConfiguration = [gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
+                                Message.send(type: "success", message: "Successfully saved profile data")
+                                
                                 saveButtonActive = false
                             }
                         }
@@ -75,6 +82,7 @@ struct SettingsProfileDataView: View {
         }
         .onAppear {
             if let user = user.first {
+                self.imageUrl = URL(string: "https://storage.fthub.eu\(user.photo)")
                 self.name = user.name
                 self.email = user.email
                 self.gender = user.details?.gender ?? .Male
@@ -99,5 +107,5 @@ struct SettingsProfileDataView: View {
 }
 
 #Preview {
-    SettingsProfileDataView(imageUrl: URL(string: ""))
+    SettingsProfileDataView()
 }

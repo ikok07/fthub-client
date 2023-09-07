@@ -19,7 +19,7 @@ struct SettingsMainView: View {
     
     @State private var appleHealth: Bool = false
     
-    let imageUrl: URL? = URL(string: "")
+    @State private var imageUrl: URL?
     
     var body: some View {
         NavigationStack {
@@ -28,7 +28,7 @@ struct SettingsMainView: View {
                 
                 SettingsGroupView(name: "Account Settings") {
                     VStack(alignment: .leading, spacing: 0) {
-                        NavigationLink(destination: SettingsProfileDataView(imageUrl: imageUrl)) {
+                        NavigationLink(destination: SettingsProfileDataView()) {
                             SettingsRowView(icon: "person", image: nil, label: "Profile Data")
                         }
                         SettingsRowView(icon: "star", image: nil, label: "Subscription")
@@ -68,6 +68,11 @@ struct SettingsMainView: View {
             .navigationTitle("Discover more")
             .padding()
             .scrollIndicators(.hidden)
+            .onAppear {
+                if let user = user.first {
+                    self.imageUrl = URL(string: "https://storage.fthub.eu\(user.photo)")
+                }
+            }
         }
     }
 }

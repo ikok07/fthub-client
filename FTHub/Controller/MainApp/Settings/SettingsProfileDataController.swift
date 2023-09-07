@@ -6,13 +6,26 @@
 //
 
 import Foundation
+import UIKit
+
 
 struct SettingsProfileDataController {
     
-    static func saveUserDetails(gender: Gender, age: Int, height: Int, weight: Int, workoutsPerWeek: Int, goal: FitnessGoal, completion: (SettingsProfileDataResponse?) -> Void) async {
+    static func uploadImageToServer(_ image: UIImage, completion: (MediaResponse) -> Void) async {
+        if let response = await SettingsProfileDataModel.uploadImage(image) {
+            if response.status == "success" {
+                completion(response)
+            } else {
+                Message.send(type: "error", message: "There was an error uploading profile image to server")
+            }
+        } else {
+            Message.send(type: "error", message: "There was an error connecting to server")
+        }
+    }
+    
+    static func saveUserDetails(gender: Gender, age: Int, height: Int, weight: Int, workoutsPerWeek: Int, goal: FitnessGoal, completion: (SettingsProfileDataResponse?) async -> Void) async {
         if let response = await SettingsProfileDataModel.save(gender: gender.rawValue, age: age, height: height, weight: weight, workoutsPerWeek: workoutsPerWeek, goal: goal.rawValue.camelCaseToWords()) {
-            Message.send(type: "success", message: "Successfully saved profile data")
-            completion(response)
+            await completion(response)
         } else {
             Message.send(type: "error", message: "There was an error saving profile data")
         }

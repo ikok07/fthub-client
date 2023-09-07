@@ -13,7 +13,7 @@ class User: Codable {
     @Attribute(.unique) let _id: String
     let name: String
     let email: String
-    let photo: String
+    var photo: String
     let role: String
     var details: UserDetails?
     var hasFullDetails: Bool = false

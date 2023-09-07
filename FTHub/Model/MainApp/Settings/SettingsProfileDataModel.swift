@@ -6,8 +6,23 @@
 //
 
 import Foundation
+import UIKit
 
 struct SettingsProfileDataModel {
+    
+    
+    static func uploadImage(_ image: UIImage) async -> MediaResponse? {
+        let url: URL = URL(string: "\(K.API.apiURL)/en/api/v1/user/me")!
+        let imageData: Data = ImageMedia(withImage: image, key: "image").data!
+        
+        do {
+            let response: MediaResponse = try await Networking.sendPatchRequest(data: imageData, url: url, authToken: UserDefaults.standard.string(forKey: "userToken"), formData: true)
+            return response
+        } catch {
+            print("Error uploading media to server")
+            return nil
+        }
+    }
     
     static func save(gender: String, age: Int, height: Int, weight: Int, workoutsPerWeek: Int, goal: String) async -> SettingsProfileDataResponse? {
         let url: URL = URL(string: "\(K.API.apiURL)/en/api/\(K.API.apiV1)/user/detail")!
