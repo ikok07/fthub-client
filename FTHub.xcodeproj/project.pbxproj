@@ -117,6 +117,9 @@
 		22F55BF02AA26323007DBBA9 /* SetupPageNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BEF2AA26323007DBBA9 /* SetupPageNotificationsView.swift */; };
 		22F55BF32AA2678F007DBBA9 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BF22AA2678F007DBBA9 /* NotificationsController.swift */; };
 		22F9D9A42AAB1B0E00E77FFC /* SettingsChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9D9A32AAB1B0E00E77FFC /* SettingsChangePasswordView.swift */; };
+		22F9D9A62AAB1E0000E77FFC /* SettingsChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9D9A52AAB1E0000E77FFC /* SettingsChangePasswordController.swift */; };
+		22F9D9A82AAB1EE000E77FFC /* SettingsChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9D9A72AAB1EE000E77FFC /* SettingsChangePasswordModel.swift */; };
+		22F9D9AA2AAB1F0C00E77FFC /* SettingsChangePasswordNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9D9A92AAB1F0C00E77FFC /* SettingsChangePasswordNetworkModel.swift */; };
 		22FC13BA2A9756690016E17C /* ValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13B92A9756690016E17C /* ValidationController.swift */; };
 		22FC13BD2A9757160016E17C /* RestorePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BC2A9757160016E17C /* RestorePasswordModel.swift */; };
 		22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */; };
@@ -239,6 +242,9 @@
 		22F55BEF2AA26323007DBBA9 /* SetupPageNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageNotificationsView.swift; sourceTree = "<group>"; };
 		22F55BF22AA2678F007DBBA9 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		22F9D9A32AAB1B0E00E77FFC /* SettingsChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordView.swift; sourceTree = "<group>"; };
+		22F9D9A52AAB1E0000E77FFC /* SettingsChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordController.swift; sourceTree = "<group>"; };
+		22F9D9A72AAB1EE000E77FFC /* SettingsChangePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordModel.swift; sourceTree = "<group>"; };
+		22F9D9A92AAB1F0C00E77FFC /* SettingsChangePasswordNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordNetworkModel.swift; sourceTree = "<group>"; };
 		22FC13B92A9756690016E17C /* ValidationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationController.swift; sourceTree = "<group>"; };
 		22FC13BC2A9757160016E17C /* RestorePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordModel.swift; sourceTree = "<group>"; };
 		22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordRequestModel.swift; sourceTree = "<group>"; };
@@ -669,6 +675,7 @@
 			isa = PBXGroup;
 			children = (
 				229C8E242AA9D97E006D6526 /* SettingsProfileDataController.swift */,
+				22F9D9A52AAB1E0000E77FFC /* SettingsChangePasswordController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -698,6 +705,8 @@
 			children = (
 				229C8E292AA9DC20006D6526 /* SettingsProfileDataModel.swift */,
 				229C8E2B2AA9DCD4006D6526 /* SettingsProfileDataNetworkModel.swift */,
+				22F9D9A72AAB1EE000E77FFC /* SettingsChangePasswordModel.swift */,
+				22F9D9A92AAB1F0C00E77FFC /* SettingsChangePasswordNetworkModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1018,6 +1027,7 @@
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
 				22FD03352A9B8372005A6A13 /* SetupPageOneView.swift in Sources */,
+				22F9D9AA2AAB1F0C00E77FFC /* SettingsChangePasswordNetworkModel.swift in Sources */,
 				22DA77B62A98D83300550A6B /* FakeLaunchScreenView.swift in Sources */,
 				22F55BEE2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift in Sources */,
 				22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */,
@@ -1041,6 +1051,7 @@
 				224A5DA12A8CF98D00490614 /* User.swift in Sources */,
 				228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */,
 				22DA77AF2A98A45900550A6B /* AccountModel.swift in Sources */,
+				22F9D9A62AAB1E0000E77FFC /* SettingsChangePasswordController.swift in Sources */,
 				2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */,
 				227585352AA8FA4D00149814 /* ProfileImageView.swift in Sources */,
 				22FD033C2A9B88A0005A6A13 /* GenderSelectRowView.swift in Sources */,
@@ -1081,6 +1092,7 @@
 				22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */,
 				2277FC242A9E13420082AA12 /* SetupPageHeightView.swift in Sources */,
 				2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */,
+				22F9D9A82AAB1EE000E77FFC /* SettingsChangePasswordModel.swift in Sources */,
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */,
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,

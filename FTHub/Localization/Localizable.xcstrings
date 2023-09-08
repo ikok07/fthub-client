@@ -81,6 +81,12 @@
     "Calculators" : {
 
     },
+    "Change password" : {
+
+    },
+    "Change Password" : {
+
+    },
     "Coaches" : {
 
     },
@@ -127,6 +133,9 @@
 
     },
     "Create new password" : {
+
+    },
+    "Current password" : {
 
     },
     "days/week" : {
@@ -292,6 +301,9 @@
 
     },
     "More" : {
+
+    },
+    "New password" : {
 
     },
     "Open Mail" : {
