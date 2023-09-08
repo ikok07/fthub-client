@@ -116,6 +116,7 @@
 		22F55BEE2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BED2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift */; };
 		22F55BF02AA26323007DBBA9 /* SetupPageNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BEF2AA26323007DBBA9 /* SetupPageNotificationsView.swift */; };
 		22F55BF32AA2678F007DBBA9 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BF22AA2678F007DBBA9 /* NotificationsController.swift */; };
+		22F9D9A42AAB1B0E00E77FFC /* SettingsChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9D9A32AAB1B0E00E77FFC /* SettingsChangePasswordView.swift */; };
 		22FC13BA2A9756690016E17C /* ValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13B92A9756690016E17C /* ValidationController.swift */; };
 		22FC13BD2A9757160016E17C /* RestorePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BC2A9757160016E17C /* RestorePasswordModel.swift */; };
 		22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */; };
@@ -237,6 +238,7 @@
 		22F55BED2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleHealthIntegrateView.swift; sourceTree = "<group>"; };
 		22F55BEF2AA26323007DBBA9 /* SetupPageNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageNotificationsView.swift; sourceTree = "<group>"; };
 		22F55BF22AA2678F007DBBA9 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
+		22F9D9A32AAB1B0E00E77FFC /* SettingsChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordView.swift; sourceTree = "<group>"; };
 		22FC13B92A9756690016E17C /* ValidationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationController.swift; sourceTree = "<group>"; };
 		22FC13BC2A9757160016E17C /* RestorePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordModel.swift; sourceTree = "<group>"; };
 		22FC13BE2A97578E0016E17C /* RestorePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordRequestModel.swift; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 			children = (
 				22EF43042AA7798C002B6B1B /* SettingsMainView.swift */,
 				227585312AA8F9F500149814 /* SettingsProfileDataView.swift */,
+				22F9D9A32AAB1B0E00E77FFC /* SettingsChangePasswordView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1086,6 +1089,7 @@
 				22FD03392A9B87C6005A6A13 /* SetupPageGenderView.swift in Sources */,
 				224CE9662AA1C6500027FB2D /* TeasingTabView.swift in Sources */,
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,
+				22F9D9A42AAB1B0E00E77FFC /* SettingsChangePasswordView.swift in Sources */,
 				223A2E202AA21C2600848B2B /* HealthKitModel.swift in Sources */,
 				224CE9622AA1BDDA0027FB2D /* SetupPageGoalView.swift in Sources */,
 				224A5D972A8CDC4400490614 /* Requests.swift in Sources */,
