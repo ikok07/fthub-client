@@ -11,7 +11,7 @@ import SwiftData
 @Model
 class User: Codable {
     @Attribute(.unique) let _id: String
-    let name: String
+    var name: String
     let email: String
     var photo: String
     let role: String

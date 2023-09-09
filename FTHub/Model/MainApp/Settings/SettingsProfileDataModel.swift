@@ -11,12 +11,16 @@ import UIKit
 struct SettingsProfileDataModel {
     
     
-    static func uploadImage(_ image: UIImage) async -> MediaResponse? {
+    static func sendFormData(name: String, image: UIImage?) async -> SettingsProfileFormDataResponse? {
         let url: URL = URL(string: "\(K.API.apiURL)/en/api/v1/user/me")!
-        let imageData: Data = ImageMedia(withImage: image, key: "image").data!
+        var imageData: Data?
+        if image != nil {
+            imageData = ImageMedia(withImage: image!, key: "image").data!
+        }
+        let formDataBody: SettingsProfileFormDataBody = SettingsProfileFormDataBody(name: name, image: imageData)
         
         do {
-            let response: MediaResponse = try await Networking.sendPatchRequest(data: imageData, url: url, authToken: UserDefaults.standard.string(forKey: "userToken"), formData: true)
+            let response: SettingsProfileFormDataResponse = try await Networking.sendPatchRequest(data: formDataBody, url: url, authToken: UserDefaults.standard.string(forKey: "userToken"), formData: true)
             return response
         } catch {
             print("Error uploading media to server")

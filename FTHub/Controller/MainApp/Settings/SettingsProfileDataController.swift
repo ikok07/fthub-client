@@ -11,8 +11,8 @@ import UIKit
 
 struct SettingsProfileDataController {
     
-    static func uploadImageToServer(_ image: UIImage, completion: (MediaResponse) -> Void) async {
-        if let response = await SettingsProfileDataModel.uploadImage(image) {
+    static func sendFormData(name: String, image: UIImage?, completion: (SettingsProfileFormDataResponse) -> Void) async {
+        if let response = await SettingsProfileDataModel.sendFormData(name: name, image: image) {
             if response.status == "success" {
                 completion(response)
             } else {

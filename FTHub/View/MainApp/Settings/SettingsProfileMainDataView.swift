@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsProfileMainDataView: View {
     
-    var name: String
+    @Binding var name: String
     var email: String
     @Binding var gender: Gender
     @Binding var age: Int
@@ -18,10 +18,12 @@ struct SettingsProfileMainDataView: View {
     var body: some View {
         SettingsGroupView(name: "Main Data") {
             VStack(alignment: .leading, spacing: 0) {
-                SettingsInputRowView(name: "Name") {
-                    Text(name)
-                        .foregroundStyle(.textGray)
+                SettingsInputRowView(name: "Name") { 
+                    TextEditor(text: $name)
                         .multilineTextAlignment(.trailing)
+                        .onChange(of: name) { oldValue, newValue in
+                            print(newValue)
+                        }
                 }
                 SettingsInputRowView(name: "Email") {
                     Spacer()
@@ -55,6 +57,6 @@ struct SettingsProfileMainDataView: View {
 }
 
 #Preview {
-    SettingsProfileMainDataView(name: "John Smith", email: "testemail@email.com", gender: .constant(.Male), age: .constant(18))
+    SettingsProfileMainDataView(name: .constant("John Smith"), email: "testemail@email.com", gender: .constant(.Male), age: .constant(18))
         .padding()
 }

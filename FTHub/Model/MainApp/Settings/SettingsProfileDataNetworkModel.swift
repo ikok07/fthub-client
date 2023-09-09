@@ -8,6 +8,25 @@
 import Foundation
 
 
+// MARK: - Form Data
+
+struct SettingsProfileFormDataResponse: NetworkCapable {
+    let status: String
+    let data: SettingsProfileFormDataResponseData
+}
+
+struct SettingsProfileFormDataBody: NetworkCapable {
+    let name: String
+    let image: Data?
+}
+
+struct SettingsProfileFormDataResponseData: NetworkCapable {
+    let user: User
+}
+
+
+// MARK: - Normal JSON
+
 struct SettingsProfileDataBody: NetworkCapable {
     let gender: String
     let age: Int

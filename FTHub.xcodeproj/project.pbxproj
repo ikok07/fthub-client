@@ -81,7 +81,6 @@
 		229C8E2C2AA9DCD4006D6526 /* SettingsProfileDataNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8E2B2AA9DCD4006D6526 /* SettingsProfileDataNetworkModel.swift */; };
 		229C8E2E2AA9E97F006D6526 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8E2D2AA9E97F006D6526 /* UIImage.swift */; };
 		229C8E312AA9EC38006D6526 /* MediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8E302AA9EC38006D6526 /* MediaModel.swift */; };
-		229C8E332AA9F169006D6526 /* MediaNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8E322AA9F169006D6526 /* MediaNetworkModel.swift */; };
 		229C8E352AA9FBF3006D6526 /* FormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8E342AA9FBF3006D6526 /* FormData.swift */; };
 		229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */; };
 		229CC52B2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */; };
@@ -210,7 +209,6 @@
 		229C8E2B2AA9DCD4006D6526 /* SettingsProfileDataNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProfileDataNetworkModel.swift; sourceTree = "<group>"; };
 		229C8E2D2AA9E97F006D6526 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		229C8E302AA9EC38006D6526 /* MediaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaModel.swift; sourceTree = "<group>"; };
-		229C8E322AA9F169006D6526 /* MediaNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaNetworkModel.swift; sourceTree = "<group>"; };
 		229C8E342AA9FBF3006D6526 /* FormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormData.swift; sourceTree = "<group>"; };
 		229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorButtonsView.swift; sourceTree = "<group>"; };
 		229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorStepsLabelsView.swift; sourceTree = "<group>"; };
@@ -721,7 +719,6 @@
 			isa = PBXGroup;
 			children = (
 				229C8E302AA9EC38006D6526 /* MediaModel.swift */,
-				229C8E322AA9F169006D6526 /* MediaNetworkModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1059,7 +1056,6 @@
 				22EF430D2AA7866D002B6B1B /* SettingRowToggleView.swift in Sources */,
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
 				229C8E1B2AA9C7C7006D6526 /* SettingsProfileMainDataView.swift in Sources */,
-				229C8E332AA9F169006D6526 /* MediaNetworkModel.swift in Sources */,
 				224A5DA12A8CF98D00490614 /* User.swift in Sources */,
 				228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */,
 				22DA77AF2A98A45900550A6B /* AccountModel.swift in Sources */,

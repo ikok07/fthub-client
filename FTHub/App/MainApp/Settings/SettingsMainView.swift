@@ -10,6 +10,8 @@ import SwiftData
 
 struct SettingsMainView: View {
     
+    @EnvironmentObject private var healthKitController: HealthKitController
+    
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = true
     @AppStorage("userToken") private var userToken: String = ""
     @AppStorage("hasDetails") private var hasDetails: Bool = true
@@ -19,13 +21,15 @@ struct SettingsMainView: View {
     
     @State private var appleHealth: Bool = false
     
+    @State private var name: String = ""
+    @State private var email: String = ""
     @State private var imageUrl: URL?
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 
-                SettingsMainProfileView(imageUrl: imageUrl, name: "John Smith", email: "kokmarok@gmail.com")
+                SettingsMainProfileView(imageUrl: imageUrl, name: name, email: email)
                 
                 SettingsGroupView(name: "Account Settings") {
                     VStack(alignment: .leading, spacing: 0) {
@@ -44,7 +48,6 @@ struct SettingsMainView: View {
                         NavigationLink(destination: SettingsNotificationsView()) {
                             SettingsRowView(icon: "bell", image: nil, label: "Notifications")
                         }
-                        SettingsRowToggleView(icon: "heart", label: "Apple Health", isToggled: $appleHealth)
                     }
                 }
                 
@@ -79,13 +82,17 @@ struct SettingsMainView: View {
             .scrollIndicators(.hidden)
             .onAppear {
                 if let user = user.first {
+                    self.name = user.name
+                    self.email = user.email
                     self.imageUrl = URL(string: "https://storage.fthub.eu\(user.photo)")
                 }
             }
         }
     }
+    
 }
 
 #Preview {
     SettingsMainView()
+        .environmentObject(HealthKitController())
 }

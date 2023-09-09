@@ -35,7 +35,7 @@ struct SettingsProfileDataView: View {
                 
                 SettingsProfileImagePickerView(imageUrl: $imageUrl, saveButtonActive: $saveButtonActive, uiImage: $localProfileImage)
                 
-                SettingsProfileMainDataView(name: name, email: email, gender: $gender, age: $age)
+                SettingsProfileMainDataView(name: $name, email: email, gender: $gender, age: $age)
                 
                 SettingsFitnessDataView(height: $height, weight: $weight, workoutsPerWeek: $workoutsPerWeek, goal: $goal)
                 
@@ -45,32 +45,7 @@ struct SettingsProfileDataView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 Button {
-                    Task {
-                        await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: self.height, weight: self.weight, workoutsPerWeek: self.workoutsPerWeek, goal: self.goal) { response in
-                            if response != nil {
-                                
-                                if let user = user.first {
-                                    user.details?.gender = self.gender
-                                    user.details?.age = self.age
-                                    user.details?.height = self.height
-                                    user.details?.weight = self.weight
-                                    user.details?.workoutsPerWeek = self.workoutsPerWeek
-                                    user.details?.goal = self.goal
-                                    
-                                    if localProfileImage != nil {
-                                        await SettingsProfileDataController.uploadImageToServer(localProfileImage!) { response in
-                                            user.photo = response.data.user.photo
-                                        }
-                                    }
-                                }
-                                
-                                self.initConfiguration = [gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
-                                Message.send(type: "success", message: "Successfully saved profile data")
-                                
-                                saveButtonActive = false
-                            }
-                        }
-                    }
+                    saveDetails()
                 } label: {
                     Text("Save")
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -91,10 +66,10 @@ struct SettingsProfileDataView: View {
                 self.weight = user.details?.weight ?? 0
                 self.workoutsPerWeek = user.details?.workoutsPerWeek ?? 2
                 self.goal = user.details?.goal ?? .Balance
-                self.initConfiguration = [gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
+                self.initConfiguration = [name, gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
             }
         }
-        .onChange(of: [gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue], { oldValue, newValue in
+        .onChange(of: [name, gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue], { oldValue, newValue in
             print(newValue)
             if newValue != initConfiguration {
                 saveButtonActive = true
@@ -104,6 +79,39 @@ struct SettingsProfileDataView: View {
         })
         .scrollIndicators(.hidden)
     }
+    
+    
+    func saveDetails() {
+        Task {
+            await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: self.height, weight: self.weight, workoutsPerWeek: self.workoutsPerWeek, goal: self.goal) { response in
+                if response != nil {
+                    
+                    if let user = user.first {
+                        user.details?.gender = self.gender
+                        user.details?.age = self.age
+                        user.details?.height = self.height
+                        user.details?.weight = self.weight
+                        user.details?.workoutsPerWeek = self.workoutsPerWeek
+                        user.details?.goal = self.goal
+                        
+                        if localProfileImage != nil || self.name != self.initConfiguration[0] {
+                            await SettingsProfileDataController.sendFormData(name: self.name, image: localProfileImage) { response in
+                                user.name = response.data.user.name
+                                user.photo = response.data.user.photo
+                            }
+                        }
+                        
+                    }
+                    
+                    self.initConfiguration = [name, gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
+                    Message.send(type: "success", message: "Successfully saved profile data")
+                    
+                    saveButtonActive = false
+                }
+            }
+        }
+    }
+    
 }
 
 #Preview {

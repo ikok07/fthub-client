@@ -16,13 +16,13 @@ struct FormData {
     static func createFormDataBody(jsonData: Data?, imageData: Data?, boundary: String) -> Data {
         var body = Data()
         
+        
         if jsonData != nil {
             // Add JSON data
             body.append("--\(boundary)\r\n".data(using: .utf8)!)
-            body.append("Content-Disposition: form-data; name=\"json\"\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"name\"\r\n".data(using: .utf8)!)
             body.append("Content-Type: application/json\r\n\r\n".data(using: .utf8)!)
             body.append(jsonData!)
-            body.append("\r\n".data(using: .utf8)!)
         }
         
         if imageData != nil {
@@ -31,7 +31,6 @@ struct FormData {
             body.append("Content-Disposition: form-data; name=\"photo\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
             body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
             body.append(imageData!)
-            body.append("\r\n".data(using: .utf8)!)
         }
         
         body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
