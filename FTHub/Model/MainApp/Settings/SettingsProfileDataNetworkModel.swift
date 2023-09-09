@@ -16,7 +16,7 @@ struct SettingsProfileFormDataResponse: NetworkCapable {
 }
 
 struct SettingsProfileFormDataBody: NetworkCapable {
-    let name: String
+    let json: Data?
     let image: Data?
 }
 

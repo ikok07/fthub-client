@@ -11,13 +11,13 @@ import UIKit
 struct SettingsProfileDataModel {
     
     
-    static func sendFormData(name: String, image: UIImage?) async -> SettingsProfileFormDataResponse? {
+    static func sendFormData(json: Data?, image: UIImage?) async -> SettingsProfileFormDataResponse? {
         let url: URL = URL(string: "\(K.API.apiURL)/en/api/v1/user/me")!
         var imageData: Data?
         if image != nil {
             imageData = ImageMedia(withImage: image!, key: "image").data!
         }
-        let formDataBody: SettingsProfileFormDataBody = SettingsProfileFormDataBody(name: name, image: imageData)
+        let formDataBody: SettingsProfileFormDataBody = SettingsProfileFormDataBody(json: json, image: imageData)
         
         do {
             let response: SettingsProfileFormDataResponse = try await Networking.sendPatchRequest(data: formDataBody, url: url, authToken: UserDefaults.standard.string(forKey: "userToken"), formData: true)

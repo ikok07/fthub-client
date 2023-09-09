@@ -12,7 +12,7 @@ import UIKit
 struct SettingsProfileDataController {
     
     static func sendFormData(name: String, image: UIImage?, completion: (SettingsProfileFormDataResponse) -> Void) async {
-        if let response = await SettingsProfileDataModel.sendFormData(name: name, image: image) {
+        if let response = await SettingsProfileDataModel.sendFormData(json: name.data(using: .utf8)!, image: image) {
             if response.status == "success" {
                 completion(response)
             } else {

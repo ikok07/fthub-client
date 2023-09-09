@@ -48,9 +48,9 @@ struct Networking {
         
         if formData {
             let body = data as! SettingsProfileFormDataBody
-            let name = body.name.data(using: .utf8)!
-            let image = body.image
-            result = await Request.update(url: url, body: name, imageBody: image, authToken: authToken, formData: formData)
+            let jsonBody = body.json
+            let imageBody = body.image
+            result = await Request.update(url: url, body: jsonBody, imageBody: imageBody, authToken: authToken, formData: formData)
         } else {
             result = await Request.update(url: url, body: jsonData!, authToken: authToken, formData: formData)
         }

@@ -51,10 +51,11 @@ struct Request {
         }
     }
     
-    static func update<T: Codable>(url: URL, body: Data, imageBody: Data? = nil, authToken: String?, formData: Bool = false) async -> Result<T, Error> {
+    static func update<T: Codable>(url: URL, body: Data?, imageBody: Data? = nil, authToken: String?, formData: Bool = false) async -> Result<T, Error> {
         let boundary: String = FormData.generateBoundary()
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
+        
         if formData {
             request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         } else {
