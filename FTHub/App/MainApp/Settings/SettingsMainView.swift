@@ -38,7 +38,9 @@ struct SettingsMainView: View {
                         NavigationLink(destination: SettingsChangePasswordView()) {
                             SettingsRowView(icon: "key.horizontal", image: nil, label: "Change Password")
                         }
-                        SettingsRowView(icon: "clock.arrow.2.circlepath", image: nil, label: "Workouts Synchronization")
+                        NavigationLink(destination: _SettingsSyncWorkoutsView()) {
+                            SettingsRowView(icon: "clock.arrow.2.circlepath", image: nil, label: "Sync Workouts")
+                        }
                         SettingsRowView(icon: "bell", image: nil, label: "Notifications")
                         SettingsRowToggleView(icon: "heart", label: "Apple Health", isToggled: $appleHealth)
                     }

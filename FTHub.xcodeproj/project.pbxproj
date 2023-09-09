@@ -91,6 +91,7 @@
 		22CDFF942A94E36B009DB029 /* SignInValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CDFF932A94E36B009DB029 /* SignInValidationController.swift */; };
 		22CDFF962A94E37B009DB029 /* SignUpValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CDFF952A94E37B009DB029 /* SignUpValidationController.swift */; };
 		22CFDB482AACDA4700A5E607 /* SettingsSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CFDB472AACDA4700A5E607 /* SettingsSubscriptionView.swift */; };
+		22CFDB4A2AACE20D00A5E607 /*  SettingsSyncWorkoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CFDB492AACE20D00A5E607 /*  SettingsSyncWorkoutsView.swift */; };
 		22D56B472A962255009270FA /* BeforeAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56B462A962255009270FA /* BeforeAuthView.swift */; };
 		22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77AB2A98A3A900550A6B /* AccountController.swift */; };
 		22DA77AF2A98A45900550A6B /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77AE2A98A45900550A6B /* AccountModel.swift */; };
@@ -218,6 +219,7 @@
 		22CDFF932A94E36B009DB029 /* SignInValidationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInValidationController.swift; sourceTree = "<group>"; };
 		22CDFF952A94E37B009DB029 /* SignUpValidationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpValidationController.swift; sourceTree = "<group>"; };
 		22CFDB472AACDA4700A5E607 /* SettingsSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubscriptionView.swift; sourceTree = "<group>"; };
+		22CFDB492AACE20D00A5E607 /*  SettingsSyncWorkoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " SettingsSyncWorkoutsView.swift"; sourceTree = "<group>"; };
 		22D56B462A962255009270FA /* BeforeAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeAuthView.swift; sourceTree = "<group>"; };
 		22DA77AB2A98A3A900550A6B /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		22DA77AE2A98A45900550A6B /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
@@ -824,6 +826,7 @@
 				227585312AA8F9F500149814 /* SettingsProfileDataView.swift */,
 				22F9D9A32AAB1B0E00E77FFC /* SettingsChangePasswordView.swift */,
 				22CFDB472AACDA4700A5E607 /* SettingsSubscriptionView.swift */,
+				22CFDB492AACE20D00A5E607 /*  SettingsSyncWorkoutsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1007,6 +1010,7 @@
 				22803A1A2A9C913B004EF9B3 /* SetupAgePageView.swift in Sources */,
 				22EF43052AA7798C002B6B1B /* SettingsMainView.swift in Sources */,
 				220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */,
+				22CFDB4A2AACE20D00A5E607 /*  SettingsSyncWorkoutsView.swift in Sources */,
 				228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */,
 				220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */,
 				228F264E2A9E685800AD46D9 /* SetupPageWeightView.swift in Sources */,
