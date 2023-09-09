@@ -331,6 +331,9 @@
     "Password was\nnot changed" : {
 
     },
+    "Premium" : {
+
+    },
     "Profile data" : {
 
     },
@@ -471,6 +474,9 @@
           }
         }
       }
+    },
+    "Subscription" : {
+
     },
     "Successful email authentication" : {
       "extractionState" : "stale",

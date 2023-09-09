@@ -24,6 +24,7 @@ struct SettingsMainView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
+                
                 SettingsMainProfileView(imageUrl: imageUrl, name: "John Smith", email: "kokmarok@gmail.com")
                 
                 SettingsGroupView(name: "Account Settings") {
@@ -31,7 +32,9 @@ struct SettingsMainView: View {
                         NavigationLink(destination: SettingsProfileDataView()) {
                             SettingsRowView(icon: "person", image: nil, label: "Profile Data")
                         }
-                        SettingsRowView(icon: "star", image: nil, label: "Subscription")
+                        NavigationLink(destination: SettingsSubscriptionView()) {
+                            SettingsRowView(icon: "star", image: nil, label: "Subscription")
+                        }
                         NavigationLink(destination: SettingsChangePasswordView()) {
                             SettingsRowView(icon: "key.horizontal", image: nil, label: "Change Password")
                         }
