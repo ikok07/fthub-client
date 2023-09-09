@@ -28,6 +28,12 @@
     "%lld times/week" : {
 
     },
+    "2.79€ / month" : {
+
+    },
+    "23.01.2023" : {
+
+    },
     "120 cm" : {
 
     },
@@ -79,6 +85,9 @@
 
     },
     "Calculators" : {
+
+    },
+    "Cancel Subscription" : {
 
     },
     "Change password" : {
@@ -279,6 +288,9 @@
     "Imperial" : {
 
     },
+    "In order to make sure your workouts are always in sync with our server, we recommend periodic checking for unsynced workouts." : {
+
+    },
     "kg" : {
 
     },
@@ -304,6 +316,9 @@
 
     },
     "New password" : {
+
+    },
+    "Notifications" : {
 
     },
     "Open Mail" : {
@@ -495,6 +510,15 @@
         }
       }
     },
+    "Sync" : {
+
+    },
+    "Sync with Cloud" : {
+
+    },
+    "Sync Workouts" : {
+
+    },
     "The entered code is invalid or expired" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -545,6 +569,9 @@
 
     },
     "Workout" : {
+
+    },
+    "Workouts not synced:" : {
 
     },
     "years" : {

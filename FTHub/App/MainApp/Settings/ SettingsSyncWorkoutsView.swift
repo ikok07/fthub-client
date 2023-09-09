@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct _SettingsSyncWorkoutsView: View {
+struct SettingsSyncWorkoutsView: View {
     
     @AppStorage("buttonLoading") private var buttonLoading: Bool = false
     
@@ -76,5 +76,5 @@ struct _SettingsSyncWorkoutsView: View {
 }
 
 #Preview {
-    _SettingsSyncWorkoutsView()
+    SettingsSyncWorkoutsView()
 }
