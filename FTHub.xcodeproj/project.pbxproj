@@ -85,6 +85,10 @@
 		229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */; };
 		229CC52B2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */; };
 		22C34A542A94ECC500313D89 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C34A532A94ECC500313D89 /* Validator.swift */; };
+		22C6D7EB2AADB4B7002C7010 /* CalculatorsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */; };
+		22C6D7EE2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D7ED2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift */; };
+		22C6D7F02AADB8D6002C7010 /* StaticColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D7EF2AADB8D6002C7010 /* StaticColorButton.swift */; };
+		22C6D7F22AADBBE2002C7010 /* CalculatorsFeaturedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D7F12AADBBE2002C7010 /* CalculatorsFeaturedTabView.swift */; };
 		22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C89D0C2A964299001055F0 /* WithCustomMessageModifier.swift */; };
 		22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */; };
 		22CDFF942A94E36B009DB029 /* SignInValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CDFF932A94E36B009DB029 /* SignInValidationController.swift */; };
@@ -213,6 +217,10 @@
 		229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorButtonsView.swift; sourceTree = "<group>"; };
 		229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorStepsLabelsView.swift; sourceTree = "<group>"; };
 		22C34A532A94ECC500313D89 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsMainView.swift; sourceTree = "<group>"; };
+		22C6D7ED2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsFeaturedBoxView.swift; sourceTree = "<group>"; };
+		22C6D7EF2AADB8D6002C7010 /* StaticColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticColorButton.swift; sourceTree = "<group>"; };
+		22C6D7F12AADBBE2002C7010 /* CalculatorsFeaturedTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsFeaturedTabView.swift; sourceTree = "<group>"; };
 		22C89D0C2A964299001055F0 /* WithCustomMessageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithCustomMessageModifier.swift; sourceTree = "<group>"; };
 		22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithLoadingAnimationModifier.swift; sourceTree = "<group>"; };
 		22CDFF932A94E36B009DB029 /* SignInValidationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInValidationController.swift; sourceTree = "<group>"; };
@@ -370,6 +378,7 @@
 			children = (
 				220266E02A8A538F009D299F /* CTAButtonStyle.swift */,
 				22ED2EBF2A9136E600BB623E /* CustomNumpadButtonStyle.swift */,
+				22C6D7EF2AADB8D6002C7010 /* StaticColorButton.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -723,6 +732,23 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		22C6D7E92AADB4A1002C7010 /* Calculators */ = {
+			isa = PBXGroup;
+			children = (
+				22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */,
+			);
+			path = Calculators;
+			sourceTree = "<group>";
+		};
+		22C6D7EC2AADB55D002C7010 /* Calculators */ = {
+			isa = PBXGroup;
+			children = (
+				22C6D7ED2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift */,
+				22C6D7F12AADBBE2002C7010 /* CalculatorsFeaturedTabView.swift */,
+			);
+			path = Calculators;
+			sourceTree = "<group>";
+		};
 		22C89D0B2A964289001055F0 /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
@@ -812,6 +838,7 @@
 		22EF43022AA77975002B6B1B /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
+				22C6D7E92AADB4A1002C7010 /* Calculators */,
 				22EF43032AA7797F002B6B1B /* Settings */,
 				224A5D8C2A8CC53600490614 /* Coaches */,
 			);
@@ -845,6 +872,7 @@
 		22EF43072AA77D08002B6B1B /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
+				22C6D7EC2AADB55D002C7010 /* Calculators */,
 				229C8E1E2AA9D79B006D6526 /* Settings */,
 			);
 			path = MainApp;
@@ -1039,6 +1067,7 @@
 				22DA77B62A98D83300550A6B /* FakeLaunchScreenView.swift in Sources */,
 				22F55BEE2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift in Sources */,
 				22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */,
+				22C6D7F02AADB8D6002C7010 /* StaticColorButton.swift in Sources */,
 				22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */,
 				22FD03372A9B83C4005A6A13 /* SetupPageViewManager.swift in Sources */,
 				229C8E202AA9D7C0006D6526 /* SettingsProfileImagePickerView.swift in Sources */,
@@ -1071,6 +1100,7 @@
 				22969D532A94B17B00935A3C /* EmailConfirmationLinkSentView.swift in Sources */,
 				220266C22A8A4815009D299F /* FTHubApp.swift in Sources */,
 				220266F32A8A6014009D299F /* TutorialFourthPageView.swift in Sources */,
+				22C6D7EE2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift in Sources */,
 				22FC13BA2A9756690016E17C /* ValidationController.swift in Sources */,
 				224CE9682AA1CD8E0027FB2D /* SetupGoalTabView.swift in Sources */,
 				220323D72AA47C4500E47CE2 /* SetupPageFinishView.swift in Sources */,
@@ -1113,6 +1143,8 @@
 				223A2E202AA21C2600848B2B /* HealthKitModel.swift in Sources */,
 				224CE9622AA1BDDA0027FB2D /* SetupPageGoalView.swift in Sources */,
 				224A5D972A8CDC4400490614 /* Requests.swift in Sources */,
+				22C6D7F22AADBBE2002C7010 /* CalculatorsFeaturedTabView.swift in Sources */,
+				22C6D7EB2AADB4B7002C7010 /* CalculatorsMainView.swift in Sources */,
 				22DA77B42A98CE2E00550A6B /* Database.swift in Sources */,
 				220323DD2AA48B2600E47CE2 /* SetupModel.swift in Sources */,
 				229C8E312AA9EC38006D6526 /* MediaModel.swift in Sources */,
