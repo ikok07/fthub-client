@@ -34,33 +34,47 @@ struct BMIArcShapeView: View {
     let borderWidth: CGFloat
     
     let minVal: Double = 12
-    let maxVal: Double = 40
+    let maxVal: Double = 46
+    
+    var arrowRotation: Double {
+        if forAdults {
+            return ((value / maxVal) * 180)
+        } else {
+            return (value / maxVal) * 100 * 180
+        }
+    }
+    
+    let bmiRanges: [(String, Double, Double)] = [
+        ("Severe Thinness", 0, 16),
+        ("Moderate Thinness", 16, 17),
+        ("Mild Thinness", 17, 18.5),
+        ("Normal", 18.5, 25),
+        ("Overweight", 25, 30),
+        ("Obese Class I", 30, 35),
+        ("Obese Class II", 35, 40),
+        ("Obese Class III", 40, 100)
+    ]
+    
+    func mapValueToDegrees(_ bmiValue: Double) -> Double {
+        let normalizedValue = max(min(bmiValue, maxVal), minVal)
+        return (normalizedValue - minVal) / (maxVal - minVal) * 180
+    }
     
     var body: some View {
         VStack {
             ZStack {
-                ArcShape(width: width, startDegrees: -167.5, endDegrees: 180)
-                    .stroke(.arc1, style: StrokeStyle(lineWidth: borderWidth, lineCap: .round))
-                ArcShape(width: width, startDegrees: -158.5, endDegrees: 192.5)
-                    .stroke(.arc2, style: StrokeStyle(lineWidth: borderWidth))
-                ArcShape(width: width, startDegrees: -147.25, endDegrees: 201)
-                    .stroke(.arc3, style: StrokeStyle(lineWidth: borderWidth))
-                ArcShape(width: width, startDegrees: -117.55, endDegrees: 212.5)
-                    .stroke(.arc4, style: StrokeStyle(lineWidth: borderWidth))
-                ArcShape(width: width, startDegrees: -90.55, endDegrees: 242.2)
-                    .stroke(.arc3, style: StrokeStyle(lineWidth: borderWidth))
-                
-                //REVERSED
-                ArcShape(width: width, startDegrees: 0, endDegrees: 296.2)
-                    .stroke(.arc1, style: StrokeStyle(lineWidth: borderWidth, lineCap: .round))
-                ArcShape(width: width, startDegrees: -63.55, endDegrees: 269.2)
-                    .stroke(.arc2, style: StrokeStyle(lineWidth: borderWidth))
-                //REVERSED
+                ForEach(bmiRanges, id: \.0) { classification, startBMI, endBMI in
+                    let startDegrees = mapValueToDegrees(endBMI) // Reverse the start and end degrees
+                    let endDegrees = mapValueToDegrees(startBMI) // Reverse the start and end degrees
+                    ArcShape(width: width, startDegrees: startDegrees, endDegrees: endDegrees)
+                        .stroke(Color.arcColor(for: classification), style: StrokeStyle(lineWidth: borderWidth))
+                        .rotationEffect(.degrees(180))
+                }
                 
                 GaugeArrowShape(anchorDiameter: 30, arrowLength: 70, cornerRadius: 5)
                     .fill(K.Gradients.mainGradient)
                     .rotationEffect(.degrees(-90))
-                    .rotationEffect(forAdults ? .degrees(((value / maxVal) * 180) - 35) : .degrees((value / maxVal) * 100) * 180)
+                    .rotationEffect(.degrees(arrowRotation))
                 
                 GaugeCenterCircleView(arrowAnchorMainCircleDiameter: 30, arrowAnchorSecondaryCircleDiameter: 10, arrowAnchorMainCircleGradient: K.Gradients.mainGradient, arrowAnchorSecondaryCircleGradient: K.Gradients.whiteGradient)
                 
