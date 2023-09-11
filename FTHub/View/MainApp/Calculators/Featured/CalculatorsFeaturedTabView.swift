@@ -14,13 +14,13 @@ struct CalculatorsFeaturedTabView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             CalculatorsFeaturedBoxView(image: "featured1", name: "Calories", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd", offsetX: 0, offsetY: 0)
-                .frame(width: UIScreen.main.bounds.width * 0.95)
+//                .frame(width: UIScreen.main.bounds.width * 0.95)
                 .tag(0)
             CalculatorsFeaturedBoxView(image: "featured2", name: "Fats", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd", offsetX: 0, offsetY: -50)
-                .frame(width: UIScreen.main.bounds.width * 0.95)
+//                .frame(width: UIScreen.main.bounds.width * 0.95)
                 .tag(1)
             CalculatorsFeaturedBoxView(image: "featured3", name: "BMI", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd", offsetX: 0, offsetY: 0)
-                .frame(width: UIScreen.main.bounds.width * 0.95)
+//                .frame(width: UIScreen.main.bounds.width * 0.95)
                 .tag(2)
         }
         .tabViewStyle(.page)

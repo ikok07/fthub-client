@@ -38,7 +38,6 @@ struct AccountAuthModel {
     private func advanceSignIn(response: AccountAuthResponse?, email: String) {
         if response != nil {
             if response!.status == "fail" && response!.identifier != "EmailNotVerified" {
-                defaults.setValue(false, forKey: "loadingPresented")
                 Message.send(type: "error", message: response!.message)
             } else if response!.identifier == "EmailNotVerified" {
                 Task {
@@ -51,7 +50,7 @@ struct AccountAuthModel {
         } else {
             Message.send(type: "error", message: "Error connecting to server")
         }
-        defaults.setValue(false, forKey: "loadingPresented")
+        defaults.setValue(false, forKey: "buttonLoading")
     }
     
 }

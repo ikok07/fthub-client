@@ -17,7 +17,7 @@ struct BMIResultsView: View {
             BMIArcShapeView(value: result, width: 250, borderWidth: 30, arrowLength: 80)
                 .offset(y: 75)
             
-            CalculatorResultsLabelView(offsetX: 0, offsetY: 10, result: result)
+            CalculatorResultsLabelView(offsetX: 0, offsetY: 20, result: result)
         }
         .frame(height: 250)
     }

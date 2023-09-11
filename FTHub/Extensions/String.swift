@@ -30,4 +30,7 @@ extension String {
                 : $0 + String($1)
         }
     }
+    
+    var firstUppercased: String { return prefix(1).uppercased() + dropFirst() }
+    var firstCapitalized: String { return prefix(1).capitalized + dropFirst() }
 }

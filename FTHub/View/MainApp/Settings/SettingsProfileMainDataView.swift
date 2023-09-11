@@ -13,6 +13,7 @@ struct SettingsProfileMainDataView: View {
     var email: String
     @Binding var gender: Gender
     @Binding var age: Int
+    @Binding var units: Unit
     
     
     var body: some View {
@@ -51,12 +52,23 @@ struct SettingsProfileMainDataView: View {
                     }
                     .tint(.text)
                 }
+                SettingsInputRowView(name: "Units") {
+                    Picker("", selection: $units) {
+                        ForEach(Unit.allCases, id: \.self) { unit in
+                            Text("\(unit.rawValue)".firstUppercased)
+                                .font(.body)
+                                .fontWeight(.medium)
+                                .tag(unit)
+                        }
+                    }
+                    .tint(.text)
+                }
             }
         }
     }
 }
 
 #Preview {
-    SettingsProfileMainDataView(name: .constant("John Smith"), email: "testemail@email.com", gender: .constant(.Male), age: .constant(18))
+    SettingsProfileMainDataView(name: .constant("John Smith"), email: "testemail@email.com", gender: .constant(.Male), age: .constant(18), units: .constant(.metric))
         .padding()
 }

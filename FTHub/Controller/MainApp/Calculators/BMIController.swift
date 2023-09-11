@@ -57,7 +57,7 @@ struct BMIController {
         if units == .metric {
             return (weight / (height / 100 * height / 100))
         } else {
-            return 703 * (weight / (height / 100 * height / 100))
+            return 703 * (weight / (height * height))
         }
     }
     

@@ -58,6 +58,11 @@ struct UnitSelectView: View {
                 RoundedRectangle(cornerRadius: 12)
                     .strokeBorder(.customGray)
             }
+            .onAppear {
+                if let user = user.first {
+                    activeUnits = user.details?.units ?? .metric
+                }
+            }
         }
         .padding()
     }

@@ -21,6 +21,7 @@ struct SettingsProfileDataView: View {
     @State private var email: String = "youremail@email.com"
     @State private var gender: Gender = .Male
     @State private var age: Int = 22
+    @State private var units: Unit = .metric
     
     @State private var height: Int = 180
     @State private var weight: Int = 72
@@ -35,7 +36,7 @@ struct SettingsProfileDataView: View {
                 
                 SettingsProfileImagePickerView(imageUrl: $imageUrl, saveButtonActive: $saveButtonActive, uiImage: $localProfileImage)
                 
-                SettingsProfileMainDataView(name: $name, email: email, gender: $gender, age: $age)
+                SettingsProfileMainDataView(name: $name, email: email, gender: $gender, age: $age, units: $units)
                 
                 SettingsFitnessDataView(height: $height, weight: $weight, workoutsPerWeek: $workoutsPerWeek, goal: $goal)
                 
@@ -62,14 +63,15 @@ struct SettingsProfileDataView: View {
                 self.email = user.email
                 self.gender = user.details?.gender ?? .Male
                 self.age = user.details?.age ?? 18
+                self.units = user.details?.units ?? .metric
                 self.height = user.details?.height ?? 0
                 self.weight = user.details?.weight ?? 0
                 self.workoutsPerWeek = user.details?.workoutsPerWeek ?? 2
                 self.goal = user.details?.goal ?? .Balance
-                self.initConfiguration = [name, gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
+                self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
             }
         }
-        .onChange(of: [name, gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue], { oldValue, newValue in
+        .onChange(of: [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue], { oldValue, newValue in
             print(newValue)
             if newValue != initConfiguration {
                 saveButtonActive = true
@@ -89,6 +91,7 @@ struct SettingsProfileDataView: View {
                     if let user = user.first {
                         user.details?.gender = self.gender
                         user.details?.age = self.age
+                        user.details?.units = self.units
                         user.details?.height = self.height
                         user.details?.weight = self.weight
                         user.details?.workoutsPerWeek = self.workoutsPerWeek
@@ -103,7 +106,7 @@ struct SettingsProfileDataView: View {
                         
                     }
                     
-                    self.initConfiguration = [name, gender.rawValue, String(age), String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
+                    self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
                     Message.send(type: "success", message: "Successfully saved profile data")
                     
                     saveButtonActive = false

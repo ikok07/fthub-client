@@ -57,8 +57,14 @@ struct K {
         static let minHeight: Int = 120
         static let maxHeight: Int = 220
         
+        static let minHeightInches: Double = 47.2
+        static let maxHeightInches: Double = 86.6
+        
         static let minWeight: Int = 40
         static let maxWeight: Int = 180
+        
+        static let minWeightLbs: Double = 88.0
+        static let maxWeightLbs: Double = 397.0
     }
     
     
@@ -66,6 +72,38 @@ struct K {
     struct Units {
         static let kgToLbs: Double = 2.2046226218488
         static let cmToInch: Double = 0.3937
+        
+        static func getHeightRange(units: Unit) -> [Double] {
+            
+            let step = units == .metric ? 1 : 0.1
+
+            var values: [Double] = []
+            var currentValue = units == .metric ? Double(K.UserDetails.minHeight) : K.UserDetails.minHeightInches
+
+            while currentValue <= (units == .metric ? Double(K.UserDetails.maxHeight) : K.UserDetails.maxHeightInches) {
+                values.append(currentValue)
+                currentValue += step
+            }
+
+            return values
+        }
+        
+        static func getWeightRange(units: Unit) -> [Double] {
+            
+            let step = units == .metric ? 1 : 0.1
+
+            var values: [Double] = []
+            var currentValue = units == .metric ? Double(K.UserDetails.minWeight) : K.UserDetails.minWeightLbs
+
+            while currentValue <= (units == .metric ? Double(K.UserDetails.maxWeight) : K.UserDetails.maxWeightLbs) {
+                values.append(currentValue)
+                currentValue += step
+            }
+
+            return values
+        }
+        
+        
     }
     
 }
