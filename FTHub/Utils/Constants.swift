@@ -65,6 +65,7 @@ struct K {
     // MARK: - Units
     struct Units {
         static let kgToLbs: Double = 2.2046226218488
+        static let cmToInch: Double = 0.3937
     }
     
 }

@@ -24,7 +24,7 @@ struct CalculatorsFeaturedTabView: View {
                 .tag(2)
         }
         .tabViewStyle(.page)
-        .frame(width: .infinity, height: 250)
+        .frame(width: UIScreen.main.bounds.width * 0.95, height: 250)
         .animation(.linear(duration: 1000), value: selectedTab)
         .onAppear {
             changeTab()

@@ -13,27 +13,38 @@ struct BMICalculatorView: View {
     
     @State private var activeGender: Gender = .Male
     
-    @State private var age: String = ""
-    @State private var weight: String = ""
-    @State private var height: String = ""
+    @State private var weight: Double = 62
+    @State private var height: Double = 182
+    
+    @State private var result: Double = 11
     
     var body: some View {
         NavigationStack {
-            VStack {
+            ScrollView {
+                Text("BMI Calculator")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
                 CalculatorGenderSelector(activeGender: $activeGender)
                     .padding(.horizontal)
-                    .padding(.bottom, 10)
+                    .padding(.top, 20)
                 
-                BMIInputsView(age: $age, weight: $weight, height: $height)
+                BMIInputsView(weight: $weight, height: $height, result: $result)
+                
+                Spacer()
+                
+                if result > 11 {
+                    BMIResultsView(result: result)
+                }
             }
             .toolbar {
                 Button(action: { isPresented = false }, label: {
-                    Text("Back")
+                    Text("Done")
+                        .fontWeight(.semibold)
                 })
             }
+            .padding()
         }
-        .navigationTitle("BMI Calculator")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
