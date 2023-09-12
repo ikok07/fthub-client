@@ -12,6 +12,8 @@ struct BMIInputsView: View {
     
     @Query private var user: [User]
     
+    @State private var autofill: Bool = false
+    
     @Binding var weight: Double
     @Binding var height: Double
     @Binding var result: Double
@@ -41,12 +43,43 @@ struct BMIInputsView: View {
             }
             .padding()
             
-            Button(action: calculate, label: {
-                Text("Calculate")
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-            })
-            .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
-            .padding()
+            VStack(spacing: 10) {
+                Button(action: calculate, label: {
+                    Text("Calculate")
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                })
+                .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
+                .padding(.horizontal)
+                
+                
+                AutofillButtonView(autofill: $autofill, action: toggleAutofill)
+            }
+        }
+        .onChange(of: [weight, height]) { oldValue, newValue in
+            if let user = user.first {
+                if newValue[0] != Double((user.details?.weight!)!) || newValue[1] != Double((user.details?.height!)!) {
+                    withAnimation(.easeOut(duration: 0.2)) {
+                        autofill = false
+                    }
+                }
+            }
+        }
+    }
+    
+    func toggleAutofill() {
+        withAnimation(.easeOut(duration: 0.2)) {
+            autofill = true
+            if let user = user.first {
+                if user.details?.units == .imperial {
+                    print("test")
+                    weight = Double((user.details?.weight!)!) * K.Units.kgToLbs
+                    height = Double((user.details?.height!)!) * K.Units.cmToInch
+                    print(weight, height)
+                } else {
+                    weight = Double((user.details?.weight!)!)
+                    height = Double((user.details?.height!)!)
+                }
+            }
         }
     }
     

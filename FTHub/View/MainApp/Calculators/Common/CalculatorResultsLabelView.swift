@@ -13,23 +13,30 @@ struct CalculatorResultsLabelView: View {
     let offsetY: CGFloat
     
     let result: Double
+    var decimals: Int = 1
+    var unit: String = ""
     
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             Text("Your Results")
                 .foregroundStyle(.textGray)
                 .font(.headline)
                 .fontWeight(.bold)
             
-            Text(String(format: "%.1f", result))
-                .font(.system(size: 48))
-                .fontWeight(.bold)
-                .contentTransition(.numericText())
+            HStack {
+                Text("\(String(format: "%.\(decimals)f", result))")
+                    .font(.system(size: 48))
+                    .fontWeight(.bold)
+                    .contentTransition(.numericText())
+                
+                Text("\(unit)")
+                    .font(.system(size: 40))
+            }
         }
         .offset(x: offsetX, y: offsetY)
     }
 }
 
 #Preview {
-    CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: 20.1)
+    CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: 1480, decimals: 0, unit: "kcal")
 }

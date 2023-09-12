@@ -29,6 +29,10 @@
 		220323D92AA48A1200E47CE2 /* ApiUserDetailsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220323D82AA48A1200E47CE2 /* ApiUserDetailsNetwork.swift */; };
 		220323DD2AA48B2600E47CE2 /* SetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220323DC2AA48B2600E47CE2 /* SetupModel.swift */; };
 		220323DF2AA4B56600E47CE2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220323DE2AA4B56600E47CE2 /* String.swift */; };
+		221965902AB0C6A500373255 /* CaloriesCalculatorResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219658F2AB0C6A500373255 /* CaloriesCalculatorResultsView.swift */; };
+		221965922AB0C9F200373255 /* CaloriesCalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221965912AB0C9F200373255 /* CaloriesCalculatorController.swift */; };
+		221965942AB0E92000373255 /* AutofillButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221965932AB0E92000373255 /* AutofillButtonView.swift */; };
+		221965972AB0F02D00373255 /* CaloriesCalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221965962AB0F02D00373255 /* CaloriesCalculatorModel.swift */; };
 		222F3C5B2A935C6F005BC46F /* ResendTwoFaCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F3C5A2A935C6F005BC46F /* ResendTwoFaCodeModel.swift */; };
 		222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F3C602A935CDC005BC46F /* AccountAuthModel.swift */; };
 		222F3C642A935D66005BC46F /* AccountAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F3C632A935D66005BC46F /* AccountAuthRequestModel.swift */; };
@@ -102,6 +106,9 @@
 		22C6D80E2AAE027A002C7010 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D80D2AAE027A002C7010 /* ColorExtensions.swift */; };
 		22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C89D0C2A964299001055F0 /* WithCustomMessageModifier.swift */; };
 		22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */; };
+		22C905542AB04E10009FFE21 /* CaloriesCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C905532AB04E10009FFE21 /* CaloriesCalculatorView.swift */; };
+		22C905572AB0507A009FFE21 /* CaloriesCalculatorInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C905562AB0507A009FFE21 /* CaloriesCalculatorInputView.swift */; };
+		22C9055A2AB0556B009FFE21 /* CustomPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C905592AB0556B009FFE21 /* CustomPickerRowView.swift */; };
 		22CDFF942A94E36B009DB029 /* SignInValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CDFF932A94E36B009DB029 /* SignInValidationController.swift */; };
 		22CDFF962A94E37B009DB029 /* SignUpValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CDFF952A94E37B009DB029 /* SignUpValidationController.swift */; };
 		22CFDB482AACDA4700A5E607 /* SettingsSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CFDB472AACDA4700A5E607 /* SettingsSubscriptionView.swift */; };
@@ -178,6 +185,10 @@
 		220323D82AA48A1200E47CE2 /* ApiUserDetailsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUserDetailsNetwork.swift; sourceTree = "<group>"; };
 		220323DC2AA48B2600E47CE2 /* SetupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupModel.swift; sourceTree = "<group>"; };
 		220323DE2AA4B56600E47CE2 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		2219658F2AB0C6A500373255 /* CaloriesCalculatorResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculatorResultsView.swift; sourceTree = "<group>"; };
+		221965912AB0C9F200373255 /* CaloriesCalculatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculatorController.swift; sourceTree = "<group>"; };
+		221965932AB0E92000373255 /* AutofillButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutofillButtonView.swift; sourceTree = "<group>"; };
+		221965962AB0F02D00373255 /* CaloriesCalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculatorModel.swift; sourceTree = "<group>"; };
 		222F3C5A2A935C6F005BC46F /* ResendTwoFaCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendTwoFaCodeModel.swift; sourceTree = "<group>"; };
 		222F3C602A935CDC005BC46F /* AccountAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthModel.swift; sourceTree = "<group>"; };
 		222F3C632A935D66005BC46F /* AccountAuthRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthRequestModel.swift; sourceTree = "<group>"; };
@@ -250,6 +261,9 @@
 		22C6D80D2AAE027A002C7010 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		22C89D0C2A964299001055F0 /* WithCustomMessageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithCustomMessageModifier.swift; sourceTree = "<group>"; };
 		22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithLoadingAnimationModifier.swift; sourceTree = "<group>"; };
+		22C905532AB04E10009FFE21 /* CaloriesCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculatorView.swift; sourceTree = "<group>"; };
+		22C905562AB0507A009FFE21 /* CaloriesCalculatorInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculatorInputView.swift; sourceTree = "<group>"; };
+		22C905592AB0556B009FFE21 /* CustomPickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerRowView.swift; sourceTree = "<group>"; };
 		22CDFF932A94E36B009DB029 /* SignInValidationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInValidationController.swift; sourceTree = "<group>"; };
 		22CDFF952A94E37B009DB029 /* SignUpValidationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpValidationController.swift; sourceTree = "<group>"; };
 		22CFDB472AACDA4700A5E607 /* SettingsSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubscriptionView.swift; sourceTree = "<group>"; };
@@ -396,6 +410,7 @@
 		220266DB2A8A52E6009D299F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				22C905582AB0555C009FFE21 /* Picker */,
 				227585332AA8FA4300149814 /* User */,
 				220266D52A8A5144009D299F /* TwoLineHeadingView.swift */,
 				220266D92A8A5249009D299F /* HeadlineView.swift */,
@@ -466,6 +481,14 @@
 				220323D82AA48A1200E47CE2 /* ApiUserDetailsNetwork.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		221965952AB0F01E00373255 /* Calculators */ = {
+			isa = PBXGroup;
+			children = (
+				221965962AB0F02D00373255 /* CaloriesCalculatorModel.swift */,
+			);
+			path = Calculators;
 			sourceTree = "<group>";
 		};
 		222F3C592A935C5E005BC46F /* Resend code */ = {
@@ -743,6 +766,7 @@
 		229C8E272AA9DBEE006D6526 /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
+				221965952AB0F01E00373255 /* Calculators */,
 				229C8E282AA9DC16006D6526 /* Settings */,
 				220323DB2AA48B1300E47CE2 /* User */,
 				223A2E1E2AA21C1A00848B2B /* HealthKit */,
@@ -774,6 +798,7 @@
 			children = (
 				22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */,
 				22C6D7FE2AADD26E002C7010 /* BMICalculatorView.swift */,
+				22C905532AB04E10009FFE21 /* CaloriesCalculatorView.swift */,
 			);
 			path = Calculators;
 			sourceTree = "<group>";
@@ -781,6 +806,7 @@
 		22C6D7EC2AADB55D002C7010 /* Calculators */ = {
 			isa = PBXGroup;
 			children = (
+				22C905552AB0506A009FFE21 /* Calories */,
 				22C6D8032AADD76D002C7010 /* Common */,
 				22C6D8002AADD758002C7010 /* BMI */,
 				22C6D7F72AADCADB002C7010 /* All Calculators */,
@@ -824,6 +850,7 @@
 			children = (
 				22C6D8012AADD76A002C7010 /* CalculatorGenderSelector.swift */,
 				22F6BB132AAF0492000239B0 /* CalculatorResultsLabelView.swift */,
+				221965932AB0E92000373255 /* AutofillButtonView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -843,6 +870,23 @@
 				22C89D0E2A9642C8001055F0 /* WithLoadingAnimationModifier.swift */,
 			);
 			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		22C905552AB0506A009FFE21 /* Calories */ = {
+			isa = PBXGroup;
+			children = (
+				2219658F2AB0C6A500373255 /* CaloriesCalculatorResultsView.swift */,
+				22C905562AB0507A009FFE21 /* CaloriesCalculatorInputView.swift */,
+			);
+			path = Calories;
+			sourceTree = "<group>";
+		};
+		22C905582AB0555C009FFE21 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				22C905592AB0556B009FFE21 /* CustomPickerRowView.swift */,
+			);
+			path = Picker;
 			sourceTree = "<group>";
 		};
 		22CDFF922A94E356009DB029 /* Validation */ = {
@@ -986,6 +1030,7 @@
 			isa = PBXGroup;
 			children = (
 				22F6BB162AAF0632000239B0 /* BMIController.swift */,
+				221965912AB0C9F200373255 /* CaloriesCalculatorController.swift */,
 			);
 			path = Calculators;
 			sourceTree = "<group>";
@@ -1133,6 +1178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E81F1A2A9525E10021DBE0 /* Message.swift in Sources */,
+				221965922AB0C9F200373255 /* CaloriesCalculatorController.swift in Sources */,
 				22F6BB0F2AAF0263000239B0 /* BMIArcShapeView.swift in Sources */,
 				220266EB2A8A5B54009D299F /* TutorialPageIndicatorView.swift in Sources */,
 				229C8E252AA9D97E006D6526 /* SettingsProfileDataController.swift in Sources */,
@@ -1140,15 +1186,18 @@
 				220266D62A8A5144009D299F /* TwoLineHeadingView.swift in Sources */,
 				22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */,
 				22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */,
+				221965902AB0C6A500373255 /* CaloriesCalculatorResultsView.swift in Sources */,
 				22803A1A2A9C913B004EF9B3 /* SetupAgePageView.swift in Sources */,
 				22CFDB4C2AACE7C600A5E607 /* SettingsNotificationsView.swift in Sources */,
 				22EF43052AA7798C002B6B1B /* SettingsMainView.swift in Sources */,
 				220266F52A8A60EC009D299F /* TutorialFifthPageView.swift in Sources */,
 				22CFDB4A2AACE20D00A5E607 /*  SettingsSyncWorkoutsView.swift in Sources */,
 				228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */,
+				22C9055A2AB0556B009FFE21 /* CustomPickerRowView.swift in Sources */,
 				22C6D7FB2AADCB53002C7010 /* CalculatorRowView.swift in Sources */,
 				220266D82A8A51DD009D299F /* TutorialImageView.swift in Sources */,
 				228F264E2A9E685800AD46D9 /* SetupPageWeightView.swift in Sources */,
+				22C905572AB0507A009FFE21 /* CaloriesCalculatorInputView.swift in Sources */,
 				229C8E2A2AA9DC20006D6526 /* SettingsProfileDataModel.swift in Sources */,
 				22374B182A9292D7006BE6BB /* Authentication.swift in Sources */,
 				220266F82A8A7066009D299F /* MainAccountAuthView.swift in Sources */,
@@ -1206,6 +1255,7 @@
 				22E824692A8B9D3300B51C60 /* SignUpWithAppleView.swift in Sources */,
 				220266E52A8A5765009D299F /* TutorialPageViewManager.swift in Sources */,
 				22F2709C2A95DD8300AA8AC6 /* NetworkCapable.swift in Sources */,
+				22C905542AB04E10009FFE21 /* CaloriesCalculatorView.swift in Sources */,
 				22CDFF942A94E36B009DB029 /* SignInValidationController.swift in Sources */,
 				22969D532A94B17B00935A3C /* EmailConfirmationLinkSentView.swift in Sources */,
 				220266C22A8A4815009D299F /* FTHubApp.swift in Sources */,
@@ -1216,6 +1266,7 @@
 				220323D72AA47C4500E47CE2 /* SetupPageFinishView.swift in Sources */,
 				227585372AA8FE8C00149814 /* SettingsInputRowView.swift in Sources */,
 				224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */,
+				221965972AB0F02D00373255 /* CaloriesCalculatorModel.swift in Sources */,
 				224A5D8E2A8CC55100490614 /* CoachesPageView.swift in Sources */,
 				229CC52B2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift in Sources */,
 				229C8E1D2AA9C853006D6526 /* SettingsFitnessDataView.swift in Sources */,
@@ -1252,6 +1303,7 @@
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,
 				22C6D8072AADE845002C7010 /* BMIInputsView.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
+				221965942AB0E92000373255 /* AutofillButtonView.swift in Sources */,
 				224CE96C2AA1D3D10027FB2D /* HealthKitController.swift in Sources */,
 				22C6D7FF2AADD26E002C7010 /* BMICalculatorView.swift in Sources */,
 				22FD03392A9B87C6005A6A13 /* SetupPageGenderView.swift in Sources */,
