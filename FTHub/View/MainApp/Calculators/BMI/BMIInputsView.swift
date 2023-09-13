@@ -82,10 +82,11 @@ struct BMIInputsView: View {
     }
     
     func calculate() {
-        print(weight, height)
         if let user = user.first {
-            withAnimation {
-                result = BMIController.calculateBMI(units: user.details?.units ?? .metric, weight: Double(self.weight)! , height: Double(self.height)!)
+            if weight != "" && height != "" {
+                withAnimation {
+                    result = BMIController.calculateBMI(units: user.details?.units ?? .metric, weight: Double(self.weight)! , height: Double(self.height)!)
+                }
             }
         }
     }

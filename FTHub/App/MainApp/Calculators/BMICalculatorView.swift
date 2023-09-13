@@ -21,9 +21,6 @@ struct BMICalculatorView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                Text("BMI Calculator")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
                 
                 CalculatorGenderSelector(activeGender: $activeGender)
                     .padding(.horizontal)
@@ -43,6 +40,8 @@ struct BMICalculatorView: View {
                         .fontWeight(.semibold)
                 })
             }
+            .navigationTitle("BMI Calculator")
+            .navigationBarTitleDisplayMode(.inline)
             .padding()
         }
     }

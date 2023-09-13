@@ -26,9 +26,6 @@ struct CaloriesCalculatorView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                Text("Calories Calculator")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
                 
                 CalculatorGenderSelector(activeGender: $gender)
                     .padding(.top, 20)
@@ -46,6 +43,8 @@ struct CaloriesCalculatorView: View {
                         .fontWeight(.semibold)
                 })
             }
+            .navigationTitle("Calories Calculator")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
