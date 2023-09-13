@@ -40,6 +40,12 @@ struct AccountModel {
         if let safeResponse = response {
             if safeResponse.status == "success" {
                 defaults.setValue(true, forKey: "hasDetails")
+                switch safeResponse.data.userDetails.units {
+                case "metric":
+                    newDetails.units = .metric
+                default:
+                    newDetails.units = .imperial
+                }
                 newDetails.age = safeResponse.data.userDetails.age
                 newDetails.gender = Gender(rawValue: safeResponse.data.userDetails.gender!)
                 newDetails.goal = FitnessGoal(rawValue: safeResponse.data.userDetails.goal!.camelCased)

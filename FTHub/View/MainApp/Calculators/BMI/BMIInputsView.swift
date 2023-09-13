@@ -28,7 +28,7 @@ struct BMIInputsView: View {
                     Picker("", selection: $weight) {
                         ForEach(user.first?.details?.units == .metric ? K.Units.getWeightRange(units: .metric) : K.Units.getWeightRange(units: .imperial), id: \.self) { i in
                             Text(user.first?.details?.units == .metric ? "\(Int(i)) kg" : "\(String(format: "%.1f", i)) lbs")
-                                .tag(i)
+                                .tag(Double(String(format: "%.1f", i))!)
                         }
                     }
                 }
@@ -36,7 +36,7 @@ struct BMIInputsView: View {
                     Picker("", selection: $height) {
                         ForEach(user.first?.details?.units == .metric ? K.Units.getHeightRange(units: .metric) : K.Units.getHeightRange(units: .imperial), id: \.self) { i in
                             Text(user.first?.details?.units == .metric ? "\(Int(i)) cm" : "\(String(format: "%.1f", i)) inch.")
-                                .tag(i)
+                                .tag(Double(String(format: "%.1f", i))!)
                         }
                     }
                 }
@@ -72,8 +72,8 @@ struct BMIInputsView: View {
             if let user = user.first {
                 if user.details?.units == .imperial {
                     print("test")
-                    weight = Double((user.details?.weight!)!) * K.Units.kgToLbs
-                    height = Double((user.details?.height!)!) * K.Units.cmToInch
+                    weight = Double(String(format: "%.1f", Double((user.details?.weight!)!) * K.Units.kgToLbs))!
+                    height = Double(String(format: "%.1f", Double((user.details?.height!)!) * K.Units.cmToInch))!
                     print(weight, height)
                 } else {
                     weight = Double((user.details?.weight!)!)

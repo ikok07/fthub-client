@@ -8,13 +8,14 @@
 import Foundation
 
 enum Unit: String, CaseIterable, Codable {
-    case metric, imperial
+    case metric = "metric"
+    case imperial = "imperial"
 }
 
 class SetupController: ObservableObject {
     
     @Published var activePage: Int = 0
-    @Published var units: Unit = .metric
+    @Published var units: Unit?
     
     @Published var gender: Gender? = .Male
     @Published var age: Int?
@@ -24,7 +25,7 @@ class SetupController: ObservableObject {
     @Published var goal: FitnessGoal?
     
     func saveDetailsToServer(completion: ((Bool) -> Void)? = nil) async {
-        await SetupModel.saveDetailsToServer(age: self.age ?? 18, height: self.height ?? 180, weight: self.weight ?? 70, workoutsPerWeek: self.workoutsPerWeek ?? 3, gender: self.gender?.rawValue ?? Gender.Male.rawValue, goal: self.goal?.rawValue ?? FitnessGoal.Balance.rawValue, completion: completion)
+        await SetupModel.saveDetailsToServer(age: self.age ?? 18, height: self.height ?? 180, weight: self.weight ?? 70, workoutsPerWeek: self.workoutsPerWeek ?? 3, gender: self.gender?.rawValue ?? Gender.Male.rawValue, units: units ?? .metric, goal: self.goal?.rawValue ?? FitnessGoal.Balance.rawValue, completion: completion)
     }
     
 }

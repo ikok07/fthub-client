@@ -14,6 +14,7 @@ struct ApiUserDetailsPostData: Codable {
     let height: Int
     let weight: Int
     let trainingFrequencyPerWeek: Int
+    let units: String
     let goal: String
 }
 
@@ -32,5 +33,6 @@ struct ApiUserDetails: Codable {
     let weight: Int
     let trainingFrequencyPerWeek: Int
     let gender: String?
+    let units: String
     let goal: String?
 }
