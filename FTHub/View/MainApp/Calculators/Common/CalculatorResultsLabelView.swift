@@ -16,6 +16,8 @@ struct CalculatorResultsLabelView: View {
     var decimals: Int = 1
     var unit: String = ""
     
+    let invalid: Bool
+    
     var body: some View {
         VStack(spacing: 10) {
             Text("Your Results")
@@ -24,7 +26,7 @@ struct CalculatorResultsLabelView: View {
                 .fontWeight(.bold)
             
             HStack {
-                Text("\(String(format: "%.\(decimals)f", result))")
+                Text(invalid ? "Invalid" : "\(String(format: "%.\(decimals)f", result))")
                     .font(.system(size: 48))
                     .fontWeight(.bold)
                     .contentTransition(.numericText())
@@ -38,5 +40,5 @@ struct CalculatorResultsLabelView: View {
 }
 
 #Preview {
-    CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: 1480, decimals: 0, unit: "kcal")
+    CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: 1480, decimals: 0, unit: "kcal", invalid: true)
 }

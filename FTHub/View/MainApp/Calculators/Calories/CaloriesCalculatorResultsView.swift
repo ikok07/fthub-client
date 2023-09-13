@@ -20,7 +20,7 @@ struct CaloriesCalculatorResultsView: View {
     var body: some View {
         VStack {
             
-            CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: result, decimals: 0, unit: "kcal")
+            CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: result, decimals: 0, unit: "kcal", invalid: false)
             
             Picker("", selection: $selectedOption) {
                 ForEach(CaloriesCalculatorResultOption.allCases, id: \.self) { option in
