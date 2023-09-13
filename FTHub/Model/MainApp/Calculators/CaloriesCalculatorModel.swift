@@ -11,13 +11,13 @@ struct CaloriesCalculatorModel {
     static func getCoefficients(activityLevel: ActivityLevel) -> (Double, Double, Double) {
         switch activityLevel {
         case .Light:
-            return (0.89, 0.78, 1.37)
+            return (1.37, 0.91, 0.81)
         case .Active:
-            return (0.9, 0.79, 1.465)
+            return (1.465, 0.91, 0.82)
         case .VeryActive:
-            return (0.9, 0.8, 1.55)
+            return (1.55, 0.91, 0.83)
         case .UltraActive:
-            return (0.91, 0.82, 1.725)
+            return (1.9, 0.93, 0.86)
         case .SelectActivity:
             return (0, 0, 0)
         }
@@ -36,13 +36,16 @@ struct CaloriesCalculatorModel {
     }
 
     static func getFinalResult(selectedOption: CaloriesCalculatorResultOption, bmr: Double, coefficients: (Double, Double, Double)) -> Double {
+        
+        let baseResult = bmr * coefficients.0
+        
         switch selectedOption {
-        case .MildWeightLoss:
-            return bmr * coefficients.0
-        case .WeightLoss:
-            return bmr * coefficients.1
         case .MaintainWeight:
-            return bmr * coefficients.2
+            return baseResult
+        case .MildWeightLoss:
+            return baseResult * coefficients.1
+        case .WeightLoss:
+            return baseResult * coefficients.2
         }
     }
 }

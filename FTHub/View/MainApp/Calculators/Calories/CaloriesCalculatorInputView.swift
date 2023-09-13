@@ -80,6 +80,9 @@ struct CaloriesCalculatorInputView: View {
                 enableAutoFill()
             }
         }
+        .onChange(of: selectedOption) { oldValue, newValue in
+            calculate()
+        }
     }
     
     func enableAutoFill() {

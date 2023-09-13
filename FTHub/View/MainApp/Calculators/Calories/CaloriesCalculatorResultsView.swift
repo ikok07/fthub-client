@@ -26,6 +26,7 @@ struct CaloriesCalculatorResultsView: View {
                 ForEach(CaloriesCalculatorResultOption.allCases, id: \.self) { option in
                     Text("\(option.rawValue)".camelCaseToWords())
                         .contentTransition(.numericText())
+                        .tag(option)
                 }
             }
             .pickerStyle(.segmented)
