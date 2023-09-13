@@ -9,22 +9,33 @@ import SwiftUI
 
 struct CustomInputField: View {
     
+    let icon: String
     let unit: String
     let placeholder: String
+    var numpad: Bool = false
     
     @Binding var text: String
     
     var body: some View {
         HStack {
             ZStack {
-                Text(unit)
-                    .foregroundStyle(.text.opacity(0.12))
+                K.Gradients.mainGradient.opacity(0.6)
+                
+                Image(systemName: icon)
+                    .foregroundStyle(.white.opacity(0.8))
                     .font(.title3)
                     .fontWeight(.bold)
             }
             .frame(width: 45, height: 45)
             
             TextField(placeholder, text: $text)
+                .keyboardType(numpad ? .numberPad : .default)
+            
+            Text(unit.uppercased())
+                .foregroundStyle(.text.opacity(0.2))
+                .font(.headline)
+                .fontWeight(.bold)
+                .padding(.trailing, 10)
         }
         .frame(height: 45)
         .background(.textfieldAppearance)
@@ -35,6 +46,6 @@ struct CustomInputField: View {
 }
 
 #Preview {
-    CustomInputField(unit: "KG", placeholder: "Weight", text: .constant(""))
+    CustomInputField(icon: "scalemass.fill", unit: "KG", placeholder: "Weight", text: .constant(""))
         .padding()
 }

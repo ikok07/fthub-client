@@ -13,8 +13,8 @@ struct BMICalculatorView: View {
     
     @State private var activeGender: Gender = .Male
     
-    @State private var weight: Double = 62
-    @State private var height: Double = 182
+    @State private var weight: String = ""
+    @State private var height: String = ""
     
     @State private var result: Double = 11
     
@@ -29,7 +29,7 @@ struct BMICalculatorView: View {
                     .padding(.horizontal)
                     .padding(.top, 20)
                 
-                BMIInputsView(weight: $weight, height: $height, result: $result)
+                BMIInputsView(gender: $activeGender, weight: $weight, height: $height, result: $result)
                 
                 Spacer()
                 
