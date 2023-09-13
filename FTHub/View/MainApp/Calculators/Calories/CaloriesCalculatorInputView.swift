@@ -30,7 +30,10 @@ struct CaloriesCalculatorInputView: View {
     var body: some View {
         VStack {
             VStack(spacing: 20) {
+                CustomInputField(icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age)
+                
                 CustomInputField(icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
+                
                 CustomInputField(icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
                 
                 CustomPickerRowView(icon: "figure.run", name: "Activity") {
