@@ -33,6 +33,7 @@ struct SettingsProfileDataBody: NetworkCapable {
     let height: Int
     let weight: Int
     let trainingFrequencyPerWeek: Int
+    let units: String
     let goal: String
 }
 

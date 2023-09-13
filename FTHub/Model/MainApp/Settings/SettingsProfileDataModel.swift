@@ -28,9 +28,9 @@ struct SettingsProfileDataModel {
         }
     }
     
-    static func save(gender: String, age: Int, height: Int, weight: Int, workoutsPerWeek: Int, goal: String) async -> SettingsProfileDataResponse? {
+    static func save(gender: String, age: Int, height: Int, weight: Int, workoutsPerWeek: Int, units: String, goal: String) async -> SettingsProfileDataResponse? {
         let url: URL = URL(string: "\(K.API.apiURL)/en/api/\(K.API.apiV1)/user/detail")!
-        let body: SettingsProfileDataBody = SettingsProfileDataBody(gender: gender, age: age, height: height, weight: weight, trainingFrequencyPerWeek: workoutsPerWeek, goal: goal)
+        let body: SettingsProfileDataBody = SettingsProfileDataBody(gender: gender, age: age, height: height, weight: weight, trainingFrequencyPerWeek: workoutsPerWeek, units: units, goal: goal)
         
         do {
             let response: SettingsProfileDataResponse = try await Networking.sendPatchRequest(data: body, url: url, authToken: UserDefaults.standard.string(forKey: "userToken"))

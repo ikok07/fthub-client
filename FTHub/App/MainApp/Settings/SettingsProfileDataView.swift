@@ -85,7 +85,7 @@ struct SettingsProfileDataView: View {
     
     func saveDetails() {
         Task {
-            await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: self.height, weight: self.weight, workoutsPerWeek: self.workoutsPerWeek, goal: self.goal) { response in
+            await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: self.height, weight: self.weight, workoutsPerWeek: self.workoutsPerWeek, units: self.units, goal: self.goal) { response in
                 if response != nil {
                     
                     if let user = user.first {
