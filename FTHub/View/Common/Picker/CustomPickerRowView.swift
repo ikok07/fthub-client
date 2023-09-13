@@ -16,29 +16,37 @@ struct CustomPickerRowView<Content:View>: View {
     
     var body: some View {
         HStack {
-            Group {
+            ZStack {
+                K.Gradients.mainGradient.opacity(0.6)
+                
                 Image(systemName: icon)
-                    .font(.title2)
-                    .frame(width: 30)
-                Text(name)
-                    .fontWeight(.semibold)
+                    .foregroundStyle(.white.opacity(0.8))
+                    .font(.title3)
+                    .fontWeight(.bold)
             }
-            
-            Spacer()
+            .frame(width: 45, height: 45)
             
             picker()
-            .tint(.text)
+                .offset(x: -10)
+            
+            Spacer()
         }
+        .frame(height: 45)
+        .background(.textfieldAppearance)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .shadow(color: .textfieldBg.opacity(0.3), radius: 3, x: 2, y: 2)
+        
     }
 }
 
 #Preview {
     CustomPickerRowView(icon: "figure.run", name: "Activity") {
-        Picker("", selection: .constant(ActivityLevel.Light)) {
+        Picker("", selection: .constant(ActivityLevel.SelectActivity)) {
             ForEach(ActivityLevel.allCases, id: \.self) { level in
                 Text("\(level.rawValue)".camelCaseToWords())
             }
         }
+        .tint(.text)
     }
     .padding()
 }

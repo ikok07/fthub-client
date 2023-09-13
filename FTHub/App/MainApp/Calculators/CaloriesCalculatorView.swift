@@ -15,10 +15,10 @@ struct CaloriesCalculatorView: View {
     @Binding var isPresented: Bool
     
     @State private var gender: Gender = .Male
-    @State private var age: Double = 16
-    @State private var weight: Double = 40
-    @State private var height: Double = 120
-    @State private var activityLevel: ActivityLevel = .Active
+    @State private var age: String = ""
+    @State private var weight: String = ""
+    @State private var height: String = ""
+    @State private var activityLevel: ActivityLevel = .SelectActivity
     
     @State private var result: Double = 0
     @State private var resultOption: CaloriesCalculatorResultOption = .MaintainWeight
@@ -26,7 +26,6 @@ struct CaloriesCalculatorView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                
                 Text("Calories Calculator")
                     .font(.largeTitle)
                     .fontWeight(.bold)

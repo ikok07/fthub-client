@@ -10,9 +10,6 @@
     "%@ inch" : {
 
     },
-    "%@ inch." : {
-
-    },
     "%@ lbs" : {
 
     },
@@ -86,9 +83,6 @@
           }
         }
       }
-    },
-    "Auto" : {
-
     },
     "Back to sign in" : {
 
@@ -195,6 +189,9 @@
 
     },
     "Email %@approved" : {
+
+    },
+    "Enable Autofill" : {
 
     },
     "Enter new password" : {

@@ -18,6 +18,8 @@ struct CaloriesCalculatorModel {
             return (0.9, 0.8, 1.55)
         case .UltraActive:
             return (0.91, 0.82, 1.725)
+        case .SelectActivity:
+            return (0, 0, 0)
         }
     }
 

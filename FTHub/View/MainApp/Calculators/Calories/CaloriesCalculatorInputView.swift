@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 enum ActivityLevel: String, Codable, CaseIterable {
-    case Light, Active, VeryActive, UltraActive
+    case SelectActivity, Light, Active, VeryActive, UltraActive
 }
 
 struct CaloriesCalculatorInputView: View {
@@ -22,94 +22,86 @@ struct CaloriesCalculatorInputView: View {
     @Binding var selectedOption: CaloriesCalculatorResultOption
     
     @Binding var gender: Gender
-    @Binding var age: Double
-    @Binding var weight: Double
-    @Binding var height: Double
+    @Binding var age: String
+    @Binding var weight: String
+    @Binding var height: String
     @Binding var activityLevel: ActivityLevel
     
     var body: some View {
         VStack {
-            VStack(spacing: 5) {
+            VStack(spacing: 20) {
+                CustomInputField(icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
+                CustomInputField(icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
+                
                 CustomPickerRowView(icon: "figure.run", name: "Activity") {
                     Picker("", selection: $activityLevel) {
                         ForEach(ActivityLevel.allCases, id: \.self) { level in
                             Text("\(level.rawValue)".camelCaseToWords())
                         }
                     }
+                    .tint(activityLevel == .SelectActivity ? .textGray : .text)
                 }
                 
-                CustomValueInputView(value: $age, icon: "calendar", name: "Age", pickerWidth: 60) {
-                    Picker("", selection: $age) {
-                        ForEach(K.UserDetails.minAge...K.UserDetails.maxAge, id: \.self) { i in
-                            Text("\(i)")
-                                .tag(Double(i))
-                        }
-                    }
-                }
-                
-                CustomValueInputView(value: $weight, icon: "scalemass", name: "Weight", pickerWidth: user.first?.details?.units == .metric ? 95 : 120) {
-                    Picker("", selection: $weight) {
-                        ForEach(user.first?.details?.units == .metric ? K.Units.getWeightRange(units: .metric) : K.Units.getWeightRange(units: .imperial), id: \.self) { i in
-                            Text(user.first?.details?.units == .metric ? "\(Int(i)) kg" : "\(String(format: "%.1f", i)) lbs")
-                                .tag(i)
-                        }
-                    }
-                }
-                
-                CustomValueInputView(value: $height, icon: "arrow.up.and.down", name: "Height", pickerWidth: user.first?.details?.units == .metric ? 90 : 125) {
-                    Picker("", selection: $height) {
-                        ForEach(user.first?.details?.units == .metric ? K.Units.getHeightRange(units: .metric) : K.Units.getHeightRange(units: .imperial), id: \.self) { i in
-                            Text(user.first?.details?.units == .metric ? "\(Int(i)) cm" : "\(String(format: "%.1f", i)) inch.")
-                                .tag(i)
-                        }
-                    }
-                }
+                AutofillButtonView(autofill: $autofill)
             }
             
-            VStack(spacing: 10) {
-                Button(action: calculate) {
-                    Text("Calculate")
-                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-                }
-                .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
-                .padding(.top)
-                
-                AutofillButtonView(autofill: $autofill, action: toggleAutoFill)
+            Button(action: calculate) {
+                Text("Calculate")
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             }
+            .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
+            .padding(.top)
             
         }
         .padding()
-        .onChange(of: [gender.rawValue, activityLevel.rawValue, String(age), String(weight), String(height)]) { oldValue, newValue in
+        .onChange(of: [gender.rawValue, activityLevel.rawValue, age, weight, height]) { oldValue, newValue in
             print(newValue)
+            print(String(format: "%.1f", Double((user.first?.details?.height!)!) * K.Units.cmToInch))
             if let user = user.first, user.details != nil {
-                if newValue[0] != user.details!.gender!.rawValue || newValue[2] != String(user.details!.age!) || newValue[3] != String(user.details!.weight!) || newValue[4] != String(user.details!.height!) {
+                
+                let savedWeight: String = String(user.details!.weight!)
+                let savedWeightLbs: String = String(format: "%.1f", Double(user.details!.weight!) * K.Units.kgToLbs)
+                
+                let savedHeight: String = String(user.details!.height!)
+                let savedHeightInches: String = String(format: "%.1f", Double(user.details!.height!) * K.Units.cmToInch)
+                
+                if newValue[0] != user.details!.gender!.rawValue || newValue[2] != String(user.details!.age!) || newValue[3] != (user.details!.units == .metric ? savedWeight : savedWeightLbs) || newValue[4] != (user.details!.units == .metric ? savedHeight : savedHeightInches) {
                     withAnimation(.easeOut(duration: 0.2)) {
                         autofill = false
                     }
                 }
             }
-                
+        }
+        .onChange(of: autofill) { oldValue, newValue in
+            if newValue {
+                enableAutoFill()
+            }
         }
     }
     
-    func toggleAutoFill() {
-        if let user = user.first {
+    func enableAutoFill() {
+        if let user = user.first, user.details != nil {
             withAnimation(.easeOut(duration: 0.2)) {
                 autofill = true
-                age = Double((user.details?.age)!)
-                weight = Double((user.details?.weight)!)
-                height = Double((user.details?.height)!)
+                gender = user.details!.gender!
+                age = String(user.details!.age!)
+                weight = user.details!.units == .metric ? String(user.details!.weight!) : String(format: "%.1f", (Double(user.details!.weight!) * K.Units.kgToLbs))
+                height = user.details!.units == .metric ? String(user.details!.height!) : String(format: "%.1f", (Double(user.details!.height!) * K.Units.cmToInch))
             }
         }
     }
     
     func calculate() {
-        withAnimation(.bouncy) {
-            result = CaloriesCalculatorController.calculateCalories(selectedOption: self.selectedOption, activityLevel: activityLevel, gender: self.gender, age: self.age, weight: self.weight, height: self.height)
+        if activityLevel != .SelectActivity {
+            withAnimation(.bouncy) {
+                result = CaloriesCalculatorController.calculateCalories(selectedOption: self.selectedOption, activityLevel: activityLevel, gender: self.gender, age: Double(self.age)!, weight: Double(self.weight)!, height: Double(self.height)!)
+            }
+        } else {
+            Message.send(type: "alert", message: "Please select activity level")
         }
     }
 }
 
 #Preview {
-    CaloriesCalculatorInputView(result: .constant(1480), selectedOption: .constant(.MaintainWeight), gender: .constant(.Male), age: .constant(16), weight: .constant(62), height: .constant(181), activityLevel: .constant(.VeryActive))
+    CaloriesCalculatorInputView(result: .constant(1480), selectedOption: .constant(.MaintainWeight), gender: .constant(.Male), age: .constant(""), weight: .constant(""), height: .constant(""), activityLevel: .constant(.SelectActivity))
 }
