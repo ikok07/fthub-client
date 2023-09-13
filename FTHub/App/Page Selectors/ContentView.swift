@@ -33,6 +33,7 @@ struct ContentView: View {
     
     func checkDetails() async {
         let details = await AccountController.checkDetails()
+        
         if let userDetails = details {
             if let user = user.first {
                 user.details = userDetails

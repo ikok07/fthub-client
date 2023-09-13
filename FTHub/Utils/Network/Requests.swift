@@ -51,11 +51,21 @@ struct Request {
         }
     }
     
-    static func update<T: Codable>(url: URL, body: Data) async -> Result<T, Error> {
+    static func update<T: Codable>(url: URL, body: Data?, imageBody: Data? = nil, authToken: String?, formData: Bool = false) async -> Result<T, Error> {
+        let boundary: String = FormData.generateBoundary()
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = body
+        
+        if formData {
+            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        } else {
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
+        
+        if authToken != nil {
+            request.setValue("Bearer \(authToken!)", forHTTPHeaderField: "Authorization")
+        }
+        request.httpBody = formData ? FormData.createFormDataBody(jsonData: body, imageData: imageBody, boundary: boundary) : body
 
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
@@ -65,7 +75,6 @@ struct Request {
         } catch {
             return .failure(error)
         }
-
     }
     
 }

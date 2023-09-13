@@ -47,7 +47,7 @@ struct MainAppView: View {
                 .tag(Tab.coaches)
 
             
-            CoachesPageView()
+            CalculatorsMainView()
                 .tabItem {
                     Image(systemName: "plusminus.circle.fill")
                     Text("Calculators")
@@ -57,7 +57,7 @@ struct MainAppView: View {
                 .tag(Tab.calculators)
 
             
-            CoachesPageView()
+            SettingsMainView()
                 .tabItem {
                     Image(systemName: "ellipsis")
                     Text("More")

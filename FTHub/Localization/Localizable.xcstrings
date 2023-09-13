@@ -1,10 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
 
     },
     "%@ inch" : {
+
+    },
+    "%@ lbs" : {
 
     },
     "%lld" : {
@@ -14,6 +20,18 @@
 
     },
     "%lld inches" : {
+
+    },
+    "%lld kg" : {
+
+    },
+    "%lld times/week" : {
+
+    },
+    "2.79€ / month" : {
+
+    },
+    "23.01.2023" : {
 
     },
     "120 cm" : {
@@ -44,6 +62,9 @@
     "Age: %lld" : {
 
     },
+    "All Calculators" : {
+
+    },
     "Allow Notifications" : {
 
     },
@@ -66,7 +87,28 @@
     "Back to sign in" : {
 
     },
+    "BMI Calculator" : {
+
+    },
+    "Calculate" : {
+
+    },
     "Calculators" : {
+
+    },
+    "Calories Calculator" : {
+
+    },
+    "Cancel Subscription" : {
+
+    },
+    "Change password" : {
+
+    },
+    "Change Password" : {
+
+    },
+    "Check out" : {
 
     },
     "Coaches" : {
@@ -117,6 +159,9 @@
     "Create new password" : {
 
     },
+    "Current password" : {
+
+    },
     "days/week" : {
 
     },
@@ -137,10 +182,16 @@
         }
       }
     },
+    "Discover more" : {
+
+    },
     "Done" : {
 
     },
     "Email %@approved" : {
+
+    },
+    "Enable Autofill" : {
 
     },
     "Enter new password" : {
@@ -211,6 +262,9 @@
         }
       }
     },
+    "Featured" : {
+
+    },
     "Female" : {
 
     },
@@ -255,10 +309,19 @@
     "Imperial" : {
 
     },
+    "In order to make sure your workouts are always in sync with our server, we recommend periodic checking for unsynced workouts." : {
+
+    },
+    "Invalid" : {
+
+    },
     "kg" : {
 
     },
     "lbs" : {
+
+    },
+    "Log Out" : {
 
     },
     "Logs" : {
@@ -274,6 +337,15 @@
 
     },
     "More" : {
+
+    },
+    "New password" : {
+
+    },
+    "Notifications" : {
+
+    },
+    "Obesity" : {
 
     },
     "Open Mail" : {
@@ -299,6 +371,12 @@
 
     },
     "Password was\nnot changed" : {
+
+    },
+    "Premium" : {
+
+    },
+    "Profile data" : {
 
     },
     "Resend Email" : {
@@ -338,6 +416,9 @@
       }
     },
     "Return to sign in" : {
+
+    },
+    "Save" : {
 
     },
     "Send email" : {
@@ -436,6 +517,9 @@
         }
       }
     },
+    "Subscription" : {
+
+    },
     "Successful email authentication" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -452,6 +536,15 @@
           }
         }
       }
+    },
+    "Sync" : {
+
+    },
+    "Sync with Cloud" : {
+
+    },
+    "Sync Workouts" : {
+
     },
     "The entered code is invalid or expired" : {
       "extractionState" : "stale",
@@ -482,6 +575,9 @@
     "Try Again" : {
 
     },
+    "Underweight" : {
+
+    },
     "We have sent a code to" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -505,6 +601,9 @@
     "Workout" : {
 
     },
+    "Workouts not synced:" : {
+
+    },
     "years" : {
 
     },
@@ -512,6 +611,9 @@
 
     },
     "You have successfuly changed your password" : {
+
+    },
+    "Your Results" : {
 
     }
   },

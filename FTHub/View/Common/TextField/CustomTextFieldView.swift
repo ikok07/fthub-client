@@ -96,7 +96,7 @@ struct CustomTextFieldView: View {
             .padding()
             .background(.textfieldAppearance)
             .cornerRadius(12)
-            .shadow(color: Color.textfieldBg.opacity(0.3), radius: 5, x: 0, y: 2)
+            .shadow(color: .textfieldBg.opacity(0.3), radius: 5, x: 0, y: 2)
             
 
             if errorMessage != nil {
