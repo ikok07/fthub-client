@@ -29,7 +29,7 @@ struct CustomInputField: View {
             .frame(width: 45, height: 45)
             
             TextField(placeholder, text: $text)
-                .keyboardType(numpad ? .numberPad : .default)
+                .keyboardType(numpad ? .decimalPad : .default)
             
             Text(unit.uppercased())
                 .foregroundStyle(.text.opacity(0.2))
@@ -41,6 +41,9 @@ struct CustomInputField: View {
         .background(.textfieldAppearance)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .shadow(color: .textfieldBg.opacity(0.3), radius: 3, x: 2, y: 2)
+        .onChange(of: text) { oldValue, newValue in
+                text = text.replacingOccurrences(of: ",", with: ".")
+        }
         
     }
 }
