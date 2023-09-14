@@ -31,7 +31,7 @@ struct VerticalNumberSelectorView: View {
                         Spacer()
                         RoundedRectangle(cornerRadius: percentage * 20)
                             .frame(width: 120, height: percentage * 400)
-                            .foregroundStyle(K.Gradients.mainGradient.opacity(0.75))
+                            .foregroundStyle(K.Gradients.mainGradient)
                             .clipped()
                     }
                 }
@@ -55,10 +55,8 @@ struct VerticalNumberSelectorView: View {
                             
                         })
                 )
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20)
-                        .strokeBorder(.customGray)
-                }
+                .background(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
             }
             
             VerticalNumberSelectorStepsLabelsView()

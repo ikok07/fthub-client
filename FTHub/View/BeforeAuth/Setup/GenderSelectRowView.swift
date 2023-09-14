@@ -38,7 +38,7 @@ struct GenderSelectRowView: View {
                 Spacer()
             }
             .padding(EdgeInsets(top: 13, leading: 10, bottom: 13, trailing: 10))
-            .background(activeOption == id ? K.Gradients.secondaryGradient : K.Gradients.clearGradient)
+            .background(activeOption == id ? K.Gradients.mainGradient : K.Gradients.clearGradient)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .overlay {
                 RoundedRectangle(cornerRadius: 12)

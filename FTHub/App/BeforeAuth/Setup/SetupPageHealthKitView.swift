@@ -72,4 +72,5 @@ struct SetupPageHealthKitView: View {
 #Preview {
     SetupPageHealthKitView()
         .environment(SetupController())
+        .environment(HealthKitController())
 }

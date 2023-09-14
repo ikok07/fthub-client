@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "setup0(1x).png",
+      "filename" : "Settings-bro.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "setup0(2x).png",
       "idiom" : "universal",
       "scale" : "2x"
     },

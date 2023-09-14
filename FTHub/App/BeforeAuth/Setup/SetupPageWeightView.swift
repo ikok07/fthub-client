@@ -35,7 +35,7 @@ struct SetupPageWeightView: View {
             TwoLineHeadingView(upperPart: "What about", bottomPart: "your weight")
             
             ZStack {
-                GaugeView(percentage: $percentage, width: UIScreen.main.bounds.width - 80, backgroundArcGradient: K.Gradients.grayGradient, arrowLength: CGFloat(100), arrowAnchorMainCircleGradient: K.Gradients.mainGradient)
+                GaugeView(percentage: $percentage, width: UIScreen.main.bounds.width - 80, backgroundArcGradient: K.Gradients.lightGrayGradient, arrowLength: CGFloat(100), arrowAnchorMainCircleGradient: K.Gradients.mainGradient)
                     .padding(.horizontal)
                 
                 VStack {

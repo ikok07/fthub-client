@@ -12,7 +12,7 @@ struct K {
     
     // MARK: - Gradients
     struct Gradients {
-        static let mainGradient: LinearGradient = LinearGradient(gradient: Gradient(colors: [.accentColor, .mint]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        static let mainGradient: LinearGradient = LinearGradient(gradient: Gradient(colors: [.accentColor, .customMint]), startPoint: .topLeading, endPoint: .bottomTrailing)
         static let secondaryGradient: LinearGradient = LinearGradient(
             stops: [
             Gradient.Stop(color: Color(red: 0.27, green: 0.74, blue: 0.26).opacity(0.75), location: 0.00),

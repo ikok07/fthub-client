@@ -52,4 +52,5 @@ struct SetupPageGoalView: View {
 #Preview {
     SetupPageGoalView()
         .environment(SetupController())
+        .environment(HealthKitController())
 }

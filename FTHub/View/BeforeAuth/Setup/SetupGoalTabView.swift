@@ -15,7 +15,7 @@ struct SetupGoalTabView: View {
     var body: some View {
         TeasingTabView(selectedTab: $shownGoal, spacing: 10) {
             [
-                AnyView(GoalTabViewItem(active: selectedGoal == .WeightLoss ? true : false, header: "Normal", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
+                AnyView(GoalTabViewItem(active: selectedGoal == .WeightLoss ? true : false, header: "Lose Weight", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
                     .onTapGesture {
                         withAnimation(.easeOut) {
                             selectedGoal = .WeightLoss
@@ -29,7 +29,7 @@ struct SetupGoalTabView: View {
                         }
                     }
                 ),
-                AnyView(GoalTabViewItem(active: selectedGoal == .MuscleBuilding ? true : false, header: "Max", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
+                AnyView(GoalTabViewItem(active: selectedGoal == .MuscleBuilding ? true : false, header: "Build Muscles", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been")
                     .onTapGesture {
                         withAnimation(.easeOut) {
                             selectedGoal = .MuscleBuilding

@@ -15,7 +15,7 @@ struct GoalTabViewItem: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text(header.uppercased())
+            Text(header)
                 .foregroundStyle(active ? .white : .text)
                 .font(.title)
                 .fontWeight(.bold)
@@ -36,7 +36,7 @@ struct GoalTabViewItem: View {
         .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
         .background {
             if active {
-                K.Gradients.mainGradient.opacity(0.70)
+                K.Gradients.mainGradient
             }
         }
         .background(.regularMaterial)
@@ -45,5 +45,5 @@ struct GoalTabViewItem: View {
 }
 
 #Preview {
-    GoalTabViewItem(active: false, header: "Lose weight", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ")
+    GoalTabViewItem(active: false, header: "Lose Weight", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ")
 }
