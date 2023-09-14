@@ -11,6 +11,7 @@ import UserNotifications
 struct NotificationsController {
     
     static func requestPermission(completion: @escaping ((Bool, Error?) -> Void)) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound, .provisional], completionHandler: completion)
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.badge, .alert, .sound], completionHandler: completion)
     }
 }

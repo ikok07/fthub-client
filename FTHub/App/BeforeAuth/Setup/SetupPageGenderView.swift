@@ -10,7 +10,7 @@ import SwiftData
 
 struct SetupPageGenderView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     @State private var activeOption: Int = 0
     
@@ -53,4 +53,5 @@ struct SetupPageGenderView: View {
 
 #Preview {
     SetupPageGenderView()
+        .environment(SetupController())
 }

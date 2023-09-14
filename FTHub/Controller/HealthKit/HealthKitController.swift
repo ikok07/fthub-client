@@ -7,12 +7,13 @@
 
 import Foundation
 import HealthKit
+import Observation
 
 enum HealthKitError: String, Error {
     case notAvailable = "HealthKit is not available on this device"
 }
 
-class HealthKitController: ObservableObject {
+@Observable class HealthKitController {
     
     let healthStore = HKHealthStore()
     

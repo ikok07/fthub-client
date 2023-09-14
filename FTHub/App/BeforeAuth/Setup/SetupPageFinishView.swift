@@ -10,7 +10,7 @@ import SwiftData
 
 struct SetupPageFinishView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     @Environment(\.modelContext) private var modelContext
     
     @AppStorage("hasDetails") private var hasDetails: Bool = false
@@ -52,5 +52,5 @@ struct SetupPageFinishView: View {
 
 #Preview {
     SetupPageFinishView()
-        .environmentObject(SetupController())
+        .environment(SetupController())
 }

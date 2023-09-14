@@ -10,7 +10,7 @@ import SwiftData
 
 struct SettingsMainView: View {
     
-    @EnvironmentObject private var healthKitController: HealthKitController
+    @Environment(HealthKitController.self) private var healthKitController
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = true
     @AppStorage("userToken") private var userToken: String = ""
@@ -94,5 +94,5 @@ struct SettingsMainView: View {
 
 #Preview {
     SettingsMainView()
-        .environmentObject(HealthKitController())
+        .environment(HealthKitController())
 }

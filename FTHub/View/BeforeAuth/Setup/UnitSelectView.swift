@@ -10,7 +10,7 @@ import SwiftData
 
 struct UnitSelectView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     @State var activeUnits: Unit = .metric
     

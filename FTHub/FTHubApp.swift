@@ -12,8 +12,8 @@ struct FTHubApp: App {
     
     @StateObject var authController: ResendCodeController = ResendCodeController()
     @StateObject var baseAuthController: BaseAuthController = BaseAuthController()
-    @StateObject var setupController: SetupController = SetupController()
-    @StateObject var healthKitController: HealthKitController = HealthKitController()
+    @State var setupController: SetupController = SetupController()
+    @State var healthKitController: HealthKitController = HealthKitController()
     
     var body: some Scene {
         WindowGroup {
@@ -21,8 +21,8 @@ struct FTHubApp: App {
                 .modelContainer(for: User.self, isAutosaveEnabled: true)
                 .environmentObject(authController)
                 .environmentObject(baseAuthController)
-                .environmentObject(setupController)
-                .environmentObject(healthKitController)
+                .environment(setupController)
+                .environment(healthKitController)
         }
     }
 }

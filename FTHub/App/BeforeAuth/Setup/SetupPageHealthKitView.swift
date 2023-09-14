@@ -10,8 +10,9 @@ import SwiftData
 
 struct SetupPageHealthKitView: View {
     
-    @EnvironmentObject private var healthKitController: HealthKitController
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(HealthKitController.self) private var healthKitController
+    @Environment(SetupController.self) private var setupController
+    
     @Query private var user: [User]
     
     var body: some View {
@@ -32,8 +33,11 @@ struct SetupPageHealthKitView: View {
                 Button(action: {
                     healthKitController.askForAuthorization() { success in
                         if success {
-                            DispatchQueue.main.async {
-                                setupController.activePage += 1
+                            if let user = user.first {
+                                DispatchQueue.main.async {
+                                    setupController.activePage += 1
+                                    user.details?.setupActivePage += 1
+                                }
                             }
                         } else {
                             Message.send(type: "error", message: "There was an error accessing Apple Health Data")
@@ -67,6 +71,5 @@ struct SetupPageHealthKitView: View {
 
 #Preview {
     SetupPageHealthKitView()
-        .environmentObject(HealthKitController())
-        .environmentObject(SetupController())
+        .environment(SetupController())
 }

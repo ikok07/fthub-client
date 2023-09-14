@@ -11,7 +11,7 @@ import SwiftData
 
 struct SetupPageTrainingsPerWeekView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     @State private var selectedDays: Int = 0
     
@@ -61,5 +61,5 @@ struct SetupPageTrainingsPerWeekView: View {
 
 #Preview {
     SetupPageTrainingsPerWeekView()
-        .environmentObject(SetupController())
+        .environment(SetupController())
 }

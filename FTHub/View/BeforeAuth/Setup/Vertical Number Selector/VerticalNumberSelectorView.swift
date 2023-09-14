@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VerticalNumberSelectorView: View {
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     @State private var percentage: Double = 0.6
     
@@ -73,5 +73,5 @@ struct VerticalNumberSelectorView: View {
 
 #Preview {
     VerticalNumberSelectorView(userHeight: .constant(175))
-        .environmentObject(SetupController())
+        .environment(SetupController())
 }

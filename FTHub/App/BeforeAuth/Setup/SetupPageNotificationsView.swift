@@ -10,7 +10,7 @@ import SwiftData
 
 struct SetupPageNotificationsView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     @Query private var user: [User]
     
     var body: some View {
@@ -32,14 +32,14 @@ struct SetupPageNotificationsView: View {
                 Button(action: {
                     NotificationsController.requestPermission { success, error in
                         DispatchQueue.main.async {
-                            if success {
+                            if let error = error {
+                                print("Error getting permission for notifications: \(error)")
+                                Message.send(type: "error", message: "There was an error requesting authorisation")
+                            } else {
                                 if let user = user.first {
                                     user.details?.setupActivePage += 1
+                                    setupController.activePage += 1
                                 }
-                                setupController.activePage += 1
-                            } else if error != nil {
-                                print("Error getting permission for notifications: \(error!)")
-                                Message.send(type: "error", message: "An error occurred")
                             }
                         }
                     }
@@ -70,5 +70,5 @@ struct SetupPageNotificationsView: View {
 
 #Preview {
     SetupPageNotificationsView()
-        .environmentObject(SetupController())
+        .environment(SetupController())
 }

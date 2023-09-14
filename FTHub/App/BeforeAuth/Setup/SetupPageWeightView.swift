@@ -12,7 +12,7 @@ import SwiftData
 
 struct SetupPageWeightView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     @State private var selectedWeight: Int = K.UserDetails.minWeight
     @State private var percentage: Double = 0
@@ -91,5 +91,5 @@ struct SetupPageWeightView: View {
 
 #Preview {
     SetupPageWeightView()
-        .environmentObject(SetupController())
+        .environment(SetupController())
 }

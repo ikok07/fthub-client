@@ -6,23 +6,23 @@
 //
 
 import Foundation
+import Observation
 
 enum Unit: String, CaseIterable, Codable {
     case metric = "metric"
     case imperial = "imperial"
 }
 
-class SetupController: ObservableObject {
+@Observable class SetupController {
     
-    @Published var activePage: Int = 0
-    @Published var units: Unit = .metric
-    
-    @Published var gender: Gender? = .Male
-    @Published var age: Int?
-    @Published var height: Int?
-    @Published var weight: Int?
-    @Published var workoutsPerWeek: Int?
-    @Published var goal: FitnessGoal?
+    var activePage: Int = 0
+    var units: Unit = .metric
+    var gender: Gender? = .Male
+    var age: Int?
+    var height: Int?
+    var weight: Int?
+    var workoutsPerWeek: Int?
+    var goal: FitnessGoal?
     
     func saveDetailsToServer(completion: ((Bool) -> Void)? = nil) async {
         await SetupModel.saveDetailsToServer(age: self.age ?? 18, height: self.height ?? 180, weight: self.weight ?? 70, workoutsPerWeek: self.workoutsPerWeek ?? 3, gender: self.gender?.rawValue ?? Gender.Male.rawValue, units: units, goal: self.goal?.rawValue ?? FitnessGoal.Balance.rawValue, completion: completion)
