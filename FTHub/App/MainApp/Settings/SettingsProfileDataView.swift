@@ -33,7 +33,6 @@ struct SettingsProfileDataView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                
                 SettingsProfileImagePickerView(imageUrl: $imageUrl, saveButtonActive: $saveButtonActive, uiImage: $localProfileImage)
                 
                 SettingsProfileMainDataView(name: $name, email: email, gender: $gender, age: $age, units: $units)
