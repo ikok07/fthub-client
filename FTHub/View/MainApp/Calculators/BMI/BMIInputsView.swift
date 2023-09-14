@@ -10,6 +10,8 @@ import SwiftData
 
 struct BMIInputsView: View {
     
+    @FocusState var isActive: Bool
+    
     @Query private var user: [User]
     
     @State private var autofill: Bool = false
@@ -25,8 +27,8 @@ struct BMIInputsView: View {
         VStack {
             
             VStack(spacing: 20) {
-                CustomInputField(icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
-                CustomInputField(icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
+                CustomInputField(isActive: _isActive, icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
+                CustomInputField(isActive: _isActive, icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
                 
                 AutofillButtonView(autofill: $autofill)
             }
@@ -39,6 +41,16 @@ struct BMIInputsView: View {
             .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
             .padding(.horizontal)
             .padding(.top)
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        isActive = false
+                    }
+                }
+            }
         }
         .onChange(of: [gender.rawValue, weight, height]) { oldValue, newValue in
             if let user = user.first, user.details != nil {
