@@ -16,6 +16,7 @@ struct BMICalculatorView: View {
     @State private var weight: String = ""
     @State private var height: String = ""
     
+    @State private var showResult: Bool = false
     @State private var result: Double = 11
     
     var body: some View {
@@ -26,11 +27,11 @@ struct BMICalculatorView: View {
                     .padding(.horizontal)
                     .padding(.top, 20)
                 
-                BMIInputsView(gender: $activeGender, weight: $weight, height: $height, result: $result)
+                BMIInputsView(gender: $activeGender, weight: $weight, height: $height, result: $result, showResult: $showResult)
                 
                 Spacer()
                 
-                if result > 11 {
+                if showResult {
                     BMIResultsView(result: result)
                 }
             }

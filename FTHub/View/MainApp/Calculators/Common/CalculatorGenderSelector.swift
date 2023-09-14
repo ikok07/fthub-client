@@ -27,15 +27,15 @@ struct CalculatorGenderSelector: View {
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                 .background {
-                    RoundedRectangle(cornerRadius: 12)
-                        .foregroundStyle(activeGender == .Male ? K.Gradients.mainGradient : K.Gradients.clearGradient)
-                        .opacity(0.75)
+                    if activeGender == .Male {
+                        K.Gradients.mainGradient
+                    } else {
+                        K.Gradients.clearGradient
+                    }
                 }
+                .background(.ultraThinMaterial)
                 .animation(.easeOut, value: activeGender)
-                .background {
-                    RoundedRectangle(cornerRadius: 12)
-                        .strokeBorder(activeGender == .Male ? .clear : .customGray, lineWidth: 2)
-                }
+                .clipShape(RoundedRectangle(cornerRadius: 12))
             })
             
             Button(action: { activeGender = .Female }, label: {
@@ -52,15 +52,15 @@ struct CalculatorGenderSelector: View {
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                 .background {
-                    RoundedRectangle(cornerRadius: 12)
-                        .foregroundStyle(activeGender == .Female ? K.Gradients.mainGradient : K.Gradients.clearGradient)
-                        .opacity(0.75)
+                    if activeGender == .Female {
+                        K.Gradients.mainGradient
+                    } else {
+                        K.Gradients.clearGradient
+                    }
                 }
+                .background(.ultraThinMaterial)
                 .animation(.easeOut, value: activeGender)
-                .background {
-                    RoundedRectangle(cornerRadius: 12)
-                        .strokeBorder(activeGender == .Female ? .clear : .customGray, lineWidth: 2)
-                }
+                .clipShape(RoundedRectangle(cornerRadius: 12))
             })
         }
     }

@@ -17,7 +17,7 @@ struct CustomPickerRowView<Content:View>: View {
     var body: some View {
         HStack {
             ZStack {
-                K.Gradients.mainGradient.opacity(0.6)
+                K.Gradients.mainGradient
                 
                 Image(systemName: icon)
                     .foregroundStyle(.white.opacity(0.8))

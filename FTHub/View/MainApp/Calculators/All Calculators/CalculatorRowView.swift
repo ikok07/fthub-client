@@ -28,7 +28,7 @@ struct CalculatorRowView<Destination: View>: View {
                             .foregroundStyle(.white)
                             .font(.title3)
                             .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-                            .background(K.Gradients.mainGradient.opacity(0.7))
+                            .background(K.Gradients.mainGradient)
                             .clipShape(Circle())
                         
                         Text(name)

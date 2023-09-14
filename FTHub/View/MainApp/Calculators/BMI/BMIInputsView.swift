@@ -20,6 +20,7 @@ struct BMIInputsView: View {
     @Binding var weight: String
     @Binding var height: String
     @Binding var result: Double
+    @Binding var showResult: Bool
     
     
     
@@ -95,6 +96,7 @@ struct BMIInputsView: View {
     
     func calculate() {
         if let user = user.first {
+            showResult = true
             if weight != "" && height != "" {
                 withAnimation {
                     result = BMIController.calculateBMI(units: user.details?.units ?? .metric, weight: Double(self.weight)! , height: Double(self.height)!)
@@ -105,6 +107,6 @@ struct BMIInputsView: View {
 }
 
 #Preview {
-    BMIInputsView(gender: .constant(.Male), weight: .constant(""), height: .constant(""), result: .constant(25))
+    BMIInputsView(gender: .constant(.Male), weight: .constant(""), height: .constant(""), result: .constant(25), showResult: .constant(false))
         .padding()
 }
