@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CustomInputField: View {
     
+    @FocusState var isActive: Bool
+    
     let icon: String
     let unit: String
     let placeholder: String
@@ -30,6 +32,7 @@ struct CustomInputField: View {
             
             TextField(placeholder, text: $text)
                 .keyboardType(numpad ? .decimalPad : .default)
+                .focused($isActive)
             
             Text(unit.uppercased())
                 .foregroundStyle(.text.opacity(0.2))

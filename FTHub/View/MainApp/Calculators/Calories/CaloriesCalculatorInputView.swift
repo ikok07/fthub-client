@@ -14,6 +14,8 @@ enum ActivityLevel: String, Codable, CaseIterable {
 
 struct CaloriesCalculatorInputView: View {
     
+    @FocusState private var isActive: Bool
+    
     @Query private var user: [User]
     
     @State var autofill: Bool = false
@@ -30,11 +32,11 @@ struct CaloriesCalculatorInputView: View {
     var body: some View {
         VStack {
             VStack(spacing: 20) {
-                CustomInputField(icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age)
+                CustomInputField(isActive: _isActive, icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age)
                 
-                CustomInputField(icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
+                CustomInputField(isActive: _isActive, icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
                 
-                CustomInputField(icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
+                CustomInputField(isActive: _isActive, icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
                 
                 CustomPickerRowView(icon: "figure.run", name: "Activity") {
                     Picker("", selection: $activityLevel) {
@@ -57,6 +59,16 @@ struct CaloriesCalculatorInputView: View {
             
         }
         .padding()
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        isActive = false
+                    }
+                }
+            }
+        }
         .onChange(of: [gender.rawValue, activityLevel.rawValue, age, weight, height]) { oldValue, newValue in
             print(newValue)
             print(String(format: "%.1f", Double((user.first?.details?.height!)!) * K.Units.cmToInch))
