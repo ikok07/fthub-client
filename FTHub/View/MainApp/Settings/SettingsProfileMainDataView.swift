@@ -22,6 +22,7 @@ struct SettingsProfileMainDataView: View {
                 SettingsInputRowView(name: "Name") { 
                     TextEditor(text: $name)
                         .multilineTextAlignment(.trailing)
+                        .scrollContentBackground(.hidden)
                         .onChange(of: name) { oldValue, newValue in
                             print(newValue)
                         }

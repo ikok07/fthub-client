@@ -36,6 +36,7 @@ struct SettingsProfileDataView: View {
                 SettingsProfileImagePickerView(imageUrl: $imageUrl, saveButtonActive: $saveButtonActive, uiImage: $localProfileImage)
                 
                 SettingsProfileMainDataView(name: $name, email: email, gender: $gender, age: $age, units: $units)
+                    .padding(.bottom)
                 
                 SettingsFitnessDataView(height: $height, weight: $weight, workoutsPerWeek: $workoutsPerWeek, goal: $goal)
                 
