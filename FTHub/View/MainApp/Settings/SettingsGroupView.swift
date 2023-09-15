@@ -31,13 +31,9 @@ struct SettingsGroupView<Content: View>: View {
             
         }
         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
-        .background(.ultraThinMaterial)
+        .background(.textfieldAppearance)
         .clipShape(RoundedRectangle(cornerRadius: 12))
-//        .overlay {
-//            RoundedRectangle(cornerRadius: 12)
-//                .strokeBorder(lineWidth: 1)
-//                .foregroundStyle(.customGray)
-//        }
+        .shadow(color: .textfieldBg.opacity(0.3), radius: 5, x: 0, y: 2)
     }
 }
 

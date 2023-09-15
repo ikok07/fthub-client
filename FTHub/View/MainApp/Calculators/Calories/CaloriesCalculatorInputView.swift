@@ -59,7 +59,7 @@ struct CaloriesCalculatorInputView: View {
                 
                 CustomInputField(isActive: _isActive, icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
                 
-                CustomPickerRowView(icon: "figure.run", name: "Activity") {
+                CustomPickerRowView(icon: "figure.run") {
                     Picker("", selection: $activityLevel) {
                         ForEach(ActivityLevel.allCases, id: \.self) { level in
                             Text("\(level.rawValue)".camelCaseToWords())

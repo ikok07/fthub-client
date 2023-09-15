@@ -10,7 +10,6 @@ import SwiftUI
 struct CustomPickerRowView<Content:View>: View {
     
     let icon: String
-    let name: String
     
     let picker: () -> Content
     
@@ -35,12 +34,11 @@ struct CustomPickerRowView<Content:View>: View {
         .background(.textfieldAppearance)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .shadow(color: .textfieldBg.opacity(0.3), radius: 3, x: 2, y: 2)
-        
     }
 }
 
 #Preview {
-    CustomPickerRowView(icon: "figure.run", name: "Activity") {
+    CustomPickerRowView(icon: "figure.run") {
         Picker("", selection: .constant(ActivityLevel.SelectActivity)) {
             ForEach(ActivityLevel.allCases, id: \.self) { level in
                 Text("\(level.rawValue)".camelCaseToWords())
