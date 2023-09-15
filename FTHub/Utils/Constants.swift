@@ -31,7 +31,6 @@ struct K {
         static let lightGrayGradient: LinearGradient = LinearGradient(colors: [.textGray.opacity(0.35)], startPoint: .leading, endPoint: .trailing)
         static let clearGradient: LinearGradient = LinearGradient(colors: [.clear], startPoint: .leading, endPoint: .trailing)
     }
-
     
     
     // MARK: - API

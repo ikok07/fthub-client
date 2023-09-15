@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import SwiftUICustomizablePicker
 
 enum ActivityLevel: String, Codable, CaseIterable {
     case SelectActivity, Light, Active, VeryActive, UltraActive
@@ -20,6 +21,7 @@ struct CaloriesCalculatorInputView: View {
     
     @State var autofill: Bool = false
     
+    @Binding var showResult: Bool
     @Binding var result: Double
     @Binding var selectedOption: CaloriesCalculatorResultOption
     
@@ -32,6 +34,25 @@ struct CaloriesCalculatorInputView: View {
     var body: some View {
         VStack {
             VStack(spacing: 20) {
+                
+                SwiftUICustomizablePicker(CaloriesCalculatorResultOption.allCases, selection: $selectedOption) { item in
+                    Text("\(item.rawValue)".camelCaseToWords())
+                        .foregroundStyle(selectedOption == item ? .white : .text.opacity(0.7))
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                        .fixedSize()
+                        .lineSpacing(-20)
+                        .multilineTextAlignment(.center)
+                        .animation(.easeOut, value: selectedOption)
+                }
+                .frame(width: .infinity, height: 32)
+                .backgroundColor(.textfieldAppearance)
+                .indicatorBackgroundGradient(K.Gradients.mainGradient)
+                .indicatorPadding(EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
+                .innerPadding(EdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3))
+                .shadow(color: .textfieldBg.opacity(0.3), radius: 3, x: 2, y: 2)
+                .sensoryFeedback(.impact, trigger: selectedOption)
+                
                 CustomInputField(isActive: _isActive, icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age)
                 
                 CustomInputField(isActive: _isActive, icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
@@ -58,7 +79,6 @@ struct CaloriesCalculatorInputView: View {
             .padding(.top)
             
         }
-        .padding()
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 HStack {
@@ -92,9 +112,6 @@ struct CaloriesCalculatorInputView: View {
                 enableAutoFill()
             }
         }
-        .onChange(of: selectedOption) { oldValue, newValue in
-            calculate()
-        }
     }
     
     func enableAutoFill() {
@@ -110,16 +127,16 @@ struct CaloriesCalculatorInputView: View {
     }
     
     func calculate() {
-        if activityLevel != .SelectActivity {
+        if CalculatorsCommonController.validate(age: self.age, weight: self.weight, height: self.height, activityLevel: self.activityLevel) {
             withAnimation(.bouncy) {
+                showResult = true
                 result = CaloriesCalculatorController.calculateCalories(selectedOption: self.selectedOption, activityLevel: activityLevel, gender: self.gender, age: Double(self.age)!, weight: Double(self.weight)!, height: Double(self.height)!)
             }
-        } else {
-            Message.send(type: "alert", message: "Please select activity level")
         }
     }
 }
 
 #Preview {
-    CaloriesCalculatorInputView(result: .constant(1480), selectedOption: .constant(.MaintainWeight), gender: .constant(.Male), age: .constant(""), weight: .constant(""), height: .constant(""), activityLevel: .constant(.SelectActivity))
+    CaloriesCalculatorInputView(showResult: .constant(true), result: .constant(1480), selectedOption: .constant(.MaintainWeight), gender: .constant(.Male), age: .constant(""), weight: .constant(""), height: .constant(""), activityLevel: .constant(.SelectActivity))
+        .padding()
 }

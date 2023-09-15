@@ -33,9 +33,10 @@ struct CalculatorGenderSelector: View {
                         K.Gradients.clearGradient
                     }
                 }
-                .background(.ultraThinMaterial)
+                .background(.textfieldAppearance)
                 .animation(.easeOut, value: activeGender)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
+                .shadow(color: .textfieldBg.opacity(0.3), radius: 3, x: 2, y: 2)
             })
             
             Button(action: { activeGender = .Female }, label: {
@@ -58,9 +59,10 @@ struct CalculatorGenderSelector: View {
                         K.Gradients.clearGradient
                     }
                 }
-                .background(.ultraThinMaterial)
+                .background(.textfieldAppearance)
                 .animation(.easeOut, value: activeGender)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
+                .shadow(color: .textfieldBg.opacity(0.3), radius: 3, x: 2, y: 2)
             })
         }
     }

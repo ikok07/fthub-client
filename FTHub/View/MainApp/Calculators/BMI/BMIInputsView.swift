@@ -96,12 +96,14 @@ struct BMIInputsView: View {
     
     func calculate() {
         if let user = user.first {
-            showResult = true
-            if weight != "" && height != "" {
+            if CalculatorsCommonController.validate(weight: self.weight, height: self.height) {
                 withAnimation {
+                    showResult = true
                     result = BMIController.calculateBMI(units: user.details?.units ?? .metric, weight: Double(self.weight)! , height: Double(self.height)!)
                 }
             }
+        } else {
+            Message.send(type: "error", message: "There was an error. Please try again!")
         }
     }
 }

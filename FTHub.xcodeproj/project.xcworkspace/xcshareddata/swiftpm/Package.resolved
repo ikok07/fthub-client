@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "swiftuicustomizablepicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ikok07/SwiftUICustomizablePicker.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "13561da983ef2092ab0a1962d42fb5b68887bd68"
+      }
+    },
+    {
       "identity" : "swiftuigauge",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ikok07/SwiftUIGauge.git",

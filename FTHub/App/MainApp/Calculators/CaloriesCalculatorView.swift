@@ -12,7 +12,7 @@ struct CaloriesCalculatorView: View {
     
     @Query private var user: [User]
     
-    @Binding var isPresented: Bool
+    @State private var showResult: Bool = false
     
     @State private var gender: Gender = .Male
     @State private var age: String = ""
@@ -28,20 +28,17 @@ struct CaloriesCalculatorView: View {
             ScrollView {
                 
                 CalculatorGenderSelector(activeGender: $gender)
-                    .padding(.top, 20)
-                    .padding(.horizontal)
+                    .padding(.vertical, 20)
+                    .padding(.horizontal, 30)
                 
-                CaloriesCalculatorInputView(result: $result, selectedOption: $resultOption, gender: $gender, age: $age, weight: $weight, height: $height, activityLevel: $activityLevel)
+                CaloriesCalculatorInputView(showResult: $showResult, result: $result, selectedOption: $resultOption, gender: $gender, age: $age, weight: $weight, height: $height, activityLevel: $activityLevel)
+                    .padding(.horizontal, 30)
                 
-                CaloriesCalculatorResultsView(selectedOption: $resultOption, result: result)
-                    .padding(.top)
-            }
-            .padding()
-            .toolbar {
-                Button(action: { isPresented = false }, label: {
-                    Text("Done")
-                        .fontWeight(.semibold)
-                })
+                if showResult {
+                    CaloriesCalculatorResultsView(result: result)
+                        .padding(.top)
+                        .padding(.horizontal, 20)
+                }
             }
             .navigationTitle("Calories Calculator")
             .navigationBarTitleDisplayMode(.inline)
@@ -50,5 +47,5 @@ struct CaloriesCalculatorView: View {
 }
 
 #Preview {
-    CaloriesCalculatorView(isPresented: .constant(true))
+    CaloriesCalculatorView()
 }

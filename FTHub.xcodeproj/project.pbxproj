@@ -88,6 +88,7 @@
 		229C8E352AA9FBF3006D6526 /* FormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8E342AA9FBF3006D6526 /* FormData.swift */; };
 		229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */; };
 		229CC52B2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */; };
+		22AC940B2AB4C8A50058EC64 /* CalculatorsCommonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC940A2AB4C8A50058EC64 /* CalculatorsCommonController.swift */; };
 		22C34A542A94ECC500313D89 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C34A532A94ECC500313D89 /* Validator.swift */; };
 		22C6D7EB2AADB4B7002C7010 /* CalculatorsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */; };
 		22C6D7EE2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D7ED2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift */; };
@@ -137,6 +138,7 @@
 		22EF430F2AA78784002B6B1B /* SettingsMainProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EF430E2AA78784002B6B1B /* SettingsMainProfileView.swift */; };
 		22F2709C2A95DD8300AA8AC6 /* NetworkCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2709B2A95DD8300AA8AC6 /* NetworkCapable.swift */; };
 		22F2709E2A95E5FA00AA8AC6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2709D2A95E5FA00AA8AC6 /* Networking.swift */; };
+		22F32B382AB48FC700F532BB /* SwiftUICustomizablePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 22F32B372AB48FC700F532BB /* SwiftUICustomizablePicker */; };
 		22F55BEE2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BED2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift */; };
 		22F55BF02AA26323007DBBA9 /* SetupPageNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BEF2AA26323007DBBA9 /* SetupPageNotificationsView.swift */; };
 		22F55BF32AA2678F007DBBA9 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BF22AA2678F007DBBA9 /* NotificationsController.swift */; };
@@ -243,6 +245,7 @@
 		229C8E342AA9FBF3006D6526 /* FormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormData.swift; sourceTree = "<group>"; };
 		229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorButtonsView.swift; sourceTree = "<group>"; };
 		229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorStepsLabelsView.swift; sourceTree = "<group>"; };
+		22AC940A2AB4C8A50058EC64 /* CalculatorsCommonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsCommonController.swift; sourceTree = "<group>"; };
 		22C34A532A94ECC500313D89 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsMainView.swift; sourceTree = "<group>"; };
 		22C6D7ED2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsFeaturedBoxView.swift; sourceTree = "<group>"; };
@@ -319,6 +322,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22F32B382AB48FC700F532BB /* SwiftUICustomizablePicker in Frameworks */,
 				223B1A432AA0856600DADB7D /* SwiftUIGauge in Frameworks */,
 				22EB51AE2A8B62F80079A3B1 /* Algorithms in Frameworks */,
 				22803A282A9CC8E0004EF9B3 /* HorizontalNumberPicker in Frameworks */,
@@ -1031,6 +1035,7 @@
 			children = (
 				22F6BB162AAF0632000239B0 /* BMIController.swift */,
 				221965912AB0C9F200373255 /* CaloriesCalculatorController.swift */,
+				22AC940A2AB4C8A50058EC64 /* CalculatorsCommonController.swift */,
 			);
 			path = Calculators;
 			sourceTree = "<group>";
@@ -1113,6 +1118,7 @@
 				22EB51AD2A8B62F80079A3B1 /* Algorithms */,
 				22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */,
 				223B1A422AA0856600DADB7D /* SwiftUIGauge */,
+				22F32B372AB48FC700F532BB /* SwiftUICustomizablePicker */,
 			);
 			productName = FTHub;
 			productReference = 220266BE2A8A4815009D299F /* FTHub.app */;
@@ -1148,6 +1154,7 @@
 				22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */,
 				223B1A412AA0856600DADB7D /* XCRemoteSwiftPackageReference "SwiftUIGauge" */,
+				22F32B362AB48FC700F532BB /* XCRemoteSwiftPackageReference "SwiftUICustomizablePicker" */,
 			);
 			productRefGroup = 220266BF2A8A4815009D299F /* Products */;
 			projectDirPath = "";
@@ -1184,6 +1191,7 @@
 				229C8E252AA9D97E006D6526 /* SettingsProfileDataController.swift in Sources */,
 				22374B1A2A929C5C006BE6BB /* BaseAuthController.swift in Sources */,
 				220266D62A8A5144009D299F /* TwoLineHeadingView.swift in Sources */,
+				22AC940B2AB4C8A50058EC64 /* CalculatorsCommonController.swift in Sources */,
 				22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */,
 				22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */,
 				221965902AB0C6A500373255 /* CaloriesCalculatorResultsView.swift in Sources */,
@@ -1476,7 +1484,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = eu.fthub.FTHub;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.fthub.FTHu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1512,7 +1520,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = eu.fthub.FTHub;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.fthub.FTHu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1568,6 +1576,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		22F32B362AB48FC700F532BB /* XCRemoteSwiftPackageReference "SwiftUICustomizablePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ikok07/SwiftUICustomizablePicker.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1585,6 +1601,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		22F32B372AB48FC700F532BB /* SwiftUICustomizablePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22F32B362AB48FC700F532BB /* XCRemoteSwiftPackageReference "SwiftUICustomizablePicker" */;
+			productName = SwiftUICustomizablePicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

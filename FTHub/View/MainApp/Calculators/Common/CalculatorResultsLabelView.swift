@@ -20,7 +20,7 @@ struct CalculatorResultsLabelView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            Text("Your Results")
+            Text("Your Result")
                 .foregroundStyle(.textGray)
                 .font(.headline)
                 .fontWeight(.bold)
@@ -33,12 +33,12 @@ struct CalculatorResultsLabelView: View {
                 
                 Text("\(unit)")
                     .font(.system(size: 40))
-            }
+            }  
         }
         .offset(x: offsetX, y: offsetY)
     }
 }
 
 #Preview {
-    CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: 1480, decimals: 0, unit: "kcal", invalid: true)
+    CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: 1480, decimals: 0, unit: "", invalid: true)
 }

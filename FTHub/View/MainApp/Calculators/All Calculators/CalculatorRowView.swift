@@ -7,13 +7,10 @@
 
 import SwiftUI
 
-struct CalculatorRowView<Destination: View>: View {
+struct CalculatorRowView: View {
     
     let icon: String
     let name: String
-    let destination: Destination
-    
-    @Binding var isPresented: Bool
     
     var body: some View {
     
@@ -44,16 +41,10 @@ struct CalculatorRowView<Destination: View>: View {
                 }
             }
             .contentShape(Rectangle())
-            .sheet(isPresented: $isPresented) {
-                destination
-            }
-            .onTapGesture {
-                isPresented = true
-            }
     }
 }
 
 #Preview {
-    CalculatorRowView(icon: "flame.fill", name: "BMI", destination: BMICalculatorView(isPresented: .constant(false)), isPresented: .constant(false))
+    CalculatorRowView(icon: "flame.fill", name: "BMI")
         .padding()
 }

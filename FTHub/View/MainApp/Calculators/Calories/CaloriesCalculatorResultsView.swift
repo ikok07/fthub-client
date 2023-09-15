@@ -6,35 +6,24 @@
 //
 
 import SwiftUI
+import SwiftUICustomizablePicker
 
 enum CaloriesCalculatorResultOption: String, CaseIterable, Codable {
-    case MildWeightLoss, MaintainWeight, WeightLoss
+    case MaintainWeight, LoseWeight
 }
 
 struct CaloriesCalculatorResultsView: View {
     
-    @Binding var selectedOption: CaloriesCalculatorResultOption
-    
     let result: Double
     
     var body: some View {
-        VStack {
-            
+        VStack(spacing: 30) {
             CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: result, decimals: 0, unit: "kcal", invalid: false)
-            
-            Picker("", selection: $selectedOption) {
-                ForEach(CaloriesCalculatorResultOption.allCases, id: \.self) { option in
-                    Text("\(option.rawValue)".camelCaseToWords())
-                        .contentTransition(.numericText())
-                        .tag(option)
-                }
-            }
-            .pickerStyle(.segmented)
         }
     }
 }
 
 #Preview {
-    CaloriesCalculatorResultsView(selectedOption: .constant(.MaintainWeight), result: 1480)
+    CaloriesCalculatorResultsView(result: 1480)
         .padding()
 }
