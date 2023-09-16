@@ -40,7 +40,7 @@ struct CaloriesCalculatorResultsView: View {
                             .font(.footnote)
                     }
                 }
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 30)
                 .onChange(of: weightPerWeekInt) { oldValue, newValue in
                     weightPerWeek = Double(weightPerWeekInt) / 100
                 }

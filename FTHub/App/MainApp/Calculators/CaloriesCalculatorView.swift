@@ -37,7 +37,6 @@ struct CaloriesCalculatorView: View {
                 if showResult {
                     CaloriesCalculatorResultsView(weightPerWeek: $weightPerWeek, result: result)
                         .padding(.top, 5)
-                        .padding(.horizontal, 20)
                 }
             }
             .navigationTitle("Calories Calculator")
