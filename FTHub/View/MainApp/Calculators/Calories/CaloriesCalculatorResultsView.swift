@@ -6,24 +6,50 @@
 //
 
 import SwiftUI
-import SwiftUICustomizablePicker
-
-enum CaloriesCalculatorResultOption: String, CaseIterable, Codable {
-    case MaintainWeight, LoseWeight
-}
+import HorizontalNumberPicker
 
 struct CaloriesCalculatorResultsView: View {
     
+    @Binding var weightPerWeek: Double
+    @State private var weightPerWeekInt: Int = 0
     let result: Double
     
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: 5) {
             CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: result, decimals: 0, unit: "kcal", invalid: false)
+            
+            VStack(spacing: 0) {
+                HorizontalPickerView(value: $weightPerWeekInt, selectorGradient: K.Gradients.mainGradient, minValue: -100, maxValue: 100, startValue: 0)
+                HStack {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                            .font(.footnote)
+                        Text("Lose Weight")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                    }
+                    Spacer()
+                    Text("\(String(format: "%.2f", weightPerWeek)) kg/week")
+                        .foregroundStyle(K.Gradients.mainGradient)
+                    Spacer()
+                    HStack {
+                        Text("Gain Weight")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                        Image(systemName: "chevron.right")
+                            .font(.footnote)
+                    }
+                }
+                .padding(.horizontal, 10)
+                .onChange(of: weightPerWeekInt) { oldValue, newValue in
+                    weightPerWeek = Double(weightPerWeekInt) / 100
+                }
+            }
         }
     }
 }
 
 #Preview {
-    CaloriesCalculatorResultsView(result: 1480)
+    CaloriesCalculatorResultsView(weightPerWeek: .constant(100), result: 1480)
         .padding()
 }

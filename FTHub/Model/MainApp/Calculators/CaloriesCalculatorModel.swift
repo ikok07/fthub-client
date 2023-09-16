@@ -35,15 +35,12 @@ struct CaloriesCalculatorModel {
         
     }
 
-    static func getFinalResult(selectedOption: CaloriesCalculatorResultOption, bmr: Double, coefficients: (Double, Double)) -> Double {
-        
+    static func getFinalResult(weightPerWeek: Double, bmr: Double, coefficients: (Double, Double)) -> Double {
         let baseResult = bmr * coefficients.0
         
-        switch selectedOption {
-        case .MaintainWeight:
-            return baseResult
-        case .LoseWeight:
-            return baseResult * coefficients.1
-        }
+        let percentage = 1 + (0.4 * weightPerWeek)
+        let result = percentage * baseResult
+        
+        return result
     }
 }

@@ -23,7 +23,7 @@ struct CaloriesCalculatorInputView: View {
     
     @Binding var showResult: Bool
     @Binding var result: Double
-    @Binding var selectedOption: CaloriesCalculatorResultOption
+    @Binding var weightPerWeek: Double
     
     @Binding var gender: Gender
     @Binding var age: String
@@ -34,24 +34,6 @@ struct CaloriesCalculatorInputView: View {
     var body: some View {
         VStack {
             VStack(spacing: 20) {
-                
-                SwiftUICustomizablePicker(CaloriesCalculatorResultOption.allCases, selection: $selectedOption) { item in
-                    Text("\(item.rawValue)".camelCaseToWords())
-                        .foregroundStyle(selectedOption == item ? .white : .text.opacity(0.7))
-                        .font(.footnote)
-                        .fontWeight(.semibold)
-                        .fixedSize()
-                        .lineSpacing(-20)
-                        .multilineTextAlignment(.center)
-                        .animation(.easeOut, value: selectedOption)
-                }
-                .frame(width: .infinity, height: 32)
-                .backgroundColor(.textfieldAppearance)
-                .indicatorBackgroundGradient(K.Gradients.mainGradient)
-                .indicatorPadding(EdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5))
-                .innerPadding(EdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3))
-                .shadow(color: .textfieldBg.opacity(0.3), radius: 3, x: 2, y: 2)
-                .sensoryFeedback(.impact, trigger: selectedOption)
                 
                 CustomInputField(isActive: _isActive, icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age)
                 
@@ -112,6 +94,9 @@ struct CaloriesCalculatorInputView: View {
                 enableAutoFill()
             }
         }
+        .onChange(of: self.weightPerWeek) { oldValue, newValue in
+            calculate()
+        }
     }
     
     func enableAutoFill() {
@@ -130,13 +115,13 @@ struct CaloriesCalculatorInputView: View {
         if CalculatorsCommonController.validate(age: self.age, weight: self.weight, height: self.height, activityLevel: self.activityLevel) {
             withAnimation(.bouncy) {
                 showResult = true
-                result = CaloriesCalculatorController.calculateCalories(selectedOption: self.selectedOption, activityLevel: activityLevel, gender: self.gender, age: Double(self.age)!, weight: Double(self.weight)!, height: Double(self.height)!)
+                result = CaloriesCalculatorController.calculateCalories(weightPerWeek: self.weightPerWeek, activityLevel: activityLevel, gender: self.gender, age: Double(self.age)!, weight: Double(self.weight)!, height: Double(self.height)!)
             }
         }
     }
 }
 
 #Preview {
-    CaloriesCalculatorInputView(showResult: .constant(true), result: .constant(1480), selectedOption: .constant(.MaintainWeight), gender: .constant(.Male), age: .constant(""), weight: .constant(""), height: .constant(""), activityLevel: .constant(.SelectActivity))
+    CaloriesCalculatorInputView(showResult: .constant(true), result: .constant(1480), weightPerWeek: .constant(100), gender: .constant(.Male), age: .constant(""), weight: .constant(""), height: .constant(""), activityLevel: .constant(.SelectActivity))
         .padding()
 }

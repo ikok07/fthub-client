@@ -20,8 +20,8 @@ struct CaloriesCalculatorView: View {
     @State private var height: String = ""
     @State private var activityLevel: ActivityLevel = .SelectActivity
     
+    @State private var weightPerWeek: Double = 0
     @State private var result: Double = 0
-    @State private var resultOption: CaloriesCalculatorResultOption = .MaintainWeight
     
     var body: some View {
         NavigationStack {
@@ -31,12 +31,12 @@ struct CaloriesCalculatorView: View {
                     .padding(.vertical, 20)
                     .padding(.horizontal, 30)
                 
-                CaloriesCalculatorInputView(showResult: $showResult, result: $result, selectedOption: $resultOption, gender: $gender, age: $age, weight: $weight, height: $height, activityLevel: $activityLevel)
+                CaloriesCalculatorInputView(showResult: $showResult, result: $result, weightPerWeek: self.$weightPerWeek, gender: $gender, age: $age, weight: $weight, height: $height, activityLevel: $activityLevel)
                     .padding(.horizontal, 30)
                 
                 if showResult {
-                    CaloriesCalculatorResultsView(result: result)
-                        .padding(.top)
+                    CaloriesCalculatorResultsView(weightPerWeek: $weightPerWeek, result: result)
+                        .padding(.top, 5)
                         .padding(.horizontal, 20)
                 }
             }

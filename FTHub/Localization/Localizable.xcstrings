@@ -10,6 +10,9 @@
     "%@ inch" : {
 
     },
+    "%@ kg/week" : {
+
+    },
     "%@ lbs" : {
 
     },
@@ -300,6 +303,9 @@
         }
       }
     },
+    "Gain Weight" : {
+
+    },
     "Go to Dashboard" : {
 
     },
@@ -328,6 +334,9 @@
 
     },
     "Lorem Ipsum is simply dummy text of the printing and typesetting" : {
+
+    },
+    "Lose Weight" : {
 
     },
     "Male" : {
