@@ -88,6 +88,13 @@
 		229C8E352AA9FBF3006D6526 /* FormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8E342AA9FBF3006D6526 /* FormData.swift */; };
 		229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */; };
 		229CC52B2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */; };
+		22A3D96E2AB6082A003A339E /* BodyFatCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D96D2AB6082A003A339E /* BodyFatCalculatorView.swift */; };
+		22A3D9712AB608EC003A339E /* BodyFatCalculatorInputsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D9702AB608EC003A339E /* BodyFatCalculatorInputsView.swift */; };
+		22A3D9732AB60F14003A339E /* BodyFatCalculatorResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D9722AB60F14003A339E /* BodyFatCalculatorResultsView.swift */; };
+		22A3D9752AB61392003A339E /* BodyFatCalculatorHorizontalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D9742AB61392003A339E /* BodyFatCalculatorHorizontalChartView.swift */; };
+		22A3D9772AB6178E003A339E /* TriangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D9762AB6178E003A339E /* TriangleShape.swift */; };
+		22A3D9792AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D9782AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift */; };
+		22A3D97B2AB61F51003A339E /* BodyFatCalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D97A2AB61F51003A339E /* BodyFatCalculatorController.swift */; };
 		22AC940B2AB4C8A50058EC64 /* CalculatorsCommonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC940A2AB4C8A50058EC64 /* CalculatorsCommonController.swift */; };
 		22C34A542A94ECC500313D89 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C34A532A94ECC500313D89 /* Validator.swift */; };
 		22C6D7EB2AADB4B7002C7010 /* CalculatorsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */; };
@@ -245,6 +252,13 @@
 		229C8E342AA9FBF3006D6526 /* FormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormData.swift; sourceTree = "<group>"; };
 		229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorButtonsView.swift; sourceTree = "<group>"; };
 		229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorStepsLabelsView.swift; sourceTree = "<group>"; };
+		22A3D96D2AB6082A003A339E /* BodyFatCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorView.swift; sourceTree = "<group>"; };
+		22A3D9702AB608EC003A339E /* BodyFatCalculatorInputsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorInputsView.swift; sourceTree = "<group>"; };
+		22A3D9722AB60F14003A339E /* BodyFatCalculatorResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorResultsView.swift; sourceTree = "<group>"; };
+		22A3D9742AB61392003A339E /* BodyFatCalculatorHorizontalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorHorizontalChartView.swift; sourceTree = "<group>"; };
+		22A3D9762AB6178E003A339E /* TriangleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleShape.swift; sourceTree = "<group>"; };
+		22A3D9782AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorHorizontalChartSelectorView.swift; sourceTree = "<group>"; };
+		22A3D97A2AB61F51003A339E /* BodyFatCalculatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorController.swift; sourceTree = "<group>"; };
 		22AC940A2AB4C8A50058EC64 /* CalculatorsCommonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsCommonController.swift; sourceTree = "<group>"; };
 		22C34A532A94ECC500313D89 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsMainView.swift; sourceTree = "<group>"; };
@@ -797,12 +811,24 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		22A3D96F2AB608C5003A339E /* Body Fat */ = {
+			isa = PBXGroup;
+			children = (
+				22A3D9702AB608EC003A339E /* BodyFatCalculatorInputsView.swift */,
+				22A3D9722AB60F14003A339E /* BodyFatCalculatorResultsView.swift */,
+				22A3D9742AB61392003A339E /* BodyFatCalculatorHorizontalChartView.swift */,
+				22A3D9782AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift */,
+			);
+			path = "Body Fat";
+			sourceTree = "<group>";
+		};
 		22C6D7E92AADB4A1002C7010 /* Calculators */ = {
 			isa = PBXGroup;
 			children = (
 				22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */,
 				22C6D7FE2AADD26E002C7010 /* BMICalculatorView.swift */,
 				22C905532AB04E10009FFE21 /* CaloriesCalculatorView.swift */,
+				22A3D96D2AB6082A003A339E /* BodyFatCalculatorView.swift */,
 			);
 			path = Calculators;
 			sourceTree = "<group>";
@@ -810,6 +836,7 @@
 		22C6D7EC2AADB55D002C7010 /* Calculators */ = {
 			isa = PBXGroup;
 			children = (
+				22A3D96F2AB608C5003A339E /* Body Fat */,
 				22C905552AB0506A009FFE21 /* Calories */,
 				22C6D8032AADD76D002C7010 /* Common */,
 				22C6D8002AADD758002C7010 /* BMI */,
@@ -863,6 +890,7 @@
 			isa = PBXGroup;
 			children = (
 				22C6D80B2AADEAD2002C7010 /* ArcShape.swift */,
+				22A3D9762AB6178E003A339E /* TriangleShape.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -1036,6 +1064,7 @@
 				22F6BB162AAF0632000239B0 /* BMIController.swift */,
 				221965912AB0C9F200373255 /* CaloriesCalculatorController.swift */,
 				22AC940A2AB4C8A50058EC64 /* CalculatorsCommonController.swift */,
+				22A3D97A2AB61F51003A339E /* BodyFatCalculatorController.swift */,
 			);
 			path = Calculators;
 			sourceTree = "<group>";
@@ -1193,6 +1222,7 @@
 				220266D62A8A5144009D299F /* TwoLineHeadingView.swift in Sources */,
 				22AC940B2AB4C8A50058EC64 /* CalculatorsCommonController.swift in Sources */,
 				22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */,
+				22A3D9732AB60F14003A339E /* BodyFatCalculatorResultsView.swift in Sources */,
 				22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */,
 				221965902AB0C6A500373255 /* CaloriesCalculatorResultsView.swift in Sources */,
 				22803A1A2A9C913B004EF9B3 /* SetupAgePageView.swift in Sources */,
@@ -1227,6 +1257,7 @@
 				22C34A542A94ECC500313D89 /* Validator.swift in Sources */,
 				22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */,
 				22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */,
+				22A3D9712AB608EC003A339E /* BodyFatCalculatorInputsView.swift in Sources */,
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
 				22FD03352A9B8372005A6A13 /* SetupPageOneView.swift in Sources */,
@@ -1235,6 +1266,7 @@
 				22F55BEE2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift in Sources */,
 				22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */,
 				22C6D7F02AADB8D6002C7010 /* StaticColorButton.swift in Sources */,
+				22A3D9792AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift in Sources */,
 				22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */,
 				22FD03372A9B83C4005A6A13 /* SetupPageViewManager.swift in Sources */,
 				229C8E202AA9D7C0006D6526 /* SettingsProfileImagePickerView.swift in Sources */,
@@ -1251,6 +1283,7 @@
 				22969D562A94B91A00935A3C /* RestorePasswordController.swift in Sources */,
 				22EF430D2AA7866D002B6B1B /* SettingRowToggleView.swift in Sources */,
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
+				22A3D9772AB6178E003A339E /* TriangleShape.swift in Sources */,
 				229C8E1B2AA9C7C7006D6526 /* SettingsProfileMainDataView.swift in Sources */,
 				224A5DA12A8CF98D00490614 /* User.swift in Sources */,
 				228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */,
@@ -1284,12 +1317,14 @@
 				227585322AA8F9F500149814 /* SettingsProfileDataView.swift in Sources */,
 				2277FC262A9E13850082AA12 /* UnitSelectView.swift in Sources */,
 				22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */,
+				22A3D96E2AB6082A003A339E /* BodyFatCalculatorView.swift in Sources */,
 				22C6D7FD2AADD068002C7010 /* AllCalculatorsListView.swift in Sources */,
 				22C6D8052AADDFB6002C7010 /* CustomInputField.swift in Sources */,
 				22969D512A94AAAD00935A3C /* RestorePasswordHeaderView.swift in Sources */,
 				22C6D8092AADE92B002C7010 /* BMIResultsView.swift in Sources */,
 				22FC13BD2A9757160016E17C /* RestorePasswordModel.swift in Sources */,
 				222F3C642A935D66005BC46F /* AccountAuthRequestModel.swift in Sources */,
+				22A3D97B2AB61F51003A339E /* BodyFatCalculatorController.swift in Sources */,
 				224CE9602AA1BAEB0027FB2D /* SetupPageTrainingsPerWeekView.swift in Sources */,
 				220266E72A8A5787009D299F /* TutorialStartPageView.swift in Sources */,
 				220266E92A8A5A28009D299F /* TutorialFirstPageView.swift in Sources */,
@@ -1309,6 +1344,7 @@
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */,
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,
+				22A3D9752AB61392003A339E /* BodyFatCalculatorHorizontalChartView.swift in Sources */,
 				22C6D8072AADE845002C7010 /* BMIInputsView.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
 				221965942AB0E92000373255 /* AutofillButtonView.swift in Sources */,

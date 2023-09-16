@@ -22,6 +22,9 @@ struct AllCalculatorsListView: View {
                 CalculatorRowView(icon: "gauge.with.dots.needle.67percent", name: "BMI")
             }
             
+            NavigationLink(destination: BodyFatCalculatorView()) {
+                CalculatorRowView(icon: "drop.degreesign.fill", name: "Body Fat")
+            }
         }
     }
 }

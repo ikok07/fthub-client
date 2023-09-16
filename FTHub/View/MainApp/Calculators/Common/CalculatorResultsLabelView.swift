@@ -25,15 +25,16 @@ struct CalculatorResultsLabelView: View {
                 .font(.headline)
                 .fontWeight(.bold)
             
-            HStack {
+            HStack(alignment: .bottom, spacing: 5) {
                 Text(invalid ? "Invalid" : "\(String(format: "%.\(decimals)f", result))")
                     .font(.system(size: 48))
                     .fontWeight(.bold)
                     .contentTransition(.numericText())
                 
                 Text("\(unit)")
-                    .font(.system(size: 40))
-            }  
+                    .font(.system(size: 20))
+                    .padding(.bottom, 10)
+            }
         }
         .offset(x: offsetX, y: offsetY)
     }

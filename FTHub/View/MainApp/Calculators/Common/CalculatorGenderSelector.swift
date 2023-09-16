@@ -13,7 +13,7 @@ struct CalculatorGenderSelector: View {
     
     var body: some View {
         HStack {
-            Button(action: { activeGender = .Male }, label: {
+            Button(action: { withAnimation(.bouncy) { activeGender = .Male } }, label: {
                 HStack {
                     Spacer()
                     Image("Male\(activeGender == .Male ? "" : "-gray")")
@@ -39,7 +39,7 @@ struct CalculatorGenderSelector: View {
                 .shadow(color: .textfieldBg.opacity(0.3), radius: 3, x: 2, y: 2)
             })
             
-            Button(action: { activeGender = .Female }, label: {
+            Button(action: { withAnimation(.bouncy) { activeGender = .Female } }, label: {
                 HStack {
                     Spacer()
                     Image("Female\(activeGender == .Female ? "" : "-gray")")
