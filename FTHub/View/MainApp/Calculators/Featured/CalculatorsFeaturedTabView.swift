@@ -17,7 +17,7 @@ struct CalculatorsFeaturedTabView: View {
         TabView(selection: $selectedTab) {
             CalculatorsFeaturedBoxView(image: "featured1", name: "Calories", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd", offsetX: 0, offsetY: 0) { CaloriesCalculatorView() }
                 .tag(0)
-            CalculatorsFeaturedBoxView(image: "featured2", name: "Fats", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd", offsetX: 0, offsetY: -50) { EmptyView() }
+            CalculatorsFeaturedBoxView(image: "featured2", name: "Fats", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd", offsetX: 0, offsetY: -50) { BodyFatCalculatorView() }
                 .tag(1)
             CalculatorsFeaturedBoxView(image: "featured3", name: "BMI", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd", offsetX: 0, offsetY: 0) { BMICalculatorView() }
                 .tag(2)
