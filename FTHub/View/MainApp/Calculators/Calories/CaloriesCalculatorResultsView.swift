@@ -30,7 +30,7 @@ struct CaloriesCalculatorResultsView: View {
                     }
                     Spacer()
                     Text("\(String(format: "%.2f", weightPerWeek)) kg/week")
-                        .foregroundStyle(K.Gradients.mainGradient)
+                        .foregroundStyle(weightPerWeek >= 0 ? K.Gradients.mainGradient : K.Gradients.redGradient)
                     Spacer()
                     HStack {
                         Text("Gain Weight")
@@ -50,6 +50,5 @@ struct CaloriesCalculatorResultsView: View {
 }
 
 #Preview {
-    CaloriesCalculatorResultsView(weightPerWeek: .constant(100), result: 1480)
-        .padding()
+    CaloriesCalculatorResultsView(weightPerWeek: .constant(0), result: 1480)
 }
