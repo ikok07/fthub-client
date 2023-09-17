@@ -31,7 +31,7 @@ struct CalculatorResultsLabelView: View {
                     .fontWeight(.bold)
                     .contentTransition(.numericText())
                 
-                Text("\(unit)")
+                Text(invalid ? "" : "\(unit)")
                     .font(.system(size: 20))
                     .padding(.bottom, 10)
             }

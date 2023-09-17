@@ -18,6 +18,9 @@ struct BodyFatCalculatorResultsView: View {
             BodyFatCalculatorHorizontalChartView()
         }
         .frame(height: 150)
+        .onChange(of: result) { oldValue, newValue in
+            print(result)
+        }
     }
 }
 

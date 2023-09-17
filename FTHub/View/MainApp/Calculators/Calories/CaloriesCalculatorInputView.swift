@@ -72,8 +72,6 @@ struct CaloriesCalculatorInputView: View {
             }
         }
         .onChange(of: [gender.rawValue, activityLevel.rawValue, age, weight, height]) { oldValue, newValue in
-            print(newValue)
-            print(String(format: "%.1f", Double((user.first?.details?.height!)!) * K.Units.cmToInch))
             if let user = user.first, user.details != nil {
                 
                 let savedWeight: String = String(user.details!.weight!)

@@ -14,9 +14,17 @@ struct CaloriesCalculatorResultsView: View {
     @State private var weightPerWeekInt: Int = 0
     let result: Double
     
+    var invalid: Bool {
+        if result > 6000 || result < 500 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     var body: some View {
         VStack(spacing: 5) {
-            CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: result, decimals: 0, unit: "kcal", invalid: false)
+            CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: result, decimals: 0, unit: "kcal", invalid: invalid ? true : false)
             
             VStack(spacing: 0) {
                 HorizontalPickerView(value: $weightPerWeekInt, selectorGradient: K.Gradients.mainGradient, minValue: -100, maxValue: 100, startValue: 0)
@@ -43,6 +51,16 @@ struct CaloriesCalculatorResultsView: View {
                 .padding(.horizontal, 30)
                 .onChange(of: weightPerWeekInt) { oldValue, newValue in
                     weightPerWeek = Double(weightPerWeekInt) / 100
+                }
+                .onChange(of: result) { oldValue, newValue in
+                    if invalid {
+                        weightPerWeekInt = 0
+                    }
+                }
+            }
+            .overlay {
+                if invalid {
+                    Color.bg.opacity(0)
                 }
             }
         }
