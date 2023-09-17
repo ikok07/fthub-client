@@ -26,4 +26,26 @@ struct BodyFatCalculatorController {
         }
     }
     
+    static func getSelectorPosition(result: Double) -> Double {
+        if result < 0 || result > 50 {
+            return 0
+        }
+        
+        if result <= 2 {
+            return (1 - (2 - result) / 2) * 0.03
+        } else if result <= 6 {
+            return (1 - (6 - result) / 4) * 0.12 + 0.03
+        } else if result <= 14 {
+            return (1 - (14 - result) / 8) * 0.25 + 0.15
+        } else if result <= 18 {
+            return (1 - (18 - result) / 4) * 0.2 + 0.4
+        } else if result <= 25 {
+            return (1 - (25 - result) / 7) * 0.15 + 0.6
+        } else if result <= 50 {
+            return (1 - (50 - result) / 25) * 0.25 + 0.75
+        }
+        
+        return 0
+    }
+    
 }

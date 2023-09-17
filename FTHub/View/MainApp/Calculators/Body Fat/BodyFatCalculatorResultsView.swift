@@ -15,7 +15,7 @@ struct BodyFatCalculatorResultsView: View {
         VStack(spacing: 10) {
             CalculatorResultsLabelView(offsetX: 0, offsetY: 0, result: result, unit: "%", invalid: result < 0 || result > 50 ? true : false)
             
-            BodyFatCalculatorHorizontalChartView()
+            BodyFatCalculatorHorizontalChartView(result: self.result)
         }
         .frame(height: 150)
         .onChange(of: result) { oldValue, newValue in
