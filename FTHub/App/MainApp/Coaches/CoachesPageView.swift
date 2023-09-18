@@ -18,6 +18,8 @@ struct CoachesPageView: View {
     
     @Query private var user: [User]
     
+    @State private var paywallPresented: Bool = false
+    
     var body: some View {
         VStack(spacing: 20) {
             Text("Age: \(user.first?.details?.age ?? 0)")
@@ -26,12 +28,13 @@ struct CoachesPageView: View {
             
             Text("\(user.first?.name ?? "")")
             
-            Button(action: {
-                
-            }, label: {
-                Text("Sign Out")
-            })
+            Button(action: { paywallPresented = true }) {
+                Text("Show paywall")
+            }
         }
+        .sheet(isPresented: $paywallPresented, content: {
+            PaywallMainView(isPresented: $paywallPresented)
+        })
     }
 }
 
