@@ -20,7 +20,7 @@ struct TutorialFifthPageView: View {
                 .padding(.bottom, 30)
             
             VStack(spacing: 20) {
-                TwoLineHeadingView(upperPart: "track all", bottomPart: "your statistics")
+                TwoLineHeadingView(upperPart: "some text", bottomPart: "to be shown")
                 
                 HeadlineView(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd")
             }

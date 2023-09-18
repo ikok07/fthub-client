@@ -10,7 +10,7 @@ import SwiftData
 
 struct SetupPageHeightView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     @Query private var user: [User]
     
@@ -44,4 +44,5 @@ struct SetupPageHeightView: View {
 
 #Preview {
     SetupPageHeightView()
+        .environment(SetupController())
 }

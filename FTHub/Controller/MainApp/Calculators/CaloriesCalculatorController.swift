@@ -9,13 +9,15 @@ import Foundation
 
 struct CaloriesCalculatorController {
     
-    static func calculateCalories(selectedOption: CaloriesCalculatorResultOption, activityLevel: ActivityLevel, gender: Gender, age: Double, weight: Double, height: Double) -> Double {
+    static func calculateCalories(weightPerWeek: Double, activityLevel: ActivityLevel, gender: Gender, age: Double, weight: Double, height: Double) -> Double {
         let coefficients = CaloriesCalculatorModel.getCoefficients(activityLevel: activityLevel)
         let bmr = CaloriesCalculatorModel.calculateBMR(gender: gender, age: age, weight: weight, height: height)
         
-        let result = CaloriesCalculatorModel.getFinalResult(selectedOption: selectedOption, bmr: bmr, coefficients: coefficients)
+        let result = CaloriesCalculatorModel.getFinalResult(weightPerWeek: weightPerWeek, bmr: bmr, coefficients: coefficients)
         return result
     }
+    
+    
     
     
 }

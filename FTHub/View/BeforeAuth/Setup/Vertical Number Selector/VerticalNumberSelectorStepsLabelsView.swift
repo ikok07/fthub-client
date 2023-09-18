@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VerticalNumberSelectorStepsLabelsView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     var body: some View {
         HStack {
@@ -45,5 +45,5 @@ struct VerticalNumberSelectorStepsLabelsView: View {
 
 #Preview {
     VerticalNumberSelectorStepsLabelsView()
-        .environmentObject(SetupController())
+        .environment(SetupController())
 }

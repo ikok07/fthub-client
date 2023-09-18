@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct CalculatorsFeaturedBoxView: View {
+struct CalculatorsFeaturedBoxView<Destination: View>: View {
+    
+    @State private var showCalculator: Bool = false
     
     let image: String
     let name: String
@@ -15,6 +17,8 @@ struct CalculatorsFeaturedBoxView: View {
     
     let offsetX: Double?
     let offsetY: Double?
+    
+    let destination: () -> Destination
     
     var body: some View {
         Image(image)
@@ -53,16 +57,16 @@ struct CalculatorsFeaturedBoxView: View {
                             Spacer()
                         }
                         HStack {
-                            Button(action: {}, label: {
+                            Button(action: { showCalculator = true }, label: {
                                 Text("Check out")
                                     .font(.footnote)
                                     .fontWeight(.bold)
                                     .padding(EdgeInsets(top: 9, leading: 5, bottom: 9, trailing: 5))
                             })
                             .frame(minWidth: 0, maxWidth: 100)
-                            .foregroundStyle(.text)
+                            .foregroundStyle(.black)
                             .fontWeight(.bold)
-                            .background(.background)
+                            .background(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                             
                             Spacer()
@@ -75,10 +79,13 @@ struct CalculatorsFeaturedBoxView: View {
                 .padding(.bottom, 10)
             }
             .clipShape(RoundedRectangle(cornerRadius: 12))
+            .navigationDestination(isPresented: $showCalculator, destination: destination)
     }
 }
 
 #Preview {
-    CalculatorsFeaturedBoxView(image: "featured2", name: "Calories", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd", offsetX: 0, offsetY: -50)
+    CalculatorsFeaturedBoxView(image: "featured2", name: "Calories", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has asdasdasdasd", offsetX: 0, offsetY: -50) {
+        CaloriesCalculatorView()
+    }
         .padding()
 }

@@ -10,7 +10,7 @@ import SwiftData
 
 struct SettingsMainView: View {
     
-    @EnvironmentObject private var healthKitController: HealthKitController
+    @Environment(HealthKitController.self) private var healthKitController
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = true
     @AppStorage("userToken") private var userToken: String = ""
@@ -30,6 +30,7 @@ struct SettingsMainView: View {
             ScrollView {
                 
                 SettingsMainProfileView(imageUrl: imageUrl, name: name, email: email)
+                    .padding()
                 
                 SettingsGroupView(name: "Account Settings") {
                     VStack(alignment: .leading, spacing: 0) {
@@ -50,6 +51,7 @@ struct SettingsMainView: View {
                         }
                     }
                 }
+                .padding()
                 
                 SettingsGroupView(name: "Information") {
                     VStack(alignment: .leading, spacing: 0) {
@@ -59,6 +61,7 @@ struct SettingsMainView: View {
                         SettingsRowView(icon: "lock", image: nil, label: "Privacy Policy")
                     }
                 }
+                .padding()
                 
                 Button(action: {
                     withAnimation {
@@ -74,11 +77,11 @@ struct SettingsMainView: View {
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 })
                 .buttonStyle(CTAButtonStyle(gradient: K.Gradients.redGradient))
+                .padding()
                 .padding(.top)
                 Spacer()
             }
             .navigationTitle("Discover more")
-            .padding()
             .scrollIndicators(.hidden)
             .onAppear {
                 if let user = user.first {
@@ -94,5 +97,5 @@ struct SettingsMainView: View {
 
 #Preview {
     SettingsMainView()
-        .environmentObject(HealthKitController())
+        .environment(HealthKitController())
 }

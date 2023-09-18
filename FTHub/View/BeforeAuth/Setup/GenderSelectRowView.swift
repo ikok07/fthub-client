@@ -14,7 +14,7 @@ enum Gender: String, CaseIterable, Codable {
 
 struct GenderSelectRowView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     let gender: Gender
     let id: Int
@@ -38,7 +38,7 @@ struct GenderSelectRowView: View {
                 Spacer()
             }
             .padding(EdgeInsets(top: 13, leading: 10, bottom: 13, trailing: 10))
-            .background(activeOption == id ? K.Gradients.secondaryGradient : K.Gradients.clearGradient)
+            .background(activeOption == id ? K.Gradients.mainGradient : K.Gradients.clearGradient)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .overlay {
                 RoundedRectangle(cornerRadius: 12)
@@ -52,5 +52,5 @@ struct GenderSelectRowView: View {
 #Preview {
     GenderSelectRowView(gender: .Female, id: 0, activeOption: .constant(0))
         .padding()
-        .environmentObject(SetupController())
+        .environment(SetupController())
 }

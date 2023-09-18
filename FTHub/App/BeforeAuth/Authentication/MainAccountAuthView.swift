@@ -35,9 +35,7 @@ struct MainAccountAuthView: View {
                                 
                                 CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: nil, text: $signInPasswordText)
                                     .id(0)
-                                    .onTapGesture {
-                                        scrollValue.scrollTo(0, anchor: .top)
-                                    }
+                                
                                 HStack {
                                     NavigationLink(destination: RestorePasswordEmailView()) {
                                         Text("Forgot password?")
@@ -52,11 +50,6 @@ struct MainAccountAuthView: View {
                             VStack(spacing: 16, content: {
                                 CustomTextFieldView(icon: "person.crop.circle", placeholder: "Enter your name", disableAutoCorrect: true, type: .name, text: $signUpNameText)
                                     .id(1)
-                                    .onTapGesture {
-                                        withAnimation(.easeOut) {
-                                            scrollValue.scrollTo(1, anchor: .top)
-                                        }
-                                    }
                                 CustomTextFieldView(icon: "envelope", placeholder: "Enter your email", autoCapitalize: false, disableAutoCorrect: true, type: .email, text: $signUpEmailText)
                                 CustomTextFieldView(icon: "key.horizontal", placeholder: "Enter your password", secureField: true, type: .password, text: $signUpPasswordText)
                                 CustomTextFieldView(icon: "key.horizontal", placeholder: "Confirm your password", secureField: true, type: .confirmPassword, text: $signUpConfirmPasswordText)

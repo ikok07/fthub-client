@@ -14,11 +14,11 @@ struct SetupPageViewManager: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var user: [User]
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
     @AppStorage("userToken") private var userToken: String?
     
-    @EnvironmentObject private var healthKitController: HealthKitController
+    @Environment(HealthKitController.self) private var healthKitController
     
     var body: some View {
         ZStack {
@@ -49,14 +49,12 @@ struct SetupPageViewManager: View {
                 }
             }
         }
-        .onAppear {
-            print("SETUP PAGE: \(user.first?.details?.setupActivePage)")
-        }
         .animation(.easeOut, value: setupController.activePage)
     }
 }
 
 #Preview {
     SetupPageViewManager()
-        .environmentObject(SetupController())
+        .environment(SetupController())
+        .environment(HealthKitController())
 }

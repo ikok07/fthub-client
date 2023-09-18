@@ -13,7 +13,7 @@ struct CalculatorGenderSelector: View {
     
     var body: some View {
         HStack {
-            Button(action: { activeGender = .Male }, label: {
+            Button(action: { withAnimation(.bouncy) { activeGender = .Male } }, label: {
                 HStack {
                     Spacer()
                     Image("Male\(activeGender == .Male ? "" : "-gray")")
@@ -27,18 +27,19 @@ struct CalculatorGenderSelector: View {
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                 .background {
-                    RoundedRectangle(cornerRadius: 12)
-                        .foregroundStyle(activeGender == .Male ? K.Gradients.mainGradient : K.Gradients.clearGradient)
-                        .opacity(0.75)
+                    if activeGender == .Male {
+                        K.Gradients.mainGradient
+                    } else {
+                        K.Gradients.clearGradient
+                    }
                 }
+                .background(.textfieldAppearance)
                 .animation(.easeOut, value: activeGender)
-                .background {
-                    RoundedRectangle(cornerRadius: 12)
-                        .strokeBorder(activeGender == .Male ? .clear : .customGray, lineWidth: 2)
-                }
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .shadow(color: .textfieldBg.opacity(0.3), radius: 3, x: 2, y: 2)
             })
             
-            Button(action: { activeGender = .Female }, label: {
+            Button(action: { withAnimation(.bouncy) { activeGender = .Female } }, label: {
                 HStack {
                     Spacer()
                     Image("Female\(activeGender == .Female ? "" : "-gray")")
@@ -52,15 +53,16 @@ struct CalculatorGenderSelector: View {
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                 .background {
-                    RoundedRectangle(cornerRadius: 12)
-                        .foregroundStyle(activeGender == .Female ? K.Gradients.mainGradient : K.Gradients.clearGradient)
-                        .opacity(0.75)
+                    if activeGender == .Female {
+                        K.Gradients.mainGradient
+                    } else {
+                        K.Gradients.clearGradient
+                    }
                 }
+                .background(.textfieldAppearance)
                 .animation(.easeOut, value: activeGender)
-                .background {
-                    RoundedRectangle(cornerRadius: 12)
-                        .strokeBorder(activeGender == .Female ? .clear : .customGray, lineWidth: 2)
-                }
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .shadow(color: .textfieldBg.opacity(0.3), radius: 3, x: 2, y: 2)
             })
         }
     }

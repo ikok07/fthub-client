@@ -10,7 +10,7 @@ import SwiftData
 
 struct UnitSelectView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     @State var activeUnits: Unit = .metric
     
@@ -34,7 +34,7 @@ struct UnitSelectView: View {
                 }, label: {
                     Text("Metric")
                         .foregroundStyle(activeUnits == .metric ? .white : .textGray)
-                        .padding(EdgeInsets(top: 7, leading: 0, bottom: 7, trailing: 0))
+                        .padding(EdgeInsets(top: 9, leading: 0, bottom: 9, trailing: 0))
                 })
                 .buttonStyle(activeUnits == .metric ? CTAButtonStyle(gradient: K.Gradients.mainGradient) : CTAButtonStyle(gradient: K.Gradients.clearGradient))
                 
@@ -49,15 +49,13 @@ struct UnitSelectView: View {
                 }, label: {
                     Text("Imperial")
                         .foregroundStyle(activeUnits == .imperial ? .white : .textGray)
-                        .padding(EdgeInsets(top: 7, leading: 0, bottom: 7, trailing: 0))
+                        .padding(EdgeInsets(top: 9, leading: 0, bottom: 9, trailing: 0))
                 })
                 .buttonStyle(activeUnits == .imperial ? CTAButtonStyle(gradient: K.Gradients.mainGradient) : CTAButtonStyle(gradient: K.Gradients.clearGradient))
             }
-            .padding(EdgeInsets(top: 7, leading: 10, bottom: 7, trailing: 10))
-            .overlay {
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(.customGray)
-            }
+            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+            .background(.ultraThinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
             .onAppear {
                 if let user = user.first {
                     activeUnits = user.details?.units ?? .metric
@@ -70,4 +68,5 @@ struct UnitSelectView: View {
 
 #Preview {
     UnitSelectView()
+        .environment(SetupController())
 }

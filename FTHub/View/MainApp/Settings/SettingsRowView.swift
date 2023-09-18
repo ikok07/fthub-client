@@ -49,7 +49,7 @@ struct SettingsRowView: View {
                 
                 Rectangle()
                     .frame(height: 1)
-                    .foregroundStyle(.customGray)
+                    .foregroundStyle(.customGray.opacity(0.6))
             }
             .contentShape(Rectangle())
     }

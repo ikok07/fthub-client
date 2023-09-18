@@ -88,6 +88,14 @@
 		229C8E352AA9FBF3006D6526 /* FormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8E342AA9FBF3006D6526 /* FormData.swift */; };
 		229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */; };
 		229CC52B2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */; };
+		22A3D96E2AB6082A003A339E /* BodyFatCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D96D2AB6082A003A339E /* BodyFatCalculatorView.swift */; };
+		22A3D9712AB608EC003A339E /* BodyFatCalculatorInputsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D9702AB608EC003A339E /* BodyFatCalculatorInputsView.swift */; };
+		22A3D9732AB60F14003A339E /* BodyFatCalculatorResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D9722AB60F14003A339E /* BodyFatCalculatorResultsView.swift */; };
+		22A3D9752AB61392003A339E /* BodyFatCalculatorHorizontalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D9742AB61392003A339E /* BodyFatCalculatorHorizontalChartView.swift */; };
+		22A3D9772AB6178E003A339E /* TriangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D9762AB6178E003A339E /* TriangleShape.swift */; };
+		22A3D9792AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D9782AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift */; };
+		22A3D97B2AB61F51003A339E /* BodyFatCalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3D97A2AB61F51003A339E /* BodyFatCalculatorController.swift */; };
+		22AC940B2AB4C8A50058EC64 /* CalculatorsCommonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC940A2AB4C8A50058EC64 /* CalculatorsCommonController.swift */; };
 		22C34A542A94ECC500313D89 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C34A532A94ECC500313D89 /* Validator.swift */; };
 		22C6D7EB2AADB4B7002C7010 /* CalculatorsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */; };
 		22C6D7EE2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C6D7ED2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift */; };
@@ -120,6 +128,14 @@
 		22DA77B12A98A59600550A6B /* AccountRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B02A98A59600550A6B /* AccountRequestModel.swift */; };
 		22DA77B42A98CE2E00550A6B /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B32A98CE2E00550A6B /* Database.swift */; };
 		22DA77B62A98D83300550A6B /* FakeLaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B52A98D83300550A6B /* FakeLaunchScreenView.swift */; };
+		22E3990E2AB89CBD009FD345 /* PaywallMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3990D2AB89CBD009FD345 /* PaywallMainView.swift */; };
+		22E399112AB89DB9009FD345 /* PaywallBenefitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E399102AB89DB9009FD345 /* PaywallBenefitsView.swift */; };
+		22E399132AB89DEF009FD345 /* PaywallBenefitsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E399122AB89DEF009FD345 /* PaywallBenefitsRowView.swift */; };
+		22E399152AB8A0D0009FD345 /* PaywallPlansView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E399142AB8A0D0009FD345 /* PaywallPlansView.swift */; };
+		22E399172AB8A12E009FD345 /* PaywallPlanRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E399162AB8A12E009FD345 /* PaywallPlanRowView.swift */; };
+		22E399192AB8BB19009FD345 /* PaywallFreeTrialInstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E399182AB8BB19009FD345 /* PaywallFreeTrialInstructionsView.swift */; };
+		22E3991B2AB8BC1B009FD345 /* PaywallFreeTrialTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3991A2AB8BC1B009FD345 /* PaywallFreeTrialTimelineView.swift */; };
+		22E399222AB8BD41009FD345 /* PaywallFreeTrialRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E399212AB8BD41009FD345 /* PaywallFreeTrialRowView.swift */; };
 		22E81F1A2A9525E10021DBE0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E81F192A9525E10021DBE0 /* Message.swift */; };
 		22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */; };
 		22E824692A8B9D3300B51C60 /* SignUpWithAppleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E824682A8B9D3300B51C60 /* SignUpWithAppleView.swift */; };
@@ -137,6 +153,7 @@
 		22EF430F2AA78784002B6B1B /* SettingsMainProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EF430E2AA78784002B6B1B /* SettingsMainProfileView.swift */; };
 		22F2709C2A95DD8300AA8AC6 /* NetworkCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2709B2A95DD8300AA8AC6 /* NetworkCapable.swift */; };
 		22F2709E2A95E5FA00AA8AC6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2709D2A95E5FA00AA8AC6 /* Networking.swift */; };
+		22F32B382AB48FC700F532BB /* SwiftUICustomizablePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 22F32B372AB48FC700F532BB /* SwiftUICustomizablePicker */; };
 		22F55BEE2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BED2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift */; };
 		22F55BF02AA26323007DBBA9 /* SetupPageNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BEF2AA26323007DBBA9 /* SetupPageNotificationsView.swift */; };
 		22F55BF32AA2678F007DBBA9 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F55BF22AA2678F007DBBA9 /* NotificationsController.swift */; };
@@ -243,6 +260,14 @@
 		229C8E342AA9FBF3006D6526 /* FormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormData.swift; sourceTree = "<group>"; };
 		229CC5282A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorButtonsView.swift; sourceTree = "<group>"; };
 		229CC52A2A9F2B030052FB08 /* VerticalNumberSelectorStepsLabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNumberSelectorStepsLabelsView.swift; sourceTree = "<group>"; };
+		22A3D96D2AB6082A003A339E /* BodyFatCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorView.swift; sourceTree = "<group>"; };
+		22A3D9702AB608EC003A339E /* BodyFatCalculatorInputsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorInputsView.swift; sourceTree = "<group>"; };
+		22A3D9722AB60F14003A339E /* BodyFatCalculatorResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorResultsView.swift; sourceTree = "<group>"; };
+		22A3D9742AB61392003A339E /* BodyFatCalculatorHorizontalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorHorizontalChartView.swift; sourceTree = "<group>"; };
+		22A3D9762AB6178E003A339E /* TriangleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleShape.swift; sourceTree = "<group>"; };
+		22A3D9782AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorHorizontalChartSelectorView.swift; sourceTree = "<group>"; };
+		22A3D97A2AB61F51003A339E /* BodyFatCalculatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatCalculatorController.swift; sourceTree = "<group>"; };
+		22AC940A2AB4C8A50058EC64 /* CalculatorsCommonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsCommonController.swift; sourceTree = "<group>"; };
 		22C34A532A94ECC500313D89 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsMainView.swift; sourceTree = "<group>"; };
 		22C6D7ED2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorsFeaturedBoxView.swift; sourceTree = "<group>"; };
@@ -275,6 +300,14 @@
 		22DA77B02A98A59600550A6B /* AccountRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRequestModel.swift; sourceTree = "<group>"; };
 		22DA77B32A98CE2E00550A6B /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		22DA77B52A98D83300550A6B /* FakeLaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLaunchScreenView.swift; sourceTree = "<group>"; };
+		22E3990D2AB89CBD009FD345 /* PaywallMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallMainView.swift; sourceTree = "<group>"; };
+		22E399102AB89DB9009FD345 /* PaywallBenefitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallBenefitsView.swift; sourceTree = "<group>"; };
+		22E399122AB89DEF009FD345 /* PaywallBenefitsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallBenefitsRowView.swift; sourceTree = "<group>"; };
+		22E399142AB8A0D0009FD345 /* PaywallPlansView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallPlansView.swift; sourceTree = "<group>"; };
+		22E399162AB8A12E009FD345 /* PaywallPlanRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallPlanRowView.swift; sourceTree = "<group>"; };
+		22E399182AB8BB19009FD345 /* PaywallFreeTrialInstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallFreeTrialInstructionsView.swift; sourceTree = "<group>"; };
+		22E3991A2AB8BC1B009FD345 /* PaywallFreeTrialTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallFreeTrialTimelineView.swift; sourceTree = "<group>"; };
+		22E399212AB8BD41009FD345 /* PaywallFreeTrialRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallFreeTrialRowView.swift; sourceTree = "<group>"; };
 		22E81F192A9525E10021DBE0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		22E824662A8B9A2E00B51C60 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		22E824682A8B9D3300B51C60 /* SignUpWithAppleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWithAppleView.swift; sourceTree = "<group>"; };
@@ -319,6 +352,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22F32B382AB48FC700F532BB /* SwiftUICustomizablePicker in Frameworks */,
 				223B1A432AA0856600DADB7D /* SwiftUIGauge in Frameworks */,
 				22EB51AE2A8B62F80079A3B1 /* Algorithms in Frameworks */,
 				22803A282A9CC8E0004EF9B3 /* HorizontalNumberPicker in Frameworks */,
@@ -793,12 +827,32 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		22A3D96F2AB608C5003A339E /* Body Fat */ = {
+			isa = PBXGroup;
+			children = (
+				22A3D9702AB608EC003A339E /* BodyFatCalculatorInputsView.swift */,
+				22A3D9722AB60F14003A339E /* BodyFatCalculatorResultsView.swift */,
+				22A3D9742AB61392003A339E /* BodyFatCalculatorHorizontalChartView.swift */,
+				22A3D9782AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift */,
+			);
+			path = "Body Fat";
+			sourceTree = "<group>";
+		};
+		22AC8E242AB89B4E0084A065 /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				22E3990D2AB89CBD009FD345 /* PaywallMainView.swift */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
 		22C6D7E92AADB4A1002C7010 /* Calculators */ = {
 			isa = PBXGroup;
 			children = (
 				22C6D7EA2AADB4B7002C7010 /* CalculatorsMainView.swift */,
 				22C6D7FE2AADD26E002C7010 /* BMICalculatorView.swift */,
 				22C905532AB04E10009FFE21 /* CaloriesCalculatorView.swift */,
+				22A3D96D2AB6082A003A339E /* BodyFatCalculatorView.swift */,
 			);
 			path = Calculators;
 			sourceTree = "<group>";
@@ -806,6 +860,7 @@
 		22C6D7EC2AADB55D002C7010 /* Calculators */ = {
 			isa = PBXGroup;
 			children = (
+				22A3D96F2AB608C5003A339E /* Body Fat */,
 				22C905552AB0506A009FFE21 /* Calories */,
 				22C6D8032AADD76D002C7010 /* Common */,
 				22C6D8002AADD758002C7010 /* BMI */,
@@ -859,6 +914,7 @@
 			isa = PBXGroup;
 			children = (
 				22C6D80B2AADEAD2002C7010 /* ArcShape.swift */,
+				22A3D9762AB6178E003A339E /* TriangleShape.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -943,6 +999,44 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
+		22E3990F2AB89DAA009FD345 /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				22E3991D2AB8BC9C009FD345 /* Benefits */,
+				22E3991F2AB8BCBF009FD345 /* Plans */,
+				22E399202AB8BCD1009FD345 /* Free Trial */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
+		22E3991D2AB8BC9C009FD345 /* Benefits */ = {
+			isa = PBXGroup;
+			children = (
+				22E399102AB89DB9009FD345 /* PaywallBenefitsView.swift */,
+				22E399122AB89DEF009FD345 /* PaywallBenefitsRowView.swift */,
+			);
+			path = Benefits;
+			sourceTree = "<group>";
+		};
+		22E3991F2AB8BCBF009FD345 /* Plans */ = {
+			isa = PBXGroup;
+			children = (
+				22E399142AB8A0D0009FD345 /* PaywallPlansView.swift */,
+				22E399162AB8A12E009FD345 /* PaywallPlanRowView.swift */,
+			);
+			path = Plans;
+			sourceTree = "<group>";
+		};
+		22E399202AB8BCD1009FD345 /* Free Trial */ = {
+			isa = PBXGroup;
+			children = (
+				22E399182AB8BB19009FD345 /* PaywallFreeTrialInstructionsView.swift */,
+				22E3991A2AB8BC1B009FD345 /* PaywallFreeTrialTimelineView.swift */,
+				22E399212AB8BD41009FD345 /* PaywallFreeTrialRowView.swift */,
+			);
+			path = "Free Trial";
+			sourceTree = "<group>";
+		};
 		22EB51AF2A8B708E0079A3B1 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,6 +1063,7 @@
 		22EF43022AA77975002B6B1B /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
+				22AC8E242AB89B4E0084A065 /* Paywall */,
 				22C6D7E92AADB4A1002C7010 /* Calculators */,
 				22EF43032AA7797F002B6B1B /* Settings */,
 				224A5D8C2A8CC53600490614 /* Coaches */,
@@ -1003,6 +1098,7 @@
 		22EF43072AA77D08002B6B1B /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
+				22E3990F2AB89DAA009FD345 /* Paywall */,
 				22C6D7EC2AADB55D002C7010 /* Calculators */,
 				229C8E1E2AA9D79B006D6526 /* Settings */,
 			);
@@ -1031,6 +1127,8 @@
 			children = (
 				22F6BB162AAF0632000239B0 /* BMIController.swift */,
 				221965912AB0C9F200373255 /* CaloriesCalculatorController.swift */,
+				22AC940A2AB4C8A50058EC64 /* CalculatorsCommonController.swift */,
+				22A3D97A2AB61F51003A339E /* BodyFatCalculatorController.swift */,
 			);
 			path = Calculators;
 			sourceTree = "<group>";
@@ -1113,6 +1211,7 @@
 				22EB51AD2A8B62F80079A3B1 /* Algorithms */,
 				22803A272A9CC8E0004EF9B3 /* HorizontalNumberPicker */,
 				223B1A422AA0856600DADB7D /* SwiftUIGauge */,
+				22F32B372AB48FC700F532BB /* SwiftUICustomizablePicker */,
 			);
 			productName = FTHub;
 			productReference = 220266BE2A8A4815009D299F /* FTHub.app */;
@@ -1148,6 +1247,7 @@
 				22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				22803A262A9CC8E0004EF9B3 /* XCRemoteSwiftPackageReference "SwiftUIHorizontalNumberPicker" */,
 				223B1A412AA0856600DADB7D /* XCRemoteSwiftPackageReference "SwiftUIGauge" */,
+				22F32B362AB48FC700F532BB /* XCRemoteSwiftPackageReference "SwiftUICustomizablePicker" */,
 			);
 			productRefGroup = 220266BF2A8A4815009D299F /* Products */;
 			projectDirPath = "";
@@ -1184,7 +1284,9 @@
 				229C8E252AA9D97E006D6526 /* SettingsProfileDataController.swift in Sources */,
 				22374B1A2A929C5C006BE6BB /* BaseAuthController.swift in Sources */,
 				220266D62A8A5144009D299F /* TwoLineHeadingView.swift in Sources */,
+				22AC940B2AB4C8A50058EC64 /* CalculatorsCommonController.swift in Sources */,
 				22FC13C12A97692D0016E17C /* CustomURLController.swift in Sources */,
+				22A3D9732AB60F14003A339E /* BodyFatCalculatorResultsView.swift in Sources */,
 				22C89D0D2A964299001055F0 /* WithCustomMessageModifier.swift in Sources */,
 				221965902AB0C6A500373255 /* CaloriesCalculatorResultsView.swift in Sources */,
 				22803A1A2A9C913B004EF9B3 /* SetupAgePageView.swift in Sources */,
@@ -1205,6 +1307,7 @@
 				22C6D7F92AADCAEC002C7010 /* AllCalculatorsGroupView.swift in Sources */,
 				22ED2EC02A9136E600BB623E /* CustomNumpadButtonStyle.swift in Sources */,
 				22E8246D2A8BA68A00B51C60 /* AuthenticationFooterView.swift in Sources */,
+				22E3991B2AB8BC1B009FD345 /* PaywallFreeTrialTimelineView.swift in Sources */,
 				220266ED2A8A5DE2009D299F /* TutorialSecondPageView.swift in Sources */,
 				22CDFF962A94E37B009DB029 /* SignUpValidationController.swift in Sources */,
 				22DA77B12A98A59600550A6B /* AccountRequestModel.swift in Sources */,
@@ -1219,6 +1322,7 @@
 				22C34A542A94ECC500313D89 /* Validator.swift in Sources */,
 				22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */,
 				22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */,
+				22A3D9712AB608EC003A339E /* BodyFatCalculatorInputsView.swift in Sources */,
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
 				22FD03352A9B8372005A6A13 /* SetupPageOneView.swift in Sources */,
@@ -1227,6 +1331,7 @@
 				22F55BEE2AA2620E007DBBA9 /* AppleHealthIntegrateView.swift in Sources */,
 				22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */,
 				22C6D7F02AADB8D6002C7010 /* StaticColorButton.swift in Sources */,
+				22A3D9792AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift in Sources */,
 				22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */,
 				22FD03372A9B83C4005A6A13 /* SetupPageViewManager.swift in Sources */,
 				229C8E202AA9D7C0006D6526 /* SettingsProfileImagePickerView.swift in Sources */,
@@ -1234,6 +1339,7 @@
 				220266DA2A8A5249009D299F /* HeadlineView.swift in Sources */,
 				22D56B472A962255009270FA /* BeforeAuthView.swift in Sources */,
 				222F3C5B2A935C6F005BC46F /* ResendTwoFaCodeModel.swift in Sources */,
+				22E3990E2AB89CBD009FD345 /* PaywallMainView.swift in Sources */,
 				22969D5B2A94D86600935A3C /* TokenConfirmationStatusView.swift in Sources */,
 				22EF43002AA77437002B6B1B /* MainAppView.swift in Sources */,
 				22CFDB482AACDA4700A5E607 /* SettingsSubscriptionView.swift in Sources */,
@@ -1243,7 +1349,9 @@
 				22969D562A94B91A00935A3C /* RestorePasswordController.swift in Sources */,
 				22EF430D2AA7866D002B6B1B /* SettingRowToggleView.swift in Sources */,
 				220266C42A8A4815009D299F /* ContentView.swift in Sources */,
+				22A3D9772AB6178E003A339E /* TriangleShape.swift in Sources */,
 				229C8E1B2AA9C7C7006D6526 /* SettingsProfileMainDataView.swift in Sources */,
+				22E399192AB8BB19009FD345 /* PaywallFreeTrialInstructionsView.swift in Sources */,
 				224A5DA12A8CF98D00490614 /* User.swift in Sources */,
 				228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */,
 				22DA77AF2A98A45900550A6B /* AccountModel.swift in Sources */,
@@ -1263,6 +1371,7 @@
 				22C6D7EE2AADB56C002C7010 /* CalculatorsFeaturedBoxView.swift in Sources */,
 				22FC13BA2A9756690016E17C /* ValidationController.swift in Sources */,
 				224CE9682AA1CD8E0027FB2D /* SetupGoalTabView.swift in Sources */,
+				22E399152AB8A0D0009FD345 /* PaywallPlansView.swift in Sources */,
 				220323D72AA47C4500E47CE2 /* SetupPageFinishView.swift in Sources */,
 				227585372AA8FE8C00149814 /* SettingsInputRowView.swift in Sources */,
 				224C9FB52A8E0DFF00AF5612 /* CustomMessageView.swift in Sources */,
@@ -1275,13 +1384,17 @@
 				229C8E2E2AA9E97F006D6526 /* UIImage.swift in Sources */,
 				227585322AA8F9F500149814 /* SettingsProfileDataView.swift in Sources */,
 				2277FC262A9E13850082AA12 /* UnitSelectView.swift in Sources */,
+				22E399132AB89DEF009FD345 /* PaywallBenefitsRowView.swift in Sources */,
 				22FC13BF2A97578E0016E17C /* RestorePasswordRequestModel.swift in Sources */,
+				22A3D96E2AB6082A003A339E /* BodyFatCalculatorView.swift in Sources */,
 				22C6D7FD2AADD068002C7010 /* AllCalculatorsListView.swift in Sources */,
 				22C6D8052AADDFB6002C7010 /* CustomInputField.swift in Sources */,
 				22969D512A94AAAD00935A3C /* RestorePasswordHeaderView.swift in Sources */,
+				22E399112AB89DB9009FD345 /* PaywallBenefitsView.swift in Sources */,
 				22C6D8092AADE92B002C7010 /* BMIResultsView.swift in Sources */,
 				22FC13BD2A9757160016E17C /* RestorePasswordModel.swift in Sources */,
 				222F3C642A935D66005BC46F /* AccountAuthRequestModel.swift in Sources */,
+				22A3D97B2AB61F51003A339E /* BodyFatCalculatorController.swift in Sources */,
 				224CE9602AA1BAEB0027FB2D /* SetupPageTrainingsPerWeekView.swift in Sources */,
 				220266E72A8A5787009D299F /* TutorialStartPageView.swift in Sources */,
 				220266E92A8A5A28009D299F /* TutorialFirstPageView.swift in Sources */,
@@ -1294,6 +1407,7 @@
 				22C6D8022AADD76A002C7010 /* CalculatorGenderSelector.swift in Sources */,
 				229CC5292A9F27440052FB08 /* VerticalNumberSelectorButtonsView.swift in Sources */,
 				22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */,
+				22E399222AB8BD41009FD345 /* PaywallFreeTrialRowView.swift in Sources */,
 				22F6BB172AAF0632000239B0 /* BMIController.swift in Sources */,
 				2277FC242A9E13420082AA12 /* SetupPageHeightView.swift in Sources */,
 				2277FC282A9E15BF0082AA12 /* VerticalNumberSelectorView.swift in Sources */,
@@ -1301,12 +1415,14 @@
 				220266F12A8A5F8D009D299F /* TutorialThirdPageView.swift in Sources */,
 				22FC13C52A978C5B0016E17C /* RestorePasswordStatusView.swift in Sources */,
 				22969D632A94EC3500935A3C /* ConfirmEmailModel.swift in Sources */,
+				22A3D9752AB61392003A339E /* BodyFatCalculatorHorizontalChartView.swift in Sources */,
 				22C6D8072AADE845002C7010 /* BMIInputsView.swift in Sources */,
 				22E8246F2A8BA89A00B51C60 /* SignInView.swift in Sources */,
 				221965942AB0E92000373255 /* AutofillButtonView.swift in Sources */,
 				224CE96C2AA1D3D10027FB2D /* HealthKitController.swift in Sources */,
 				22C6D7FF2AADD26E002C7010 /* BMICalculatorView.swift in Sources */,
 				22FD03392A9B87C6005A6A13 /* SetupPageGenderView.swift in Sources */,
+				22E399172AB8A12E009FD345 /* PaywallPlanRowView.swift in Sources */,
 				224CE9662AA1C6500027FB2D /* TeasingTabView.swift in Sources */,
 				22E824672A8B9A2E00B51C60 /* CustomTextFieldView.swift in Sources */,
 				22F9D9A42AAB1B0E00E77FFC /* SettingsChangePasswordView.swift in Sources */,
@@ -1476,7 +1592,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = eu.fthub.FTHub;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.fthub.FTHu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1512,7 +1628,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = eu.fthub.FTHub;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.fthub.FTHu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1568,6 +1684,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		22F32B362AB48FC700F532BB /* XCRemoteSwiftPackageReference "SwiftUICustomizablePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ikok07/SwiftUICustomizablePicker.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1585,6 +1709,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 22EB51AC2A8B62F80079A3B1 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		22F32B372AB48FC700F532BB /* SwiftUICustomizablePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22F32B362AB48FC700F532BB /* XCRemoteSwiftPackageReference "SwiftUICustomizablePicker" */;
+			productName = SwiftUICustomizablePicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

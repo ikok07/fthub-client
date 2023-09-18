@@ -20,7 +20,7 @@ struct VerticalNumberSelectorButtonsView: View {
                 Button(action: {
                     if percentage < 1 {
                         withAnimation(.bouncy) {
-                            percentage += 0.1
+                            percentage += 0.01
                             userHeight = 120 + (percentage * (maxValue - minValue))
                             if userHeight != nil && userHeight! > 220 {
                                 percentage = 1
@@ -30,7 +30,7 @@ struct VerticalNumberSelectorButtonsView: View {
                     }
                 }, label: {
                     Image(systemName: "plus.circle")
-                        .foregroundStyle(K.Gradients.mainGradient.opacity(0.75))
+                        .foregroundStyle(K.Gradients.mainGradient)
                         .font(.title)
                         .fontWeight(.semibold)
                 })
@@ -38,7 +38,7 @@ struct VerticalNumberSelectorButtonsView: View {
                 Button(action: {
                     if percentage > 0 {
                         withAnimation(.bouncy) {
-                            percentage -= 0.1
+                            percentage -= 0.01
                             userHeight = 120 + (percentage * (maxValue - minValue))
                             if userHeight != nil && userHeight! < 120 {
                                 percentage = 0.0175
@@ -48,7 +48,7 @@ struct VerticalNumberSelectorButtonsView: View {
                     }
                 }, label: {
                     Image(systemName: "minus.circle")
-                        .foregroundStyle(K.Gradients.mainGradient.opacity(0.75))
+                        .foregroundStyle(K.Gradients.mainGradient)
                         .font(.title)
                         .fontWeight(.semibold)
                 })

@@ -31,21 +31,19 @@ struct SettingsGroupView<Content: View>: View {
             
         }
         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
-        .overlay {
-            RoundedRectangle(cornerRadius: 12)
-                .strokeBorder(lineWidth: 1)
-                .foregroundStyle(.customGray)
-        }
+        .background(.textfieldAppearance)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .shadow(color: .textfieldBg.opacity(0.3), radius: 5, x: 0, y: 2)
     }
 }
 
 #Preview {
     SettingsGroupView(name: "Account Settings") {
         VStack(alignment: .leading, spacing: 0) {
-//            SettingsRowView(icon: nil, image: "instagram", label: "Profile Data")
-//            SettingsRowView(icon: nil, image: "facebook", label: "Subscription")
-//            SettingsRowView(icon: "person.2.badge.gearshape", image: nil, label: "Support & Feedback")
-//            SettingsRowView(icon: "lock", image: nil, label: "Privacy Policy")
+            SettingsRowView(icon: nil, image: "instagram", label: "Profile Data")
+            SettingsRowView(icon: nil, image: "facebook", label: "Subscription")
+            SettingsRowView(icon: "person.2.badge.gearshape", image: nil, label: "Support & Feedback")
+            SettingsRowView(icon: "lock", image: nil, label: "Privacy Policy")
         }
     }
         .padding()

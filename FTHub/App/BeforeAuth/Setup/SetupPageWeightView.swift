@@ -12,7 +12,7 @@ import SwiftData
 
 struct SetupPageWeightView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     @State private var selectedWeight: Int = K.UserDetails.minWeight
     @State private var percentage: Double = 0
@@ -35,7 +35,7 @@ struct SetupPageWeightView: View {
             TwoLineHeadingView(upperPart: "What about", bottomPart: "your weight")
             
             ZStack {
-                GaugeView(percentage: $percentage, width: UIScreen.main.bounds.width - 80, backgroundArcGradient: K.Gradients.grayGradient, arrowLength: CGFloat(100), arrowAnchorMainCircleGradient: K.Gradients.mainGradient)
+                GaugeView(percentage: $percentage, width: UIScreen.main.bounds.width - 80, backgroundArcGradient: K.Gradients.lightGrayGradient, arrowLength: CGFloat(100), arrowAnchorMainCircleGradient: K.Gradients.mainGradient)
                     .padding(.horizontal)
                 
                 VStack {
@@ -91,5 +91,5 @@ struct SetupPageWeightView: View {
 
 #Preview {
     SetupPageWeightView()
-        .environmentObject(SetupController())
+        .environment(SetupController())
 }

@@ -33,15 +33,16 @@ struct SettingsProfileDataView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                
                 SettingsProfileImagePickerView(imageUrl: $imageUrl, saveButtonActive: $saveButtonActive, uiImage: $localProfileImage)
                 
                 SettingsProfileMainDataView(name: $name, email: email, gender: $gender, age: $age, units: $units)
+                    .padding()
+                    .padding(.bottom)
                 
                 SettingsFitnessDataView(height: $height, weight: $weight, workoutsPerWeek: $workoutsPerWeek, goal: $goal)
+                    .padding()
                 
             }
-            .padding()
             .navigationTitle("Profile data")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

@@ -9,14 +9,13 @@ import SwiftUI
 
 struct BMICalculatorView: View {
     
-    @Binding var isPresented: Bool
-    
     @State private var activeGender: Gender = .Male
     
     @State private var weight: String = ""
     @State private var height: String = ""
     
-    @State private var result: Double = 11
+    @State private var showResult: Bool = false
+    @State private var result: Double = 15
     
     var body: some View {
         NavigationStack {
@@ -26,19 +25,13 @@ struct BMICalculatorView: View {
                     .padding(.horizontal)
                     .padding(.top, 20)
                 
-                BMIInputsView(gender: $activeGender, weight: $weight, height: $height, result: $result)
+                BMIInputsView(gender: $activeGender, weight: $weight, height: $height, result: $result, showResult: $showResult)
                 
                 Spacer()
                 
-                if result > 11 {
+                if showResult {
                     BMIResultsView(result: result)
                 }
-            }
-            .toolbar {
-                Button(action: { isPresented = false }, label: {
-                    Text("Done")
-                        .fontWeight(.semibold)
-                })
             }
             .navigationTitle("BMI Calculator")
             .navigationBarTitleDisplayMode(.inline)
@@ -48,5 +41,5 @@ struct BMICalculatorView: View {
 }
 
 #Preview {
-    BMICalculatorView(isPresented: .constant(true))
+    BMICalculatorView()
 }

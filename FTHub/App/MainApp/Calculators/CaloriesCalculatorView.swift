@@ -12,7 +12,7 @@ struct CaloriesCalculatorView: View {
     
     @Query private var user: [User]
     
-    @Binding var isPresented: Bool
+    @State private var showResult: Bool = false
     
     @State private var gender: Gender = .Male
     @State private var age: String = ""
@@ -20,28 +20,24 @@ struct CaloriesCalculatorView: View {
     @State private var height: String = ""
     @State private var activityLevel: ActivityLevel = .SelectActivity
     
+    @State private var weightPerWeek: Double = 0
     @State private var result: Double = 0
-    @State private var resultOption: CaloriesCalculatorResultOption = .MaintainWeight
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 
                 CalculatorGenderSelector(activeGender: $gender)
-                    .padding(.top, 20)
-                    .padding(.horizontal)
+                    .padding(.vertical, 20)
+                    .padding(.horizontal, 30)
                 
-                CaloriesCalculatorInputView(result: $result, selectedOption: $resultOption, gender: $gender, age: $age, weight: $weight, height: $height, activityLevel: $activityLevel)
+                CaloriesCalculatorInputView(showResult: $showResult, result: $result, weightPerWeek: self.$weightPerWeek, gender: $gender, age: $age, weight: $weight, height: $height, activityLevel: $activityLevel)
+                    .padding(.horizontal, 30)
                 
-                CaloriesCalculatorResultsView(selectedOption: $resultOption, result: result)
-                    .padding(.top)
-            }
-            .padding()
-            .toolbar {
-                Button(action: { isPresented = false }, label: {
-                    Text("Done")
-                        .fontWeight(.semibold)
-                })
+                if showResult {
+                    CaloriesCalculatorResultsView(weightPerWeek: $weightPerWeek, result: result)
+                        .padding(.top, 5)
+                }
             }
             .navigationTitle("Calories Calculator")
             .navigationBarTitleDisplayMode(.inline)
@@ -50,5 +46,5 @@ struct CaloriesCalculatorView: View {
 }
 
 #Preview {
-    CaloriesCalculatorView(isPresented: .constant(true))
+    CaloriesCalculatorView()
 }

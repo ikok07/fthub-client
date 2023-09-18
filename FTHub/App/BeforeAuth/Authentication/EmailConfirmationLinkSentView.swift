@@ -21,7 +21,7 @@ struct EmailConfirmationLinkSentView: View {
                 Image("restore2")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 300)
+                    
                 
                 VStack {
                     Text("We have sent a link to")

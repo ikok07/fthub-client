@@ -11,7 +11,7 @@ import SwiftData
 
 struct SetupAgePageView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     
     @Query private var user: [User]
     
@@ -59,5 +59,5 @@ struct SetupAgePageView: View {
 
 #Preview {
     SetupAgePageView()
-        .environmentObject(SetupController())
+        .environment(SetupController())
 }

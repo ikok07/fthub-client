@@ -10,7 +10,7 @@ import SwiftData
 
 struct SetupPageOneView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
     @Query private var user: [User]
     
     var body: some View {
@@ -44,4 +44,5 @@ struct SetupPageOneView: View {
 
 #Preview {
     SetupPageOneView()
+        .environment(SetupController())
 }

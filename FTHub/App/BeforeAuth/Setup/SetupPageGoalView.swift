@@ -14,7 +14,8 @@ enum FitnessGoal: String, CaseIterable, Codable {
 
 struct SetupPageGoalView: View {
     
-    @EnvironmentObject private var setupController: SetupController
+    @Environment(SetupController.self) private var setupController
+    @Environment(HealthKitController.self) private var healthKitController
     
     @State private var selectedGoal: FitnessGoal = .Balance
     
@@ -34,10 +35,10 @@ struct SetupPageGoalView: View {
             Button(action: {
                 if let user = user.first {
                     user.details?.setupActivePage += 1
+                    setupController.activePage += 1
                     user.details?.goal = selectedGoal
+                    setupController.goal = selectedGoal
                 }
-                setupController.goal = selectedGoal
-                setupController.activePage += 1
             }, label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -50,4 +51,6 @@ struct SetupPageGoalView: View {
 
 #Preview {
     SetupPageGoalView()
+        .environment(SetupController())
+        .environment(HealthKitController())
 }

@@ -8,18 +8,18 @@
 import Foundation
 
 struct CaloriesCalculatorModel {
-    static func getCoefficients(activityLevel: ActivityLevel) -> (Double, Double, Double) {
+    static func getCoefficients(activityLevel: ActivityLevel) -> (Double, Double) {
         switch activityLevel {
         case .Light:
-            return (1.37, 0.91, 0.81)
+            return (1.37, 0.81)
         case .Active:
-            return (1.465, 0.91, 0.82)
+            return (1.465, 0.82)
         case .VeryActive:
-            return (1.55, 0.91, 0.83)
+            return (1.55, 0.83)
         case .UltraActive:
-            return (1.9, 0.93, 0.86)
+            return (1.9, 0.86)
         case .SelectActivity:
-            return (0, 0, 0)
+            return (0, 0)
         }
     }
 
@@ -35,17 +35,12 @@ struct CaloriesCalculatorModel {
         
     }
 
-    static func getFinalResult(selectedOption: CaloriesCalculatorResultOption, bmr: Double, coefficients: (Double, Double, Double)) -> Double {
-        
+    static func getFinalResult(weightPerWeek: Double, bmr: Double, coefficients: (Double, Double)) -> Double {
         let baseResult = bmr * coefficients.0
         
-        switch selectedOption {
-        case .MaintainWeight:
-            return baseResult
-        case .MildWeightLoss:
-            return baseResult * coefficients.1
-        case .WeightLoss:
-            return baseResult * coefficients.2
-        }
+        let percentage = 1 + (0.4 * weightPerWeek)
+        let result = percentage * baseResult
+        
+        return result
     }
 }

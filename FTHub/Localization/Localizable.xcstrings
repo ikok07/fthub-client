@@ -10,6 +10,9 @@
     "%@ inch" : {
 
     },
+    "%@ kg/week" : {
+
+    },
     "%@ lbs" : {
 
     },
@@ -28,10 +31,16 @@
     "%lld times/week" : {
 
     },
+    "2,39$" : {
+
+    },
     "2.79€ / month" : {
 
     },
     "23.01.2023" : {
+
+    },
+    "24,65$" : {
 
     },
     "120 cm" : {
@@ -68,6 +77,9 @@
     "Allow Notifications" : {
 
     },
+    "An overview of\n our free trial" : {
+
+    },
     "App Account" : {
       "localizations" : {
         "bg" : {
@@ -90,6 +102,9 @@
     "BMI Calculator" : {
 
     },
+    "Body Fat Calculator" : {
+
+    },
     "Calculate" : {
 
     },
@@ -109,6 +124,9 @@
 
     },
     "Check out" : {
+
+    },
+    "Choose your preferred subscription plan" : {
 
     },
     "Coaches" : {
@@ -300,6 +318,9 @@
         }
       }
     },
+    "Gain Weight" : {
+
+    },
     "Go to Dashboard" : {
 
     },
@@ -330,10 +351,16 @@
     "Lorem Ipsum is simply dummy text of the printing and typesetting" : {
 
     },
+    "Lose Weight" : {
+
+    },
     "Male" : {
 
     },
     "Metric" : {
+
+    },
+    "Monthly" : {
 
     },
     "More" : {
@@ -421,6 +448,9 @@
     "Save" : {
 
     },
+    "Save 15%" : {
+
+    },
     "Send email" : {
       "localizations" : {
         "bg" : {
@@ -436,6 +466,9 @@
           }
         }
       }
+    },
+    "Show paywall" : {
+
     },
     "Sign In" : {
       "localizations" : {
@@ -454,6 +487,7 @@
       }
     },
     "Sign Out" : {
+      "extractionState" : "stale",
       "localizations" : {
         "bg" : {
           "stringUnit" : {
@@ -598,10 +632,16 @@
     "We have sent a link to" : {
 
     },
+    "Why should you upgrade your plan?" : {
+
+    },
     "Workout" : {
 
     },
     "Workouts not synced:" : {
+
+    },
+    "Yearly" : {
 
     },
     "years" : {
@@ -613,7 +653,7 @@
     "You have successfuly changed your password" : {
 
     },
-    "Your Results" : {
+    "Your Result" : {
 
     }
   },

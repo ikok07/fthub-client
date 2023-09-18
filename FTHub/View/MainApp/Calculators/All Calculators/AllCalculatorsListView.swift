@@ -14,9 +14,17 @@ struct AllCalculatorsListView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CalculatorRowView(icon: "flame.fill", name: "Calories", destination: CaloriesCalculatorView(isPresented: $caloriesCalculator), isPresented: $caloriesCalculator)
+            NavigationLink(destination: CaloriesCalculatorView()) {
+                CalculatorRowView(icon: "flame.fill", name: "Calories")
+            }
             
-            CalculatorRowView(icon: "gauge.with.dots.needle.67percent", name: "BMI", destination: BMICalculatorView(isPresented: $bmiCalculator), isPresented: $bmiCalculator)
+            NavigationLink(destination: BMICalculatorView()) {
+                CalculatorRowView(icon: "gauge.with.dots.needle.67percent", name: "BMI")
+            }
+            
+            NavigationLink(destination: BodyFatCalculatorView()) {
+                CalculatorRowView(icon: "drop.degreesign.fill", name: "Body Fat")
+            }
         }
     }
 }

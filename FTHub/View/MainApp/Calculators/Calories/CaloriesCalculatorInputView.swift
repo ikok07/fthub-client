@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import SwiftUICustomizablePicker
 
 enum ActivityLevel: String, Codable, CaseIterable {
     case SelectActivity, Light, Active, VeryActive, UltraActive
@@ -14,12 +15,15 @@ enum ActivityLevel: String, Codable, CaseIterable {
 
 struct CaloriesCalculatorInputView: View {
     
+    @FocusState private var isActive: Bool
+    
     @Query private var user: [User]
     
     @State var autofill: Bool = false
     
+    @Binding var showResult: Bool
     @Binding var result: Double
-    @Binding var selectedOption: CaloriesCalculatorResultOption
+    @Binding var weightPerWeek: Double
     
     @Binding var gender: Gender
     @Binding var age: String
@@ -30,13 +34,14 @@ struct CaloriesCalculatorInputView: View {
     var body: some View {
         VStack {
             VStack(spacing: 20) {
-                CustomInputField(icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age)
                 
-                CustomInputField(icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
+                CustomInputField(isActive: _isActive, icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age)
                 
-                CustomInputField(icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
+                CustomInputField(isActive: _isActive, icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
                 
-                CustomPickerRowView(icon: "figure.run", name: "Activity") {
+                CustomInputField(isActive: _isActive, icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
+                
+                CustomPickerRowView(icon: "figure.run") {
                     Picker("", selection: $activityLevel) {
                         ForEach(ActivityLevel.allCases, id: \.self) { level in
                             Text("\(level.rawValue)".camelCaseToWords())
@@ -56,10 +61,17 @@ struct CaloriesCalculatorInputView: View {
             .padding(.top)
             
         }
-        .padding()
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        isActive = false
+                    }
+                }
+            }
+        }
         .onChange(of: [gender.rawValue, activityLevel.rawValue, age, weight, height]) { oldValue, newValue in
-            print(newValue)
-            print(String(format: "%.1f", Double((user.first?.details?.height!)!) * K.Units.cmToInch))
             if let user = user.first, user.details != nil {
                 
                 let savedWeight: String = String(user.details!.weight!)
@@ -80,7 +92,7 @@ struct CaloriesCalculatorInputView: View {
                 enableAutoFill()
             }
         }
-        .onChange(of: selectedOption) { oldValue, newValue in
+        .onChange(of: self.weightPerWeek) { oldValue, newValue in
             calculate()
         }
     }
@@ -98,16 +110,16 @@ struct CaloriesCalculatorInputView: View {
     }
     
     func calculate() {
-        if activityLevel != .SelectActivity {
+        if CalculatorsCommonController.validate(age: self.age, weight: self.weight, height: self.height, activityLevel: self.activityLevel) {
             withAnimation(.bouncy) {
-                result = CaloriesCalculatorController.calculateCalories(selectedOption: self.selectedOption, activityLevel: activityLevel, gender: self.gender, age: Double(self.age)!, weight: Double(self.weight)!, height: Double(self.height)!)
+                showResult = true
+                result = CaloriesCalculatorController.calculateCalories(weightPerWeek: self.weightPerWeek, activityLevel: activityLevel, gender: self.gender, age: Double(self.age)!, weight: Double(self.weight)!, height: Double(self.height)!)
             }
-        } else {
-            Message.send(type: "alert", message: "Please select activity level")
         }
     }
 }
 
 #Preview {
-    CaloriesCalculatorInputView(result: .constant(1480), selectedOption: .constant(.MaintainWeight), gender: .constant(.Male), age: .constant(""), weight: .constant(""), height: .constant(""), activityLevel: .constant(.SelectActivity))
+    CaloriesCalculatorInputView(showResult: .constant(true), result: .constant(1480), weightPerWeek: .constant(100), gender: .constant(.Male), age: .constant(""), weight: .constant(""), height: .constant(""), activityLevel: .constant(.SelectActivity))
+        .padding()
 }
