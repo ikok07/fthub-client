@@ -13,7 +13,7 @@ struct PaywallFreeTrialTimelineView: View {
             ZStack(alignment: .top) {
                 LinearGradient(
                     stops: [
-                    Gradient.Stop(color: Color(red: 0.72, green: 0.72, blue: 0.72), location: 0.00),
+                        Gradient.Stop(color: Color("timelineBackground"), location: 0.00),
                     Gradient.Stop(color: Color(red: 0.92, green: 0.92, blue: 0.92).opacity(0), location: 1.00),
                     ],
                     startPoint: UnitPoint(x: 0.5, y: 0.44),

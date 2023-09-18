@@ -28,6 +28,7 @@ struct K {
         
         static let grayGradient: LinearGradient = LinearGradient(colors: [.textGray], startPoint: .leading, endPoint: .trailing)
         static let whiteGradient: LinearGradient = LinearGradient(colors: [.white], startPoint: .leading, endPoint: .trailing)
+        static let whiteGradientForDark: LinearGradient = LinearGradient(colors: [.textfieldAppearance], startPoint: .leading, endPoint: .trailing)
         static let lightGrayGradient: LinearGradient = LinearGradient(colors: [.textGray.opacity(0.35)], startPoint: .leading, endPoint: .trailing)
         static let clearGradient: LinearGradient = LinearGradient(colors: [.clear], startPoint: .leading, endPoint: .trailing)
     }

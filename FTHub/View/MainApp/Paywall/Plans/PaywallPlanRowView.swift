@@ -45,7 +45,7 @@ struct PaywallPlanRowView: View {
                 Spacer()
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-            .background(active ? K.Gradients.mainGradient : K.Gradients.whiteGradient)
+            .background(active ? K.Gradients.mainGradient : K.Gradients.whiteGradientForDark)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .shadow(color: .textfieldBg.opacity(0.3), radius: 5, x: 0, y: 2)
             
@@ -67,7 +67,7 @@ struct PaywallPlanRowView: View {
                                     ],
                                     startPoint: UnitPoint(x: -1, y: -1.42),
                                     endPoint: UnitPoint(x: 0.5, y: 0.25)
-                                ) : K.Gradients.whiteGradient
+                                ) : K.Gradients.whiteGradientForDark
                             )
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                             .shadow(color: .textfieldBg.opacity(active ? 0 : 0.15), radius: 4, x: 0, y: 8)
