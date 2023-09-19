@@ -68,7 +68,7 @@
         }
       }
     },
-    "Age: %lld" : {
+    "Age: %d" : {
 
     },
     "All Calculators" : {

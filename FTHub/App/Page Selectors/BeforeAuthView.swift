@@ -25,8 +25,6 @@ struct BeforeAuthView: View {
     @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
     @AppStorage("tokenConfirmationStatus") private var tokenConfirmationStatus: TokenVerifyStatus = .success
     
-    @Query private var user: [User]
-    
     var body: some View {
         ZStack {
             if self.showTutorial {

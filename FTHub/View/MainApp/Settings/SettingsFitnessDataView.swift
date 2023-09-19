@@ -24,7 +24,7 @@ struct SettingsFitnessDataView: View {
             SettingsInputRowView(name: "Height") {
                 Picker("", selection: $height) {
                     ForEach(120...220, id: \.self) { i in
-                        Text(user[0].details?.units == .metric ? "\(i) cm" : "\(String(format: "%.2f", Double(i) * 0.3937)) inch")
+                        Text(user[0].userDetails?.units == "metric" ? "\(i) cm" : "\(String(format: "%.2f", Double(i) * 0.3937)) inch")
                             .font(.body)
                             .fontWeight(.medium)
                     }
@@ -34,7 +34,7 @@ struct SettingsFitnessDataView: View {
             SettingsInputRowView(name: "Weight") {
                 Picker("", selection: $weight) {
                     ForEach(40...180, id: \.self) { i in
-                        Text(user[0].details?.units == .metric ? "\(i) kg" : "\(String(format: "%.1f", Double(i) * 2.2046226218488)) lbs")
+                        Text(user[0].userDetails?.units == "metric" ? "\(i) kg" : "\(String(format: "%.1f", Double(i) * 2.2046226218488)) lbs")
                             .font(.body)
                             .fontWeight(.medium)
                     }

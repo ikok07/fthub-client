@@ -32,15 +32,20 @@ struct DbUserAuth {
         switch fetchData {
             
         case .success(let users):
-            context.delete(users[0])
+            if users != [] {
+                context.delete(users[0])
+            }
             let response = await AccountController.checkToken()
             if let safeResponse = response {
-                context.insert(safeResponse.data!)
-                do {
-                    try context.save()
-                } catch {
-                    print("Error saving new user: \(error)")
-                }
+                let newMemoryUser = safeResponse.data!
+                let newUser = User(context: context)
+                newUser.id = newMemoryUser._id
+                newUser.name = newMemoryUser.name
+                newUser.email = newMemoryUser.email
+                newUser.photo = newMemoryUser.photo
+                newUser.role = newMemoryUser.role
+                context.insert(newUser)
+                DB.saveContext(context)
                 return true
             }
             
@@ -64,12 +69,7 @@ struct DbUserAuth {
                 let newDetails = self.convertApiDetailsToNormalDetails(details, context: context)
                 users[0].userDetails = newDetails
                 context.insert(users[0])
-                do {
-                    try context.save()
-                    return true
-                } catch {
-                    print("Error saving details from API to User Object: \(error)")
-                }
+                DB.saveContext(context)
             }
             
         case .failure(let error):
@@ -91,11 +91,7 @@ struct DbUserAuth {
             details.setupActivePage = 0
             users[0].userDetails = details
             context.insert(users[0])
-            do {
-                try context.save()
-            } catch {
-                print("Failed saving new user details to database: \(error)")
-            }
+            DB.saveContext(context)
         case .failure(let error):
             print("Failed fetching user from database: \(error)")
         }
@@ -115,14 +111,30 @@ struct DbUserAuth {
                 context.delete(users[0])
                 newUser.userDetails = newDetails
                 context.insert(newUser)
-                do {
-                    try context.save()
-                } catch {
-                    print("Error saving new user to database: \(error)")
-                }
+                DB.saveContext(context)
             }
         case .failure(let error):
             print("Failed fetching user from database: \(error)")
+        }
+    }
+    
+    static func restorePassword(newUser: User) async {
+        let db = DB.shared
+        let context = db.container.viewContext
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        let fetchData: Result<[User], Error> = DB.makeFetchRequest(context: context, request: fetchRequest)
+        
+        switch fetchData {
+        case .success(let users):
+            let details = await AccountController.checkDetails()
+            if let details = details {
+                let newUserDetails = self.convertApiDetailsToNormalDetails(details, context: context)
+                context.delete(users[0])
+                newUser.userDetails = newUserDetails
+                DB.saveContext(context)
+            }
+        case .failure(let error):
+            print("Failed deleting user from database: \(error)")
         }
     }
     

@@ -15,7 +15,7 @@ struct MemoryUser: Codable {
     var photo: String
     let role: String
     var details: MemoryUserDetails?
-    var hasFullDetails: Bool = false
+//    var hasFullDetails: Bool = false
 }
 
 struct MemoryUserDetails: Codable {

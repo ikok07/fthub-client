@@ -36,7 +36,7 @@ struct SetupPageGenderView: View {
             
             Button {
                 user[0].userDetails?.setupActivePage += 1
-                user[0].userDetails?.gender = activeOption == 0 ? .Male : .Female
+                user[0].userDetails?.gender = activeOption == 0 ? "Male" : "Female"
                 setupController.activePage += 1
                 try? context.save()
             } label: {

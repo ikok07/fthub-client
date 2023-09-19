@@ -31,5 +31,13 @@ import CoreData
         }
     }
     
+    static func saveContext(_ context: NSManagedObjectContext) {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving new context: \(error)")
+        }
+    }
+    
     
 }

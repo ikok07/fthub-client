@@ -19,9 +19,15 @@ struct TwoFaAuthModel {
                 if safeResponse.status == "success" {
                     defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
                     
-                    let newUser = safeResponse.data?.user
-                    if let safeUser = newUser {
-                        await DbUserAuth.twoFaAuth(newUser: safeUser)
+                    let newMemoryUser = safeResponse.data?.user
+                    if let newMemoryUser = newMemoryUser {
+                        let user = User()
+                        user.mongoID = newMemoryUser._id
+                        user.name = newMemoryUser.name
+                        user.email = newMemoryUser.email
+                        user.photo = newMemoryUser.photo
+                        user.role = newMemoryUser.role
+                        await DbUserAuth.twoFaAuth(newUser: user)
                     }
                     
                     defaults.setValue(true, forKey: "userLoggedIn")

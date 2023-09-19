@@ -19,7 +19,8 @@ struct RestorePasswordMainView: View {
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     var body: some View {
         VStack {
@@ -35,18 +36,7 @@ struct RestorePasswordMainView: View {
             Button(action: {
                 Task {
                     loadingPresented = true
-                    await RestorePasswordController.changePassword(password: self.password, confirmPassword: self.confirmPassword) { newUser in
-                        Task {
-                            let details = await AccountController.checkDetails()
-                            if let userDetails = details, let safeUser = newUser {
-                                if let user = user.first {
-                                    modelContext.delete(user)
-                                }
-                                newUser?.details = userDetails
-                                modelContext.insert(safeUser)
-                            }
-                        }
-                    }
+                    await RestorePasswordController.changePassword(password: self.password, confirmPassword: self.confirmPassword)
                 }
             }, label: {
                 Text("Create new password")

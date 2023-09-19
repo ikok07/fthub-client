@@ -16,17 +16,18 @@ struct CoachesPageView: View {
     
     @Environment(\.modelContext) private var modelContext
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @State private var paywallPresented: Bool = false
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Age: \(user.first?.details?.age ?? 0)")
+            Text("Age: \(user[0].userDetails?.age ?? 0)")
             
-            Text("\((user.first?.details!.gender ?? .Male).rawValue)")
+            Text("\((user[0].userDetails?.gender ?? Gender.Male.rawValue))")
             
-            Text("\(user.first?.name ?? "")")
+            Text("\(user[0].name ?? "")")
             
             Button(action: { paywallPresented = true }) {
                 Text("Show paywall")

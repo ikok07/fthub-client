@@ -36,7 +36,7 @@ struct SetupPageGoalView: View {
             Button(action: {
                 user[0].userDetails?.setupActivePage += 1
                 setupController.activePage += 1
-                user[0].userDetails?.goal = selectedGoal
+                user[0].userDetails?.goal = selectedGoal.rawValue
                 setupController.goal = selectedGoal
                 try? context.save()
             }, label: {
