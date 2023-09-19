@@ -67,6 +67,8 @@
 		228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228744C82A8E5BB100DB77DF /* ViewExtensions.swift */; };
 		228F264E2A9E685800AD46D9 /* SetupPageWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F264D2A9E685800AD46D9 /* SetupPageWeightView.swift */; };
 		228F26552A9E7FB500AD46D9 /* GlowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */; };
+		229524E82AB9EC220012A71E /* FTHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 229524E62AB9EC220012A71E /* FTHub.xcdatamodeld */; };
+		229524ED2AB9F8170012A71E /* DbUserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229524EC2AB9F8170012A71E /* DbUserAuth.swift */; };
 		22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */; };
 		22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D482A94A83200935A3C /* TwoFaAuthModel.swift */; };
 		22969D4E2A94AA4600935A3C /* RestorePasswordMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */; };
@@ -126,7 +128,7 @@
 		22DA77AC2A98A3A900550A6B /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77AB2A98A3A900550A6B /* AccountController.swift */; };
 		22DA77AF2A98A45900550A6B /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77AE2A98A45900550A6B /* AccountModel.swift */; };
 		22DA77B12A98A59600550A6B /* AccountRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B02A98A59600550A6B /* AccountRequestModel.swift */; };
-		22DA77B42A98CE2E00550A6B /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B32A98CE2E00550A6B /* Database.swift */; };
+		22DA77B42A98CE2E00550A6B /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B32A98CE2E00550A6B /* DB.swift */; };
 		22DA77B62A98D83300550A6B /* FakeLaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B52A98D83300550A6B /* FakeLaunchScreenView.swift */; };
 		22E3990E2AB89CBD009FD345 /* PaywallMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3990D2AB89CBD009FD345 /* PaywallMainView.swift */; };
 		22E399112AB89DB9009FD345 /* PaywallBenefitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E399102AB89DB9009FD345 /* PaywallBenefitsView.swift */; };
@@ -239,6 +241,8 @@
 		228744C82A8E5BB100DB77DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		228F264D2A9E685800AD46D9 /* SetupPageWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageWeightView.swift; sourceTree = "<group>"; };
 		228F26542A9E7FB500AD46D9 /* GlowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowingTextView.swift; sourceTree = "<group>"; };
+		229524E72AB9EC220012A71E /* FTHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FTHub.xcdatamodel; sourceTree = "<group>"; };
+		229524EC2AB9F8170012A71E /* DbUserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUserAuth.swift; sourceTree = "<group>"; };
 		22969D472A94A83200935A3C /* TwoFaAuthRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthRequestModel.swift; sourceTree = "<group>"; };
 		22969D482A94A83200935A3C /* TwoFaAuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoFaAuthModel.swift; sourceTree = "<group>"; };
 		22969D4D2A94AA4600935A3C /* RestorePasswordMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordMainView.swift; sourceTree = "<group>"; };
@@ -298,7 +302,7 @@
 		22DA77AB2A98A3A900550A6B /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		22DA77AE2A98A45900550A6B /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		22DA77B02A98A59600550A6B /* AccountRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRequestModel.swift; sourceTree = "<group>"; };
-		22DA77B32A98CE2E00550A6B /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		22DA77B32A98CE2E00550A6B /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		22DA77B52A98D83300550A6B /* FakeLaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLaunchScreenView.swift; sourceTree = "<group>"; };
 		22E3990D2AB89CBD009FD345 /* PaywallMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallMainView.swift; sourceTree = "<group>"; };
 		22E399102AB89DB9009FD345 /* PaywallBenefitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallBenefitsView.swift; sourceTree = "<group>"; };
@@ -986,7 +990,9 @@
 		22DA77B22A98CE1700550A6B /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				22DA77B32A98CE2E00550A6B /* Database.swift */,
+				22DA77B32A98CE2E00550A6B /* DB.swift */,
+				229524EC2AB9F8170012A71E /* DbUserAuth.swift */,
+				229524E62AB9EC220012A71E /* FTHub.xcdatamodeld */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -1335,6 +1341,7 @@
 				22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */,
 				22FD03372A9B83C4005A6A13 /* SetupPageViewManager.swift in Sources */,
 				229C8E202AA9D7C0006D6526 /* SettingsProfileImagePickerView.swift in Sources */,
+				229524ED2AB9F8170012A71E /* DbUserAuth.swift in Sources */,
 				22EB51B12A8B70AC0079A3B1 /* LogRegButtonsView.swift in Sources */,
 				220266DA2A8A5249009D299F /* HeadlineView.swift in Sources */,
 				22D56B472A962255009270FA /* BeforeAuthView.swift in Sources */,
@@ -1429,9 +1436,10 @@
 				223A2E202AA21C2600848B2B /* HealthKitModel.swift in Sources */,
 				224CE9622AA1BDDA0027FB2D /* SetupPageGoalView.swift in Sources */,
 				224A5D972A8CDC4400490614 /* Requests.swift in Sources */,
+				229524E82AB9EC220012A71E /* FTHub.xcdatamodeld in Sources */,
 				22C6D7F22AADBBE2002C7010 /* CalculatorsFeaturedTabView.swift in Sources */,
 				22C6D7EB2AADB4B7002C7010 /* CalculatorsMainView.swift in Sources */,
-				22DA77B42A98CE2E00550A6B /* Database.swift in Sources */,
+				22DA77B42A98CE2E00550A6B /* DB.swift in Sources */,
 				220323DD2AA48B2600E47CE2 /* SetupModel.swift in Sources */,
 				22F6BB142AAF0492000239B0 /* CalculatorResultsLabelView.swift in Sources */,
 				22C6D7F52AADCA4B002C7010 /* CalculatorsFeaturedGroupView.swift in Sources */,
@@ -1716,6 +1724,19 @@
 			productName = SwiftUICustomizablePicker;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		229524E62AB9EC220012A71E /* FTHub.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				229524E72AB9EC220012A71E /* FTHub.xcdatamodel */,
+			);
+			currentVersion = 229524E72AB9EC220012A71E /* FTHub.xcdatamodel */;
+			path = FTHub.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 220266B62A8A4815009D299F /* Project object */;
 }

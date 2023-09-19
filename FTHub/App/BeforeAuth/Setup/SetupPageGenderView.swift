@@ -14,7 +14,8 @@ struct SetupPageGenderView: View {
     
     @State private var activeOption: Int = 0
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     var body: some View {
         VStack {
@@ -34,11 +35,10 @@ struct SetupPageGenderView: View {
             .padding(.vertical)
             
             Button {
-                if let user = user.first {
-                    user.details?.setupActivePage += 1
-                    user.details?.gender = activeOption == 0 ? .Male : .Female
-                }
+                user[0].userDetails?.setupActivePage += 1
+                user[0].userDetails?.gender = activeOption == 0 ? .Male : .Female
                 setupController.activePage += 1
+                try? context.save()
             } label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))

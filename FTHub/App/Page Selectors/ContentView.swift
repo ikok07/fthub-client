@@ -10,36 +10,11 @@ import SwiftData
 
 struct ContentView: View {
     
-    @Environment(\.modelContext) private var modelContext
-    @Query private var user: [User]
-    
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
     @AppStorage("userToken") private var userToken: String = ""
-    @AppStorage("hasDetails") private var hasDetails: Bool = false
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     @State private var loadContentView: Bool = false
-    
-    func checkToken() async -> Bool {
-        if let user = user.first {
-            modelContext.delete(user)
-        }
-        let response = await AccountController.checkToken()
-        if let safeResponse = response {
-            modelContext.insert(safeResponse.data!)
-            return true
-        }
-        return false
-    }
-    
-    func checkDetails() async {
-        let details = await AccountController.checkDetails()
-        
-        if let userDetails = details {
-            if let user = user.first {
-                user.details = userDetails
-            }
-        }
-    }
+    @AppStorage("hasDetails") private var hasDetails: Bool = false
     
     var body: some View {
         ZStack {
@@ -64,8 +39,8 @@ struct ContentView: View {
         }
         .onAppear {
             Task {
-                if await checkToken() {
-                    await checkDetails()
+                if await DbUserAuth.checkToken() {
+                    hasDetails = await DbUserAuth.checkDetails()
                 }
                 withAnimation {
                     loadContentView = true

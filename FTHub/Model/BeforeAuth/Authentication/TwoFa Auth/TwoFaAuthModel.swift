@@ -11,7 +11,7 @@ import SwiftData
 
 struct TwoFaAuthModel {
     
-    @MainActor static func authenticate(email: String?, token: String?, completion: ((User?) async -> Void)?) async {
+    @MainActor static func authenticate(email: String?, token: String?) async {
         let defaults = UserDefaults.standard
 
         let response = await Authentication.authTwoFa(email: email ?? "", token: token ?? "")
@@ -20,7 +20,9 @@ struct TwoFaAuthModel {
                     defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
                     
                     let newUser = safeResponse.data?.user
-                    await completion?(newUser)
+                    if let safeUser = newUser {
+                        await DbUserAuth.twoFaAuth(newUser: safeUser)
+                    }
                     
                     defaults.setValue(true, forKey: "userLoggedIn")
                     print("loggedin: \(defaults.bool(forKey: "userLoggedIn"))")

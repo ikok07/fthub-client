@@ -19,7 +19,8 @@ struct SetupPageGoalView: View {
     
     @State private var selectedGoal: FitnessGoal = .Balance
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     var body: some View {
         VStack {
@@ -33,12 +34,11 @@ struct SetupPageGoalView: View {
             SetupGoalTabView(selectedGoal: $selectedGoal)
             
             Button(action: {
-                if let user = user.first {
-                    user.details?.setupActivePage += 1
-                    setupController.activePage += 1
-                    user.details?.goal = selectedGoal
-                    setupController.goal = selectedGoal
-                }
+                user[0].userDetails?.setupActivePage += 1
+                setupController.activePage += 1
+                user[0].userDetails?.goal = selectedGoal
+                setupController.goal = selectedGoal
+                try? context.save()
             }, label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))

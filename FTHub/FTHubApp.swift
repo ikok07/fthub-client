@@ -14,15 +14,16 @@ struct FTHubApp: App {
     @StateObject var baseAuthController: BaseAuthController = BaseAuthController()
     @State var setupController: SetupController = SetupController()
     @State var healthKitController: HealthKitController = HealthKitController()
+    @State private var db: DB = DB()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: User.self, isAutosaveEnabled: true)
                 .environmentObject(authController)
                 .environmentObject(baseAuthController)
                 .environment(setupController)
                 .environment(healthKitController)
+                .environment(\.managedObjectContext, db.container.viewContext)
         }
     }
 }

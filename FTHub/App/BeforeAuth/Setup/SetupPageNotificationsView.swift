@@ -11,7 +11,8 @@ import SwiftData
 struct SetupPageNotificationsView: View {
     
     @Environment(SetupController.self) private var setupController
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     var body: some View {
         VStack {
@@ -36,10 +37,8 @@ struct SetupPageNotificationsView: View {
                                 print("Error getting permission for notifications: \(error)")
                                 Message.send(type: "error", message: "There was an error requesting authorisation")
                             } else {
-                                if let user = user.first {
-                                    user.details?.setupActivePage += 1
-                                    setupController.activePage += 1
-                                }
+                                user[0].userDetails?.setupActivePage += 1
+                                setupController.activePage += 1
                             }
                         }
                     }
@@ -50,9 +49,7 @@ struct SetupPageNotificationsView: View {
                 .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
                 
                 Button(action: {
-                    if let user = user.first {
-                        user.details?.setupActivePage += 1
-                    }
+                    user[0].userDetails?.setupActivePage += 1
                     setupController.activePage += 1
                 }, label: {
                     Text("Skip")

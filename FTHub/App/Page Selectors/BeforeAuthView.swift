@@ -61,28 +61,14 @@ struct BeforeAuthView: View {
             if components.host == "email" && url.pathComponents[1] == "confirm" {
                 loadingPresented = true
                 Task {
-                    await CustomURLController.confirmEmail(url: url) { user in
-                        if let user = user {
-                            user.details = UserDetails(setupActivePage: 0)
-                            modelContext.insert(user)
-                        }
-                    }
+                    await CustomURLController.confirmEmail(url: url)
                 }
             } else if components.host == "login" && url.pathComponents[1] == "confirm" {
                 loadingPresented = true
                 
                 if baseAuthController.activeOption != nil {
                     Task {
-                        await CustomURLController.checkTwoFa(email: self.userCurrentEmail, url: url) { newUser in
-                            let details = await AccountController.checkDetails()
-                            if let userDetails = details, let safeUser = newUser {
-                                if let user = user.first {
-                                    modelContext.delete(user)
-                                }
-                                newUser?.details = userDetails
-                                modelContext.insert(safeUser)
-                            }
-                        }
+                        await CustomURLController.checkTwoFa(email: self.userCurrentEmail, url: url)
                     }
                 } else {
                     showTokenVerifyStatus = false

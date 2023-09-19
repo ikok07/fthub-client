@@ -11,7 +11,8 @@ import SwiftData
 struct SetupPageOneView: View {
     
     @Environment(SetupController.self) private var setupController
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     var body: some View {
         VStack {
@@ -28,10 +29,9 @@ struct SetupPageOneView: View {
             .padding(.horizontal)
             
             Button(action: {
-                if let user = user.first {
-                    user.details?.setupActivePage = 1
-                }
+                user[0].userDetails?.setupActivePage = 1
                 setupController.activePage += 1
+                try? context.save()
             }, label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))

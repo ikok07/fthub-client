@@ -15,7 +15,7 @@ final class AccountController {
         return response
     }
     
-    static func checkDetails() async -> UserDetails? {
+    static func checkDetails() async -> ApiUserDetails? {
         let token = UserDefaults.standard.string(forKey: "userToken")
         let details = await AccountModel.checkDetails(token ?? "")
         return details

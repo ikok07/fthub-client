@@ -11,7 +11,8 @@ import PhotosUI
 
 struct SettingsProfileDataView: View {
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @State private var saveButtonActive: Bool = false
     
@@ -58,22 +59,19 @@ struct SettingsProfileDataView: View {
             }
         }
         .onAppear {
-            if let user = user.first {
-                self.imageUrl = URL(string: "https://storage.fthub.eu\(user.photo)")
-                self.name = user.name
-                self.email = user.email
-                self.gender = user.details?.gender ?? .Male
-                self.age = user.details?.age ?? 18
-                self.units = user.details?.units ?? .metric
-                self.height = user.details?.height ?? 0
-                self.weight = user.details?.weight ?? 0
-                self.workoutsPerWeek = user.details?.workoutsPerWeek ?? 2
-                self.goal = user.details?.goal ?? .Balance
-                self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
-            }
+            self.imageUrl = URL(string: "https://storage.fthub.eu\(user.photo)")
+            self.name = user[0].name
+            self.email = user[0].email
+            self.gender = user[0].details?.gender ?? .Male
+            self.age = user[0].details?.age ?? 18
+            self.units = user[0].details?.units ?? .metric
+            self.height = user[0].details?.height ?? 0
+            self.weight = user[0].details?.weight ?? 0
+            self.workoutsPerWeek = user[0].details?.workoutsPerWeek ?? 2
+            self.goal = user[0].details?.goal ?? .Balance
+            self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
         }
         .onChange(of: [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue], { oldValue, newValue in
-            print(newValue)
             if newValue != initConfiguration {
                 saveButtonActive = true
             } else {
@@ -89,22 +87,19 @@ struct SettingsProfileDataView: View {
             await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: self.height, weight: self.weight, workoutsPerWeek: self.workoutsPerWeek, units: self.units, goal: self.goal) { response in
                 if response != nil {
                     
-                    if let user = user.first {
-                        user.details?.gender = self.gender
-                        user.details?.age = self.age
-                        user.details?.units = self.units
-                        user.details?.height = self.height
-                        user.details?.weight = self.weight
-                        user.details?.workoutsPerWeek = self.workoutsPerWeek
-                        user.details?.goal = self.goal
-                        
-                        if localProfileImage != nil || self.name != self.initConfiguration[0] {
-                            await SettingsProfileDataController.sendFormData(name: self.name, image: localProfileImage) { response in
-                                user.name = response.data.user.name
-                                user.photo = response.data.user.photo
-                            }
+                    user[0].details?.gender = self.gender
+                    user[0].details?.age = self.age
+                    user[0].details?.units = self.units
+                    user[0].details?.height = self.height
+                    user[0].details?.weight = self.weight
+                    user[0].details?.workoutsPerWeek = self.workoutsPerWeek
+                    user[0].details?.goal = self.goal
+                    
+                    if localProfileImage != nil || self.name != self.initConfiguration[0] {
+                        await SettingsProfileDataController.sendFormData(name: self.name, image: localProfileImage) { response in
+                            user[0].name = response.data.user.name
+                            user[0].photo = response.data.user.photo
                         }
-                        
                     }
                     
                     self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]

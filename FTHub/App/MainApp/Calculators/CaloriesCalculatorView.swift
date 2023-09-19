@@ -6,12 +6,8 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct CaloriesCalculatorView: View {
-    
-    @Query private var user: [User]
-    
     @State private var showResult: Bool = false
     
     @State private var gender: Gender = .Male

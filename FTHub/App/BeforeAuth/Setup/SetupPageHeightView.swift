@@ -12,7 +12,8 @@ struct SetupPageHeightView: View {
     
     @Environment(SetupController.self) private var setupController
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @State private var userHeight: Double?
     
@@ -27,11 +28,10 @@ struct SetupPageHeightView: View {
             VerticalNumberSelectorView(userHeight: $userHeight)
             
             Button(action: {
-                if let user = user.first {
-                    user.details?.setupActivePage += 1
-                    user.details?.height = Int(userHeight ?? 170)
-                }
+                user[0].userDetails?.setupActivePage += 1
+                user[0].userDetails?.height = Int(userHeight ?? 170)
                 setupController.activePage += 1
+                try? context.save()
             }, label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))

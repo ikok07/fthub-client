@@ -11,13 +11,12 @@ import SwiftData
 struct SettingsMainView: View {
     
     @Environment(HealthKitController.self) private var healthKitController
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @AppStorage("userLoggedIn") private var userLoggedIn: Bool = true
     @AppStorage("userToken") private var userToken: String = ""
     @AppStorage("hasDetails") private var hasDetails: Bool = true
-    
-    @Environment(\.modelContext) private var modelContext
-    @Query private var user: [User]
     
     @State private var appleHealth: Bool = false
     
@@ -68,9 +67,7 @@ struct SettingsMainView: View {
                         userLoggedIn = false
                         userToken = ""
                         hasDetails = false
-                        if let user = user.first {
-                            modelContext.delete(user)
-                        }
+                        context.delete(user[0])
                     }
                 }, label: {
                     Text("Log Out")
@@ -85,9 +82,9 @@ struct SettingsMainView: View {
             .scrollIndicators(.hidden)
             .onAppear {
                 if let user = user.first {
-                    self.name = user.name
-                    self.email = user.email
-                    self.imageUrl = URL(string: "https://storage.fthub.eu\(user.photo)")
+                    self.name = user.name ?? "No name"
+                    self.email = user.email ?? "No email"
+                    self.imageUrl = URL(string: "https://storage.fthub.eu\(user.photo ?? "No ID")")
                 }
             }
         }

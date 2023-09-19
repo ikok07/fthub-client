@@ -15,7 +15,8 @@ struct SetupPageFinishView: View {
     
     @AppStorage("hasDetails") private var hasDetails: Bool = false
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     var body: some View {
         VStack {
@@ -35,9 +36,7 @@ struct SetupPageFinishView: View {
                 Task {
                     await setupController.saveDetailsToServer() { success in
                         hasDetails = true
-                        if let user = user.first {
-                            user.details?.setupActivePage = 0
-                        }
+                        user[0].userDetails?.setupActivePage = 0
                     }
                 }
             }, label: {

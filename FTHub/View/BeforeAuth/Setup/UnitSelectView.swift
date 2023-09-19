@@ -14,11 +14,12 @@ struct UnitSelectView: View {
     
     @State var activeUnits: Unit = .metric
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     var body: some View {
         VStack {
-            Text("Preffered units".uppercased())
+            Text("Preferred units".uppercased())
                 .font(.title2)
                 .fontWeight(.regular)
             
@@ -27,9 +28,7 @@ struct UnitSelectView: View {
                     withAnimation {
                         setupController.units = .metric
                         activeUnits = .metric
-                        if let user = user.first {
-                            user.details?.units = .metric
-                        }
+                        user[0].userDetails?.units = "metric"
                     }
                 }, label: {
                     Text("Metric")
@@ -42,9 +41,7 @@ struct UnitSelectView: View {
                     withAnimation {
                         setupController.units = .imperial
                         activeUnits = .imperial
-                        if let user = user.first {
-                            user.details?.units = .imperial
-                        }
+                        user[0].userDetails?.units = "imperial"
                     }
                 }, label: {
                     Text("Imperial")
@@ -57,9 +54,7 @@ struct UnitSelectView: View {
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .onAppear {
-                if let user = user.first {
-                    activeUnits = user.details?.units ?? .metric
-                }
+                activeUnits = Unit(rawValue: user[0].userDetails?.units ?? "metric") ?? .metric
             }
         }
         .padding()

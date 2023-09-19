@@ -17,7 +17,8 @@ struct CaloriesCalculatorInputView: View {
     
     @FocusState private var isActive: Bool
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @State var autofill: Bool = false
     
@@ -37,9 +38,9 @@ struct CaloriesCalculatorInputView: View {
                 
                 CustomInputField(isActive: _isActive, icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age)
                 
-                CustomInputField(isActive: _isActive, icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
+                CustomInputField(isActive: _isActive, icon: "scalemass.fill", unit: user.first?.userDetails?.units == "metric" ? "kg" : "lbs", placeholder: "Weight", numpad: true, text: $weight)
                 
-                CustomInputField(isActive: _isActive, icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
+                CustomInputField(isActive: _isActive, icon: "arrow.up.and.down", unit: user.first?.userDetails?.units == "metric" ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
                 
                 CustomPickerRowView(icon: "figure.run") {
                     Picker("", selection: $activityLevel) {
@@ -72,18 +73,15 @@ struct CaloriesCalculatorInputView: View {
             }
         }
         .onChange(of: [gender.rawValue, activityLevel.rawValue, age, weight, height]) { oldValue, newValue in
-            if let user = user.first, user.details != nil {
-                
-                let savedWeight: String = String(user.details!.weight!)
-                let savedWeightLbs: String = String(format: "%.1f", Double(user.details!.weight!) * K.Units.kgToLbs)
-                
-                let savedHeight: String = String(user.details!.height!)
-                let savedHeightInches: String = String(format: "%.1f", Double(user.details!.height!) * K.Units.cmToInch)
-                
-                if newValue[0] != user.details!.gender!.rawValue || newValue[2] != String(user.details!.age!) || newValue[3] != (user.details!.units == .metric ? savedWeight : savedWeightLbs) || newValue[4] != (user.details!.units == .metric ? savedHeight : savedHeightInches) {
-                    withAnimation(.easeOut(duration: 0.2)) {
-                        autofill = false
-                    }
+            let savedWeight: String = String(user[0].userDetails!.weight)
+            let savedWeightLbs: String = String(format: "%.1f", Double(user[0].userDetails!.weight) * K.Units.kgToLbs)
+            
+            let savedHeight: String = String(user[0].userDetails!.height)
+            let savedHeightInches: String = String(format: "%.1f", Double(user[0].userDetails!.height) * K.Units.cmToInch)
+            
+            if newValue[0] != user[0].userDetails!.gender! || newValue[2] != String(user[0].userDetails!.age) || newValue[3] != (user[0].userDetails!.units == "metric" ? savedWeight : savedWeightLbs) || newValue[4] != (user[0].userDetails!.units == "metric" ? savedHeight : savedHeightInches) {
+                withAnimation(.easeOut(duration: 0.2)) {
+                    autofill = false
                 }
             }
         }
@@ -98,14 +96,12 @@ struct CaloriesCalculatorInputView: View {
     }
     
     func enableAutoFill() {
-        if let user = user.first, user.details != nil {
-            withAnimation(.easeOut(duration: 0.2)) {
-                autofill = true
-                gender = user.details!.gender!
-                age = String(user.details!.age!)
-                weight = user.details!.units == .metric ? String(user.details!.weight!) : String(format: "%.1f", (Double(user.details!.weight!) * K.Units.kgToLbs))
-                height = user.details!.units == .metric ? String(user.details!.height!) : String(format: "%.1f", (Double(user.details!.height!) * K.Units.cmToInch))
-            }
+        withAnimation(.easeOut(duration: 0.2)) {
+            autofill = true
+            gender = Gender(rawValue: user[0].userDetails!.gender!)!
+            age = String(user[0].userDetails!.age)
+            weight = user[0].userDetails!.units == "metric" ? String(user[0].userDetails!.weight) : String(format: "%.1f", (Double(user[0].userDetails!.weight) * K.Units.kgToLbs))
+            height = user[0].userDetails!.units == "metric" ? String(user[0].userDetails!.height) : String(format: "%.1f", (Double(user[0].userDetails!.height) * K.Units.cmToInch))
         }
     }
     
