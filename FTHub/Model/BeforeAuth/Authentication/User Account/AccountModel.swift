@@ -20,8 +20,12 @@ struct AccountModel {
                 defaults.setValue(true, forKey: "userLoggedIn")
                 if safeResponse.data != nil { return safeResponse }
             } else {
+                await DbUserAuth.getCurrentUser() { user in
+                    user.hasFullDetails = false
+                }
+                
                 defaults.setValue(false, forKey: "userLoggedIn")
-                defaults.setValue(false, forKey: "hasDetails")
+                
             }
         } else {
             defaults.setValue(false, forKey: "userLoggedIn")

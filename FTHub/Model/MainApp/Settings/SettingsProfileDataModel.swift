@@ -20,7 +20,7 @@ struct SettingsProfileDataModel {
         let formDataBody: SettingsProfileFormDataBody = SettingsProfileFormDataBody(json: json, image: imageData)
         
         do {
-            let response: SettingsProfileFormDataResponse = try await Networking.sendPatchRequest(data: formDataBody, url: url, authToken: UserDefaults.standard.string(forKey: "userToken"), formData: true)
+            let response: SettingsProfileFormDataResponse = try await Networking.sendPatchRequest(data: formDataBody, url: url, authToken: K.Database.getUserToken(), formData: true)
             return response
         } catch {
             print("Error uploading media to server")
@@ -33,7 +33,7 @@ struct SettingsProfileDataModel {
         let body: SettingsProfileDataBody = SettingsProfileDataBody(gender: gender, age: age, height: height, weight: weight, trainingFrequencyPerWeek: workoutsPerWeek, units: units, goal: goal)
         
         do {
-            let response: SettingsProfileDataResponse = try await Networking.sendPatchRequest(data: body, url: url, authToken: UserDefaults.standard.string(forKey: "userToken"))
+            let response: SettingsProfileDataResponse = try await Networking.sendPatchRequest(data: body, url: url, authToken: K.Database.getUserToken())
             return response
         } catch {
             print("Error updating user details: \(error)")
@@ -41,5 +41,7 @@ struct SettingsProfileDataModel {
         }
         
     }
+    
+    
     
 }

@@ -31,15 +31,8 @@ struct SetupModel {
         
         var token: String = ""
         
-        await DbUserAuth.getCurrentUser() { fetchData in
-            switch fetchData {
-            case .success(let users):
-                if !users.isEmpty {
-                    token = users[0].token ?? ""
-                }
-            case .failure(let error):
-                print("Error getting token when finishing setup: \(error)")
-            }
+        await DbUserAuth.getCurrentUser() { user in
+            token = user.token ?? ""
         }
         return token
     }

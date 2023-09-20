@@ -417,7 +417,6 @@
 		220266CF2A8A4935009D299F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				22DA77B22A98CE1700550A6B /* Database */,
 				22FC13C22A9778490016E17C /* Network */,
 				220266D02A8A494A009D299F /* Constants.swift */,
 				22E81F192A9525E10021DBE0 /* Message.swift */,
@@ -595,6 +594,7 @@
 		224A5D8F2A8CC9D500490614 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				22DA77B22A98CE1700550A6B /* Database */,
 				224A5D902A8CC9E000490614 /* fthub.i18n.json */,
 			);
 			path = Data;

@@ -14,15 +14,8 @@ final class AccountController {
         
         var response: AccountTokenAuthResponse?
         
-        await DbUserAuth.getCurrentUser() { fetchData in
-            switch fetchData {
-            case .success(let users):
-                if users.count != 0 {
-                    response = await AccountModel.authToken(users[0].token ?? "")
-                }
-            case .failure(let error):
-                print("Could not fetch user from database to check token: \(error.localizedDescription)")
-            }
+        await DbUserAuth.getCurrentUser() { user in
+            response = await AccountModel.authToken(user.token ?? "")
         }
         
         return response

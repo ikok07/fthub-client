@@ -102,8 +102,19 @@ struct K {
 
             return values
         }
-        
-        
+    }
+    
+    // MARK: - Database
+    
+    struct Database {
+        static func getUserToken() async -> String {
+            var token: String = ""
+            
+            await DbUserAuth.getCurrentUser() { user in
+                token = user.token ?? ""
+            }
+            return token
+        }
     }
     
 }

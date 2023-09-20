@@ -25,12 +25,19 @@ struct DbUserAuth {
         return newDetails
     }
     
-    static func getCurrentUser(completionHandler: ((Result<[User], Error>) async -> Void)? = nil) async {
+    static func getCurrentUser(completionHandler: ((User) async -> Void)? = nil) async {
         let db = DB.shared
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
         
-        await completionHandler?(fetchData)
+        switch fetchData {
+        case .success(let users):
+            if !users.isEmpty {
+                await completionHandler?(users[0])
+            }
+        case .failure(let error):
+            print("Error getting current user from database: \(error.localizedDescription)")
+        }
     }
     
     static func checkToken() async {

@@ -39,18 +39,11 @@ struct TwoFaAuthModel {
                     defaults.setValue(false, forKey: "loadingPresented")
                 }
             } else {
-                await DbUserAuth.getCurrentUser() { fetchData in
-                    switch fetchData {
-                    case .success(let users):
-                        if !users.isEmpty {
-                            let details = UserDetails(context: DB.shared.persistentContainer.viewContext)
-                            users[0].userDetails = details
-                            DB.shared.persistentContainer.viewContext.insert(users[0])
-                            DB.shared.saveContext()
-                        }
-                    case .failure(let error):
-                        print("Failed getting users from database while perforimg twoFa: \(error.localizedDescription)")
-                    }
+                await DbUserAuth.getCurrentUser() { user in
+                    let details = UserDetails(context: DB.shared.persistentContainer.viewContext)
+                    user.userDetails = details
+                    DB.shared.persistentContainer.viewContext.insert(user)
+                    DB.shared.saveContext()
                 }
             }
     }

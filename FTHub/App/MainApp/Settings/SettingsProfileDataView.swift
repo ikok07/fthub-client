@@ -86,7 +86,6 @@ struct SettingsProfileDataView: View {
         Task {
             await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: self.height, weight: self.weight, workoutsPerWeek: self.workoutsPerWeek, units: self.units, goal: self.goal) { response in
                 if response != nil {
-                    
                     user[0].userDetails?.gender = self.gender.rawValue
                     user[0].userDetails?.age = Int16(self.age)
                     user[0].userDetails?.units = self.units.rawValue
@@ -94,17 +93,16 @@ struct SettingsProfileDataView: View {
                     user[0].userDetails?.weight = Int16(self.weight)
                     user[0].userDetails?.workoutsPerWeek = Int16(self.workoutsPerWeek)
                     user[0].userDetails?.goal = self.goal.rawValue
-                    
                     if localProfileImage != nil || self.name != self.initConfiguration[0] {
                         await SettingsProfileDataController.sendFormData(name: self.name, image: localProfileImage) { response in
                             user[0].name = response.data.user.name
                             user[0].photo = response.data.user.photo
                         }
                     }
+                    try? context.save()
                     
                     self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
                     Message.send(type: "success", message: "Successfully saved profile data")
-                    
                     saveButtonActive = false
                 }
             }
