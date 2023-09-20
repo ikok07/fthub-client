@@ -17,21 +17,18 @@ struct TwoFaAuthModel {
         let response = await Authentication.authTwoFa(email: email ?? "", token: token ?? "")
             if let safeResponse = response {
                 if safeResponse.status == "success" {
-                    defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
-                    
                     let newMemoryUser = safeResponse.data?.user
                     if let newMemoryUser = newMemoryUser {
-                        let user = User()
+                        let user = User(context: DB.shared.persistentContainer.viewContext)
                         user.mongoID = newMemoryUser._id
+                        user.token = safeResponse.token
                         user.name = newMemoryUser.name
                         user.email = newMemoryUser.email
                         user.photo = newMemoryUser.photo
                         user.role = newMemoryUser.role
                         await DbUserAuth.twoFaAuth(newUser: user)
                     }
-                    
                     defaults.setValue(true, forKey: "userLoggedIn")
-                    print("loggedin: \(defaults.bool(forKey: "userLoggedIn"))")
                     defaults.setValue(false, forKey: "emailWithLinkSent")
                     defaults.setValue(false, forKey: "loadingPresented")
                 } else {
@@ -40,6 +37,20 @@ struct TwoFaAuthModel {
                     defaults.setValue(SendEmailType.twoFa.rawValue, forKey: "sendEmailType")
                     defaults.setValue(true, forKey: "showTokenVerifyStatus")
                     defaults.setValue(false, forKey: "loadingPresented")
+                }
+            } else {
+                await DbUserAuth.getCurrentUser() { fetchData in
+                    switch fetchData {
+                    case .success(let users):
+                        if !users.isEmpty {
+                            let details = UserDetails(context: DB.shared.persistentContainer.viewContext)
+                            users[0].userDetails = details
+                            DB.shared.persistentContainer.viewContext.insert(users[0])
+                            DB.shared.saveContext()
+                        }
+                    case .failure(let error):
+                        print("Failed getting users from database while perforimg twoFa: \(error.localizedDescription)")
+                    }
                 }
             }
     }

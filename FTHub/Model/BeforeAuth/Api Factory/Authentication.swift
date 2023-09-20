@@ -121,7 +121,6 @@ struct Authentication {
     
     static func authToken(_ token: String) async -> AccountTokenAuthResponse? {
         let url: URL = URL(string: "\(K.API.apiURL)/\(self.language?.first?.prefix(2) ?? "en")/api/\(K.API.apiV1)/user/me")!
-        print("URL: \(url)")
         
         do {
             let response: AccountTokenAuthResponse = try await Networking.sendGetRequest(url: url, token: token)

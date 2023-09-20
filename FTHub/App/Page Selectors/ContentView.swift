@@ -14,13 +14,15 @@ struct ContentView: View {
     @AppStorage("userToken") private var userToken: String = ""
     @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     @State private var loadContentView: Bool = false
-    @AppStorage("hasDetails") private var hasDetails: Bool = false
+    
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var users: FetchedResults<User>
     
     var body: some View {
         ZStack {
             if loadContentView {
                 ZStack {
-                    if userLoggedIn == true && !hasDetails {
+                    if userLoggedIn == true && !users[0].hasFullDetails {
                         SetupPageViewManager()
                     } else if userLoggedIn == true {
                         MainAppView()
@@ -32,16 +34,14 @@ struct ContentView: View {
                 .withLoadingAnimation()
                 .sensoryFeedback(.success, trigger: userLoggedIn)
                 .animation(.easeOut, value: userLoggedIn)
-                .animation(.easeOut, value: hasDetails)
+//                .animation(.easeOut, value: users[0].hasFullDetails)
             } else {
                 FakeLaunchScreenView()
             }
         }
         .onAppear {
             Task {
-                if await DbUserAuth.checkToken() {
-                    hasDetails = await DbUserAuth.checkDetails()
-                }
+                await DbUserAuth.checkToken()
                 withAnimation {
                     loadContentView = true
                 }

@@ -14,7 +14,7 @@ struct FTHubApp: App {
     @StateObject var baseAuthController: BaseAuthController = BaseAuthController()
     @State var setupController: SetupController = SetupController()
     @State var healthKitController: HealthKitController = HealthKitController()
-    @State private var db: DB = DB()
+    let db: DB = DB.shared
     
     var body: some Scene {
         WindowGroup {
@@ -23,7 +23,10 @@ struct FTHubApp: App {
                 .environmentObject(baseAuthController)
                 .environment(setupController)
                 .environment(healthKitController)
-                .environment(\.managedObjectContext, db.container.viewContext)
+                .environment(\.managedObjectContext, db.persistentContainer.viewContext)
+                .onAppear {
+                    print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
+                }
         }
     }
 }

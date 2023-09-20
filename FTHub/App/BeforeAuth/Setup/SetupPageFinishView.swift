@@ -13,8 +13,6 @@ struct SetupPageFinishView: View {
     @Environment(SetupController.self) private var setupController
     @Environment(\.modelContext) private var modelContext
     
-    @AppStorage("hasDetails") private var hasDetails: Bool = false
-    
     @Environment(\.managedObjectContext) private var context
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
@@ -35,7 +33,9 @@ struct SetupPageFinishView: View {
             Button(action: {
                 Task {
                     await setupController.saveDetailsToServer() { success in
-                        hasDetails = true
+                        withAnimation {
+                            user[0].hasFullDetails = true
+                        }
                         user[0].userDetails?.setupActivePage = 0
                     }
                 }

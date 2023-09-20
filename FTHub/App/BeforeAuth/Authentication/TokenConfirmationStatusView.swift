@@ -72,7 +72,7 @@ struct TokenConfirmationStatusView: View {
                         }
                     }
                 }, label: {
-                    Text(status == .success ? "Go to Dashboard" : "Resend Email")
+                    Text(status == .success ? "Continue" : "Resend Email")
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 })
                 .buttonStyle(CTAButtonStyle(gradient: status == .success ? K.Gradients.mainGradient : K.Gradients.errorGradient))
