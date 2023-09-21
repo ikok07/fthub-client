@@ -15,23 +15,19 @@ struct BeforeAuthView: View {
     @Environment(\.modelContext) private var modelContext
     
     @EnvironmentObject private var baseAuthController: BaseAuthController
-    
-    @AppStorage("showTutorial") private var showTutorial: Bool = true
-    @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
-    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
+
     @AppStorage("showRestorePasswordStatus") private var showRestorePasswordStatus: Bool = false
-    @AppStorage("emailWithLinkSent") private var emailWithLinkSent: Bool = false
-    @AppStorage("showTokenVerifyStatus") private var showTokenVerifyStatus: Bool = false
     @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
-    @AppStorage("tokenConfirmationStatus") private var tokenConfirmationStatus: TokenVerifyStatus = .success
+    
+    @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
     
     var body: some View {
         ZStack {
-            if self.showTutorial {
+            if self.variables[0].showTutorial {
                 TutorialPageViewManager()
-            } else if self.emailWithLinkSent {
+            } else if self.variables[0].emailWithLinkSent {
                 EmailConfirmationLinkSentView()
-            } else if self.showTokenVerifyStatus {
+            } else if self.variables[0].showTokenVerifyStatus {
                 TokenConfirmationStatusView()
             } else if self.showRestorePasswordStatus {
                 RestorePasswordStatusView()
@@ -41,11 +37,11 @@ struct BeforeAuthView: View {
                 MainAccountAuthView()
             }
         }
-        .animation(.easeOut, value: showTutorial)
-        .animation(.easeOut, value: userCurrentEmail)
-        .animation(.easeOut, value: loadingPresented)
-        .animation(.easeOut, value: emailWithLinkSent)
-        .animation(.easeOut, value: showTokenVerifyStatus)
+        .animation(.easeOut, value: variables[0].showTutorial)
+        .animation(.easeOut, value: variables[0].userCurrentEmail)
+        .animation(.easeOut, value: variables[0].loadingPresented)
+        .animation(.easeOut, value: variables[0].emailWithLinkSent)
+        .animation(.easeOut, value: variables[0].showTokenVerifyStatus)
         .animation(.easeOut, value: showRestorePassword)
         .animation(.easeOut, value: showRestorePasswordStatus)
         .onOpenURL { url in
@@ -57,25 +53,25 @@ struct BeforeAuthView: View {
             }
             
             if components.host == "email" && url.pathComponents[1] == "confirm" {
-                loadingPresented = true
+                variables[0].loadingPresented = true
                 Task {
                     await CustomURLController.confirmEmail(url: url)
                 }
             } else if components.host == "login" && url.pathComponents[1] == "confirm" {
-                loadingPresented = true
+                variables[0].loadingPresented = true
                 
                 if baseAuthController.activeOption != nil {
                     Task {
-                        await CustomURLController.checkTwoFa(email: self.userCurrentEmail, url: url)
+                        await CustomURLController.checkTwoFa(email: self.variables[0].userCurrentEmail ?? "", url: url)
                     }
                 } else {
-                    showTokenVerifyStatus = false
-                    emailWithLinkSent = false
-                    loadingPresented = false
+                    variables[0].showTokenVerifyStatus = false
+                    variables[0].emailWithLinkSent = false
+                    variables[0].loadingPresented = false
                 }
                 
             } else if url.pathComponents[1] == "reset" {
-                loadingPresented = true
+                variables[0].loadingPresented = true
                 Task {
                     await CustomURLController.openResetPassword(url: url)
                 }
@@ -83,8 +79,8 @@ struct BeforeAuthView: View {
         }
         .onChange(of: scenePhase) { oldValue, newScene in
             if newScene == .background {
-                    emailWithLinkSent = false
-                    showTokenVerifyStatus = false
+                variables[0].emailWithLinkSent = false
+                variables[0].showTokenVerifyStatus = false
             }
         }
     }

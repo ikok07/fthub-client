@@ -59,8 +59,8 @@ struct SettingsMainView: View {
                 .padding()
                 
                 Button(action: {
-                    withAnimation {
-                        DbUserAuth.logOut()
+                    Task {
+                        await DbUserAuth.logOut()
                     }
                 }, label: {
                     Text("Log Out")

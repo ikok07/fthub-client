@@ -25,7 +25,10 @@ struct FTHubApp: App {
                 .environment(healthKitController)
                 .environment(\.managedObjectContext, db.persistentContainer.viewContext)
                 .onAppear {
-                    print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
+                    Task {
+                        await DbApplication.initiate()
+                        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
+                    }
                 }
         }
     }

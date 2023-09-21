@@ -38,10 +38,10 @@ struct RestorePasswordModel {
         defaults.setValue(false, forKey: "loadingPresented")
         
         if let safeResponse = response {
-            defaults.setValue(safeResponse.token, forKey: "userToken")
             let newMemoryUser = safeResponse.data.user
             let newUser = User(context: DB.shared.persistentContainer.viewContext)
             newUser.mongoID = newMemoryUser._id
+            newUser.token = safeResponse.token
             newUser.name = newMemoryUser.name
             newUser.email = newMemoryUser.email
             newUser.photo = newMemoryUser.photo

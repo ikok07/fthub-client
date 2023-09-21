@@ -11,7 +11,9 @@ import CoreData
 class DB {
     
     static let shared = DB()
-    private init() {}
+    private init() {
+        persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+    }
     
     var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "FTHub")
@@ -24,6 +26,26 @@ class DB {
         
         return container
     }()
+    
+    var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    func performBackgroundTask(block: @escaping (NSManagedObjectContext) -> Void) {
+        persistentContainer.performBackgroundTask(block)
+    }
+    
+    @objc func backgroundContextDidSave(notification: Notification) {
+        guard let notificationContext = notification.object as? NSManagedObjectContext else { return }
+        
+        guard notificationContext != context else {
+            return
+        }
+        
+        context.perform {
+            self.context.mergeChanges(fromContextDidSave: notification)
+        }
+    }
     
     func makeFetchRequest<T: NSManagedObject>(request: NSFetchRequest<T>) -> Result<[T], Error> {
         let context = DB.shared.persistentContainer.viewContext

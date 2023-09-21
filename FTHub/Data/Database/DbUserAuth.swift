@@ -25,24 +25,9 @@ struct DbUserAuth {
         return newDetails
     }
     
-    static func getCurrentUser(completionHandler: ((User) async -> Void)? = nil) async {
-        let db = DB.shared
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
-        
-        switch fetchData {
-        case .success(let users):
-            if !users.isEmpty {
-                await completionHandler?(users[0])
-            }
-        case .failure(let error):
-            print("Error getting current user from database: \(error.localizedDescription)")
-        }
-    }
-    
     static func checkToken() async {
         let db = DB.shared
-        let context = db.persistentContainer.viewContext
+        let context = db.context
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
         
@@ -68,8 +53,6 @@ struct DbUserAuth {
                 newUser.role = newMemoryUser.role
                 context.insert(newUser)
                 await self.checkDetails()
-            } else {
-                defaults.setValue(false, forKey: "userLoggedIn")
             }
             
         case .failure(let error):
@@ -78,36 +61,27 @@ struct DbUserAuth {
     }
     
     static func checkDetails() async {
-        let db = DB.shared
-        let context = db.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
-        
-        switch fetchData {
-        case .success(let users):
+        await K.Database.getCurrentUser() { user, context in
             let details = await AccountController.checkDetails()
             if let details = details {
                 let newDetails = self.convertApiDetailsToNormalDetails(details)
-                users[0].userDetails = newDetails
-                users[0].hasFullDetails = true
-                context.insert(users[0])
-                db.saveContext()
+                user.userDetails = newDetails
+                user.hasFullDetails = true
+                DB.shared.context.insert(user)
+                DB.shared.saveContext()
             } else {
-                let details = UserDetails(context: context)
-                users[0].userDetails = details
-                context.insert(users[0])
-                db.saveContext()
+                let details = UserDetails(context: DB.shared.persistentContainer.viewContext)
+                user.userDetails = details
+                DB.shared.context.insert(user)
+                DB.shared.saveContext()
             }
-            
-        case .failure(let error):
-            print("Error fetching user data from database: \(error)")
         }
         
     }
     
     static func confirmEmail(newUser: User) -> Bool {
         let db = DB.shared
-        let context = db.persistentContainer.viewContext
+        let context = db.context
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
         
@@ -127,7 +101,7 @@ struct DbUserAuth {
     
     static func twoFaAuth(newUser: User) async {
         let db = DB.shared
-        let context = db.persistentContainer.viewContext
+        let context = db.context
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
         
@@ -148,42 +122,31 @@ struct DbUserAuth {
     }
     
     static func restorePassword(newUser: User) async {
-        let db = DB.shared
-        let context = db.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
-        
-        switch fetchData {
-        case .success(let users):
-            let details = await AccountController.checkDetails()
-            if let details = details {
-                let newUserDetails = self.convertApiDetailsToNormalDetails(details)
-                context.delete(users[0])
-                newUser.userDetails = newUserDetails
-                db.saveContext()
-            }
-        case .failure(let error):
-            print("Failed deleting user from database: \(error)")
-        }
+//        await K.Database.getCurrentUser() { user in
+//            let context = DB.shared.persistentContainer.viewContext
+//            context.delete(user)
+//            context.insert(newUser)
+//            let details = await AccountController.checkDetails()
+//            if let details = details {
+//                let newDetails = self.convertApiDetailsToNormalDetails(details)
+//                user.userDetails = newDetails
+//                user.hasFullDetails = true
+//                DB.shared.persistentContainer.viewContext.insert(user)
+//                DB.shared.saveContext()
+//            } else {
+//                let details = UserDetails(context: DB.shared.persistentContainer.viewContext)
+//                user.userDetails = details
+//                DB.shared.persistentContainer.viewContext.insert(user)
+//                DB.shared.saveContext()
+//            }
+//        }
     }
     
-    static func logOut() {
-        let db = DB.shared
-        let context = db.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
-        
-        switch fetchData {
-        case .success(let users):
-            if !users.isEmpty {
-                self.defaults.setValue(false, forKey: "userLoggedIn")
-                for user in users {
-                    context.delete(user)
-                }
-                db.saveContext()
-            }
-        case .failure(let error):
-            print("Failed deleting user from database: \(error)")
+    static func logOut() async {
+        await K.Database.getCurrentUser() { user, context in
+            self.defaults.setValue(false, forKey: "userLoggedIn")
+            DB.shared.context.delete(user)
+            DB.shared.saveContext()
         }
     }
     

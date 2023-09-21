@@ -14,7 +14,7 @@ final class AccountController {
         
         var response: AccountTokenAuthResponse?
         
-        await DbUserAuth.getCurrentUser() { user in
+        await K.Database.getCurrentUser() { user, context in
             response = await AccountModel.authToken(user.token ?? "")
         }
         

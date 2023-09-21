@@ -13,21 +13,31 @@ struct CustomURLController {
     
     static func confirmEmail(url: URL) async {
         let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: defaults.string(forKey: "userCurrentEmail") ?? "No email")
-        defaults.setValue(false, forKey: "loadingPresented")
-        defaults.setValue(SendEmailType.confirm.rawValue, forKey: "sendEmailType")
-        if emailConfirmed {
-            defaults.set(TokenVerifyStatus.success.rawValue, forKey: "tokenConfirmationStatus")
-        } else {
-            defaults.set(TokenVerifyStatus.fail.rawValue, forKey: "tokenConfirmationStatus")
+        await K.Database.getAppVariables() { variables, context in
+            variables.loadingPresented = false
+            variables.sendEmailType = SendEmailType.confirm.rawValue
         }
-        defaults.setValue(false, forKey: "emailWithLinkSent")
-        defaults.setValue(true, forKey: "showTokenVerifyStatus")
+        if emailConfirmed {
+            await K.Database.getAppVariables() { variables, context in
+                variables.tokenConfirmationStatus = TokenVerifyStatus.success.rawValue
+            }
+        } else {
+            await K.Database.getAppVariables() { variables, context in
+                variables.tokenConfirmationStatus = TokenVerifyStatus.fail.rawValue
+            }
+        }
+        await K.Database.getAppVariables() { variables, context in
+            variables.emailWithLinkSent = false
+            variables.showTokenVerifyStatus = true
+        }
     }
     
     static func openResetPassword(url: URL) async {
+        await K.Database.getAppVariables() { variables, context in
+            variables.loadingPresented = false
+        }
         defaults.setValue(url.pathComponents[2], forKey: "restorePasswordToken")
         defaults.setValue(true, forKey: "showRestorePassword")
-        defaults.setValue(false, forKey: "loadingPresented")
     }
     
     static func checkTwoFa(email: String, url: URL) async {

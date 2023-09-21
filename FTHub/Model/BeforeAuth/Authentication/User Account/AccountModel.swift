@@ -17,18 +17,28 @@ struct AccountModel {
         
         if let safeResponse = response {
             if safeResponse.status == "success" {
-                defaults.setValue(true, forKey: "userLoggedIn")
+                await K.Database.getAppVariables() { variables, context in
+                    variables.userLoggedIn = true
+                }
                 if safeResponse.data != nil { return safeResponse }
             } else {
-                await DbUserAuth.getCurrentUser() { user in
+                await K.Database.getCurrentUser() { user, context in
                     user.hasFullDetails = false
                 }
                 
-                defaults.setValue(false, forKey: "userLoggedIn")
+                await K.Database.getAppVariables() { variables, context in
+                    variables.userLoggedIn = false
+                    variables.showTokenVerifyStatus = false
+                    variables.emailWithLinkSent = false
+                }
                 
             }
         } else {
-            defaults.setValue(false, forKey: "userLoggedIn")
+            await K.Database.getAppVariables() { variables, context in
+                variables.userLoggedIn = false
+                variables.showTokenVerifyStatus = false
+                variables.emailWithLinkSent = false
+            }
             Message.send(type: "error", message: "There was an error connecting to our servers. Please try again later.")
         }
         return nil
@@ -37,7 +47,9 @@ struct AccountModel {
     static func checkDetails(_ token: String) async -> ApiUserDetails? {
         
         let response = await Authentication.checkDetails(token)
-        defaults.setValue(false, forKey: "loadingPresented")
+        await K.Database.getAppVariables() { variables, context in
+            variables.loadingPresented = false
+        }
         
         if let safeResponse = response {
             if safeResponse.status == "success" {

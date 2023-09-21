@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SettingsChangePasswordView: View {
     
-    @AppStorage("userToken") private var userToken: String = ""
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) private var users: FetchedResults<User>
     
     @State private var currentPassword: String = ""
     @State private var newPassword: String = ""
@@ -44,14 +45,7 @@ struct SettingsChangePasswordView: View {
     func changePassword() {
         Task {
             if newPassword == confirmPassword {
-                await SettingsChangePasswordController.changePassword(currPass: self.currentPassword, newPass: self.newPassword, confirmNewPass: self.confirmPassword) { response in
-                    if response.status == "success" {
-                        userToken = response.token ?? ""
-                        Message.send(type: "success", message: response.message ?? "Successfully changed password")
-                    } else {
-                        Message.send(type: "error", message: response.message ?? "Your password could not be changed at the moment")
-                    }
-                }
+                await SettingsChangePasswordController.changePassword(currentPass: self.currentPassword, newPass: self.newPassword, confirmNewPass: self.confirmPassword)
             } else {
                 Message.send(type: "error", message: "Your password and confirmation password do not match.")
             }

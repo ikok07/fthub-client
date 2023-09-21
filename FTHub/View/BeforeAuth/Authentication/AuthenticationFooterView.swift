@@ -17,8 +17,7 @@ struct AuthenticationFooterView: View {
     let password: String
     let confirmPassword: String?
     
-    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
-    @AppStorage("buttonLoading") private var buttonLoading: Bool = false
+    @FetchRequest(sortDescriptors: []) var appVariables: FetchedResults<AppVariables>
     
     var saveDetails: () -> Bool
     
@@ -30,12 +29,12 @@ struct AuthenticationFooterView: View {
             Button(action: {
                 if saveDetails() {
                     withAnimation {
-                        buttonLoading = true
+                        appVariables[0].buttonLoading = true
                         baseAuthController.authenticateUser()
                     }
                 }
             }, label: {
-                if buttonLoading {
+                if appVariables[0].buttonLoading {
                     ProgressView()
                         .progressViewStyle(.circular)
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -44,14 +43,14 @@ struct AuthenticationFooterView: View {
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 }
             }) //: Button
-            .buttonStyle(CTAButtonStyle(gradient: buttonLoading ? K.Gradients.grayGradient : K.Gradients.mainGradient))
-            .disabled(buttonLoading)
-            .animation(.easeOut, value: buttonLoading)
+            .buttonStyle(CTAButtonStyle(gradient: appVariables[0].buttonLoading ? K.Gradients.grayGradient : K.Gradients.mainGradient))
+            .disabled(appVariables[0].buttonLoading)
+            .animation(.easeOut, value: appVariables[0].buttonLoading)
             .padding()
             
         } //: VStack
         .onAppear {
-            buttonLoading = false
+            appVariables[0].buttonLoading = false
         }
     }
 }

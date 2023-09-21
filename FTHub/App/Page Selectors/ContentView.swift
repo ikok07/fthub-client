@@ -9,22 +9,20 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    
-    @AppStorage("userLoggedIn") private var userLoggedIn: Bool?
-    @AppStorage("userToken") private var userToken: String = ""
-    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
     @State private var loadContentView: Bool = false
     
     @Environment(\.managedObjectContext) private var context
     @FetchRequest(sortDescriptors: []) var users: FetchedResults<User>
+    @FetchRequest(sortDescriptors: []) var appVariables: FetchedResults<AppVariables>
+    
     
     var body: some View {
         ZStack {
             if loadContentView {
                 ZStack {
-                    if userLoggedIn == true && !users[0].hasFullDetails {
+                    if appVariables[0].userLoggedIn && !users[0].hasFullDetails {
                         SetupPageViewManager()
-                    } else if userLoggedIn == true {
+                    } else if appVariables[0].userLoggedIn {
                         MainAppView()
                     } else {
                         BeforeAuthView()
@@ -32,8 +30,8 @@ struct ContentView: View {
                 }
                 .withCustomMessage()
                 .withLoadingAnimation()
-                .sensoryFeedback(.success, trigger: userLoggedIn)
-                .animation(.easeOut, value: userLoggedIn)
+                .sensoryFeedback(.success, trigger: appVariables[0].userLoggedIn)
+                .animation(.easeOut, value: appVariables[0].userLoggedIn)
 //                .animation(.easeOut, value: users[0].hasFullDetails)
             } else {
                 FakeLaunchScreenView()

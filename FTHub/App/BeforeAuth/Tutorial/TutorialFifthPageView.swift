@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TutorialFifthPageView: View {
     
-    @AppStorage("showTutorial") private var showTutorial: Bool = true
+    @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
     
     @Binding var selectedTab: Int
     
@@ -29,7 +29,7 @@ struct TutorialFifthPageView: View {
             Spacer()
             Button {
                 withAnimation {
-                    showTutorial = false
+                    variables[0].showTutorial = false
                 }
             } label: {
                 Text("Finish")

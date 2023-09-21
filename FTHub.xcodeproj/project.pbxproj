@@ -130,6 +130,7 @@
 		22DA77B12A98A59600550A6B /* AccountRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B02A98A59600550A6B /* AccountRequestModel.swift */; };
 		22DA77B42A98CE2E00550A6B /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B32A98CE2E00550A6B /* DB.swift */; };
 		22DA77B62A98D83300550A6B /* FakeLaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA77B52A98D83300550A6B /* FakeLaunchScreenView.swift */; };
+		22DED0702ABC70CE003C4B89 /* DbApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DED06F2ABC70CE003C4B89 /* DbApplication.swift */; };
 		22E3990E2AB89CBD009FD345 /* PaywallMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3990D2AB89CBD009FD345 /* PaywallMainView.swift */; };
 		22E399112AB89DB9009FD345 /* PaywallBenefitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E399102AB89DB9009FD345 /* PaywallBenefitsView.swift */; };
 		22E399132AB89DEF009FD345 /* PaywallBenefitsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E399122AB89DEF009FD345 /* PaywallBenefitsRowView.swift */; };
@@ -304,6 +305,7 @@
 		22DA77B02A98A59600550A6B /* AccountRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRequestModel.swift; sourceTree = "<group>"; };
 		22DA77B32A98CE2E00550A6B /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		22DA77B52A98D83300550A6B /* FakeLaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLaunchScreenView.swift; sourceTree = "<group>"; };
+		22DED06F2ABC70CE003C4B89 /* DbApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbApplication.swift; sourceTree = "<group>"; };
 		22E3990D2AB89CBD009FD345 /* PaywallMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallMainView.swift; sourceTree = "<group>"; };
 		22E399102AB89DB9009FD345 /* PaywallBenefitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallBenefitsView.swift; sourceTree = "<group>"; };
 		22E399122AB89DEF009FD345 /* PaywallBenefitsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallBenefitsRowView.swift; sourceTree = "<group>"; };
@@ -992,6 +994,7 @@
 			children = (
 				22DA77B32A98CE2E00550A6B /* DB.swift */,
 				229524EC2AB9F8170012A71E /* DbUserAuth.swift */,
+				22DED06F2ABC70CE003C4B89 /* DbApplication.swift */,
 				229524E62AB9EC220012A71E /* FTHub.xcdatamodeld */,
 			);
 			path = Database;
@@ -1362,6 +1365,7 @@
 				224A5DA12A8CF98D00490614 /* User.swift in Sources */,
 				228744C92A8E5BB100DB77DF /* ViewExtensions.swift in Sources */,
 				22DA77AF2A98A45900550A6B /* AccountModel.swift in Sources */,
+				22DED0702ABC70CE003C4B89 /* DbApplication.swift in Sources */,
 				22F9D9A62AAB1E0000E77FFC /* SettingsChangePasswordController.swift in Sources */,
 				2257C93A2A8BF8E6000E3CD2 /* RestorePasswordEmailView.swift in Sources */,
 				227585352AA8FA4D00149814 /* ProfileImageView.swift in Sources */,

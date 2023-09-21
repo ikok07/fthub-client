@@ -31,7 +31,7 @@ struct SetupModel {
         
         var token: String = ""
         
-        await DbUserAuth.getCurrentUser() { user in
+        await K.Database.getCurrentUser() { user, context in
             token = user.token ?? ""
         }
         return token

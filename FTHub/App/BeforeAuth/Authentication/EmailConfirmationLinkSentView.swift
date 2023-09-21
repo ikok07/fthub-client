@@ -11,9 +11,7 @@ struct EmailConfirmationLinkSentView: View {
     
     @Environment(\.scenePhase) var scenePhase
     
-    @AppStorage("emailWithLinkSent") private var emailNotVerified: Bool = false
-    @AppStorage("showTokenVerifyStatus") private var showEmailVerifyStatus: Bool = false
-    @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
+    @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
     
     var body: some View {
         VStack {
@@ -25,7 +23,7 @@ struct EmailConfirmationLinkSentView: View {
                 
                 VStack {
                     Text("We have sent a link to")
-                    Text(userCurrentEmail)
+                    Text(variables[0].userCurrentEmail ?? "")
                         .tint(.text)
                         .font(.headline)
                         .fontWeight(.semibold)
@@ -43,8 +41,8 @@ struct EmailConfirmationLinkSentView: View {
                 
                 Button {
                     withAnimation {
-                        emailNotVerified = false
-                        showEmailVerifyStatus = false
+                        variables[0].emailWithLinkSent = false
+                        variables[0].showTokenVerifyStatus = false
                     }
                 } label: {
                     HStack {
@@ -61,8 +59,8 @@ struct EmailConfirmationLinkSentView: View {
         .onChange(of: scenePhase) { oldValue, newScene in
             if newScene == .background {
                 withAnimation(.easeOut) {
-                    emailNotVerified = false
-                    showEmailVerifyStatus = false
+                    variables[0].emailWithLinkSent = false
+                    variables[0].showTokenVerifyStatus = false
                 }
             }
         }
