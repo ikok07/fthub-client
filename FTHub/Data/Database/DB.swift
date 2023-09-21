@@ -58,7 +58,6 @@ class DB {
     }
     
     func saveContext(completion: (() -> Void)? = nil) {
-        let context = DB.shared.persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()

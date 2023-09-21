@@ -23,14 +23,15 @@ struct AccountAuthModel {
                 if response != nil {
                     if response!.status == "fail" {
                         Message.send(type: "error", message: response!.message)
+                        await K.Database.getAppVariables() { variables, context in
+                            variables.buttonLoading = false
+                        }
                     } else {
                         await K.Database.getAppVariables() { variables, context in
                             variables.userCurrentEmail = email
                             variables.emailWithLinkSent = true
+                            variables.buttonLoading = false
                         }
-                    }
-                    await K.Database.getAppVariables() { variables, context in
-                        variables.buttonLoading = false
                     }
                 }
             }

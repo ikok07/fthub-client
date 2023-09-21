@@ -143,11 +143,13 @@ struct K {
             case .success(let variables):
                 if !variables.isEmpty {
                     await completionHandler?(variables[0], context)
+                    db.saveContext()
                 } else {
                     let variables = AppVariables(context: context)
                     context.insert(variables)
+                    db.saveContext()
                 }
-                DB.shared.saveContext()
+                
             case .failure(let error):
                 print("Error getting current variables from database: \(error.localizedDescription)")
             }

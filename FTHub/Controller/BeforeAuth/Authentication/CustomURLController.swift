@@ -11,8 +11,16 @@ struct CustomURLController {
     
     static let defaults = UserDefaults.standard
     
+    static func getCurrentEmail() async -> String {
+        var email: String = ""
+        await K.Database.getAppVariables() { variables, context in
+            email = variables.userCurrentEmail ?? ""
+        }
+        return email
+    }
+    
     static func confirmEmail(url: URL) async {
-        let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: defaults.string(forKey: "userCurrentEmail") ?? "No email")
+        let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: getCurrentEmail())
         await K.Database.getAppVariables() { variables, context in
             variables.loadingPresented = false
             variables.sendEmailType = SendEmailType.confirm.rawValue

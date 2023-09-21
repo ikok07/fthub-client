@@ -86,7 +86,13 @@ struct DbUserAuth {
         let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
         
         switch fetchData {
-        case .success(_):
+        case .success(let users):
+            if !users.isEmpty {
+                for user in users {
+                    context.delete(user)
+                }
+            }
+            
             let details = UserDetails(context: context)
             details.setupActivePage = 0
             newUser.userDetails = details

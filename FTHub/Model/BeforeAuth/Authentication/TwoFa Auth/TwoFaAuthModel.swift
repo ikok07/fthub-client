@@ -12,7 +12,6 @@ import SwiftData
 struct TwoFaAuthModel {
     
     @MainActor static func authenticate(email: String?, token: String?) async {
-        let defaults = UserDefaults.standard
 
         let response = await Authentication.authTwoFa(email: email ?? "", token: token ?? "")
             if let safeResponse = response {

@@ -16,6 +16,12 @@ struct FTHubApp: App {
     @State var healthKitController: HealthKitController = HealthKitController()
     let db: DB = DB.shared
     
+    init() {
+        Task {
+            await DbApplication.initiate()
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -26,7 +32,6 @@ struct FTHubApp: App {
                 .environment(\.managedObjectContext, db.persistentContainer.viewContext)
                 .onAppear {
                     Task {
-                        await DbApplication.initiate()
                         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
                     }
                 }
