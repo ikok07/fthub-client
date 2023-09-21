@@ -31,7 +31,7 @@ struct SetupPageOneView: View {
             Button(action: {
                 user[0].userDetails?.setupActivePage = 1
                 setupController.activePage += 1
-                try? context.save()
+                DB.shared.saveContext()
             }, label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))

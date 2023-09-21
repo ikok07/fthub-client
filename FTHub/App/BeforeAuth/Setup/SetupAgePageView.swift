@@ -42,6 +42,7 @@ struct SetupAgePageView: View {
             Button(action: {
                 user[0].userDetails?.setupActivePage += 1
                 user[0].userDetails?.age = Int16(activeAge)
+                DB.shared.saveContext()
                 setupController.age = self.activeAge
                 setupController.activePage += 1
             }, label: {

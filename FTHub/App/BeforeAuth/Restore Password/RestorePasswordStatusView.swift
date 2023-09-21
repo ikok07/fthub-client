@@ -15,43 +15,37 @@ struct RestorePasswordStatusView: View {
     
     @Environment(\.scenePhase) var scenePhase
     
-    @AppStorage("showRestorePasswordStatus") private var showRestorePasswordStatus: Bool = false
-    @AppStorage("restorePasswordStatus") private var status: RestorePasswordStatus = .success
+    @FetchRequest(sortDescriptors: []) var appVariables: FetchedResults<AppVariables>
     
     var body: some View {
         VStack {
-            Image(systemName: status == .success ? "checkmark.circle.fill" : "xmark.circle.fill")
+            Image(systemName: appVariables[0].restorePasswordStatus == RestorePasswordStatus.success.rawValue ? "checkmark.circle.fill" : "xmark.circle.fill")
                 .font(.system(size: 64))
-                .foregroundStyle(status == .success ? K.Gradients.mainGradient : K.Gradients.errorGradient)
+                .foregroundStyle(appVariables[0].restorePasswordStatus == RestorePasswordStatus.success.rawValue ? K.Gradients.mainGradient : K.Gradients.errorGradient)
                 .padding(.bottom, 5)
             VStack(spacing: 15) {
-                Text(status == .success ? "Password changed" : "Password was\nnot changed")
+                Text(appVariables[0].restorePasswordStatus == RestorePasswordStatus.success.rawValue ? "Password changed" : "Password was\nnot changed")
                     .font(.title)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
-                Text(status == .success ? "You have successfuly changed your password" : "There was an error changing your password. Please try again.")
+                Text(appVariables[0].restorePasswordStatus == RestorePasswordStatus.success.rawValue ? "You have successfuly changed your password" : "There was an error changing your password. Please try again.")
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.textGray)
                     .fontWeight(.semibold)
             }
             
             Button(action: {
-                Task {
-                    if status == .fail {
-                        withAnimation {
-                            showRestorePasswordStatus = false
-                        }
-                    } else {
-                        withAnimation {
-                            showRestorePasswordStatus = false
-                        }
+                withAnimation {
+                    if appVariables[0].restorePasswordStatus == RestorePasswordStatus.success.rawValue {
+                        appVariables[0].userLoggedIn = true
                     }
+                    appVariables[0].showRestorePasswordStatus = false
                 }
             }, label: {
-                Text(status == .success ? "Done" : "Try Again")
+                Text(appVariables[0].restorePasswordStatus == RestorePasswordStatus.success.rawValue ? "Done" : "Try Again")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             })
-            .buttonStyle(CTAButtonStyle(gradient: status == .success ? K.Gradients.mainGradient : K.Gradients.errorGradient))
+            .buttonStyle(CTAButtonStyle(gradient: appVariables[0].restorePasswordStatus == RestorePasswordStatus.success.rawValue ? K.Gradients.mainGradient : K.Gradients.errorGradient))
             .padding()
             .padding(.top, 20)
             
@@ -62,9 +56,7 @@ struct RestorePasswordStatusView: View {
         .onChange(of: scenePhase) { oldValue, newScene in
             if newScene == .background {
                 withAnimation(.easeOut) {
-                    if status == .success {
-                        showRestorePasswordStatus = false
-                    }
+                    appVariables[0].showRestorePasswordStatus = false
                 }
             }
         }

@@ -4,7 +4,11 @@
         <attribute name="buttonLoading" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="emailWithLinkSent" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="loadingPresented" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="restorePasswordStatus" optional="YES" attributeType="String" defaultValueString="fail"/>
+        <attribute name="restorePasswordToken" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="sendEmailType" optional="YES" attributeType="String" defaultValueString="twoFa"/>
+        <attribute name="showRestorePassword" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="showRestorePasswordStatus" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="showTokenVerifyStatus" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="showTutorial" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="tokenConfirmationStatus" optional="YES" attributeType="String" defaultValueString="fail"/>

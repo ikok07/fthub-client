@@ -6,18 +6,12 @@
 //
 
 import SwiftUI
-import SwiftData
-
 
 struct BeforeAuthView: View {
     
     @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.modelContext) private var modelContext
     
     @EnvironmentObject private var baseAuthController: BaseAuthController
-
-    @AppStorage("showRestorePasswordStatus") private var showRestorePasswordStatus: Bool = false
-    @AppStorage("showRestorePassword") private var showRestorePassword: Bool = false
     
     @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
     
@@ -29,9 +23,9 @@ struct BeforeAuthView: View {
                 EmailConfirmationLinkSentView()
             } else if self.variables[0].showTokenVerifyStatus {
                 TokenConfirmationStatusView()
-            } else if self.showRestorePasswordStatus {
+            } else if self.variables[0].showRestorePasswordStatus {
                 RestorePasswordStatusView()
-            } else if self.showRestorePassword {
+            } else if self.variables[0].showRestorePassword {
                 RestorePasswordMainView()
             } else {
                 MainAccountAuthView()
@@ -42,8 +36,8 @@ struct BeforeAuthView: View {
         .animation(.easeOut, value: variables[0].loadingPresented)
         .animation(.easeOut, value: variables[0].emailWithLinkSent)
         .animation(.easeOut, value: variables[0].showTokenVerifyStatus)
-        .animation(.easeOut, value: showRestorePassword)
-        .animation(.easeOut, value: showRestorePasswordStatus)
+        .animation(.easeOut, value: variables[0].showRestorePassword)
+        .animation(.easeOut, value: variables[0].showRestorePasswordStatus)
         .onOpenURL { url in
             print(url.pathComponents)
             

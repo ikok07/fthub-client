@@ -30,6 +30,7 @@ struct TutorialStartPageView: View {
                 Button(action: {
                     withAnimation(.easeOut) {
                         tutorialStarted = true
+                        DB.shared.saveContext()
                     }
                 }, label: {
                     Text("Start")
@@ -42,6 +43,7 @@ struct TutorialStartPageView: View {
             .toolbar {
                 Button(action: {
                     variables[0].showTutorial = false
+                    DB.shared.saveContext()
                 }, label: {
                     Text("Skip")
                         .fontWeight(.bold)

@@ -128,24 +128,27 @@ struct DbUserAuth {
     }
     
     static func restorePassword(newUser: User) async {
-//        await K.Database.getCurrentUser() { user in
-//            let context = DB.shared.persistentContainer.viewContext
-//            context.delete(user)
-//            context.insert(newUser)
-//            let details = await AccountController.checkDetails()
-//            if let details = details {
-//                let newDetails = self.convertApiDetailsToNormalDetails(details)
-//                user.userDetails = newDetails
-//                user.hasFullDetails = true
-//                DB.shared.persistentContainer.viewContext.insert(user)
-//                DB.shared.saveContext()
-//            } else {
-//                let details = UserDetails(context: DB.shared.persistentContainer.viewContext)
-//                user.userDetails = details
-//                DB.shared.persistentContainer.viewContext.insert(user)
-//                DB.shared.saveContext()
-//            }
-//        }
+    
+        await K.Database.getCurrentUser(completionHandlerWithoutEmptyCheck: { users, context in
+            if !users.isEmpty {
+                for user in users {
+                    context.delete(user)
+                }
+            }
+            context.insert(newUser)
+            let details = await AccountController.checkDetails()
+            if let details = details {
+                let newDetails = self.convertApiDetailsToNormalDetails(details)
+                newUser.userDetails = newDetails
+                newUser.hasFullDetails = true
+                context.insert(newUser)
+            } else {
+                let details = UserDetails(context: context)
+                newUser.userDetails = details
+                context.insert(newUser)
+            }
+            DB.shared.saveContext()
+        })
     }
     
     static func logOut() async {

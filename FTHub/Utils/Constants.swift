@@ -117,7 +117,7 @@ struct K {
             return token
         }
         
-        static func getCurrentUser(completionHandler: ((User, NSManagedObjectContext) async -> Void)? = nil) async {
+        static func getCurrentUser(completionHandler: ((User, NSManagedObjectContext) async -> Void)? = nil, completionHandlerWithoutEmptyCheck: (([User], NSManagedObjectContext) async -> Void)? = nil) async {
             let db = DB.shared
             let context = db.context
             let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
@@ -128,12 +128,13 @@ struct K {
                 if !users.isEmpty {
                     await completionHandler?(users[0], context)
                 }
+                await completionHandlerWithoutEmptyCheck?(users, context)
             case .failure(let error):
                 print("Error getting current user from database: \(error.localizedDescription)")
             }
         }
         
-        static func getAppVariables(completionHandler: ((AppVariables, NSManagedObjectContext) async -> Void)? = nil) async {
+        static func getAppVariables(completionHandler: ((AppVariables, NSManagedObjectContext) async -> Void)? = nil, completionHandlerWithoutEmptyCheck: (([AppVariables], NSManagedObjectContext) async -> Void)? = nil) async {
             let db = DB.shared
             let context = db.context
             let fetchRequest: NSFetchRequest<AppVariables> = AppVariables.fetchRequest()
@@ -144,11 +145,8 @@ struct K {
                 if !variables.isEmpty {
                     await completionHandler?(variables[0], context)
                     db.saveContext()
-                } else {
-                    let variables = AppVariables(context: context)
-                    context.insert(variables)
-                    db.saveContext()
                 }
+                await completionHandlerWithoutEmptyCheck?(variables, context)
                 
             case .failure(let error):
                 print("Error getting current variables from database: \(error.localizedDescription)")

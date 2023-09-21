@@ -43,9 +43,9 @@ struct CustomURLController {
     static func openResetPassword(url: URL) async {
         await K.Database.getAppVariables() { variables, context in
             variables.loadingPresented = false
+            variables.restorePasswordToken = url.pathComponents[2]
+            variables.showRestorePassword = true
         }
-        defaults.setValue(url.pathComponents[2], forKey: "restorePasswordToken")
-        defaults.setValue(true, forKey: "showRestorePassword")
     }
     
     static func checkTwoFa(email: String, url: URL) async {

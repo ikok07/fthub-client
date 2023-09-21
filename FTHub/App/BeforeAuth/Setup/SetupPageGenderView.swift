@@ -38,7 +38,7 @@ struct SetupPageGenderView: View {
                 user[0].userDetails?.setupActivePage += 1
                 user[0].userDetails?.gender = activeOption == 0 ? "Male" : "Female"
                 setupController.activePage += 1
-                try? context.save()
+                DB.shared.saveContext()
             } label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))

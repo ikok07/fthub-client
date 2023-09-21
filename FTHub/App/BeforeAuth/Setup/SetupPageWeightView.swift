@@ -62,7 +62,7 @@ struct SetupPageWeightView: View {
                 user[0].userDetails?.weight = Int16(selectedWeight)
                 setupController.weight = selectedWeight
                 setupController.activePage += 1
-                try? context.save()
+                DB.shared.saveContext()
             }, label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
