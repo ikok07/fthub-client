@@ -15,7 +15,8 @@ struct SetupPageTrainingsPerWeekView: View {
     
     @State private var selectedDays: Int = 0
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     var body: some View {
         VStack {
@@ -41,12 +42,11 @@ struct SetupPageTrainingsPerWeekView: View {
             }
             
             Button(action: {
-                if let user = user.first {
-                    user.details?.setupActivePage += 1
-                    user.details?.workoutsPerWeek = selectedDays
-                }
+                user[0].userDetails?.setupActivePage += 1
+                user[0].userDetails?.workoutsPerWeek = Int16(selectedDays)
                 setupController.workoutsPerWeek = selectedDays
                 setupController.activePage += 1
+                DB.shared.saveContext()
             }, label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))

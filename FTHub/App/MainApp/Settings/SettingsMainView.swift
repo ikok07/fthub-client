@@ -11,13 +11,8 @@ import SwiftData
 struct SettingsMainView: View {
     
     @Environment(HealthKitController.self) private var healthKitController
-    
-    @AppStorage("userLoggedIn") private var userLoggedIn: Bool = true
-    @AppStorage("userToken") private var userToken: String = ""
-    @AppStorage("hasDetails") private var hasDetails: Bool = true
-    
-    @Environment(\.modelContext) private var modelContext
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @State private var appleHealth: Bool = false
     
@@ -64,13 +59,8 @@ struct SettingsMainView: View {
                 .padding()
                 
                 Button(action: {
-                    withAnimation {
-                        userLoggedIn = false
-                        userToken = ""
-                        hasDetails = false
-                        if let user = user.first {
-                            modelContext.delete(user)
-                        }
+                    Task {
+                        await DbUserAuth.logOut()
                     }
                 }, label: {
                     Text("Log Out")
@@ -84,10 +74,10 @@ struct SettingsMainView: View {
             .navigationTitle("Discover more")
             .scrollIndicators(.hidden)
             .onAppear {
-                if let user = user.first {
-                    self.name = user.name
-                    self.email = user.email
-                    self.imageUrl = URL(string: "https://storage.fthub.eu\(user.photo)")
+                if user.count != 0 {
+                    self.name = user[0].name ?? "No name"
+                    self.email = user[0].email ?? "No email"
+                    self.imageUrl = URL(string: "https://storage.fthub.eu\(user[0].photo ?? "No ID")")
                 }
             }
         }

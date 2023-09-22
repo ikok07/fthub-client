@@ -15,7 +15,7 @@ struct SetupModel {
         let body = ApiUserDetails(age: age, height: height, weight: weight, trainingFrequencyPerWeek: workoutsPerWeek, gender: gender, units: units.rawValue, goal: goal.camelCaseToWords())
         
         do {
-            let response: ApiUserDetailsResponse = try await Networking.sendPostRequest(data: body, url: url, authToken: UserDefaults.standard.string(forKey: "userToken"))
+            let response: ApiUserDetailsResponse = try await Networking.sendPostRequest(data: body, url: url, authToken: self.getToken())
             if response.status == "success" {
                 completion?(true)
             } else {
@@ -27,11 +27,14 @@ struct SetupModel {
         }
     }
     
-    static func getDetailsFromServer() async {
+    private static func getToken() async -> String {
         
-        let url: URL = URL(string: "\(K.API.apiURL)/\(K.API.language?.first?.prefix(2) ?? "en")/api/v1/user/detail")!
-
+        var token: String = ""
         
+        await K.Database.getCurrentUser() { user, context in
+            token = user.token ?? ""
+        }
+        return token
     }
     
 }

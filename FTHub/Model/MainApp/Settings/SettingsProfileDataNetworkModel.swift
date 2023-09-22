@@ -21,7 +21,7 @@ struct SettingsProfileFormDataBody: NetworkCapable {
 }
 
 struct SettingsProfileFormDataResponseData: NetworkCapable {
-    let user: User
+    let user: MemoryUser
 }
 
 

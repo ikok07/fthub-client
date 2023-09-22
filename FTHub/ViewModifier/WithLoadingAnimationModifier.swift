@@ -9,13 +9,13 @@ import SwiftUI
 
 struct WithLoadingAnimationModifier: ViewModifier {
     
-    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
+    @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
     @State private var rotation: Double = 360
     
     func body(content: Content) -> some View {
         content
         ZStack {
-            if loadingPresented {
+            if variables[0].loadingPresented {
                 
             RoundedRectangle(cornerRadius: 0)
                 .foregroundStyle(.ultraThinMaterial)
@@ -41,7 +41,7 @@ struct WithLoadingAnimationModifier: ViewModifier {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .animation(.easeOut, value: loadingPresented)
+        .animation(.easeOut, value: variables[0].loadingPresented)
     }
     
 }

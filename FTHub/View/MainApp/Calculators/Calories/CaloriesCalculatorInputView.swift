@@ -17,9 +17,11 @@ struct CaloriesCalculatorInputView: View {
     
     @FocusState private var isActive: Bool
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
-    @State var autofill: Bool = false
+    @State private var autofill: Bool = false
+    @State private var validations: [Bool?] = Array(repeating: false, count: 3)
     
     @Binding var showResult: Bool
     @Binding var result: Double
@@ -33,13 +35,13 @@ struct CaloriesCalculatorInputView: View {
     
     var body: some View {
         VStack {
-            VStack(spacing: 20) {
+            VStack(spacing: 0) {
                 
-                CustomInputField(isActive: _isActive, icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age)
+                CustomInputField(isActive: _isActive, type: .age, icon: "calendar", unit: "years", placeholder: "Age (min. 16 years)", numpad: true, text: $age, validationResult: $validations[0])
                 
-                CustomInputField(isActive: _isActive, icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
+                CustomInputField(isActive: _isActive, type: .weight, icon: "scalemass.fill", unit: user.first?.userDetails?.units == "metric" ? "kg" : "lbs", placeholder: "Weight (min. \(user.first?.userDetails?.units == "metric" ? "40 kg" : "88 lbs"))", numpad: true, text: $weight, validationResult: $validations[1])
                 
-                CustomInputField(isActive: _isActive, icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
+                CustomInputField(isActive: _isActive, type: .height, icon: "arrow.up.and.down", unit: user.first?.userDetails?.units == "metric" ? "cm" : "in", placeholder: "Height (min. \(user.first?.userDetails?.units == "metric" ? "120 cm" : "47 inches"))", numpad: true, text: $height, validationResult: $validations[2])
                 
                 CustomPickerRowView(icon: "figure.run") {
                     Picker("", selection: $activityLevel) {
@@ -51,6 +53,7 @@ struct CaloriesCalculatorInputView: View {
                 }
                 
                 AutofillButtonView(autofill: $autofill)
+                    .padding(.top)
             }
             
             Button(action: calculate) {
@@ -72,18 +75,15 @@ struct CaloriesCalculatorInputView: View {
             }
         }
         .onChange(of: [gender.rawValue, activityLevel.rawValue, age, weight, height]) { oldValue, newValue in
-            if let user = user.first, user.details != nil {
-                
-                let savedWeight: String = String(user.details!.weight!)
-                let savedWeightLbs: String = String(format: "%.1f", Double(user.details!.weight!) * K.Units.kgToLbs)
-                
-                let savedHeight: String = String(user.details!.height!)
-                let savedHeightInches: String = String(format: "%.1f", Double(user.details!.height!) * K.Units.cmToInch)
-                
-                if newValue[0] != user.details!.gender!.rawValue || newValue[2] != String(user.details!.age!) || newValue[3] != (user.details!.units == .metric ? savedWeight : savedWeightLbs) || newValue[4] != (user.details!.units == .metric ? savedHeight : savedHeightInches) {
-                    withAnimation(.easeOut(duration: 0.2)) {
-                        autofill = false
-                    }
+            let savedWeight: String = String(user[0].userDetails!.weight)
+            let savedWeightLbs: String = String(format: "%.1f", Double(user[0].userDetails!.weight) * K.Units.kgToLbs)
+            
+            let savedHeight: String = String(user[0].userDetails!.height)
+            let savedHeightInches: String = String(format: "%.1f", Double(user[0].userDetails!.height) * K.Units.cmToInch)
+            
+            if newValue[0] != user[0].userDetails!.gender! || newValue[2] != String(user[0].userDetails!.age) || newValue[3] != (user[0].userDetails!.units == "metric" ? savedWeight : savedWeightLbs) || newValue[4] != (user[0].userDetails!.units == "metric" ? savedHeight : savedHeightInches) {
+                withAnimation(.easeOut(duration: 0.2)) {
+                    autofill = false
                 }
             }
         }
@@ -98,22 +98,24 @@ struct CaloriesCalculatorInputView: View {
     }
     
     func enableAutoFill() {
-        if let user = user.first, user.details != nil {
-            withAnimation(.easeOut(duration: 0.2)) {
-                autofill = true
-                gender = user.details!.gender!
-                age = String(user.details!.age!)
-                weight = user.details!.units == .metric ? String(user.details!.weight!) : String(format: "%.1f", (Double(user.details!.weight!) * K.Units.kgToLbs))
-                height = user.details!.units == .metric ? String(user.details!.height!) : String(format: "%.1f", (Double(user.details!.height!) * K.Units.cmToInch))
-            }
+        withAnimation(.easeOut(duration: 0.2)) {
+            autofill = true
+            gender = Gender(rawValue: user[0].userDetails!.gender!)!
+            age = String(user[0].userDetails!.age)
+            weight = user[0].userDetails!.units == "metric" ? String(user[0].userDetails!.weight) : String(format: "%.1f", (Double(user[0].userDetails!.weight) * K.Units.kgToLbs))
+            height = user[0].userDetails!.units == "metric" ? String(user[0].userDetails!.height) : String(format: "%.1f", (Double(user[0].userDetails!.height) * K.Units.cmToInch))
         }
     }
     
     func calculate() {
-        if CalculatorsCommonController.validate(age: self.age, weight: self.weight, height: self.height, activityLevel: self.activityLevel) {
-            withAnimation(.bouncy) {
-                showResult = true
-                result = CaloriesCalculatorController.calculateCalories(weightPerWeek: self.weightPerWeek, activityLevel: activityLevel, gender: self.gender, age: Double(self.age)!, weight: Double(self.weight)!, height: Double(self.height)!)
+        withAnimation {
+            if validations == Array(repeating: false, count: 3) {
+                if CalculatorsCommonController.validate(age: self.age, weight: self.weight, height: self.height, activityLevel: self.activityLevel) {
+                    withAnimation(.bouncy) {
+                        showResult = true
+                        result = CaloriesCalculatorController.calculateCalories(weightPerWeek: self.weightPerWeek, activityLevel: activityLevel, gender: self.gender, age: Double(self.age)!, weight: Double(self.weight)!, height: Double(self.height)!)
+                    }
+                }
             }
         }
     }

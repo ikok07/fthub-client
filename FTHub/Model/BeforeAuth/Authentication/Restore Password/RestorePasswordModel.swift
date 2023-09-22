@@ -9,20 +9,37 @@ import Foundation
 
 struct RestorePasswordModel {
     
-    static let defaults = UserDefaults.standard
+    static func getRestorePasswordData() async -> (String, String) {
+        var email: String = ""
+        var token: String = ""
+            await K.Database.getAppVariables() { variables, context in
+                email = variables.userCurrentEmail ?? ""
+                token = variables.restorePasswordToken ?? ""
+            }
+        return (email, token)
+    }
+    
     
     static func sendRestoreEmail(email: String) async {
         let response = await Authentication.sendRestorePasswordEmail(email: email)
-        defaults.setValue(false, forKey: "loadingPresented")
+        await K.Database.getAppVariables() { variables, context in
+            variables.loadingPresented = false
+        }
         
         if let safeResponse = response {
             if safeResponse.status == "success" {
-                defaults.setValue(email, forKey: "userCurrentEmail")
-                defaults.setValue(true, forKey: "emailWithLinkSent")
+                await K.Database.getAppVariables() { variables, context in
+                    variables.userCurrentEmail = email
+                    variables.emailWithLinkSent = true
+                }
             } else if safeResponse.status == "fail" && safeResponse.identifier == "EmailNotVerified" {
                 await Authentication.sendConfirmEmail(email: email)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    defaults.setValue(false, forKey: "loadingPresented")
+                    Task {
+                        await K.Database.getAppVariables() { variables, context in
+                            variables.loadingPresented = true
+                        }
+                    }
                 }
             } else {
                 Message.send(type: "error", message: safeResponse.message)
@@ -32,23 +49,35 @@ struct RestorePasswordModel {
         }
     }
     
-    static func sendChangePasswordRequest(password: String, confirmPassword: String, completion: ((User?) -> Void)?) async {
+    static func sendChangePasswordRequest(password: String, confirmPassword: String) async {
         
-        let response = await Authentication.changePassword(email: self.defaults.string(forKey: "userCurrentEmail") ?? "No email", password: password, confirmPassword: confirmPassword, token: self.defaults.string(forKey: "restorePasswordToken") ?? "No token")
-        defaults.setValue(false, forKey: "loadingPresented")
+        let response = await Authentication.changePassword(email: getRestorePasswordData().0, password: password, confirmPassword: confirmPassword, token: getRestorePasswordData().1)
+        await K.Database.getAppVariables() { variables, context in
+            variables.loadingPresented = false
+        }
         
         if let safeResponse = response {
-            defaults.setValue(safeResponse.token, forKey: "userToken")
-            completion?(safeResponse.data.user)
-            defaults.setValue(true, forKey: "userLoggedIn")
-            defaults.setValue(RestorePasswordStatus.success.rawValue, forKey: "restorePasswordStatus")
-            defaults.setValue(true, forKey: "showRestorePasswordStatus")
-            defaults.setValue(false, forKey: "showRestorePassword")
+            let newMemoryUser = safeResponse.data.user
+            let newUser = User(context: DB.shared.context)
+            newUser.mongoID = newMemoryUser._id
+            newUser.token = safeResponse.token
+            newUser.name = newMemoryUser.name
+            newUser.email = newMemoryUser.email
+            newUser.photo = newMemoryUser.photo
+            newUser.role = newMemoryUser.role
+            await DbUserAuth.restorePassword(newUser: newUser)
+            await K.Database.getAppVariables() { variables, context in
+                variables.restorePasswordStatus = RestorePasswordStatus.success.rawValue
+                variables.showRestorePasswordStatus = true
+                variables.showRestorePassword = false
+            }
         } else {
-            defaults.setValue(RestorePasswordStatus.fail.rawValue, forKey: "restorePasswordStatus")
-            defaults.setValue(false, forKey: "userLoggedIn")
-            defaults.setValue(true, forKey: "showRestorePasswordStatus")
-            defaults.setValue(false, forKey: "showRestorePassword")
+            await K.Database.getAppVariables() { variables, context in
+                variables.userLoggedIn = false
+                variables.restorePasswordStatus = RestorePasswordStatus.fail.rawValue
+                variables.showRestorePasswordStatus = true
+                variables.showRestorePassword = false
+            }
         }
     }
     

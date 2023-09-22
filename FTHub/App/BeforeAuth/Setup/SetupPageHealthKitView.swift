@@ -13,7 +13,8 @@ struct SetupPageHealthKitView: View {
     @Environment(HealthKitController.self) private var healthKitController
     @Environment(SetupController.self) private var setupController
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     var body: some View {
         VStack {
@@ -33,11 +34,9 @@ struct SetupPageHealthKitView: View {
                 Button(action: {
                     healthKitController.askForAuthorization() { success in
                         if success {
-                            if let user = user.first {
-                                DispatchQueue.main.async {
-                                    setupController.activePage += 1
-                                    user.details?.setupActivePage += 1
-                                }
+                            DispatchQueue.main.async {
+                                setupController.activePage += 1
+                                user[0].userDetails?.setupActivePage += 1
                             }
                         } else {
                             Message.send(type: "error", message: "There was an error accessing Apple Health Data")
@@ -50,10 +49,9 @@ struct SetupPageHealthKitView: View {
                 .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
                 
                 Button(action: {
-                    if let user = user.first {
-                        user.details?.setupActivePage += 1
-                    }
+                    user[0].userDetails?.setupActivePage += 1
                     setupController.activePage += 1
+                    try? context.save()
                 }, label: {
                     Text("Skip")
                         .foregroundStyle(.textGray)

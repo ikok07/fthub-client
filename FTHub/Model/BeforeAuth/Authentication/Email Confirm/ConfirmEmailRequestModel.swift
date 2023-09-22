@@ -22,5 +22,5 @@ struct ConfirmEmailResponse: NetworkCapable {
 }
 
 struct ConfirmEmailResponseData: NetworkCapable {
-    let user: User
+    let user: MemoryUser
 }

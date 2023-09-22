@@ -23,5 +23,5 @@ struct TwoFaAuthResponse: NetworkCapable {
 }
 
 struct TwoFaData: Codable {
-    let user: User
+    let user: MemoryUser
 }

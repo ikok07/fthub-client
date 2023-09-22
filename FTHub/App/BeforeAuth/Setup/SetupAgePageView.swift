@@ -13,7 +13,8 @@ struct SetupAgePageView: View {
     
     @Environment(SetupController.self) private var setupController
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @State private var activeAge: Int = 15
     var body: some View {
@@ -39,10 +40,9 @@ struct SetupAgePageView: View {
             }
             
             Button(action: {
-                if let user = user.first {
-                    user.details?.setupActivePage += 1
-                    user.details?.age = activeAge
-                }
+                user[0].userDetails?.setupActivePage += 1
+                user[0].userDetails?.age = Int16(activeAge)
+                DB.shared.saveContext()
                 setupController.age = self.activeAge
                 setupController.activePage += 1
             }, label: {

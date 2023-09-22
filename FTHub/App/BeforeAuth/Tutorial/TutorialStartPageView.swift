@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TutorialStartPageView: View {
     
-    @AppStorage("showTutorial") private var showTutorial: Bool = true
+    @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
     
     @Binding var tutorialStarted: Bool
     
@@ -30,6 +30,7 @@ struct TutorialStartPageView: View {
                 Button(action: {
                     withAnimation(.easeOut) {
                         tutorialStarted = true
+                        DB.shared.saveContext()
                     }
                 }, label: {
                     Text("Start")
@@ -41,7 +42,8 @@ struct TutorialStartPageView: View {
             }
             .toolbar {
                 Button(action: {
-                    showTutorial = false
+                    variables[0].showTutorial = false
+                    DB.shared.saveContext()
                 }, label: {
                     Text("Skip")
                         .fontWeight(.bold)

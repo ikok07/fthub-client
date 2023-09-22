@@ -12,9 +12,11 @@ struct BMIInputsView: View {
     
     @FocusState var isActive: Bool
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @State private var autofill: Bool = false
+    @State private var validations: [Bool?] = Array(repeating: false, count: 2)
     
     @Binding var gender: Gender
     @Binding var weight: String
@@ -27,9 +29,9 @@ struct BMIInputsView: View {
     var body: some View {
         VStack {
             
-            VStack(spacing: 20) {
-                CustomInputField(isActive: _isActive, icon: "scalemass.fill", unit: user.first?.details?.units == .metric ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
-                CustomInputField(isActive: _isActive, icon: "arrow.up.and.down", unit: user.first?.details?.units == .metric ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
+            VStack(spacing: 0) {
+                CustomInputField(isActive: _isActive, type: .weight, icon: "scalemass.fill", unit: user[0].userDetails!.units == "metric" ? "kg" : "lbs", placeholder: "Weight", numpad: true, text: $weight, validationResult: $validations[0])
+                CustomInputField(isActive: _isActive, type: .height, icon: "arrow.up.and.down", unit: user[0].userDetails!.units == "metric" ? "cm" : "in", placeholder: "Height", numpad: true, text: $height, validationResult: $validations[0])
                 
                 AutofillButtonView(autofill: $autofill)
             }
@@ -41,7 +43,6 @@ struct BMIInputsView: View {
             })
             .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
             .padding(.horizontal)
-            .padding(.top)
         }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
@@ -54,18 +55,15 @@ struct BMIInputsView: View {
             }
         }
         .onChange(of: [gender.rawValue, weight, height]) { oldValue, newValue in
-            if let user = user.first, user.details != nil {
-                
-                let savedWeight: String = String(user.details!.weight!)
-                let savedWeightLbs: String = String(format: "%.1f", Double(user.details!.weight!) * K.Units.kgToLbs)
-                
-                let savedHeight: String = String(user.details!.height!)
-                let savedHeightInches: String = String(format: "%.1f", Double(user.details!.height!) * K.Units.cmToInch)
-                
-                if newValue[0] != user.details!.gender?.rawValue || newValue[1] != (user.details!.units == .metric ? savedWeight : savedWeightLbs) || newValue[2] != (user.details!.units == .metric ? savedHeight : savedHeightInches) {
-                    withAnimation(.easeOut(duration: 0.2)) {
-                        autofill = false
-                    }
+            let savedWeight: String = String(user[0].userDetails!.weight)
+            let savedWeightLbs: String = String(format: "%.1f", Double(user[0].userDetails!.weight) * K.Units.kgToLbs)
+            
+            let savedHeight: String = String(user[0].userDetails!.height)
+            let savedHeightInches: String = String(format: "%.1f", Double(user[0].userDetails!.height) * K.Units.cmToInch)
+            
+            if newValue[0] != user[0].userDetails!.gender || newValue[1] != (user[0].userDetails!.units == "metric" ? savedWeight : savedWeightLbs) || newValue[2] != (user[0].userDetails!.units == "metric" ? savedHeight : savedHeightInches) {
+                withAnimation(.easeOut(duration: 0.2)) {
+                    autofill = false
                 }
             }
         }
@@ -80,30 +78,24 @@ struct BMIInputsView: View {
         withAnimation {
             autofill = true
         }
-        if let user = user.first, user.details != nil {
-            gender = user.details!.gender!
-            if user.details?.units == .imperial {
-                print("test")
-                weight = String(format: "%.1f", Double((user.details!.weight!)) * K.Units.kgToLbs)
-                height = String(format: "%.1f", Double((user.details!.height!)) * K.Units.cmToInch)
-                print(weight, height)
-            } else {
-                weight = String((user.details!.weight!))
-                height = String((user.details!.height!))
-            }
+        gender = Gender(rawValue: user[0].userDetails!.gender!)!
+        if user[0].userDetails!.units == "imperial" {
+            weight = String(format: "%.1f", Double((user[0].userDetails!.weight)) * K.Units.kgToLbs)
+            height = String(format: "%.1f", Double((user[0].userDetails!.height)) * K.Units.cmToInch)
+        } else {
+            weight = String((user[0].userDetails!.weight))
+            height = String((user[0].userDetails!.height))
         }
     }
     
     func calculate() {
-        if let user = user.first {
+        if validations == Array(repeating: false, count: 2) {
             if CalculatorsCommonController.validate(weight: self.weight, height: self.height) {
                 withAnimation {
                     showResult = true
-                    result = BMIController.calculateBMI(units: user.details?.units ?? .metric, weight: Double(self.weight)! , height: Double(self.height)!)
+                    result = BMIController.calculateBMI(units: Unit(rawValue: user[0].userDetails!.units!)!, weight: Double(self.weight)! , height: Double(self.height)!)
                 }
             }
-        } else {
-            Message.send(type: "error", message: "There was an error. Please try again!")
         }
     }
 }

@@ -34,5 +34,5 @@ struct ChangePasswordResponse: NetworkCapable {
 }
 
 struct ChangePasswordData: NetworkCapable {
-    let user: User
+    let user: MemoryUser
 }

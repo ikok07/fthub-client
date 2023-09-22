@@ -9,20 +9,29 @@ import SwiftUI
 
 @main
 struct FTHubApp: App {
+    @State var baseAuthController = BaseAuthController()
+    @State var setupController = SetupController()
+    @State var healthKitController = HealthKitController()
+    let db: DB = DB.shared
     
-    @StateObject var authController: ResendCodeController = ResendCodeController()
-    @StateObject var baseAuthController: BaseAuthController = BaseAuthController()
-    @State var setupController: SetupController = SetupController()
-    @State var healthKitController: HealthKitController = HealthKitController()
+    init() {
+        Task {
+            await DbApplication.initiate()
+        }
+    }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: User.self, isAutosaveEnabled: true)
-                .environmentObject(authController)
-                .environmentObject(baseAuthController)
+                .environment(baseAuthController)
                 .environment(setupController)
                 .environment(healthKitController)
+                .environment(\.managedObjectContext, db.persistentContainer.viewContext)
+                .onAppear {
+                    Task {
+                        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
+                    }
+                }
         }
     }
 }

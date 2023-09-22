@@ -12,7 +12,7 @@ struct RestorePasswordEmailView: View {
     @State private var emailSent: Bool = false
     @State private var userEmail: String = ""
     
-    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
+    @FetchRequest(sortDescriptors: []) var appVariables: FetchedResults<AppVariables>
     
     var body: some View {
         NavigationStack {
@@ -31,7 +31,7 @@ struct RestorePasswordEmailView: View {
                 VStack(spacing: 15) {
                     Button(action: {
                         Task {
-                            loadingPresented = true
+                            appVariables[0].loadingPresented = true
                             await RestorePasswordController.sendEmail(email: userEmail)
                         }
                     }, label: {

@@ -11,12 +11,9 @@ class ConfirmEmailController {
     
     static let defaults = UserDefaults.standard
     
-    static func confirmEmail(url: URL, email: String, completion: ((User?) -> Void)?) async -> Bool {
+    static func confirmEmail(url: URL, email: String) async -> Bool {
         if let result = await ConfirmEmailModel.confirmEmail(url: url, email: email) {
-            defaults.setValue(result.token, forKey: "userToken")
-            completion?(result.data.user)
-            await Database.saveUserData(result.data.user)
-            return true
+            return DbUserAuth.confirmEmail(response: result)
         }
         return false
     }

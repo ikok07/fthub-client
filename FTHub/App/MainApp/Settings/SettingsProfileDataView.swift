@@ -6,13 +6,10 @@
 //
 
 import SwiftUI
-import SwiftData
+import CoreData
 import PhotosUI
 
 struct SettingsProfileDataView: View {
-    
-    @Query private var user: [User]
-    
     @State private var saveButtonActive: Bool = false
     
     @State private var imageUrl: URL?
@@ -38,7 +35,7 @@ struct SettingsProfileDataView: View {
                 SettingsProfileMainDataView(name: $name, email: email, gender: $gender, age: $age, units: $units)
                     .padding()
                     .padding(.bottom)
-                
+     
                 SettingsFitnessDataView(height: $height, weight: $weight, workoutsPerWeek: $workoutsPerWeek, goal: $goal)
                     .padding()
                 
@@ -57,23 +54,8 @@ struct SettingsProfileDataView: View {
                 .disabled(!saveButtonActive)
             }
         }
-        .onAppear {
-            if let user = user.first {
-                self.imageUrl = URL(string: "https://storage.fthub.eu\(user.photo)")
-                self.name = user.name
-                self.email = user.email
-                self.gender = user.details?.gender ?? .Male
-                self.age = user.details?.age ?? 18
-                self.units = user.details?.units ?? .metric
-                self.height = user.details?.height ?? 0
-                self.weight = user.details?.weight ?? 0
-                self.workoutsPerWeek = user.details?.workoutsPerWeek ?? 2
-                self.goal = user.details?.goal ?? .Balance
-                self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
-            }
-        }
+        .onAppear(perform: loadData)
         .onChange(of: [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue], { oldValue, newValue in
-            print(newValue)
             if newValue != initConfiguration {
                 saveButtonActive = true
             } else {
@@ -83,37 +65,70 @@ struct SettingsProfileDataView: View {
         .scrollIndicators(.hidden)
     }
     
-    
-    func saveDetails() {
-        Task {
-            await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: self.height, weight: self.weight, workoutsPerWeek: self.workoutsPerWeek, units: self.units, goal: self.goal) { response in
-                if response != nil {
-                    
-                    if let user = user.first {
-                        user.details?.gender = self.gender
-                        user.details?.age = self.age
-                        user.details?.units = self.units
-                        user.details?.height = self.height
-                        user.details?.weight = self.weight
-                        user.details?.workoutsPerWeek = self.workoutsPerWeek
-                        user.details?.goal = self.goal
-                        
-                        if localProfileImage != nil || self.name != self.initConfiguration[0] {
-                            await SettingsProfileDataController.sendFormData(name: self.name, image: localProfileImage) { response in
-                                user.name = response.data.user.name
-                                user.photo = response.data.user.photo
-                            }
-                        }
-                        
-                    }
-                    
+    func loadData() {
+        DB.shared.performBackgroundTask { backgroundContext in
+            let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+            let fetchResult: Result<[User], Error> = DB.shared.makeFetchRequest(request: fetchRequest)
+            
+            switch fetchResult {
+            case .success(let users):
+                DB.shared.context.perform {
+                    self.imageUrl = URL(string: "https://storage.fthub.eu\(users[0].photo ?? "No photo url")")
+                    self.name = users[0].name ?? "No name"
+                    self.email = users[0].email ?? "No email"
+                    self.gender = Gender(rawValue: users[0].userDetails?.gender ?? "Male") ?? .Male
+                    self.age = Int(users[0].userDetails?.age ?? 18)
+                    self.units = Unit(rawValue: users[0].userDetails?.units ?? "metric") ?? .metric
+                    self.height = Int(users[0].userDetails?.height ?? 0)
+                    self.weight = Int(users[0].userDetails?.weight ?? 0)
+                    self.workoutsPerWeek = Int(users[0].userDetails?.workoutsPerWeek ?? 2)
+                    self.goal = FitnessGoal(rawValue: users[0].userDetails?.goal ?? "Balance") ?? .Balance
                     self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
-                    Message.send(type: "success", message: "Successfully saved profile data")
-                    
-                    saveButtonActive = false
                 }
+            case .failure(let error):
+                print("Error loading user details from background thread: \(error.localizedDescription)")
             }
         }
+        
+    }
+    
+    func saveDetails() {
+        DB.shared.performBackgroundTask { backgroundContext in
+            let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+            let fetchResult: Result<[User], Error> = DB.shared.makeFetchRequest(request: fetchRequest)
+            
+            switch fetchResult {
+            case .success(let users):
+                Task {
+                    await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: self.height, weight: self.weight, workoutsPerWeek: self.workoutsPerWeek, units: self.units, goal: self.goal) { response in
+                        if response != nil {
+                            users[0].userDetails?.gender = self.gender.rawValue
+                            users[0].userDetails?.age = Int16(self.age)
+                            users[0].userDetails?.units = self.units.rawValue
+                            users[0].userDetails?.height = Int16(self.height)
+                            users[0].userDetails?.weight = Int16(self.weight)
+                            users[0].userDetails?.workoutsPerWeek = Int16(self.workoutsPerWeek)
+                            users[0].userDetails?.goal = self.goal.rawValue
+                            if localProfileImage != nil || self.name != self.initConfiguration[0] {
+                                await SettingsProfileDataController.sendFormData(name: self.name, image: localProfileImage) { response in
+                                    users[0].name = response.data.user.name
+                                    users[0].photo = response.data.user.photo
+                                }
+                            }
+                            DB.shared.saveContext()
+                            
+                            self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
+                            Message.send(type: "success", message: "Successfully saved profile data")
+                            saveButtonActive = false
+                        }
+                    }
+                }
+            case .failure(let error):
+                print("Error loading user details from background thread: \(error.localizedDescription)")
+            }
+        }
+        
+        
     }
     
 }

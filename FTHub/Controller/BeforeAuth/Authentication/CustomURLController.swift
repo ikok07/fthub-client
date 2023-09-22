@@ -11,28 +11,46 @@ struct CustomURLController {
     
     static let defaults = UserDefaults.standard
     
-    static func confirmEmail(url: URL, completion: ((User?) -> Void)? = nil) async {
-        let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: defaults.string(forKey: "userCurrentEmail") ?? "No email", completion: completion)
-        defaults.setValue(false, forKey: "loadingPresented")
-        defaults.setValue(SendEmailType.confirm.rawValue, forKey: "sendEmailType")
-        if emailConfirmed {
-            defaults.set(TokenVerifyStatus.success.rawValue, forKey: "tokenConfirmationStatus")
-        } else {
-            defaults.set(TokenVerifyStatus.fail.rawValue, forKey: "tokenConfirmationStatus")
+    static func getCurrentEmail() async -> String {
+        var email: String = ""
+        await K.Database.getAppVariables() { variables, context in
+            email = variables.userCurrentEmail ?? ""
         }
-        defaults.setValue(false, forKey: "emailWithLinkSent")
-        defaults.setValue(true, forKey: "showTokenVerifyStatus")
+        return email
+    }
+    
+    static func confirmEmail(url: URL) async {
+        let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: getCurrentEmail())
+        await K.Database.getAppVariables() { variables, context in
+            variables.loadingPresented = false
+            variables.sendEmailType = SendEmailType.confirm.rawValue
+        }
+        if emailConfirmed {
+            await K.Database.getAppVariables() { variables, context in
+                variables.tokenConfirmationStatus = TokenVerifyStatus.success.rawValue
+            }
+        } else {
+            await K.Database.getAppVariables() { variables, context in
+                variables.tokenConfirmationStatus = TokenVerifyStatus.fail.rawValue
+            }
+        }
+        await K.Database.getAppVariables() { variables, context in
+            variables.emailWithLinkSent = false
+            variables.showTokenVerifyStatus = true
+        }
     }
     
     static func openResetPassword(url: URL) async {
-        defaults.setValue(url.pathComponents[2], forKey: "restorePasswordToken")
-        defaults.setValue(true, forKey: "showRestorePassword")
-        defaults.setValue(false, forKey: "loadingPresented")
+        await K.Database.getAppVariables() { variables, context in
+            variables.loadingPresented = false
+            variables.restorePasswordToken = url.pathComponents[2]
+            variables.showRestorePassword = true
+        }
     }
     
-    static func checkTwoFa(email: String, url: URL, completion: @escaping ((User?) async -> Void)) async {
+    static func checkTwoFa(email: String, url: URL) async {
         let token = url.pathComponents[2]
-        await TwoFaAuthModel.authenticate(email: email, token: token, completion: completion)
+        await TwoFaAuthModel.authenticate(email: email, token: token)
     }
     
 }

@@ -11,27 +11,42 @@ import SwiftData
 
 struct TwoFaAuthModel {
     
-    @MainActor static func authenticate(email: String?, token: String?, completion: ((User?) async -> Void)?) async {
-        let defaults = UserDefaults.standard
+    @MainActor static func authenticate(email: String?, token: String?) async {
 
         let response = await Authentication.authTwoFa(email: email ?? "", token: token ?? "")
             if let safeResponse = response {
                 if safeResponse.status == "success" {
-                    defaults.setValue(safeResponse.token ?? "", forKey: "userToken")
-                    
-                    let newUser = safeResponse.data?.user
-                    await completion?(newUser)
-                    
-                    defaults.setValue(true, forKey: "userLoggedIn")
-                    print("loggedin: \(defaults.bool(forKey: "userLoggedIn"))")
-                    defaults.setValue(false, forKey: "emailWithLinkSent")
-                    defaults.setValue(false, forKey: "loadingPresented")
+                    let newMemoryUser = safeResponse.data?.user
+                    if let newMemoryUser = newMemoryUser {
+                        let user = User(context: DB.shared.persistentContainer.viewContext)
+                        user.mongoID = newMemoryUser._id
+                        user.token = safeResponse.token
+                        user.name = newMemoryUser.name
+                        user.email = newMemoryUser.email
+                        user.photo = newMemoryUser.photo
+                        user.role = newMemoryUser.role
+                        await DbUserAuth.twoFaAuth(newUser: user)
+                    }
+                    await K.Database.getAppVariables() { variables, context in
+                        variables.userLoggedIn = true
+                        variables.emailWithLinkSent = false
+                        variables.loadingPresented = false
+                    }
                 } else {
                     Message.send(type: "error", message: String(localized: "The entered link is invalid or expired"))
-                    defaults.setValue(TokenVerifyStatus.fail.rawValue, forKey: "tokenConfirmationStatus")
-                    defaults.setValue(SendEmailType.twoFa.rawValue, forKey: "sendEmailType")
-                    defaults.setValue(true, forKey: "showTokenVerifyStatus")
-                    defaults.setValue(false, forKey: "loadingPresented")
+                    await K.Database.getAppVariables() { variables, context in
+                        variables.tokenConfirmationStatus = TokenVerifyStatus.fail.rawValue
+                        variables.sendEmailType = SendEmailType.twoFa.rawValue
+                        variables.showTokenVerifyStatus = true
+                        variables.loadingPresented = false
+                    }
+                }
+            } else {
+                await K.Database.getCurrentUser() { user, context in
+                    let details = UserDetails(context: DB.shared.persistentContainer.viewContext)
+                    user.userDetails = details
+                    DB.shared.persistentContainer.viewContext.insert(user)
+                    DB.shared.saveContext()
                 }
             }
     }

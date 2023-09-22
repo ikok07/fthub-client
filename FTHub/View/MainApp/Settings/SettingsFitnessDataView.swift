@@ -10,7 +10,8 @@ import SwiftData
 
 struct SettingsFitnessDataView: View {
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @Binding var height: Int
     @Binding var weight: Int
@@ -23,11 +24,9 @@ struct SettingsFitnessDataView: View {
             SettingsInputRowView(name: "Height") {
                 Picker("", selection: $height) {
                     ForEach(120...220, id: \.self) { i in
-                        if let user = user.first {
-                            Text(user.details?.units == .metric ? "\(i) cm" : "\(String(format: "%.2f", Double(i) * 0.3937)) inch")
-                                .font(.body)
-                                .fontWeight(.medium)
-                        }
+                        Text(user[0].userDetails?.units == "metric" ? "\(i) cm" : "\(String(format: "%.2f", Double(i) * 0.3937)) inch")
+                            .font(.body)
+                            .fontWeight(.medium)
                     }
                 }
                 .tint(.text)
@@ -35,11 +34,9 @@ struct SettingsFitnessDataView: View {
             SettingsInputRowView(name: "Weight") {
                 Picker("", selection: $weight) {
                     ForEach(40...180, id: \.self) { i in
-                        if let user = user.first {
-                            Text(user.details?.units == .metric ? "\(i) kg" : "\(String(format: "%.1f", Double(i) * 2.2046226218488)) lbs")
-                                .font(.body)
-                                .fontWeight(.medium)
-                        }
+                        Text(user[0].userDetails?.units == "metric" ? "\(i) kg" : "\(String(format: "%.1f", Double(i) * 2.2046226218488)) lbs")
+                            .font(.body)
+                            .fontWeight(.medium)
                     }
                 }
                 .tint(.text)

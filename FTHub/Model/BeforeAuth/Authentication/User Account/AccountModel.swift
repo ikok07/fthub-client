@@ -17,48 +17,48 @@ struct AccountModel {
         
         if let safeResponse = response {
             if safeResponse.status == "success" {
-                defaults.setValue(true, forKey: "userLoggedIn")
+                await K.Database.getAppVariables() { variables, context in
+                    variables.userLoggedIn = true
+                }
                 if safeResponse.data != nil { return safeResponse }
             } else {
-                defaults.setValue(false, forKey: "userLoggedIn")
-                defaults.setValue(false, forKey: "hasDetails")
+                await K.Database.getCurrentUser() { user, context in
+                    user.hasFullDetails = false
+                }
+                
+                await K.Database.getAppVariables() { variables, context in
+                    variables.userLoggedIn = false
+                    variables.showTokenVerifyStatus = false
+                    variables.emailWithLinkSent = false
+                }
+                
             }
         } else {
-            defaults.setValue(false, forKey: "userLoggedIn")
+            await K.Database.getAppVariables() { variables, context in
+                variables.userLoggedIn = false
+                variables.showTokenVerifyStatus = false
+                variables.emailWithLinkSent = false
+            }
             Message.send(type: "error", message: "There was an error connecting to our servers. Please try again later.")
         }
         return nil
     }
     
-    static func checkDetails(_ token: String) async -> UserDetails? {
+    static func checkDetails(_ token: String) async -> ApiUserDetails? {
         
         let response = await Authentication.checkDetails(token)
-        defaults.setValue(false, forKey: "loadingPresented")
-        
-        var newDetails = UserDetails(setupActivePage: 0)
+        await K.Database.getAppVariables() { variables, context in
+            variables.loadingPresented = false
+        }
         
         if let safeResponse = response {
             if safeResponse.status == "success" {
-                defaults.setValue(true, forKey: "hasDetails")
-                switch safeResponse.data.userDetails.units {
-                case "metric":
-                    newDetails.units = .metric
-                default:
-                    newDetails.units = .imperial
-                }
-                newDetails.age = safeResponse.data.userDetails.age
-                newDetails.gender = Gender(rawValue: safeResponse.data.userDetails.gender!)
-                newDetails.goal = FitnessGoal(rawValue: safeResponse.data.userDetails.goal!.camelCased)
-                newDetails.height = safeResponse.data.userDetails.height
-                newDetails.weight = safeResponse.data.userDetails.weight
-                newDetails.workoutsPerWeek = safeResponse.data.userDetails.trainingFrequencyPerWeek
+                return safeResponse.data.userDetails
             } else {
                 Message.send(type: "error", message: safeResponse.status)
             }
-        } else {
-            defaults.setValue(false, forKey: "hasDetails")
         }
-        return newDetails
+        return nil
     }
     
 }

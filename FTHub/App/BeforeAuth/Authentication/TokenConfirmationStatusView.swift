@@ -18,30 +18,22 @@ enum SendEmailType: String, Codable, CaseIterable {
 struct TokenConfirmationStatusView: View {
     
     @Environment(\.scenePhase) var scenePhase
+    @Environment(BaseAuthController.self) var baseAuthController
     
-    @EnvironmentObject private var baseAuthController: BaseAuthController
-    
-    @AppStorage("userLoggedIn") private var userLoggedIn: Bool = false
-    @AppStorage("userToken") private var userToken: String = ""
-    @AppStorage("userCurrentEmail") private var userCurrentEmail: String = ""
-    @AppStorage("emailWithLinkSent") private var emailNotVerified: Bool = false
-    @AppStorage("showTokenVerifyStatus") private var showTokenVerifyStatus: Bool = false
-    @AppStorage("loadingPresented") private var loadingPresented: Bool = false
-    @AppStorage("tokenConfirmationStatus") private var status: TokenVerifyStatus = .success
-    @AppStorage("sendEmailType") private var sendEmailType: SendEmailType = .twoFa
+    @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
     
     var body: some View {
         VStack {
-            Image(systemName: status == .success ? "checkmark.circle.fill" : "xmark.circle.fill")
+            Image(systemName: variables[0].tokenConfirmationStatus == TokenVerifyStatus.success.rawValue ? "checkmark.circle.fill" : "xmark.circle.fill")
                 .font(.system(size: 64))
-                .foregroundStyle(status == .success ? K.Gradients.mainGradient : K.Gradients.errorGradient)
+                .foregroundStyle(variables[0].tokenConfirmationStatus == TokenVerifyStatus.success.rawValue ? K.Gradients.mainGradient : K.Gradients.errorGradient)
                 .padding(.bottom, 5)
-                .symbolEffect(.bounce.up.byLayer, value: emailNotVerified)
+                .symbolEffect(.bounce.up.byLayer, value: variables[0].emailWithLinkSent)
             VStack(spacing: 15) {
-                Text("Email \(status == .fail ? "not ": "")approved")
+                Text("Email \(variables[0].tokenConfirmationStatus == TokenVerifyStatus.fail.rawValue ? "not ": "")approved")
                     .font(.title)
                     .fontWeight(.bold)
-                Text(status == .success ? "You have successfuly approved\n your email" : "There was an error approving your email address. Please try again.")
+                Text(variables[0].tokenConfirmationStatus == TokenVerifyStatus.success.rawValue ? "You have successfuly approved\n your email" : "There was an error approving your email address. Please try again.")
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.textGray)
                     .fontWeight(.semibold)
@@ -51,35 +43,31 @@ struct TokenConfirmationStatusView: View {
             VStack {
                 Button(action: {
                     Task {
-                        if status == .fail {
-                            loadingPresented = true
-                            if sendEmailType == .confirm {
-                                await Authentication.sendConfirmEmail(email: userCurrentEmail)
-                                withAnimation {
-                                    emailNotVerified = true
-                                    showTokenVerifyStatus = false
-                                }
-                            } else {
-                                baseAuthController.authenticateUser()
+                        if variables[0].tokenConfirmationStatus == TokenVerifyStatus.fail.rawValue {
+                            variables[0].loadingPresented = true
+                            if baseAuthController.activeOption == .signUp {
+                                baseAuthController.activeOption = .signIn
                             }
+                            baseAuthController.authenticateUser()
                         } else {
                             withAnimation {
-                                userLoggedIn = true
+                                variables[0].userLoggedIn = true
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    showTokenVerifyStatus = false
+                                    variables[0].showTokenVerifyStatus = false
                                 }
+                                DB.shared.saveContext()
                             }
                         }
                     }
                 }, label: {
-                    Text(status == .success ? "Go to Dashboard" : "Resend Email")
+                    Text(variables[0].tokenConfirmationStatus == TokenVerifyStatus.success.rawValue ? "Continue" : "Try again")
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 })
-                .buttonStyle(CTAButtonStyle(gradient: status == .success ? K.Gradients.mainGradient : K.Gradients.errorGradient))
+                .buttonStyle(CTAButtonStyle(gradient: variables[0].tokenConfirmationStatus == TokenVerifyStatus.success.rawValue ? K.Gradients.mainGradient : K.Gradients.errorGradient))
                 .padding()
                 .padding(.top, 20)
                 
-                if status == .fail {
+                if variables[0].tokenConfirmationStatus == TokenVerifyStatus.fail.rawValue {
                     Button(action: {}, label: {
                         Image(systemName: "arrow.left")
                             .foregroundStyle(.customDarkRed)
@@ -96,8 +84,9 @@ struct TokenConfirmationStatusView: View {
         .onChange(of: scenePhase) { oldValue, newScene in
             if newScene == .background {
                 withAnimation(.easeOut) {
-                    if status == .success {
-                        userLoggedIn = true
+                    if variables[0].tokenConfirmationStatus == TokenVerifyStatus.success.rawValue {
+                        variables[0].userLoggedIn = true
+                        DB.shared.saveContext()
                     }
                 }
             }
@@ -107,5 +96,4 @@ struct TokenConfirmationStatusView: View {
 
 #Preview {
     TokenConfirmationStatusView()
-        .environmentObject(BaseAuthController())
 }

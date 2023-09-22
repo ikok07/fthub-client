@@ -68,7 +68,7 @@
         }
       }
     },
-    "Age: %lld" : {
+    "Age: %d" : {
 
     },
     "All Calculators" : {
@@ -321,9 +321,6 @@
     "Gain Weight" : {
 
     },
-    "Go to Dashboard" : {
-
-    },
     "Hello, World!" : {
 
     },
@@ -404,9 +401,6 @@
 
     },
     "Profile data" : {
-
-    },
-    "Resend Email" : {
 
     },
     "Resend now" : {
@@ -604,6 +598,9 @@
 
     },
     "There was an error changing your password. Please try again." : {
+
+    },
+    "Try again" : {
 
     },
     "Try Again" : {

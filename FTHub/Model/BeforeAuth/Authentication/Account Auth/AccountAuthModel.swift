@@ -9,13 +9,11 @@ import Foundation
 
 struct AccountAuthModel {
     
-    private let defaults = UserDefaults.standard
-    
-    func authenticate(activeOption: AuthOption, name: String?, email: String, password: String, confirmPassword: String?) {
+    static func authenticate(activeOption: AuthOption?, name: String?, email: String, password: String, confirmPassword: String?) {
         if activeOption == .signIn {
             Task {
                 let response = await Authentication.signIn(email: email, password: password)
-                advanceSignIn(response: response, email: email)
+                await advanceSignIn(response: response, email: email)
             }
         } else if activeOption == .signUp {
             Task {
@@ -23,11 +21,29 @@ struct AccountAuthModel {
                 if response != nil {
                     if response!.status == "fail" {
                         Message.send(type: "error", message: response!.message)
+                        await K.Database.getAppVariables() { variables, context in
+                            variables.buttonLoading = false
+                            variables.loadingPresented = false
+                            variables.showTokenVerifyStatus = false
+                        }
                     } else {
-                        defaults.setValue(email, forKey: "userCurrentEmail")
-                        defaults.setValue(true, forKey: "emailWithLinkSent")
+                        await K.Database.getAppVariables() { variables, context in
+                            variables.userCurrentEmail = email
+                            variables.emailWithLinkSent = true
+                            variables.buttonLoading = false
+                            variables.loadingPresented = false
+                            variables.showTokenVerifyStatus = false
+                        }
                     }
-                    defaults.setValue(false, forKey: "buttonLoading")
+                }
+            }
+        } else {
+            Task {
+                await K.Database.getAppVariables() { variables, context in
+                    variables.loadingPresented = false
+                    variables.emailWithLinkSent = false
+                    variables.showTokenVerifyStatus = false
+                    variables.userLoggedIn = false
                 }
             }
         }
@@ -35,7 +51,7 @@ struct AccountAuthModel {
     
     
     
-    private func advanceSignIn(response: AccountAuthResponse?, email: String) {
+    static private func advanceSignIn(response: AccountAuthResponse?, email: String) async {
         if response != nil {
             if response!.status == "fail" && response!.identifier != "EmailNotVerified" {
                 Message.send(type: "error", message: response!.message)
@@ -44,13 +60,18 @@ struct AccountAuthModel {
                     await Authentication.sendConfirmEmail(email: email)
                 }
             } else {
-                defaults.setValue(email, forKey: "userCurrentEmail")
-                defaults.setValue(true, forKey: "emailWithLinkSent")
+                await K.Database.getAppVariables() { variables, context in
+                    variables.userCurrentEmail = email
+                    variables.emailWithLinkSent = true
+                }
             }
         } else {
             Message.send(type: "error", message: "Error connecting to server")
         }
-        defaults.setValue(false, forKey: "buttonLoading")
+        await K.Database.getAppVariables() { variables, context in
+            variables.buttonLoading = false
+            variables.loadingPresented = false
+        }
     }
     
 }

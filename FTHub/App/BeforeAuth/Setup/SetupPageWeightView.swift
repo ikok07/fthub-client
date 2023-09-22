@@ -18,7 +18,8 @@ struct SetupPageWeightView: View {
     @State private var percentage: Double = 0
     @State private var gaugeText: String = ""
     
-    @Query private var user: [User]
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     
     func updateText() {
@@ -57,12 +58,11 @@ struct SetupPageWeightView: View {
 //                .padding(.horizontal)
             
             Button(action: {
-                if let user = user.first {
-                    user.details?.setupActivePage += 1
-                    user.details?.weight = selectedWeight
-                }
+                user[0].userDetails?.setupActivePage += 1
+                user[0].userDetails?.weight = Int16(selectedWeight)
                 setupController.weight = selectedWeight
                 setupController.activePage += 1
+                DB.shared.saveContext()
             }, label: {
                 Text("Continue")
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -73,7 +73,6 @@ struct SetupPageWeightView: View {
             
             Spacer()
         }
-//        .padding()
         .onChange(of: selectedWeight) { _, _ in
             withAnimation(.linear) {
                 percentage = Double(selectedWeight - K.UserDetails.minWeight) / Double(K.UserDetails.maxWeight - K.UserDetails.minWeight)

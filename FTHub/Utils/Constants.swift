@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct K {
     
@@ -102,7 +103,55 @@ struct K {
 
             return values
         }
+    }
+    
+    // MARK: - Database
+    
+    struct Database {
+        static func getUserToken() async -> String {
+            var token: String = ""
+            
+            await self.getCurrentUser() { user, context in
+                token = user.token ?? ""
+            }
+            return token
+        }
         
+        static func getCurrentUser(completionHandler: ((User, NSManagedObjectContext) async -> Void)? = nil, completionHandlerWithoutEmptyCheck: (([User], NSManagedObjectContext) async -> Void)? = nil) async {
+            let db = DB.shared
+            let context = db.context
+            let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+            let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
+            
+            switch fetchData {
+            case .success(let users):
+                if !users.isEmpty {
+                    await completionHandler?(users[0], context)
+                }
+                await completionHandlerWithoutEmptyCheck?(users, context)
+            case .failure(let error):
+                print("Error getting current user from database: \(error.localizedDescription)")
+            }
+        }
+        
+        static func getAppVariables(completionHandler: ((AppVariables, NSManagedObjectContext) async -> Void)? = nil, completionHandlerWithoutEmptyCheck: (([AppVariables], NSManagedObjectContext) async -> Void)? = nil) async {
+            let db = DB.shared
+            let context = db.context
+            let fetchRequest: NSFetchRequest<AppVariables> = AppVariables.fetchRequest()
+            let fetchData: Result<[AppVariables], Error> = db.makeFetchRequest(request: fetchRequest)
+            
+            switch fetchData {
+            case .success(let variables):
+                if !variables.isEmpty {
+                    await completionHandler?(variables[0], context)
+                    db.saveContext()
+                }
+                await completionHandlerWithoutEmptyCheck?(variables, context)
+                
+            case .failure(let error):
+                print("Error getting current variables from database: \(error.localizedDescription)")
+            }
+        }
         
     }
     
