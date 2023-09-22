@@ -9,9 +9,7 @@ import Foundation
 
 struct AccountAuthModel {
     
-    private let defaults = UserDefaults.standard
-    
-    func authenticate(activeOption: AuthOption, name: String?, email: String, password: String, confirmPassword: String?) {
+    static func authenticate(activeOption: AuthOption?, name: String?, email: String, password: String, confirmPassword: String?) {
         if activeOption == .signIn {
             Task {
                 let response = await Authentication.signIn(email: email, password: password)
@@ -25,14 +23,27 @@ struct AccountAuthModel {
                         Message.send(type: "error", message: response!.message)
                         await K.Database.getAppVariables() { variables, context in
                             variables.buttonLoading = false
+                            variables.loadingPresented = false
+                            variables.showTokenVerifyStatus = false
                         }
                     } else {
                         await K.Database.getAppVariables() { variables, context in
                             variables.userCurrentEmail = email
                             variables.emailWithLinkSent = true
                             variables.buttonLoading = false
+                            variables.loadingPresented = false
+                            variables.showTokenVerifyStatus = false
                         }
                     }
+                }
+            }
+        } else {
+            Task {
+                await K.Database.getAppVariables() { variables, context in
+                    variables.loadingPresented = false
+                    variables.emailWithLinkSent = false
+                    variables.showTokenVerifyStatus = false
+                    variables.userLoggedIn = false
                 }
             }
         }
@@ -40,7 +51,7 @@ struct AccountAuthModel {
     
     
     
-    private func advanceSignIn(response: AccountAuthResponse?, email: String) async {
+    static private func advanceSignIn(response: AccountAuthResponse?, email: String) async {
         if response != nil {
             if response!.status == "fail" && response!.identifier != "EmailNotVerified" {
                 Message.send(type: "error", message: response!.message)
@@ -59,6 +70,7 @@ struct AccountAuthModel {
         }
         await K.Database.getAppVariables() { variables, context in
             variables.buttonLoading = false
+            variables.loadingPresented = false
         }
     }
     

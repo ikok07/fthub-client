@@ -6,34 +6,26 @@
 //
 
 import Foundation
+import Observation
 
-class BaseAuthController: ObservableObject {
+@Observable class BaseAuthController {
     
-    private let accountAuthModel: AccountAuthModel = AccountAuthModel()
+    var activeOption: AuthOption?
+    var name: String?
+    var email: String = ""
+    var password: String = ""
+    var confirmPassword: String?
     
-    @Published var activeOption: AuthOption?
-    @Published var name: String?
-    @Published var email: String?
-    @Published var password: String?
-    @Published var confirmPassword: String?
-    
-    let defaults = UserDefaults.standard
-    
-    
-    func saveData(activeOption: AuthOption, name: String, email: String, password: String, confirmPassword: String) {
+    func saveDetails(activeOption: AuthOption, name: String?, email: String, password: String, confirmPassword: String?) {
         self.activeOption = activeOption
+        self.name = name
         self.email = email
         self.password = password
-        
-        if name != "" {
-            self.name = name
-            self.confirmPassword = confirmPassword
-        }
-        
+        self.confirmPassword = confirmPassword
     }
     
     func authenticateUser() {
-        accountAuthModel.authenticate(activeOption: self.activeOption!, name: self.name, email: self.email!, password: self.password!, confirmPassword: self.confirmPassword)
+        AccountAuthModel.authenticate(activeOption: self.activeOption, name: self.name, email: self.email, password: self.password, confirmPassword: self.confirmPassword)
     }
     
 }

@@ -81,7 +81,7 @@ struct DbUserAuth {
     
     static func confirmEmail(newUser: User) -> Bool {
         let db = DB.shared
-        let context = db.context
+        let context = db.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
         

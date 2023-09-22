@@ -11,8 +11,6 @@ struct BeforeAuthView: View {
     
     @Environment(\.scenePhase) private var scenePhase
     
-    @EnvironmentObject private var baseAuthController: BaseAuthController
-    
     @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
     
     var body: some View {
@@ -53,17 +51,9 @@ struct BeforeAuthView: View {
                 }
             } else if components.host == "login" && url.pathComponents[1] == "confirm" {
                 variables[0].loadingPresented = true
-                
-                if baseAuthController.activeOption != nil {
-                    Task {
-                        await CustomURLController.checkTwoFa(email: self.variables[0].userCurrentEmail ?? "", url: url)
-                    }
-                } else {
-                    variables[0].showTokenVerifyStatus = false
-                    variables[0].emailWithLinkSent = false
-                    variables[0].loadingPresented = false
-                }
-                
+                Task {
+                    await CustomURLController.checkTwoFa(email: self.variables[0].userCurrentEmail ?? "", url: url)
+                } 
             } else if url.pathComponents[1] == "reset" {
                 variables[0].loadingPresented = true
                 Task {
@@ -82,5 +72,4 @@ struct BeforeAuthView: View {
 
 #Preview {
     BeforeAuthView()
-        .environmentObject(BaseAuthController())
 }

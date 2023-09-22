@@ -18,8 +18,7 @@ enum SendEmailType: String, Codable, CaseIterable {
 struct TokenConfirmationStatusView: View {
     
     @Environment(\.scenePhase) var scenePhase
-    
-    @EnvironmentObject private var baseAuthController: BaseAuthController
+    @Environment(BaseAuthController.self) var baseAuthController
     
     @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
     
@@ -46,15 +45,8 @@ struct TokenConfirmationStatusView: View {
                     Task {
                         if variables[0].tokenConfirmationStatus == TokenVerifyStatus.fail.rawValue {
                             variables[0].loadingPresented = true
-                            if variables[0].sendEmailType == SendEmailType.confirm.rawValue {
-                                await Authentication.sendConfirmEmail(email: variables[0].userCurrentEmail ?? "")
-                                withAnimation {
-                                    variables[0].emailWithLinkSent = true
-                                    variables[0].showTokenVerifyStatus = false
-                                }
-                            } else {
-                                baseAuthController.authenticateUser()
-                            }
+                            baseAuthController.activeOption = .signIn
+                            baseAuthController.authenticateUser()
                         } else {
                             withAnimation {
                                 variables[0].userLoggedIn = true
@@ -66,7 +58,7 @@ struct TokenConfirmationStatusView: View {
                         }
                     }
                 }, label: {
-                    Text(variables[0].tokenConfirmationStatus == TokenVerifyStatus.success.rawValue ? "Continue" : "Resend Email")
+                    Text(variables[0].tokenConfirmationStatus == TokenVerifyStatus.success.rawValue ? "Continue" : "Try again")
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 })
                 .buttonStyle(CTAButtonStyle(gradient: variables[0].tokenConfirmationStatus == TokenVerifyStatus.success.rawValue ? K.Gradients.mainGradient : K.Gradients.errorGradient))
@@ -102,5 +94,4 @@ struct TokenConfirmationStatusView: View {
 
 #Preview {
     TokenConfirmationStatusView()
-        .environmentObject(BaseAuthController())
 }

@@ -403,9 +403,6 @@
     "Profile data" : {
 
     },
-    "Resend Email" : {
-
-    },
     "Resend now" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -601,6 +598,9 @@
 
     },
     "There was an error changing your password. Please try again." : {
+
+    },
+    "Try again" : {
 
     },
     "Try Again" : {
