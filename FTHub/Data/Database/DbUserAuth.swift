@@ -159,11 +159,15 @@ struct DbUserAuth {
     }
     
     static func logOut() async {
-        await K.Database.getCurrentUser() { user, context in
-            self.defaults.setValue(false, forKey: "userLoggedIn")
-            DB.shared.context.delete(user)
-            DB.shared.saveContext()
-        }
+        await K.Database.getCurrentUser(completionHandlerWithoutEmptyCheck:  { users, context in
+            if !users.isEmpty {
+                await DbApplication.initiate()
+                DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                    context.delete(users[0])
+                    DB.shared.saveContext()
+                }
+            }
+        })
     }
     
 }
