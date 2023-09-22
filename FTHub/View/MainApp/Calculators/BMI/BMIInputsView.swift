@@ -16,6 +16,7 @@ struct BMIInputsView: View {
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @State private var autofill: Bool = false
+    @State private var validations: [Bool?] = Array(repeating: false, count: 2)
     
     @Binding var gender: Gender
     @Binding var weight: String
@@ -28,9 +29,9 @@ struct BMIInputsView: View {
     var body: some View {
         VStack {
             
-            VStack(spacing: 20) {
-                CustomInputField(isActive: _isActive, icon: "scalemass.fill", unit: user[0].userDetails!.units == "metric" ? "kg" : "lbs", placeholder: "Weight", numpad: true, text: $weight)
-                CustomInputField(isActive: _isActive, icon: "arrow.up.and.down", unit: user[0].userDetails!.units == "metric" ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
+            VStack(spacing: 0) {
+                CustomInputField(isActive: _isActive, type: .weight, icon: "scalemass.fill", unit: user[0].userDetails!.units == "metric" ? "kg" : "lbs", placeholder: "Weight", numpad: true, text: $weight, validationResult: $validations[0])
+                CustomInputField(isActive: _isActive, type: .height, icon: "arrow.up.and.down", unit: user[0].userDetails!.units == "metric" ? "cm" : "in", placeholder: "Height", numpad: true, text: $height, validationResult: $validations[0])
                 
                 AutofillButtonView(autofill: $autofill)
             }
@@ -42,7 +43,6 @@ struct BMIInputsView: View {
             })
             .buttonStyle(CTAButtonStyle(gradient: K.Gradients.mainGradient))
             .padding(.horizontal)
-            .padding(.top)
         }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
@@ -89,10 +89,12 @@ struct BMIInputsView: View {
     }
     
     func calculate() {
-        if CalculatorsCommonController.validate(weight: self.weight, height: self.height) {
-            withAnimation {
-                showResult = true
-                result = BMIController.calculateBMI(units: Unit(rawValue: user[0].userDetails!.units!)!, weight: Double(self.weight)! , height: Double(self.height)!)
+        if validations == Array(repeating: false, count: 2) {
+            if CalculatorsCommonController.validate(weight: self.weight, height: self.height) {
+                withAnimation {
+                    showResult = true
+                    result = BMIController.calculateBMI(units: Unit(rawValue: user[0].userDetails!.units!)!, weight: Double(self.weight)! , height: Double(self.height)!)
+                }
             }
         }
     }

@@ -12,10 +12,10 @@ struct BodyFatCalculatorInputsView: View {
     
     @FocusState private var isActive: Bool
     
-    @Environment(\.managedObjectContext) private var context
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     @State private var autofill: Bool = false
+    @State private var validations: [Bool?] = Array(repeating: false, count: 6)
     
     @Binding var result: Double
     @Binding var showResult: Bool
@@ -29,23 +29,24 @@ struct BodyFatCalculatorInputsView: View {
     @Binding var hip: String
     
     var body: some View {
-        VStack(spacing: 20) {
-            CustomInputField(isActive: _isActive, icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age)
+        VStack(spacing: 0) {
+            CustomInputField(isActive: _isActive, type: .age, icon: "calendar", unit: "years", placeholder: "Age", numpad: true, text: $age, validationResult: $validations[0])
             
-            CustomInputField(isActive: _isActive, icon: "scalemass.fill", unit: user[0].userDetails?.units == "metric" ? "kg" : "lb", placeholder: "Weight", numpad: true, text: $weight)
+            CustomInputField(isActive: _isActive, type: .weight, icon: "scalemass.fill", unit: user[0].userDetails?.units == "metric" ? "kg" : "lbs", placeholder: "Weight", numpad: true, text: $weight, validationResult: $validations[1])
             
-            CustomInputField(isActive: _isActive, icon: "arrow.up.and.down", unit: user[0].userDetails?.units == "metric" ? "cm" : "in", placeholder: "Height", numpad: true, text: $height)
+            CustomInputField(isActive: _isActive, type: .height, icon: "arrow.up.and.down", unit: user[0].userDetails?.units == "metric" ? "cm" : "in", placeholder: "Height", numpad: true, text: $height, validationResult: $validations[2])
             
             if gender == .Female {
-                CustomInputField(isActive: _isActive, icon: "h.circle.fill", unit: user[0].userDetails?.units == "metric" ? "cm" : "in", placeholder: "Hip", numpad: true, text: $hip)
+                CustomInputField(isActive: _isActive, type: .hip, icon: "h.circle.fill", unit: user[0].userDetails?.units == "metric" ? "cm" : "in", placeholder: "Hip", numpad: true, text: $hip, validationResult: $validations[3])
             }
             
             HStack(spacing: 20) {
-                CustomInputField(isActive: _isActive, icon: "arrow.circlepath", unit: user[0].userDetails?.units == "metric" ? "cm" : "in", placeholder: "Waist", numpad: true, text: $waist)
-                CustomInputField(isActive: _isActive, icon: "person.fill", unit: user[0].userDetails?.units == "metric" ? "cm" : "in", placeholder: "Neck", numpad: true, text: $neck)
+                CustomInputField(isActive: _isActive, type: .waist, icon: "arrow.circlepath", unit: user[0].userDetails?.units == "metric" ? "cm" : "in", placeholder: "Waist", numpad: true, text: $waist, validationResult: $validations[gender == .Female ? 4 : 3])
+                CustomInputField(isActive: _isActive, type: .neck, icon: "person.fill", unit: user[0].userDetails?.units == "metric" ? "cm" : "in", placeholder: "Neck", numpad: true, text: $neck, validationResult: $validations[gender == .Female ? 5 : 4])
             }
             
             AutofillButtonView(autofill: $autofill)
+                .padding(.bottom)
             
             Button(action: calculate) {
                 Text("Calculate")
@@ -69,6 +70,7 @@ struct BodyFatCalculatorInputsView: View {
             }
         })
         .onChange(of: [self.gender.rawValue, self.age, self.weight, self.height]) { oldValue, newValue in
+            
             let savedWeight: String = String(user[0].userDetails!.weight)
             let savedWeightLbs: String = String(format: "%.1f", Double(user[0].userDetails!.weight) * K.Units.kgToLbs)
             
@@ -84,10 +86,13 @@ struct BodyFatCalculatorInputsView: View {
     }
     
     func calculate() {
+        print(validations)
         withAnimation {
-            if CalculatorsCommonController.validate(age: self.age, weight: self.weight, height: self.height, hip: gender == .Female ? self.hip : nil, waist: self.waist, neck: self.neck) {
-                showResult = true
-                result = BodyFatCalculatorController.calculateFat(units: Unit(rawValue: user[0].userDetails!.units!)!, gender: self.gender, height: Double(self.height)!, neck: Double(self.neck)!, waist: Double(self.waist)!, hip: Double(self.hip) ?? 0)
+            if validations == Array(repeating: false, count: 6) {
+                if CalculatorsCommonController.validate(age: self.age, weight: self.weight, height: self.height, hip: gender == .Female ? self.hip : nil, waist: self.waist, neck: self.neck) {
+                    showResult = true
+                    result = BodyFatCalculatorController.calculateFat(units: Unit(rawValue: user[0].userDetails!.units!)!, gender: self.gender, height: Double(self.height)!, neck: Double(self.neck)!, waist: Double(self.waist)!, hip: Double(self.hip) ?? 0)
+                }
             }
         }
     }
