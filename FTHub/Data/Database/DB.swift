@@ -35,17 +35,17 @@ class DB {
         persistentContainer.performBackgroundTask(block)
     }
     
-    @objc func backgroundContextDidSave(notification: Notification) {
-        guard let notificationContext = notification.object as? NSManagedObjectContext else { return }
-        
-        guard notificationContext != context else {
-            return
-        }
-        
-        context.perform {
-            self.context.mergeChanges(fromContextDidSave: notification)
-        }
-    }
+//    @objc func backgroundContextDidSave(notification: Notification) {
+//        guard let notificationContext = notification.object as? NSManagedObjectContext else { return }
+//        
+//        guard notificationContext != context else {
+//            return
+//        }
+//        
+//        context.perform {
+//            self.context.mergeChanges(fromContextDidSave: notification)
+//        }
+//    }
     
     func makeFetchRequest<T: NSManagedObject>(request: NSFetchRequest<T>) -> Result<[T], Error> {
         let context = DB.shared.persistentContainer.viewContext
