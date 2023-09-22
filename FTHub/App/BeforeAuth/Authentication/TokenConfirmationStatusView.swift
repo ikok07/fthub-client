@@ -45,7 +45,9 @@ struct TokenConfirmationStatusView: View {
                     Task {
                         if variables[0].tokenConfirmationStatus == TokenVerifyStatus.fail.rawValue {
                             variables[0].loadingPresented = true
-                            baseAuthController.activeOption = .signIn
+                            if baseAuthController.activeOption == .signUp {
+                                baseAuthController.activeOption = .signIn
+                            }
                             baseAuthController.authenticateUser()
                         } else {
                             withAnimation {

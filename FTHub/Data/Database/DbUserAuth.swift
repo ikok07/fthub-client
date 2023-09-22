@@ -79,9 +79,9 @@ struct DbUserAuth {
         
     }
     
-    static func confirmEmail(newUser: User) -> Bool {
+    static func confirmEmail(response: ConfirmEmailResponse) -> Bool {
         let db = DB.shared
-        let context = db.persistentContainer.viewContext
+        let context = db.context
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
         
@@ -93,10 +93,17 @@ struct DbUserAuth {
                 }
             }
             
+            let user = User(context: context)
             let details = UserDetails(context: context)
-            details.setupActivePage = 0
-            newUser.userDetails = details
-            context.insert(newUser)
+            user.mongoID = response.data.user._id
+            user.name = response.data.user.name
+            user.email = response.data.user.email
+            user.photo = response.data.user.photo
+            user.role = response.data.user.role
+            user.token = response.token
+            user.userDetails = details
+            
+            context.insert(user)
             db.saveContext()
             return true
         case .failure(let error):

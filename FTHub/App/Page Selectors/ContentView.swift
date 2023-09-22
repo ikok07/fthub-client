@@ -38,6 +38,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
+            print(appVariables[0].showTutorial)
             Task {
                 await DbUserAuth.checkToken()
                 withAnimation {

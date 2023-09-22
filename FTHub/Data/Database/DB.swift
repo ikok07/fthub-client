@@ -64,6 +64,8 @@ class DB {
             } catch {
                 print("Error saving new context: \(error)")
             }
+        } else {
+            print("No changes found to save")
         }
     }
     

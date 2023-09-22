@@ -19,7 +19,7 @@ struct DbApplication {
                 }
             }
             let newVariables = AppVariables(context: context)
-            newVariables.showTutorial = showTutorial ?? false
+            newVariables.showTutorial = showTutorial ?? true
             context.insert(newVariables)
             DB.shared.saveContext()
         })

@@ -20,53 +20,5 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "440B6024-102E-49CE-92D4-DAADEDA77C81"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FTHub/Data/Database/DbUserAuth.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "confirmEmail(newUser:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "440B6024-102E-49CE-92D4-DAADEDA77C81 - d6442634594e5ec0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static FTHub.DbUserAuth.confirmEmail(newUser: FTHub.User) -&gt; Swift.Bool"
-                  moduleName = "FTHub"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macos/Documents/XCode/FTHub/FTHub/Data/Database/DbUserAuth.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "393">
-               </Location>
-               <Location
-                  uuid = "440B6024-102E-49CE-92D4-DAADEDA77C81 - d6442634594e5ec0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static FTHub.DbUserAuth.confirmEmail(newUser: FTHub.User) -&gt; Swift.Bool"
-                  moduleName = "FTHub"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macos/Documents/XCode/FTHub/FTHub/Data/Database/DbUserAuth.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "428">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
