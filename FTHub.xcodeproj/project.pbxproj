@@ -29,10 +29,12 @@
 		220323D92AA48A1200E47CE2 /* ApiUserDetailsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220323D82AA48A1200E47CE2 /* ApiUserDetailsNetwork.swift */; };
 		220323DD2AA48B2600E47CE2 /* SetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220323DC2AA48B2600E47CE2 /* SetupModel.swift */; };
 		220323DF2AA4B56600E47CE2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220323DE2AA4B56600E47CE2 /* String.swift */; };
+		221751842ABF4AA9004810AB /* OpenEmailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221751832ABF4AA9004810AB /* OpenEmailRowView.swift */; };
 		221965902AB0C6A500373255 /* CaloriesCalculatorResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219658F2AB0C6A500373255 /* CaloriesCalculatorResultsView.swift */; };
 		221965922AB0C9F200373255 /* CaloriesCalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221965912AB0C9F200373255 /* CaloriesCalculatorController.swift */; };
 		221965942AB0E92000373255 /* AutofillButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221965932AB0E92000373255 /* AutofillButtonView.swift */; };
 		221965972AB0F02D00373255 /* CaloriesCalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221965962AB0F02D00373255 /* CaloriesCalculatorModel.swift */; };
+		221D05B92ABEB6F100BCF395 /* OpenEmailOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D05B82ABEB6F100BCF395 /* OpenEmailOptionsView.swift */; };
 		222F3C5B2A935C6F005BC46F /* ResendTwoFaCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F3C5A2A935C6F005BC46F /* ResendTwoFaCodeModel.swift */; };
 		222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F3C602A935CDC005BC46F /* AccountAuthModel.swift */; };
 		222F3C642A935D66005BC46F /* AccountAuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F3C632A935D66005BC46F /* AccountAuthRequestModel.swift */; };
@@ -207,10 +209,12 @@
 		220323D82AA48A1200E47CE2 /* ApiUserDetailsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUserDetailsNetwork.swift; sourceTree = "<group>"; };
 		220323DC2AA48B2600E47CE2 /* SetupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupModel.swift; sourceTree = "<group>"; };
 		220323DE2AA4B56600E47CE2 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		221751832ABF4AA9004810AB /* OpenEmailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenEmailRowView.swift; sourceTree = "<group>"; };
 		2219658F2AB0C6A500373255 /* CaloriesCalculatorResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculatorResultsView.swift; sourceTree = "<group>"; };
 		221965912AB0C9F200373255 /* CaloriesCalculatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculatorController.swift; sourceTree = "<group>"; };
 		221965932AB0E92000373255 /* AutofillButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutofillButtonView.swift; sourceTree = "<group>"; };
 		221965962AB0F02D00373255 /* CaloriesCalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesCalculatorModel.swift; sourceTree = "<group>"; };
+		221D05B82ABEB6F100BCF395 /* OpenEmailOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenEmailOptionsView.swift; sourceTree = "<group>"; };
 		222F3C5A2A935C6F005BC46F /* ResendTwoFaCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendTwoFaCodeModel.swift; sourceTree = "<group>"; };
 		222F3C602A935CDC005BC46F /* AccountAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthModel.swift; sourceTree = "<group>"; };
 		222F3C632A935D66005BC46F /* AccountAuthRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthRequestModel.swift; sourceTree = "<group>"; };
@@ -1060,6 +1064,8 @@
 				22E8246C2A8BA68A00B51C60 /* AuthenticationFooterView.swift */,
 				22E8246E2A8BA89A00B51C60 /* SignInView.swift */,
 				224AE0242ABD8B1F00F919DB /* ForgotPasswordButtonView.swift */,
+				221D05B82ABEB6F100BCF395 /* OpenEmailOptionsView.swift */,
+				221751832ABF4AA9004810AB /* OpenEmailRowView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -1338,6 +1344,7 @@
 				22803A182A9C8E97004EF9B3 /* SetupController.swift in Sources */,
 				22969D4A2A94A83200935A3C /* TwoFaAuthModel.swift in Sources */,
 				22A3D9712AB608EC003A339E /* BodyFatCalculatorInputsView.swift in Sources */,
+				221D05B92ABEB6F100BCF395 /* OpenEmailOptionsView.swift in Sources */,
 				22969D492A94A83200935A3C /* TwoFaAuthRequestModel.swift in Sources */,
 				22D71E132ABE1343005DD4B7 /* CustomInputValidationController.swift in Sources */,
 				222F3C612A935CDC005BC46F /* AccountAuthModel.swift in Sources */,
@@ -1348,6 +1355,7 @@
 				22969D612A94EA9F00935A3C /* ConfirmEmailRequestModel.swift in Sources */,
 				22C6D7F02AADB8D6002C7010 /* StaticColorButton.swift in Sources */,
 				22A3D9792AB61842003A339E /* BodyFatCalculatorHorizontalChartSelectorView.swift in Sources */,
+				221751842ABF4AA9004810AB /* OpenEmailRowView.swift in Sources */,
 				22C89D0F2A9642C8001055F0 /* WithLoadingAnimationModifier.swift in Sources */,
 				22FD03372A9B83C4005A6A13 /* SetupPageViewManager.swift in Sources */,
 				229C8E202AA9D7C0006D6526 /* SettingsProfileImagePickerView.swift in Sources */,

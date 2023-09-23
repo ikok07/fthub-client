@@ -9,9 +9,9 @@ import SwiftUI
 
 struct EmailConfirmationLinkSentView: View {
     
-    @Environment(\.scenePhase) var scenePhase
-    
     @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
+    
+    @State private var openEmailViewActive: Bool = false
     
     var body: some View {
         VStack {
@@ -32,7 +32,7 @@ struct EmailConfirmationLinkSentView: View {
             
             VStack(spacing: 20) {
                 Button(action: {
-                    UIApplication.shared.open(URL(string: "message://")!)
+                    openEmailViewActive = true
                 }, label: {
                     Text("Open Mail")
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -56,14 +56,10 @@ struct EmailConfirmationLinkSentView: View {
             .padding(.vertical, 50)
         }
         .padding()
-        .onChange(of: scenePhase) { oldValue, newScene in
-            if newScene == .background {
-                withAnimation(.easeOut) {
-                    variables[0].emailWithLinkSent = false
-                    variables[0].showTokenVerifyStatus = false
-                }
-            }
-        }
+        .sheet(isPresented: $openEmailViewActive, content: {
+            OpenEmailOptionsView(isPresented: $openEmailViewActive)
+                .presentationDetents([.height(325)])
+        })
     }
 }
 

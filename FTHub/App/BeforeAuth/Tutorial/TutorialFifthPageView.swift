@@ -30,6 +30,7 @@ struct TutorialFifthPageView: View {
             Button {
                 withAnimation {
                     variables[0].showTutorial = false
+                    DB.shared.saveContext()
                 }
             } label: {
                 Text("Finish")

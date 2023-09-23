@@ -11,7 +11,6 @@ import SwiftData
 struct ContentView: View {
     @State private var loadContentView: Bool = false
     
-    @Environment(\.managedObjectContext) private var context
     @FetchRequest(sortDescriptors: []) var users: FetchedResults<User>
     @FetchRequest(sortDescriptors: []) var appVariables: FetchedResults<AppVariables>
     
@@ -38,7 +37,6 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            print(appVariables[0].showTutorial)
             Task {
                 await DbUserAuth.checkToken()
                 withAnimation {

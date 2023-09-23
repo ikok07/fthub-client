@@ -9,8 +9,6 @@ import SwiftUI
 
 struct BeforeAuthView: View {
     
-    @Environment(\.scenePhase) private var scenePhase
-    
     @FetchRequest(sortDescriptors: []) private var variables: FetchedResults<AppVariables>
     
     var body: some View {
@@ -59,12 +57,6 @@ struct BeforeAuthView: View {
                 Task {
                     await CustomURLController.openResetPassword(url: url)
                 }
-            }
-        }
-        .onChange(of: scenePhase) { oldValue, newScene in
-            if newScene == .background {
-                variables[0].emailWithLinkSent = false
-                variables[0].showTokenVerifyStatus = false
             }
         }
     }
