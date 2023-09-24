@@ -64,6 +64,7 @@ struct SettingsProfileMainDataView: View {
                     }
                     .tint(.text)
                 }
+                
             }
         }
     }

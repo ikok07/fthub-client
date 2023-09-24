@@ -13,33 +13,36 @@ struct SettingsFitnessDataView: View {
     @Environment(\.managedObjectContext) private var context
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
-    @Binding var height: Int
-    @Binding var weight: Int
+    
+    @Binding var height: String
+    @Binding var weight: String
     @Binding var workoutsPerWeek: Int
     @Binding var goal: FitnessGoal
+    @Binding var units: Unit
     
+    @State private var contentLoaded: Bool = false
     
     var body: some View {
         SettingsGroupView(name: "Fitness Data") {
             SettingsInputRowView(name: "Height") {
-                Picker("", selection: $height) {
-                    ForEach(120...220, id: \.self) { i in
-                        Text(user[0].userDetails?.units == "metric" ? "\(i) cm" : "\(String(format: "%.2f", Double(i) * 0.3937)) inch")
-                            .font(.body)
-                            .fontWeight(.medium)
-                    }
-                }
-                .tint(.text)
+                TextField("", text: $height)
+                    .frame(width: 75)
+                    .multilineTextAlignment(.trailing)
+                    .tint(.text)
+                    .contentTransition(.numericText())
+                
+                Text(self.units == .metric ? "cm" : "inch.")
+                    .tint(.text)
+                    .contentTransition(.numericText())
             }
             SettingsInputRowView(name: "Weight") {
-                Picker("", selection: $weight) {
-                    ForEach(40...180, id: \.self) { i in
-                        Text(user[0].userDetails?.units == "metric" ? "\(i) kg" : "\(String(format: "%.1f", Double(i) * 2.2046226218488)) lbs")
-                            .font(.body)
-                            .fontWeight(.medium)
-                    }
-                }
-                .tint(.text)
+                TextField("", text: $weight)
+                    .frame(width: 75)
+                    .multilineTextAlignment(.trailing)
+                    .tint(.text)
+                
+                Text(self.units == .metric ? "kg" : "lbs")
+                    .tint(.text)
             }
             SettingsInputRowView(name: "Workouts") {
                 Picker("", selection: $workoutsPerWeek) {
@@ -64,9 +67,30 @@ struct SettingsFitnessDataView: View {
                 .tint(.text)
             }
         }
+        .onChange(of: units) { oldValue, newValue in
+            if contentLoaded {
+                withAnimation(.bouncy) {
+                    if newValue == .metric && oldValue == .imperial {
+                        self.height = String(format: "%.0f", Double(self.height)! / K.Units.cmToInch)
+                        self.weight = String(format: "%.0f", Double(self.weight)! / K.Units.kgToLbs)
+                    } else if newValue == .imperial && oldValue == .metric {
+                        self.height = String(format: "%.1f", Double(self.height)! * K.Units.cmToInch)
+                        self.weight = String(format: "%.1f", Double(self.weight)! * K.Units.kgToLbs)
+                    }
+                }
+            }
+            contentLoaded = true
+        }
+        .onAppear {
+            DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                if self.units == .metric {
+                    contentLoaded = true
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    SettingsFitnessDataView(height: .constant(178), weight: .constant(62), workoutsPerWeek: .constant(4), goal: .constant(.Balance))
+    SettingsFitnessDataView(height: .constant("178"), weight: .constant("62"), workoutsPerWeek: .constant(4), goal: .constant(.Balance), units: .constant(.metric))
 }

@@ -33,10 +33,12 @@ struct SettingsInputRowView<Content: View>: View {
 }
 
 #Preview {
-    SettingsInputRowView(name: "Name") {
-        TextField("", text: .constant("test text"))
-            .frame(width: 200)
+    SettingsInputRowView(name: "Height") {
+        TextField("", text: .constant("120"))
+            .frame(width: 75)
             .multilineTextAlignment(.trailing)
+        
+        Text("cm")
     }
         .padding()
 }

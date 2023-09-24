@@ -9,7 +9,7 @@ import Foundation
 
 struct AccountAuthModel {
     
-    static func authenticate(activeOption: AuthOption?, name: String?, email: String, password: String, confirmPassword: String?) {
+    @MainActor static func authenticate(activeOption: AuthOption?, name: String?, email: String, password: String, confirmPassword: String?) {
         if activeOption == .signIn {
             Task {
                 let response = await Authentication.signIn(email: email, password: password)
