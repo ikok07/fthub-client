@@ -28,7 +28,7 @@ struct SettingsProfileDataModel {
         }
     }
     
-    static func save(gender: String, age: Int, height: Int, weight: Int, workoutsPerWeek: Int, units: String, goal: String) async -> SettingsProfileDataResponse? {
+    static func save(gender: String, age: Int, height: Double, weight: Int, workoutsPerWeek: Int, units: String, goal: String) async -> SettingsProfileDataResponse? {
         let url: URL = URL(string: "\(K.API.apiURL)/en/api/\(K.API.apiV1)/user/detail")!
         let body: SettingsProfileDataBody = SettingsProfileDataBody(gender: gender, age: age, height: height, weight: weight, trainingFrequencyPerWeek: workoutsPerWeek, units: units, goal: goal)
         

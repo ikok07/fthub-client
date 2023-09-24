@@ -29,7 +29,7 @@ struct SetupPageHeightView: View {
             
             Button(action: {
                 user[0].userDetails?.setupActivePage += 1
-                user[0].userDetails?.height = Int16(userHeight ?? 170)
+                user[0].userDetails?.height = Double(userHeight ?? 170)
                 setupController.activePage += 1
                 try? context.save()
             }, label: {

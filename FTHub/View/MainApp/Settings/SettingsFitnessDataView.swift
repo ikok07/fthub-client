@@ -10,6 +10,8 @@ import SwiftData
 
 struct SettingsFitnessDataView: View {
     
+    @FocusState private var isActive: Bool
+    
     @Environment(\.managedObjectContext) private var context
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
@@ -30,6 +32,8 @@ struct SettingsFitnessDataView: View {
                     .multilineTextAlignment(.trailing)
                     .tint(.text)
                     .contentTransition(.numericText())
+                    .keyboardType(.decimalPad)
+                    .focused($isActive)
                 
                 Text(self.units == .metric ? "cm" : "inch.")
                     .tint(.text)
@@ -40,6 +44,8 @@ struct SettingsFitnessDataView: View {
                     .frame(width: 75)
                     .multilineTextAlignment(.trailing)
                     .tint(.text)
+                    .keyboardType(.numberPad)
+                    .focused($isActive)
                 
                 Text(self.units == .metric ? "kg" : "lbs")
                     .tint(.text)
@@ -67,6 +73,20 @@ struct SettingsFitnessDataView: View {
                 .tint(.text)
             }
         }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        isActive = false
+                    }
+                }
+            }
+        }
+        .onChange(of: [height, weight], { _, _ in
+            height = height.replacingOccurrences(of: ",", with: ".")
+            weight = weight.replacingOccurrences(of: ",", with: ".")
+        })
         .onChange(of: units) { oldValue, newValue in
             if contentLoaded {
                 withAnimation(.bouncy) {
@@ -75,7 +95,7 @@ struct SettingsFitnessDataView: View {
                         self.weight = String(format: "%.0f", Double(self.weight)! / K.Units.kgToLbs)
                     } else if newValue == .imperial && oldValue == .metric {
                         self.height = String(format: "%.1f", Double(self.height)! * K.Units.cmToInch)
-                        self.weight = String(format: "%.1f", Double(self.weight)! * K.Units.kgToLbs)
+                        self.weight = String(format: "%.0f", Double(self.weight)! * K.Units.kgToLbs)
                     }
                 }
             }

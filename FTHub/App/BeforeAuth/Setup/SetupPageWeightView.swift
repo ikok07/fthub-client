@@ -59,7 +59,7 @@ struct SetupPageWeightView: View {
             
             Button(action: {
                 user[0].userDetails?.setupActivePage += 1
-                user[0].userDetails?.weight = Int16(selectedWeight)
+                user[0].userDetails?.weight = Double(selectedWeight)
                 setupController.weight = selectedWeight
                 setupController.activePage += 1
                 DB.shared.saveContext()

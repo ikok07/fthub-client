@@ -84,9 +84,9 @@ struct SettingsProfileDataView: View {
                     let imperialHeight = Double(users[0].userDetails?.height ?? 0) * K.Units.cmToInch
                     let imperialWeight = Double(users[0].userDetails?.weight ?? 0) * K.Units.kgToLbs
                     
-                    
+                    #warning("Fix height: api json response")
                     self.height = String(format: "%.\(metricUnits ? 0 : 1)f", metricUnits ? Double(users[0].userDetails?.height ?? 0) : Double(imperialHeight * 10).rounded() / 10)
-                    self.weight = String(format: "%.\(metricUnits ? 0 : 1)f", metricUnits ? Double(users[0].userDetails?.weight ?? 0) : Double(imperialWeight * 10).rounded() / 10)
+                    self.weight = String(format: "%.0f", metricUnits ? Double(users[0].userDetails?.weight ?? 0).rounded() : Double(imperialWeight).rounded())
                     
                     
                     self.workoutsPerWeek = Int(users[0].userDetails?.workoutsPerWeek ?? 2)
@@ -109,22 +109,22 @@ struct SettingsProfileDataView: View {
             case .success(let users):
                 Task {
                     var metricUnits: Bool { return self.units == .metric }
-                    let height = metricUnits ? String(format: "%.0f", Double(self.height)!) : String(format: "%.0f", (Double(self.height)! / K.Units.cmToInch).rounded())
-                    let weight = metricUnits ? String(format: "%.0f", Double(self.weight)!) : String(format: "%.0f", (Double(self.weight)! / K.Units.kgToLbs).rounded())
+                    let metricHeight: String = metricUnits ? String(Double(self.height)!) : String(format: "%.2f", (Double(self.height)! / K.Units.cmToInch))
+                    let metricWeight: String = metricUnits ? String(Int(self.weight)!) : String(format: "%.0f", (Double(self.weight)! / K.Units.kgToLbs))
                     
-                    await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: Int(height) ?? 0, weight: Int(weight) ?? 0, workoutsPerWeek: self.workoutsPerWeek, units: self.units, goal: self.goal) { response in
+                    await SettingsProfileDataController.saveUserDetails(gender: self.gender, age: self.age, height: Double(metricHeight) ?? 0, weight: Int(metricWeight) ?? 0, workoutsPerWeek: self.workoutsPerWeek, units: self.units, goal: self.goal) { response in
                         if response != nil {
                             users[0].userDetails?.gender = self.gender.rawValue
                             users[0].userDetails?.age = Int16(self.age)
                             users[0].userDetails?.units = self.units.rawValue
                                
-                            users[0].userDetails?.height = Int16(height) ?? 0
-                            users[0].userDetails?.weight = Int16(weight) ?? 0
+                            users[0].userDetails?.height = Double(metricHeight) ?? 0
+                            users[0].userDetails?.weight = Double(metricWeight) ?? 0
                             
-                            let imperialHeight = Double(users[0].userDetails?.height ?? 0) * K.Units.cmToInch
-                            let imperialWeight = Double(users[0].userDetails?.weight ?? 0) * K.Units.kgToLbs
-                            self.height = String(format: "%.\(metricUnits ? 0 : 1)f", metricUnits ? Double(users[0].userDetails?.height ?? 0) : Double(imperialHeight * 10).rounded() / 10)
-                            self.weight = String(format: "%.\(metricUnits ? 0 : 1)f", metricUnits ? Double(users[0].userDetails?.weight ?? 0) : Double(imperialWeight * 10).rounded() / 10)
+                            let imperialHeight = Double(metricHeight) ?? 0 * K.Units.cmToInch
+                            let imperialWeight = Double(metricWeight) ?? 0 * K.Units.kgToLbs
+                            self.height = String(format: "%.\(metricUnits ? 0 : 1)f", metricUnits ? Double(metricHeight) ?? 0 : Double(imperialHeight * 10).rounded() / 10)
+                            self.weight = String(format: "%.0f", metricUnits ? Double(metricWeight) ?? 0 : Double(imperialWeight.rounded()))
                             
                             users[0].userDetails?.workoutsPerWeek = Int16(self.workoutsPerWeek)
                             users[0].userDetails?.goal = self.goal.rawValue

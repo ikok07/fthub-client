@@ -23,7 +23,7 @@
         <attribute name="photo" optional="YES" attributeType="String"/>
         <attribute name="role" optional="YES" attributeType="String"/>
         <attribute name="token" optional="YES" attributeType="String"/>
-        <relationship name="userDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="UserDetails"/>
+        <relationship name="userDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="UserDetails" inverseName="user" inverseEntity="UserDetails"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="mongoID"/>
@@ -34,10 +34,11 @@
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
         <attribute name="goal" optional="YES" attributeType="String"/>
-        <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="setupActivePage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="units" optional="YES" attributeType="String" defaultValueString="metric"/>
-        <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="workoutsPerWeek" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userDetails" inverseEntity="User"/>
     </entity>
 </model>

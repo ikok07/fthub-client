@@ -19,8 +19,8 @@ struct DbUserAuth {
         newDetails.units = details.units
         newDetails.gender = details.gender
         newDetails.goal = details.goal
-        newDetails.height = Int16(details.height)
-        newDetails.weight = Int16(details.weight)
+        newDetails.height = Double(details.height)
+        newDetails.weight = Double(details.weight)
         newDetails.workoutsPerWeek = Int16(details.trainingFrequencyPerWeek)
         return newDetails
     }

@@ -23,7 +23,7 @@ struct MemoryUserDetails: Codable {
     var units: Unit?
     var gender: Gender?
     var age: Int?
-    var height: Int?
+    var height: Double?
     var weight: Int?
     var workoutsPerWeek: Int?
     var goal: FitnessGoal?
