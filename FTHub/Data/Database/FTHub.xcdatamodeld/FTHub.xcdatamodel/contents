@@ -4,6 +4,9 @@
         <attribute name="buttonLoading" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="emailWithLinkSent" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="loadingPresented" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="messageContent" optional="YES" attributeType="String" defaultValueString="Could not display error"/>
+        <attribute name="messagePresented" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="messageType" optional="YES" attributeType="String"/>
         <attribute name="restorePasswordStatus" optional="YES" attributeType="String" defaultValueString="fail"/>
         <attribute name="restorePasswordToken" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="sendEmailType" optional="YES" attributeType="String" defaultValueString="twoFa"/>
@@ -14,6 +17,10 @@
         <attribute name="tokenConfirmationStatus" optional="YES" attributeType="String" defaultValueString="fail"/>
         <attribute name="userCurrentEmail" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="userLoggedIn" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Log" representedClassName="Log" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="info" optional="YES" attributeType="String"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>

@@ -74,6 +74,7 @@ struct DbUserAuth {
                 user.userDetails = details
                 DB.shared.context.insert(user)
                 DB.shared.saveContext()
+                await DbApplication.sendLog(description: "No details found for user")
             }
         }
         

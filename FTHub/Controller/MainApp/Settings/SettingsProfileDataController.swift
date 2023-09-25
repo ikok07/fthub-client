@@ -16,10 +16,10 @@ struct SettingsProfileDataController {
             if response.status == "success" {
                 completion(response)
             } else {
-                Message.send(type: "error", message: "There was an error uploading profile image to server")
+                await Message.send(type: "error", message: "There was an error uploading profile image to server")
             }
         } else {
-            Message.send(type: "error", message: "There was an error connecting to server")
+            await Message.send(type: "error", message: "There was an error connecting to server")
         }
     }
     
@@ -27,7 +27,7 @@ struct SettingsProfileDataController {
         if let response = await SettingsProfileDataModel.save(gender: gender.rawValue, age: age, height: height, weight: weight, workoutsPerWeek: workoutsPerWeek, units: units.rawValue, goal: goal.rawValue.camelCaseToWords()) {
             await completion(response)
         } else {
-            Message.send(type: "error", message: "There was an error saving profile data")
+            await Message.send(type: "error", message: "There was an error saving profile data")
         }
     }
     

@@ -25,4 +25,15 @@ struct DbApplication {
         })
     }
     
+    static func sendLog(description: String) {
+        
+        K.Database.getLogs() { logs, context in
+            let log = Log(context: context)
+            log.date = K.Calendar.formatStandardDate(date: Date())
+            log.info = description
+            context.insert(log)
+        }
+        print("ADDED LOG")
+    }
+    
 }

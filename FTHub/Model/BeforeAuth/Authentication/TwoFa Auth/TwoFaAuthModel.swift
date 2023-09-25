@@ -33,7 +33,7 @@ struct TwoFaAuthModel {
                         variables.loadingPresented = false
                     }
                 } else {
-                    Message.send(type: "error", message: String(localized: "The entered link is invalid or expired"))
+                    await Message.send(type: "error", message: String(localized: "The entered link is invalid or expired"))
                     await K.Database.getAppVariables() { variables, context in
                         variables.tokenConfirmationStatus = TokenVerifyStatus.fail.rawValue
                         variables.sendEmailType = SendEmailType.twoFa.rawValue

@@ -137,7 +137,7 @@ struct SettingsProfileDataView: View {
                             DB.shared.saveContext()
                             
                             self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
-                            Message.send(type: "success", message: "Successfully saved profile data")
+                            await Message.send(type: "success", message: "Successfully saved profile data")
                             saveButtonActive = false
                         }
                     }

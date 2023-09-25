@@ -20,7 +20,7 @@ struct AccountAuthModel {
                 let response = await Authentication.signUp(name: name ?? "", email: email, password: password, passwordConfirm: confirmPassword ?? "")
                 if response != nil {
                     if response!.status == "fail" {
-                        Message.send(type: "error", message: response!.message)
+                        await Message.send(type: "error", message: response!.message)
                         await K.Database.getAppVariables() { variables, context in
                             variables.buttonLoading = false
                             variables.loadingPresented = false
@@ -54,7 +54,7 @@ struct AccountAuthModel {
     static private func advanceSignIn(response: AccountAuthResponse?, email: String) async {
         if response != nil {
             if response!.status == "fail" && response!.identifier != "EmailNotVerified" {
-                Message.send(type: "error", message: response!.message)
+                await Message.send(type: "error", message: response!.message)
             } else if response!.identifier == "EmailNotVerified" {
                 Task {
                     await Authentication.sendConfirmEmail(email: email)
@@ -66,7 +66,7 @@ struct AccountAuthModel {
                 }
             }
         } else {
-            Message.send(type: "error", message: "Error connecting to server")
+            await Message.send(type: "error", message: "Error connecting to server")
         }
         await K.Database.getAppVariables() { variables, context in
             variables.buttonLoading = false

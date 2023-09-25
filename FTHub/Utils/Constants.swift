@@ -105,6 +105,18 @@ struct K {
         }
     }
     
+    // MARK: - Calendar
+    
+    struct Calendar {
+        static func formatStandardDate(date: Date) -> String{
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .long
+            formatter.locale = Locale(identifier: "en_US")
+            return formatter.string(from: date)
+        }
+    }
+    
     // MARK: - Database
     
     struct Database {
@@ -121,9 +133,9 @@ struct K {
             let db = DB.shared
             let context = db.context
             let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-            let fetchData: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
+            let fetchResult: Result<[User], Error> = db.makeFetchRequest(request: fetchRequest)
             
-            switch fetchData {
+            switch fetchResult {
             case .success(let users):
                 if !users.isEmpty {
                     await completionHandler?(users[0], context)
@@ -134,19 +146,35 @@ struct K {
             }
         }
         
-        static func getAppVariables(completionHandler: ((AppVariables, NSManagedObjectContext) async -> Void)? = nil, completionHandlerWithoutEmptyCheck: (([AppVariables], NSManagedObjectContext) async -> Void)? = nil) async {
+        static func getAppVariables(completionHandler: ((AppVariables, NSManagedObjectContext) -> Void)? = nil, completionHandlerWithoutEmptyCheck: (([AppVariables], NSManagedObjectContext) -> Void)? = nil)  {
             let db = DB.shared
             let context = db.context
             let fetchRequest: NSFetchRequest<AppVariables> = AppVariables.fetchRequest()
-            let fetchData: Result<[AppVariables], Error> = db.makeFetchRequest(request: fetchRequest)
+            let fetchResult: Result<[AppVariables], Error> = db.makeFetchRequest(request: fetchRequest)
             
-            switch fetchData {
+            switch fetchResult {
             case .success(let variables):
                 if !variables.isEmpty {
-                    await completionHandler?(variables[0], context)
+                    completionHandler?(variables[0], context)
                     db.saveContext()
                 }
-                await completionHandlerWithoutEmptyCheck?(variables, context)
+                completionHandlerWithoutEmptyCheck?(variables, context)
+                
+            case .failure(let error):
+                print("Error getting current variables from database: \(error.localizedDescription)")
+            }
+        }
+        
+        static func getLogs(completionHandler: (([Log], NSManagedObjectContext) -> Void)? = nil) {
+            let db = DB.shared
+            let context = db.context
+            let fetchRequest: NSFetchRequest<Log> = Log.fetchRequest()
+            let fetchResult: Result<[Log], Error> = db.makeFetchRequest(request: fetchRequest)
+            
+            switch fetchResult {
+            case .success(let logs):
+                completionHandler?(logs, context)
+                db.saveContext()
                 
             case .failure(let error):
                 print("Error getting current variables from database: \(error.localizedDescription)")

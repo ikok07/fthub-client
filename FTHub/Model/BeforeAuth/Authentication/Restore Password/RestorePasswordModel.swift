@@ -42,10 +42,10 @@ struct RestorePasswordModel {
                     }
                 }
             } else {
-                Message.send(type: "error", message: safeResponse.message)
+                await Message.send(type: "error", message: safeResponse.message)
             }
         } else {
-            Message.send(type: "error", message: "There was an error sending restore password request.")
+            await Message.send(type: "error", message: "There was an error sending restore password request.")
         }
     }
     

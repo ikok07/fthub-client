@@ -19,7 +19,7 @@ struct SetupModel {
             if response.status == "success" {
                 completion?(true)
             } else {
-                Message.send(type: "error", message: "Error saving details to server. Please try again later!")
+                await Message.send(type: "error", message: "Error saving details to server. Please try again later!")
                 completion?(false)
             }
         } catch {

@@ -91,7 +91,7 @@ struct Authentication {
                 variables.loadingPresented = false
             }
         } else {
-            Message.send(type: "error", message: "Error connecting to server")
+            await Message.send(type: "error", message: "Error connecting to server")
         }
     }
     

@@ -17,7 +17,7 @@ struct AccountModel {
         
         if let safeResponse = response {
             if safeResponse.status == "success" {
-                await K.Database.getAppVariables() { variables, context in
+                K.Database.getAppVariables() { variables, context in
                     variables.userLoggedIn = true
                 }
                 if safeResponse.data != nil { return safeResponse }
@@ -26,7 +26,7 @@ struct AccountModel {
                     user.hasFullDetails = false
                 }
                 
-                await K.Database.getAppVariables() { variables, context in
+                K.Database.getAppVariables() { variables, context in
                     variables.userLoggedIn = false
                     variables.showTokenVerifyStatus = false
                     variables.emailWithLinkSent = false
@@ -34,7 +34,7 @@ struct AccountModel {
                 
             }
         } else {
-            await K.Database.getAppVariables() { variables, context in
+            K.Database.getAppVariables() { variables, context in
                 variables.userLoggedIn = false
                 variables.showTokenVerifyStatus = false
                 variables.emailWithLinkSent = false
@@ -47,7 +47,7 @@ struct AccountModel {
     static func checkDetails(_ token: String) async -> ApiUserDetails? {
         
         let response = await Authentication.checkDetails(token)
-        await K.Database.getAppVariables() { variables, context in
+        K.Database.getAppVariables() { variables, context in
             variables.loadingPresented = false
         }
         
