@@ -29,7 +29,7 @@ struct ApiUserDetailsResponseData: Codable {
 
 struct ApiUserDetails: Codable {
     let age: Int
-    let height: Int
+    let height: Double
     let weight: Int
     let trainingFrequencyPerWeek: Int
     let gender: String?

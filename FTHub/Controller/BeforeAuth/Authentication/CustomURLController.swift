@@ -13,7 +13,7 @@ struct CustomURLController {
     
     static func getCurrentEmail() async -> String {
         var email: String = ""
-        await K.Database.getAppVariables() { variables, context in
+        K.Database.getAppVariables() { variables, context in
             email = variables.userCurrentEmail ?? ""
         }
         return email
@@ -21,27 +21,27 @@ struct CustomURLController {
     
     static func confirmEmail(url: URL) async {
         let emailConfirmed = await ConfirmEmailController.confirmEmail(url: url, email: getCurrentEmail())
-        await K.Database.getAppVariables() { variables, context in
+        K.Database.getAppVariables() { variables, context in
             variables.loadingPresented = false
             variables.sendEmailType = SendEmailType.confirm.rawValue
         }
         if emailConfirmed {
-            await K.Database.getAppVariables() { variables, context in
+            K.Database.getAppVariables() { variables, context in
                 variables.tokenConfirmationStatus = TokenVerifyStatus.success.rawValue
             }
         } else {
-            await K.Database.getAppVariables() { variables, context in
+            K.Database.getAppVariables() { variables, context in
                 variables.tokenConfirmationStatus = TokenVerifyStatus.fail.rawValue
             }
         }
-        await K.Database.getAppVariables() { variables, context in
+        K.Database.getAppVariables() { variables, context in
             variables.emailWithLinkSent = false
             variables.showTokenVerifyStatus = true
         }
     }
     
     static func openResetPassword(url: URL) async {
-        await K.Database.getAppVariables() { variables, context in
+        K.Database.getAppVariables() { variables, context in
             variables.loadingPresented = false
             variables.restorePasswordToken = url.pathComponents[2]
             variables.showRestorePassword = true

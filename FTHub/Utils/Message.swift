@@ -13,7 +13,6 @@ struct Message {
     static func send(type: String, message: String) {
         
         let db = DB.shared
-        let context = db.context
         let fetchRequest: NSFetchRequest<AppVariables> = AppVariables.fetchRequest()
         let fetchResult: Result<[AppVariables], Error> = db.makeFetchRequest(request: fetchRequest)
         

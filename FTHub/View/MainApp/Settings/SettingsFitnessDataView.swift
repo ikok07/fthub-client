@@ -91,7 +91,7 @@ struct SettingsFitnessDataView: View {
             if contentLoaded {
                 withAnimation(.bouncy) {
                     if newValue == .metric && oldValue == .imperial {
-                        self.height = String(format: "%.0f", Double(self.height)! / K.Units.cmToInch)
+                        self.height = String(format: "%.1f", Double(self.height)! / K.Units.cmToInch)
                         self.weight = String(format: "%.0f", Double(self.weight)! / K.Units.kgToLbs)
                     } else if newValue == .imperial && oldValue == .metric {
                         self.height = String(format: "%.1f", Double(self.height)! * K.Units.cmToInch)

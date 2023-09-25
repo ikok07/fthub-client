@@ -47,7 +47,7 @@ struct SettingsChangePasswordView: View {
             if newPassword == confirmPassword {
                 await SettingsChangePasswordController.changePassword(currentPass: self.currentPassword, newPass: self.newPassword, confirmNewPass: self.confirmPassword)
             } else {
-                await Message.send(type: "error", message: "Your password and confirmation password do not match.")
+                Message.send(type: "error", message: "Your password and confirmation password do not match.")
             }
         }
     }

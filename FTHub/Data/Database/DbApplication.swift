@@ -10,7 +10,7 @@ import Foundation
 struct DbApplication {
     
     static func initiate() async {
-        await K.Database.getAppVariables(completionHandlerWithoutEmptyCheck:  { variables, context in
+        K.Database.getAppVariables(completionHandlerWithoutEmptyCheck:  { variables, context in
             var showTutorial: Bool?
             if !variables.isEmpty {
                 for variable in variables {

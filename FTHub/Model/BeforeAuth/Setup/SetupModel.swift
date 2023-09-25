@@ -9,7 +9,7 @@ import Foundation
 
 struct SetupModel {
     
-    static func saveDetailsToServer(age: Int, height: Int, weight: Int, workoutsPerWeek: Int, gender: String, units: Unit, goal: String, completion: ((Bool) -> Void)?) async {
+    static func saveDetailsToServer(age: Int, height: Double, weight: Int, workoutsPerWeek: Int, gender: String, units: Unit, goal: String, completion: ((Bool) -> Void)?) async {
         
         let url: URL = URL(string: "\(K.API.apiURL)/en/api/\(K.API.apiV1)/user/detail")!
         let body = ApiUserDetails(age: age, height: height, weight: weight, trainingFrequencyPerWeek: workoutsPerWeek, gender: gender, units: units.rawValue, goal: goal.camelCaseToWords())

@@ -84,8 +84,7 @@ struct SettingsProfileDataView: View {
                     let imperialHeight = Double(users[0].userDetails?.height ?? 0) * K.Units.cmToInch
                     let imperialWeight = Double(users[0].userDetails?.weight ?? 0) * K.Units.kgToLbs
                     
-                    #warning("Fix height: api json response")
-                    self.height = String(format: "%.\(metricUnits ? 0 : 1)f", metricUnits ? Double(users[0].userDetails?.height ?? 0) : Double(imperialHeight * 10).rounded() / 10)
+                    self.height = String(format: "%.1f", metricUnits ? Double(users[0].userDetails?.height ?? 0) : Double(imperialHeight * 10).rounded() / 10)
                     self.weight = String(format: "%.0f", metricUnits ? Double(users[0].userDetails?.weight ?? 0).rounded() : Double(imperialWeight).rounded())
                     
                     
@@ -121,10 +120,10 @@ struct SettingsProfileDataView: View {
                             users[0].userDetails?.height = Double(metricHeight) ?? 0
                             users[0].userDetails?.weight = Double(metricWeight) ?? 0
                             
-                            let imperialHeight = Double(metricHeight) ?? 0 * K.Units.cmToInch
-                            let imperialWeight = Double(metricWeight) ?? 0 * K.Units.kgToLbs
-                            self.height = String(format: "%.\(metricUnits ? 0 : 1)f", metricUnits ? Double(metricHeight) ?? 0 : Double(imperialHeight * 10).rounded() / 10)
-                            self.weight = String(format: "%.0f", metricUnits ? Double(metricWeight) ?? 0 : Double(imperialWeight.rounded()))
+                            let imperialHeight = Double(metricHeight)! * K.Units.cmToInch
+                            let imperialWeight = Double(metricWeight)! * K.Units.kgToLbs
+                            self.height = String(format: "%.1f", metricUnits ? Double(metricHeight)! : Double(imperialHeight * 10).rounded() / 10)
+                            self.weight = String(format: "%.0f", metricUnits ? Double(metricWeight)! : Double(imperialWeight.rounded()))
                             
                             users[0].userDetails?.workoutsPerWeek = Int16(self.workoutsPerWeek)
                             users[0].userDetails?.goal = self.goal.rawValue
@@ -137,7 +136,7 @@ struct SettingsProfileDataView: View {
                             DB.shared.saveContext()
                             
                             self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
-                            await Message.send(type: "success", message: "Successfully saved profile data")
+                            Message.send(type: "success", message: "Successfully saved profile data")
                             saveButtonActive = false
                         }
                     }

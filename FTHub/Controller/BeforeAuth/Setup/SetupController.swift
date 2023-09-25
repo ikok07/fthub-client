@@ -19,7 +19,7 @@ enum Unit: String, CaseIterable, Codable {
     var units: Unit = .metric
     var gender: Gender? = .Male
     var age: Int?
-    var height: Int?
+    var height: Double?
     var weight: Int?
     var workoutsPerWeek: Int?
     var goal: FitnessGoal?

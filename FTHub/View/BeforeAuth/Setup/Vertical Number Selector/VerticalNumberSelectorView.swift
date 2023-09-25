@@ -51,7 +51,7 @@ struct VerticalNumberSelectorView: View {
                                 percentage = newHeight / 400
                                 userHeight = 120 + (percentage * (Double(K.UserDetails.maxHeight) - Double(K.UserDetails.minHeight)))
                             }
-                            setupController.height = Int(userHeight ?? 0)
+                            setupController.height = userHeight ?? 0
                             
                         })
                 )

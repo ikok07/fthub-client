@@ -85,13 +85,13 @@ struct Authentication {
         let defaults = UserDefaults.standard
         let emailSentResponse = await Authentication.resendConfirmEmail(email: email)
         if emailSentResponse != nil && emailSentResponse?.status == "success" {
-            await K.Database.getAppVariables() { variables, context in
+            K.Database.getAppVariables() { variables, context in
                 variables.userCurrentEmail = email
                 variables.emailWithLinkSent = true
                 variables.loadingPresented = false
             }
         } else {
-            await Message.send(type: "error", message: "Error connecting to server")
+            Message.send(type: "error", message: "Error connecting to server")
         }
     }
     

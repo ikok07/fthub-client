@@ -20,14 +20,14 @@ struct AccountAuthModel {
                 let response = await Authentication.signUp(name: name ?? "", email: email, password: password, passwordConfirm: confirmPassword ?? "")
                 if response != nil {
                     if response!.status == "fail" {
-                        await Message.send(type: "error", message: response!.message)
-                        await K.Database.getAppVariables() { variables, context in
+                        Message.send(type: "error", message: response!.message)
+                        K.Database.getAppVariables() { variables, context in
                             variables.buttonLoading = false
                             variables.loadingPresented = false
                             variables.showTokenVerifyStatus = false
                         }
                     } else {
-                        await K.Database.getAppVariables() { variables, context in
+                        K.Database.getAppVariables() { variables, context in
                             variables.userCurrentEmail = email
                             variables.emailWithLinkSent = true
                             variables.buttonLoading = false
@@ -39,7 +39,7 @@ struct AccountAuthModel {
             }
         } else {
             Task {
-                await K.Database.getAppVariables() { variables, context in
+                K.Database.getAppVariables() { variables, context in
                     variables.loadingPresented = false
                     variables.emailWithLinkSent = false
                     variables.showTokenVerifyStatus = false
@@ -54,21 +54,21 @@ struct AccountAuthModel {
     static private func advanceSignIn(response: AccountAuthResponse?, email: String) async {
         if response != nil {
             if response!.status == "fail" && response!.identifier != "EmailNotVerified" {
-                await Message.send(type: "error", message: response!.message)
+                Message.send(type: "error", message: response!.message)
             } else if response!.identifier == "EmailNotVerified" {
                 Task {
                     await Authentication.sendConfirmEmail(email: email)
                 }
             } else {
-                await K.Database.getAppVariables() { variables, context in
+                K.Database.getAppVariables() { variables, context in
                     variables.userCurrentEmail = email
                     variables.emailWithLinkSent = true
                 }
             }
         } else {
-            await Message.send(type: "error", message: "Error connecting to server")
+            Message.send(type: "error", message: "Error connecting to server")
         }
-        await K.Database.getAppVariables() { variables, context in
+        K.Database.getAppVariables() { variables, context in
             variables.buttonLoading = false
             variables.loadingPresented = false
         }
