@@ -14,6 +14,8 @@ struct VerticalNumberSelectorButtonsView: View {
     let minValue: Double
     let maxValue: Double
     
+    var height: Double
+    
     var body: some View {
         HStack {
             VStack(spacing: 15) {
@@ -56,10 +58,10 @@ struct VerticalNumberSelectorButtonsView: View {
             .offset(x: -40)
             Spacer()
         }
-        .frame(width: 120, height: 400)
+        .frame(width: 120, height: height)
     }
 }
 
 #Preview {
-    VerticalNumberSelectorButtonsView(percentage: .constant(0.3), userHeight: .constant(120), minValue: 120, maxValue: 240)
+    VerticalNumberSelectorButtonsView(percentage: .constant(0.3), userHeight: .constant(120), minValue: 120, maxValue: 240, height: 300)
 }

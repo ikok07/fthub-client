@@ -31,7 +31,7 @@ struct ContentView: View {
                 .withLoadingAnimation()
                 .sensoryFeedback(.success, trigger: appVariables[0].userLoggedIn)
                 .animation(.easeOut, value: appVariables[0].userLoggedIn)
-                .animation(.easeOut, value: users[0].hasFullDetails)
+                .animation(.easeOut, value: userHasDetails())
             } else {
                 FakeLaunchScreenView()
             }
@@ -45,6 +45,14 @@ struct ContentView: View {
             }
         }
     }
+    
+    func userHasDetails() -> Bool {
+        if !users.isEmpty {
+            return users[0].hasFullDetails
+        }
+        return false
+    }
+    
 }
 
 #Preview {
