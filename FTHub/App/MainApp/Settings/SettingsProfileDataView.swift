@@ -44,6 +44,7 @@ struct SettingsProfileDataView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 Button {
+                    saveButtonActive = false
                     saveDetails()
                 } label: {
                     Text("Save")
@@ -138,6 +139,8 @@ struct SettingsProfileDataView: View {
                             self.initConfiguration = [name, gender.rawValue, String(age), units.rawValue, String(height), String(weight), String(workoutsPerWeek), goal.rawValue]
                             Message.send(type: "success", message: "Successfully saved profile data")
                             saveButtonActive = false
+                        } else {
+                            saveButtonActive = true
                         }
                     }
                 }

@@ -31,7 +31,7 @@ struct ContentView: View {
                 .withLoadingAnimation()
                 .sensoryFeedback(.success, trigger: appVariables[0].userLoggedIn)
                 .animation(.easeOut, value: appVariables[0].userLoggedIn)
-//                .animation(.easeOut, value: users[0].hasFullDetails)
+                .animation(.easeOut, value: users[0].hasFullDetails)
             } else {
                 FakeLaunchScreenView()
             }

@@ -24,11 +24,11 @@ struct SettingsProfileDataController {
     }
     
     static func saveUserDetails(gender: Gender, age: Int, height: Double, weight: Int, workoutsPerWeek: Int, units: Unit, goal: FitnessGoal, completion: (SettingsProfileDataResponse?) async -> Void) async {
-        if let response = await SettingsProfileDataModel.save(gender: gender.rawValue, age: age, height: height, weight: weight, workoutsPerWeek: workoutsPerWeek, units: units.rawValue, goal: goal.rawValue.camelCaseToWords()) {
-            await completion(response)
-        } else {
+        let response = await SettingsProfileDataModel.save(gender: gender.rawValue, age: age, height: height, weight: weight, workoutsPerWeek: workoutsPerWeek, units: units.rawValue, goal: goal.rawValue.camelCaseToWords())
+        if response == nil {
             Message.send(type: "error", message: "There was an error saving profile data")
         }
+        await completion(response)
     }
     
 }

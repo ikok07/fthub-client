@@ -20,7 +20,7 @@ struct VerticalNumberSelectorView: View {
             VerticalNumberSelectorButtonsView(percentage: $percentage, userHeight: $userHeight, minValue: Double(K.UserDetails.minHeight), maxValue: Double(K.UserDetails.maxHeight))
             
             VStack {
-                Text(setupController.units == .metric ? "\(Int(userHeight ?? 0)) cm" : "\(String(format: "%5.1f", K.Units.cmToInch * (userHeight ?? 0))) inch")
+                Text(setupController.units == .metric ? "\(String(format: "%.0f", userHeight ?? 0)) cm" : "\(String(format: "%.1f", K.Units.cmToInch * (userHeight ?? 0))) inch")
                     .font(.title)
                     .fontWeight(.semibold)
                     .padding(.bottom, 30)
