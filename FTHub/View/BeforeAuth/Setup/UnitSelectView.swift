@@ -54,8 +54,7 @@ struct UnitSelectView: View {
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .onAppear {
-                #warning("Uncomment")
-//                activeUnits = Unit(rawValue: user[0].userDetails?.units ?? "metric") ?? .metric
+                activeUnits = Unit(rawValue: user[0].userDetails?.units ?? "metric") ?? .metric
             }
         }
         .padding()
